@@ -4,18 +4,30 @@
   <a href="LICENSE"><img alt="MIT 许可证" src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
   <a href="pyproject.toml"><img alt="Python 3.12" src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&amp;logoColor=white"></a>
   <a href="https://github.com/Phoenix-chaser/EvoCoder/actions/workflows/checks.yml"><img alt="查看 GitHub Actions CI" src="https://img.shields.io/badge/CI-GitHub%20Actions-35495E?logo=githubactions&amp;logoColor=white"></a>
-  <a href="docs/results/overview.json"><img alt="291 项测试通过" src="https://img.shields.io/badge/tests-291%20passed-08796E?logo=pytest&amp;logoColor=white"></a>
+  <a href="docs/results/overview.json"><img alt="300 项测试通过" src="https://img.shields.io/badge/tests-300%20passed-08796E?logo=pytest&amp;logoColor=white"></a>
   <a href="src/evocoder/sandbox.py"><img alt="Docker 沙箱" src="https://img.shields.io/badge/sandbox-Docker-206B9C?logo=docker&amp;logoColor=white"></a>
   <a href="Makefile"><img alt="离线演示只需 CPU" src="https://img.shields.io/badge/demo-CPU%20only-586876"></a>
 </p>
 
-EvoCoder 检验 **Coding Agent 能否从过去的修复中学到对下一道题有用的方法**。模型在隔离的 Python 仓库里改代码、跑测试，从执行轨迹中写出带版本的技能。后续任务可以选用或跳过技能。实际使用后出现失败，模型才有证据修订它的适用条件、操作步骤和检查方法。整个过程使用同一模型权重。
+EvoCoder 检验 **Coding Agent 能否从过去的修复中学到对下一道题有用的方法**。模型在隔离的 Python 仓库里改代码、跑测试，从执行轨迹中写出带版本的技能。后续任务可以选用或跳过技能。实际使用后出现失败，模型才有证据修订它的适用条件、操作步骤和检查方法。实验固定请求的模型版本，项目不更新模型权重。
 
 [自进化效果在哪里](#自进化效果在哪里) · [其他实验结果](#其他实验结果) · [快速运行](#快速运行) · [接入自己的任务](#接入自己的任务)
 
 ## 自进化效果在哪里
 
-**GLM-5.3 自己写出了可复用技能，后续任务实际采用了它。这轮开发对照的新增修复数为 0。** 在配置覆盖场景中，模型从 4 条无技能修复轨迹归纳出缺省处理规则。输入缺失或为 `None` 时才回退到默认值，显式传入的 `0`、`False`、空字符串都要保留。后续 6 道学习题全部选中这条技能并通过，没有触发子版修订。[模型生成的技能与逐题结果](docs/results/optional-control.json)
+### 学得的技能在新配置题上多修好了什么？
+
+**在 4 个新配置程序、每题 2 轮的真实 GLM-5.3 对照中，无技能修好 3/8，人工参照技能修好 5/8，GLM 自己写出的技能修好 6/8。** 模型在 8 次求解中都选用了学得技能。相对无技能多修好的 3 个补丁分别保留了零采样间隔、空 CSV 标题和空调色板，独立断言在实际提交的补丁上都通过了。其中 2 个配对，人工技能也纠正了同一假值边界。[逐题补丁复验与路由记录](docs/results/falsy-transfer.json)
+
+![新配置题的两轮独立评分。第一轮无技能、人工和学得技能都是 2/4，第二轮分别为 1/4、3/4 和 4/4。](docs/images/falsy-dev-zh.png)
+
+预试先检验人工技能能否纠正可重复的错误。在 more-itertools 的历史缺陷上，无技能模型连续 3 次通过公开测试，又连续 3 次在空输入上丢弃调用者传入的假值异常对象。人工参照技能有 2 次保留了该对象并通过整题。上图开发集的 3 个额外修复都出现在第二轮。获得两轮重复改善的开发组为 **0**，第一批开发对照未达到发布要求。[预试、门禁与复现方法](docs/falsy-transfer-study.md)
+
+把相同规则迁移到**调用方提供的对象**时，三道新题各跑两轮。无技能修好 **5/6**，人工参照 **6/6**，正常路由下的学得技能组 **3/6**，强制注入同一技能 **2/6**。正常路由实际注入 **0/6**，六次首个求解请求均与对应的无技能组相同。候选未通过合并门禁，原有 **30 道留出题的模型接触数为 0**，收益随任务族多样性的变化仍待测量。[对象题的路由、补丁与合并门禁](docs/results/falsy-objects.json)
+
+### 这条技能是怎么形成的？
+
+在最初的 50 题配置实验中，GLM-5.3 从 4 条无技能修复轨迹归纳出缺省处理规则。输入缺失或为 `None` 时才回退到默认值，显式传入的 `0`、`False`、空字符串都要保留。后续 6 道学习题全部选中这条技能并通过，没有触发子版修订。首次开发对照的新增修复数为 0。[模型生成的技能与逐题结果](docs/results/optional-control.json)
 
 | 真实模型开发对照 | 无技能 | 学得技能 |
 | --- | ---: | ---: |

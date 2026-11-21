@@ -3,23 +3,31 @@
 import argparse
 from pathlib import Path
 
-from evocoder.contracts import digest
-from evocoder.gate import gate_summary, skill_behavior
 from falsy_object_cases import CASES, build
 from falsy_transfer_protocol import LEARNED, rescue_targets
 from report_click_procedure import read
 from report_falsy_transfer import (
     PUBLIC as FIRST_RESULT,
+)
+from report_falsy_transfer import (
     REGISTRATION as FIRST_PROTOCOL,
+)
+from report_falsy_transfer import (
     arm_summary,
     audit_archive,
-    verify as verify_primary,
+    recalibrate,
     verify_billing,
     verify_holdout,
 )
+from report_falsy_transfer import (
+    verify as verify_primary,
+)
 from run_falsy_objects import ARMS, sequence
 from run_falsy_transfer import require
+
 from evocoder.comparison import dump
+from evocoder.contracts import digest
+from evocoder.gate import gate_summary, skill_behavior
 
 REGISTRATION = Path("benchmarks/falsy_transfer/object-panel.json")
 RESULT = Path("docs/results/falsy-objects.json")
@@ -36,8 +44,21 @@ def overview(rows):
             ),
         }
 
+    matches = []
+    for row in rows:
+        comparison = "forced_learned" if row["learned"]["applied"] is not None else "bare"
+        if row["learned"]["first_solver_request"] == row[comparison]["first_solver_request"]:
+            matches.append(
+                {
+                    "task": row["task"],
+                    "repeat": row["repeat"],
+                    "comparison": comparison,
+                    "grade_agrees": row["learned"]["passed"] == row[comparison]["passed"],
+                }
+            )
     return {
         "arms": {a: arm_summary(rows, a) for a in ARMS},
+        "matched_first_solver_inputs": matches,
         "comparisons": {a: wins(a) for a in ARMS if a != "bare"},
         "routing_skips": [
             {"task": r["task"], "repeat": r["repeat"]} for r in rows if r["learned"]["applied"] is None
@@ -177,14 +198,19 @@ def verify(data, p, first, original):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("command", choices=("verify", "export"))
+    ap.add_argument("command", choices=("verify", "export", "calibrate"))
     ap.add_argument("--root", type=Path, default=Path("experiments/falsy-objects-001"))
     ap.add_argument("--registration", type=Path, default=REGISTRATION)
     ap.add_argument("--result", type=Path, default=RESULT)
     ap.add_argument("--first", type=Path, default=FIRST_RESULT)
     ap.add_argument("--first-registration", type=Path, default=FIRST_PROTOCOL)
+    ap.add_argument("--image", default="python:3.12-slim")
     args = ap.parse_args()
-    p, first, original = read(args.registration), read(args.first), read(args.first_registration)
+    p = read(args.registration)
+    if args.command == "calibrate":
+        recalibrate(p, [build(n) for n in CASES], args.image)
+        raise SystemExit(0)
+    first, original = read(args.first), read(args.first_registration)
     if args.command == "export":
         data = audit_archive(args.root, p, primary=first)
         data["summary"] = overview(data["dev"])

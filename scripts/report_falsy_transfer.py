@@ -1,14 +1,13 @@
 """Audit the raw transfer archive or verify the published paired observations without a key."""
 
 import argparse
+import re
+import subprocess
 from collections import Counter, defaultdict
 from decimal import Decimal
 from pathlib import Path
 
-from evocoder.comparison import dump
-from evocoder.contracts import Settings, digest
-from evocoder.dataset import load_catalog
-from evocoder.gate import gate_summary, skill_behavior
+from falsy_transfer_cases import DEV, PILOT, make_case
 from falsy_transfer_protocol import (
     ARMS,
     FAMILIES,
@@ -22,6 +21,12 @@ from falsy_transfer_protocol import (
 from report_click_procedure import Archive, read
 from run_falsy_transfer import require
 from run_optional_control import curve_point
+
+from evocoder.comparison import dump
+from evocoder.contracts import Settings, digest
+from evocoder.dataset import load_catalog
+from evocoder.gate import gate_summary, skill_behavior
+from evocoder.jobs import bounded_map
 
 PUBLIC = Path("docs/results/falsy-transfer.json")
 REGISTRATION = Path("benchmarks/falsy_transfer/protocol.json")
@@ -266,6 +271,10 @@ def verify_billing(data, phase_arms, seen):
             require(
                 all(row[a]["calls"] == bills[row[a]["run"]]["calls"] for a in arms), "wrong model call count"
             )
+            require(
+                all(re.fullmatch("[a-f0-9]{64}", row[a]["first_solver_request"]) for a in arms),
+                "missing first solver request receipt",
+            )
     costs = data["costs"]
     require(
         all(type(v) is int and v >= 0 for b in bills.values() for v in b.values())
@@ -382,6 +391,12 @@ def audit_archive(root, p, *, primary=None):
             for arm in row["order"]:
                 a = row[arm]
                 st, t, run, final, events, route = audit(a["run"])
+                a["first_solver_request"] = next(
+                    event["payload"]["request_body_hash"]
+                    for event in events
+                    if event["kind"] == "MODEL_RESPONSE"
+                    and event["payload"]["expected_function"] == "submit_action"
+                )
                 require(previous < limits[a["run"]][0], "different actual arm order")
                 previous = limits[a["run"]][1]
                 require(
@@ -508,14 +523,44 @@ def export(root, p):
     return public
 
 
+def recalibrate(protocol, cases, image):
+    image_id = subprocess.check_output(
+        ["docker", "image", "inspect", "--format", "{{.Id}}", image], text=True
+    ).strip()
+    settings = Settings(_env_file=None, mode="mock", image=image_id)
+    expected = {r["task"]: r for r in protocol["calibration"]}
+
+    def check_case(item):
+        task, reference = item
+        entry = expected[task.id]
+        require(
+            digest(task.model_dump()) == entry["snapshot"] and digest(reference) == entry["reference_patch"],
+            "source or reference differs from registration",
+        )
+        for name, patch in (("broken", {}), ("fixed", reference)):
+            require(probe_patch(task, patch, settings) == entry[name], "calibration differs on " + task.id)
+        return task.id
+
+    ids = bounded_map(check_case, cases, 4)
+    require(set(ids) == set(expected) and len(ids) == len(expected), "partial calibration")
+    print(
+        f"Reproduced the broken and reference results on {len(ids)} registered tasks with zero model calls."
+    )
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=("verify", "export"))
+    parser.add_argument("command", choices=("verify", "export", "calibrate"))
     parser.add_argument("--root", type=Path, default=Path("experiments/falsy-transfer-001"))
     parser.add_argument("--registration", type=Path, default=REGISTRATION)
     parser.add_argument("--result", type=Path, default=PUBLIC)
+    parser.add_argument("--image", default="python:3.12-slim")
+    parser.add_argument("--cache", type=Path, default=Path("work/benchmark-repos"))
     args = parser.parse_args()
     protocol = read(args.registration)
+    if args.command == "calibrate":
+        recalibrate(protocol, [make_case(n, args.cache) for n in PILOT + DEV], args.image)
+        raise SystemExit(0)
     if args.command == "export":
         data = export(args.root, protocol)
         dump(args.result, data)

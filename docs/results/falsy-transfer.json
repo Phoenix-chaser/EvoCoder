@@ -1,0 +1,1659 @@
+{
+  "protocol": "1a7c13344454465503a0e2513e5f055013cd140359ba0772a8a5484a5cbb7a12",
+  "phase": "development_rejected",
+  "dev": [
+    {
+      "task": "transfer-meter-view",
+      "snapshot": "3f8bbc20ea70d43e8cb5be2a3aa06567c087ca26ab6068af33cb8474c80882e5",
+      "repeat": 0,
+      "order": [
+        "bare",
+        "manual",
+        "learned"
+      ],
+      "bare": {
+        "run": "03d7b48a7fae6fcd38ed3a89b5867c47",
+        "patch": "a8275a61c22b9ceb1b69f3c390c15760567dab365c416a78e22b5579ea592ec0",
+        "passed": false,
+        "state": "FAILED",
+        "applied": null,
+        "route": "none",
+        "steps": 10,
+        "calls": 10,
+        "probes": {
+          "public": true,
+          "bookmark_zero": false,
+          "controls": true,
+          "direct_zero": true
+        },
+        "first_solver_request": "4d68948caaec9ec3b19919e8512a37052d903df69d7b7531e03e4e067f48cf0f"
+      },
+      "manual": {
+        "run": "b23db09aecf1a05c733d499db7c403c9",
+        "patch": "bc9d61e9648687e6b914f2b0b832d76a4418aae24e134492c815ef1ea0b6dce6",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "route": "forced",
+        "steps": 9,
+        "calls": 9,
+        "probes": {
+          "public": true,
+          "bookmark_zero": true,
+          "controls": true,
+          "direct_zero": true
+        },
+        "first_solver_request": "1851915a51332796a1aa358591b767e9c8c3d8eac01ab08e1dc74c64ed3590d2"
+      },
+      "learned": {
+        "run": "4303801625cfcb26270495f295daafbd",
+        "patch": "8d86a8b28121be521bcc4c4935ea71d5b2db344e80af40084eaa29ef793b86c9",
+        "passed": false,
+        "state": "FAILED",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "route": "apply",
+        "steps": 5,
+        "calls": 6,
+        "probes": {
+          "public": true,
+          "bookmark_zero": false,
+          "controls": true,
+          "direct_zero": true
+        },
+        "first_solver_request": "ef7218364cf674d103649dc638f75bc7be6e955a05aac93bb617ebd583815e88"
+      }
+    },
+    {
+      "task": "transfer-column-caption",
+      "snapshot": "f4ecca08502a18298a58bd87eedea3100446322e87f9264f38e89a63ec262f0d",
+      "repeat": 0,
+      "order": [
+        "manual",
+        "learned",
+        "bare"
+      ],
+      "manual": {
+        "run": "3e1a87722c9e37c99c3f1265e4b121ec",
+        "patch": null,
+        "passed": false,
+        "state": "EXHAUSTED",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "route": "forced",
+        "steps": 12,
+        "calls": 15,
+        "probes": null,
+        "first_solver_request": "788f839a33f4ba786dc35faad36ee813a6cc79bacb1f3ad8d461c5f76269d5f4"
+      },
+      "learned": {
+        "run": "5d85407e858eac60492f33d1f18db97d",
+        "patch": "dc104ff63d6025fe91f846b9895f59554f7304923404db3c6556a15c4da9dc39",
+        "passed": false,
+        "state": "FAILED",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "route": "apply",
+        "steps": 6,
+        "calls": 8,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "inline_blank": true,
+          "restored_blank": false
+        },
+        "first_solver_request": "5a49b11dd2040b48d7822937298753026794b36d69247f441fa96e9ce228e553"
+      },
+      "bare": {
+        "run": "4ebaa01b00a421633458eef8312d8cc2",
+        "patch": "20999ccf982d305c6e97cf37871b1a9ccab78f3dcc3c2ebce261d69b47dfe3a0",
+        "passed": false,
+        "state": "FAILED",
+        "applied": null,
+        "route": "none",
+        "steps": 9,
+        "calls": 10,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "inline_blank": false,
+          "restored_blank": false
+        },
+        "first_solver_request": "ae2adb9da07e37d97701d44dd0071fbab5f50bfc951880153b0b9654ef52e266"
+      }
+    },
+    {
+      "task": "transfer-print-ticket",
+      "snapshot": "d64bc8475cebc14aac7163cc11c4805e87f65831281eaf700ec62c874f4f633e",
+      "repeat": 0,
+      "order": [
+        "learned",
+        "bare",
+        "manual"
+      ],
+      "learned": {
+        "run": "aa6826bcabd152dea553cc505a78692a",
+        "patch": "b7519d0127c4d909078aa24d8fe8667629c18001556ddf7dcd888f3038332a57",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "route": "apply",
+        "steps": 8,
+        "calls": 9,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "local_simplex": true,
+          "queued_simplex": true
+        },
+        "first_solver_request": "87828a380a63cf727a0d148c2d7894da3a0e4934a6b3c58922226305082fe1da"
+      },
+      "bare": {
+        "run": "0a27120c4e9a972fd90ea0bcbcb99f26",
+        "patch": "f090339822057e61d25c1e5bf2831a89110d58a7ed24994700a035b539c56a24",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": null,
+        "route": "none",
+        "steps": 9,
+        "calls": 9,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "local_simplex": true,
+          "queued_simplex": true
+        },
+        "first_solver_request": "b8fcba174224db6302f901b6f84b7723645269c42fbbbb578c49714561efd20f"
+      },
+      "manual": {
+        "run": "8a8af4a5d928c2e0585fc40093c98ff6",
+        "patch": "02190ee8ddb3818e083eb5efddc86c818bd1c585308b8d574702979c0a71178c",
+        "passed": false,
+        "state": "FAILED",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "route": "forced",
+        "steps": 8,
+        "calls": 8,
+        "probes": {
+          "public": true,
+          "controls": false,
+          "local_simplex": true,
+          "queued_simplex": true
+        },
+        "first_solver_request": "28e9b13335449d8f8e8f0d792c936825774c1b841351dd0c4be4f61baf1d3636"
+      }
+    },
+    {
+      "task": "transfer-palette-book",
+      "snapshot": "6fda1b9499899eaca8d7857c267d707311a7236fd4471905c5f688e33b490ece",
+      "repeat": 0,
+      "order": [
+        "bare",
+        "manual",
+        "learned"
+      ],
+      "bare": {
+        "run": "6ec47a7310b1cc4c1e9d525c0b945980",
+        "patch": "323cc62990408a8fc6e9429b5397b64cfee51766b2d0ced40bedf98805250c9f",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": null,
+        "route": "none",
+        "steps": 11,
+        "calls": 13,
+        "probes": {
+          "public": true,
+          "book_empty": true,
+          "controls": true,
+          "single_empty": true
+        },
+        "first_solver_request": "875b87f1e97bd3447e3a34f36aa250ceb5e18b55e3e4bbe45b6f3bc4f3e63872"
+      },
+      "manual": {
+        "run": "6016e94734a84b2ef06acc49961caeb2",
+        "patch": "3d8c1c5e4ef07583868c4a881322b39e9122aaeff95da0bdc8c32ae8bf6c3ef0",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "route": "forced",
+        "steps": 13,
+        "calls": 14,
+        "probes": {
+          "public": true,
+          "book_empty": true,
+          "controls": true,
+          "single_empty": true
+        },
+        "first_solver_request": "71a50eaadf1b75f6264f5c00b5dc483da30589b4dc76a0d7a412c59403bd4deb"
+      },
+      "learned": {
+        "run": "a3c925ddb12a2606d60c4457e2a16bcf",
+        "patch": "844c446de5e8a8a99e23bcccb439e9a72639aef948146eb5c80b5e4ec7896a85",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "route": "apply",
+        "steps": 6,
+        "calls": 7,
+        "probes": {
+          "public": true,
+          "book_empty": true,
+          "controls": true,
+          "single_empty": true
+        },
+        "first_solver_request": "2a49908593c034b6efdf28c2970cc80ad3b614dbf4626b6b300d70f3d2ca1043"
+      }
+    },
+    {
+      "task": "transfer-meter-view",
+      "snapshot": "3f8bbc20ea70d43e8cb5be2a3aa06567c087ca26ab6068af33cb8474c80882e5",
+      "repeat": 1,
+      "order": [
+        "learned",
+        "manual",
+        "bare"
+      ],
+      "learned": {
+        "run": "5bbdbf71877782aeebdf70dda106699f",
+        "patch": "81ceb1189523579d648a69cead7bc8b7a09f26cc2048c42de236fec9c4e25262",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "route": "apply",
+        "steps": 10,
+        "calls": 13,
+        "probes": {
+          "public": true,
+          "bookmark_zero": true,
+          "controls": true,
+          "direct_zero": true
+        },
+        "first_solver_request": "ef7218364cf674d103649dc638f75bc7be6e955a05aac93bb617ebd583815e88"
+      },
+      "manual": {
+        "run": "93c004f4946686b96f77c03410242216",
+        "patch": "b20b404575ce2e643f327637dd285ede80a3b52222f707463351c2c03f6ac04d",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "route": "forced",
+        "steps": 10,
+        "calls": 10,
+        "probes": {
+          "public": true,
+          "bookmark_zero": true,
+          "controls": true,
+          "direct_zero": true
+        },
+        "first_solver_request": "1851915a51332796a1aa358591b767e9c8c3d8eac01ab08e1dc74c64ed3590d2"
+      },
+      "bare": {
+        "run": "b7ba5e68e6b99361997e8cfc002c2710",
+        "patch": "06d535170b01b223a83b9aa7322485b8575e882230503958a3fb9b3624fa817c",
+        "passed": false,
+        "state": "FAILED",
+        "applied": null,
+        "route": "none",
+        "steps": 7,
+        "calls": 7,
+        "probes": {
+          "public": true,
+          "bookmark_zero": false,
+          "controls": true,
+          "direct_zero": false
+        },
+        "first_solver_request": "4d68948caaec9ec3b19919e8512a37052d903df69d7b7531e03e4e067f48cf0f"
+      }
+    },
+    {
+      "task": "transfer-column-caption",
+      "snapshot": "f4ecca08502a18298a58bd87eedea3100446322e87f9264f38e89a63ec262f0d",
+      "repeat": 1,
+      "order": [
+        "bare",
+        "learned",
+        "manual"
+      ],
+      "bare": {
+        "run": "f7cdc39820d1963ff6c2e9a354b4053b",
+        "patch": "df177a9350b653a3a8deb5bacfcfb16ba3f76e5e1552af812bb2e1981d4cbd34",
+        "passed": false,
+        "state": "FAILED",
+        "applied": null,
+        "route": "none",
+        "steps": 7,
+        "calls": 7,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "inline_blank": false,
+          "restored_blank": false
+        },
+        "first_solver_request": "ae2adb9da07e37d97701d44dd0071fbab5f50bfc951880153b0b9654ef52e266"
+      },
+      "learned": {
+        "run": "32e72de977375585d895d55758e48c23",
+        "patch": "dc954f0d8fd76bfd68bcd4911020440a803d509864a8b192d7d91f82d0724a5e",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "route": "apply",
+        "steps": 8,
+        "calls": 10,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "inline_blank": true,
+          "restored_blank": true
+        },
+        "first_solver_request": "5a49b11dd2040b48d7822937298753026794b36d69247f441fa96e9ce228e553"
+      },
+      "manual": {
+        "run": "8c9b0fcd96761532bc2f2eb088b1c7fa",
+        "patch": "cc0c8fd88bb3f25da38770306528a0864dafc1fd143ccf5e24d0f1a2de08f00b",
+        "passed": false,
+        "state": "FAILED",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "route": "forced",
+        "steps": 10,
+        "calls": 10,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "inline_blank": false,
+          "restored_blank": false
+        },
+        "first_solver_request": "788f839a33f4ba786dc35faad36ee813a6cc79bacb1f3ad8d461c5f76269d5f4"
+      }
+    },
+    {
+      "task": "transfer-print-ticket",
+      "snapshot": "d64bc8475cebc14aac7163cc11c4805e87f65831281eaf700ec62c874f4f633e",
+      "repeat": 1,
+      "order": [
+        "manual",
+        "bare",
+        "learned"
+      ],
+      "manual": {
+        "run": "438463d720353850a0b7792257a69e0b",
+        "patch": "bb68b5125bdea3ebf4f091520488ea790c864428e6681608355df9c11ac787d4",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "route": "forced",
+        "steps": 10,
+        "calls": 10,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "local_simplex": true,
+          "queued_simplex": true
+        },
+        "first_solver_request": "28e9b13335449d8f8e8f0d792c936825774c1b841351dd0c4be4f61baf1d3636"
+      },
+      "bare": {
+        "run": "78f0237d6eca72f0a2d2528dff8ef45f",
+        "patch": "0825a2b0e5cce6c53dfd461e0c9629e5dd8f1ad0b986f2a5c41e6f65691dd26c",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": null,
+        "route": "none",
+        "steps": 8,
+        "calls": 8,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "local_simplex": true,
+          "queued_simplex": true
+        },
+        "first_solver_request": "b8fcba174224db6302f901b6f84b7723645269c42fbbbb578c49714561efd20f"
+      },
+      "learned": {
+        "run": "2a0bcda1d7fa418a369cae99bdc27406",
+        "patch": "559414490fcf3b3ff411075d8ce1837ec89927964b03b15951a900e8b46362f4",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "route": "apply",
+        "steps": 11,
+        "calls": 12,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "local_simplex": true,
+          "queued_simplex": true
+        },
+        "first_solver_request": "87828a380a63cf727a0d148c2d7894da3a0e4934a6b3c58922226305082fe1da"
+      }
+    },
+    {
+      "task": "transfer-palette-book",
+      "snapshot": "6fda1b9499899eaca8d7857c267d707311a7236fd4471905c5f688e33b490ece",
+      "repeat": 1,
+      "order": [
+        "learned",
+        "manual",
+        "bare"
+      ],
+      "learned": {
+        "run": "caf848ca52c633d20eb36cd45caa02d6",
+        "patch": "2ca8471d86da1f07e246db2f7aa33075f0f11e20371589b1b1f66816d7d0e269",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "route": "apply",
+        "steps": 10,
+        "calls": 12,
+        "probes": {
+          "public": true,
+          "book_empty": true,
+          "controls": true,
+          "single_empty": true
+        },
+        "first_solver_request": "2a49908593c034b6efdf28c2970cc80ad3b614dbf4626b6b300d70f3d2ca1043"
+      },
+      "manual": {
+        "run": "414b21eccdbb859914f8ec0e7f4018d3",
+        "patch": "1c8edf00100e073861c6d9f449906bc647a4770d21b44666419737667c90d9f8",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "route": "forced",
+        "steps": 9,
+        "calls": 9,
+        "probes": {
+          "public": true,
+          "book_empty": true,
+          "controls": true,
+          "single_empty": true
+        },
+        "first_solver_request": "71a50eaadf1b75f6264f5c00b5dc483da30589b4dc76a0d7a412c59403bd4deb"
+      },
+      "bare": {
+        "run": "4ed58e0e1901c4b90f3058aff7f2bb6e",
+        "patch": "bab3f280197f4541888062a058e50404ec0f3661e4cbf2cd7bafdc2d6dd8b52c",
+        "passed": false,
+        "state": "FAILED",
+        "applied": null,
+        "route": "none",
+        "steps": 8,
+        "calls": 8,
+        "probes": {
+          "public": true,
+          "book_empty": false,
+          "controls": true,
+          "single_empty": false
+        },
+        "first_solver_request": "875b87f1e97bd3447e3a34f36aa250ceb5e18b55e3e4bbe45b6f3bc4f3e63872"
+      }
+    }
+  ],
+  "published": false,
+  "curve": [],
+  "holdout_exposures": 0,
+  "costs": {
+    "cost_credits": 652.69577,
+    "reserved_credits": 0.0,
+    "calls": 591
+  },
+  "transport": [],
+  "pilot": [
+    {
+      "task": "transfer-miss-handler",
+      "snapshot": "084f7297143bee352e9b8062bb915b3792fe39a1013e41a1ddde951a3bd01fdd",
+      "repeat": 0,
+      "order": [
+        "bare",
+        "manual"
+      ],
+      "bare": {
+        "run": "4a0e768438792698da060f8ed94a5597",
+        "patch": null,
+        "passed": false,
+        "state": "EXHAUSTED",
+        "applied": null,
+        "route": "none",
+        "steps": 15,
+        "calls": 15,
+        "probes": null,
+        "first_solver_request": "3b148e7d90782418ef7e68be055e203c6f0998da5b158f3ee4796ec0762b5181"
+      },
+      "manual": {
+        "run": "4b1f7535b7d02d0ec87f5d3ef2e31457",
+        "patch": "a44be75fcf6d24c8604019ae8b28359bc8e137fd890b51f88e7a04bae60dc164",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "route": "forced",
+        "steps": 11,
+        "calls": 11,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "insertion_policy": true,
+          "recency_policy": true
+        },
+        "first_solver_request": "fdcaade65240b022b77950115794d7752a559dccf8983697ec6a35a59a31862a"
+      }
+    },
+    {
+      "task": "transfer-cardinality",
+      "snapshot": "0d87471ca7a6608d30fbbcf1e501b2493c600ea639f96bbc306f6d8c1c21cacb",
+      "repeat": 0,
+      "order": [
+        "manual",
+        "bare"
+      ],
+      "manual": {
+        "run": "2d0783bba8167a4c1ba1785740c0fd87",
+        "patch": "cc2404538191c031d2615e67a69c9ae4c81097c4905c561dbd3df2f830943e93",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "route": "forced",
+        "steps": 15,
+        "calls": 15,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_one": true,
+          "overfull_one": true,
+          "overfull_only": true
+        },
+        "first_solver_request": "16639e4807089d15748b1348c9116a1a606e20f548274473b99018185457f8b8"
+      },
+      "bare": {
+        "run": "43d1bb62bb81f0efe87a9a745e592371",
+        "patch": "ff37ee399b1f8a483ca314ae2d2986d5f7dd36392dcecaf81d39b6156a477bdb",
+        "passed": false,
+        "state": "FAILED",
+        "applied": null,
+        "route": "none",
+        "steps": 8,
+        "calls": 8,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_one": false,
+          "overfull_one": false,
+          "overfull_only": false
+        },
+        "first_solver_request": "bf4514f810c1d53a5200ba00043f77440982b7ab5e27df908be5ba3b8ba38a69"
+      }
+    },
+    {
+      "task": "transfer-size-hook",
+      "snapshot": "cc7d05e3328597d5a28dc0694ad8ce70d2357dee716c02b5b3589aee7db02af2",
+      "repeat": 0,
+      "order": [
+        "bare",
+        "manual"
+      ],
+      "bare": {
+        "run": "22538238f562acbc6a7e0a8e3b5531a6",
+        "patch": "d2a5ef5ef64bc3a8b1fb48ed8fb2e671d94dd3e0c7fc6323572e49c793036492",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": null,
+        "route": "none",
+        "steps": 9,
+        "calls": 14,
+        "probes": {
+          "public": true,
+          "base_meter": true,
+          "controls": true,
+          "recency_meter": true
+        },
+        "first_solver_request": "2da60f7f61bf325565ef3e6c40984be13e1665f464c3229336f987ea31c05061"
+      },
+      "manual": {
+        "run": "9e90a30a2d5d046f1e04b1701cb250f6",
+        "patch": "d2a5ef5ef64bc3a8b1fb48ed8fb2e671d94dd3e0c7fc6323572e49c793036492",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "route": "forced",
+        "steps": 13,
+        "calls": 13,
+        "probes": {
+          "public": true,
+          "base_meter": true,
+          "controls": true,
+          "recency_meter": true
+        },
+        "first_solver_request": "cb7df4bd57d48282e6ab6b5b80df0b4a8d3a1453f8f33873503c54605d02010e"
+      }
+    },
+    {
+      "task": "transfer-queue-packet",
+      "snapshot": "eb1c8981d994a42ffc38387f9dbaa4687e35cd1d5762ff650318ec60ead6df21",
+      "repeat": 0,
+      "order": [
+        "manual",
+        "bare"
+      ],
+      "manual": {
+        "run": "fb86eb7e4c50a0907ad4be36e39588d0",
+        "patch": "4fdfc4e888977f311c48a663a76beb7eda82fa30afb76dac17cfe99d33c6c97e",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "route": "forced",
+        "steps": 10,
+        "calls": 10,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "immediate_zero": true,
+          "restored_zero": true
+        },
+        "first_solver_request": "8e33c85c0f3be586487a565b2848cb6eda4d73cad5fa775b40425678c25ec392"
+      },
+      "bare": {
+        "run": "5a5bf421505bcba90dd67750e8f49d0b",
+        "patch": "1887e06828fccc807dd7bf7762bf750d53d588933d3fbe9149939c9505e8155d",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": null,
+        "route": "none",
+        "steps": 11,
+        "calls": 11,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "immediate_zero": true,
+          "restored_zero": true
+        },
+        "first_solver_request": "21bd2f57132386e450cf1709459ccd403cb1422b5221d3e5f54fe6f39bc94a59"
+      }
+    },
+    {
+      "task": "transfer-miss-handler",
+      "snapshot": "084f7297143bee352e9b8062bb915b3792fe39a1013e41a1ddde951a3bd01fdd",
+      "repeat": 1,
+      "order": [
+        "manual",
+        "bare"
+      ],
+      "manual": {
+        "run": "76cb542b0f875bdc11c6fe79c634e4c5",
+        "patch": "a44be75fcf6d24c8604019ae8b28359bc8e137fd890b51f88e7a04bae60dc164",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "route": "forced",
+        "steps": 9,
+        "calls": 9,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "insertion_policy": true,
+          "recency_policy": true
+        },
+        "first_solver_request": "fdcaade65240b022b77950115794d7752a559dccf8983697ec6a35a59a31862a"
+      },
+      "bare": {
+        "run": "d9ac249335c6cb877b9c33750b28c5a1",
+        "patch": null,
+        "passed": false,
+        "state": "EXHAUSTED",
+        "applied": null,
+        "route": "none",
+        "steps": 15,
+        "calls": 15,
+        "probes": null,
+        "first_solver_request": "3b148e7d90782418ef7e68be055e203c6f0998da5b158f3ee4796ec0762b5181"
+      }
+    },
+    {
+      "task": "transfer-cardinality",
+      "snapshot": "0d87471ca7a6608d30fbbcf1e501b2493c600ea639f96bbc306f6d8c1c21cacb",
+      "repeat": 1,
+      "order": [
+        "bare",
+        "manual"
+      ],
+      "bare": {
+        "run": "f52140ecb5fecb67dfa92cecb4fd0357",
+        "patch": "6e8fef6315074618006e2ccdc4a92e41daa9167e6688419e26d07b2efed37e2f",
+        "passed": false,
+        "state": "FAILED",
+        "applied": null,
+        "route": "none",
+        "steps": 15,
+        "calls": 15,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_one": false,
+          "overfull_one": false,
+          "overfull_only": false
+        },
+        "first_solver_request": "bf4514f810c1d53a5200ba00043f77440982b7ab5e27df908be5ba3b8ba38a69"
+      },
+      "manual": {
+        "run": "cd872786afcdd5908226e5356bdde088",
+        "patch": null,
+        "passed": false,
+        "state": "EXHAUSTED",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "route": "forced",
+        "steps": 15,
+        "calls": 15,
+        "probes": null,
+        "first_solver_request": "16639e4807089d15748b1348c9116a1a606e20f548274473b99018185457f8b8"
+      }
+    },
+    {
+      "task": "transfer-size-hook",
+      "snapshot": "cc7d05e3328597d5a28dc0694ad8ce70d2357dee716c02b5b3589aee7db02af2",
+      "repeat": 1,
+      "order": [
+        "manual",
+        "bare"
+      ],
+      "manual": {
+        "run": "e71f6d0cf5fde5e4780cdb7b1378f0b3",
+        "patch": "d2a5ef5ef64bc3a8b1fb48ed8fb2e671d94dd3e0c7fc6323572e49c793036492",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "route": "forced",
+        "steps": 13,
+        "calls": 13,
+        "probes": {
+          "public": true,
+          "base_meter": true,
+          "controls": true,
+          "recency_meter": true
+        },
+        "first_solver_request": "cb7df4bd57d48282e6ab6b5b80df0b4a8d3a1453f8f33873503c54605d02010e"
+      },
+      "bare": {
+        "run": "17ef37aeda32d66defafb5e942811854",
+        "patch": null,
+        "passed": false,
+        "state": "EXHAUSTED",
+        "applied": null,
+        "route": "none",
+        "steps": 15,
+        "calls": 15,
+        "probes": null,
+        "first_solver_request": "2da60f7f61bf325565ef3e6c40984be13e1665f464c3229336f987ea31c05061"
+      }
+    },
+    {
+      "task": "transfer-queue-packet",
+      "snapshot": "eb1c8981d994a42ffc38387f9dbaa4687e35cd1d5762ff650318ec60ead6df21",
+      "repeat": 1,
+      "order": [
+        "bare",
+        "manual"
+      ],
+      "bare": {
+        "run": "d7a92216e6f11aa8333eb9ec3474387a",
+        "patch": "60b5b29911d6dc45be1d2f6fcc937a75d0e8ddd4f312af455b32c6e213176ffc",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": null,
+        "route": "none",
+        "steps": 9,
+        "calls": 9,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "immediate_zero": true,
+          "restored_zero": true
+        },
+        "first_solver_request": "21bd2f57132386e450cf1709459ccd403cb1422b5221d3e5f54fe6f39bc94a59"
+      },
+      "manual": {
+        "run": "67965f7d08cdfe5720b6292a609d1fb0",
+        "patch": "449d05f0aa2cec67c61a84e66b4bdbe3d3080b6df06da33f1015911fc24b9906",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "route": "forced",
+        "steps": 9,
+        "calls": 10,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "immediate_zero": true,
+          "restored_zero": true
+        },
+        "first_solver_request": "8e33c85c0f3be586487a565b2848cb6eda4d73cad5fa775b40425678c25ec392"
+      }
+    },
+    {
+      "task": "transfer-miss-handler",
+      "snapshot": "084f7297143bee352e9b8062bb915b3792fe39a1013e41a1ddde951a3bd01fdd",
+      "repeat": 2,
+      "order": [
+        "bare",
+        "manual"
+      ],
+      "bare": {
+        "run": "6445fb42df5d9ba3a91675a68c41ef5f",
+        "patch": null,
+        "passed": false,
+        "state": "EXHAUSTED",
+        "applied": null,
+        "route": "none",
+        "steps": 15,
+        "calls": 15,
+        "probes": null,
+        "first_solver_request": "3b148e7d90782418ef7e68be055e203c6f0998da5b158f3ee4796ec0762b5181"
+      },
+      "manual": {
+        "run": "9f75534022491c95931a5469bd4af5ec",
+        "patch": "a44be75fcf6d24c8604019ae8b28359bc8e137fd890b51f88e7a04bae60dc164",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "route": "forced",
+        "steps": 15,
+        "calls": 15,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "insertion_policy": true,
+          "recency_policy": true
+        },
+        "first_solver_request": "fdcaade65240b022b77950115794d7752a559dccf8983697ec6a35a59a31862a"
+      }
+    },
+    {
+      "task": "transfer-cardinality",
+      "snapshot": "0d87471ca7a6608d30fbbcf1e501b2493c600ea639f96bbc306f6d8c1c21cacb",
+      "repeat": 2,
+      "order": [
+        "manual",
+        "bare"
+      ],
+      "manual": {
+        "run": "078650f18947f2dc797ed68feaf57bc9",
+        "patch": "c172be4a82162c6ab39912941ff0c6456e5a4c7ec87c35dea9c40bb8a199018a",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "route": "forced",
+        "steps": 15,
+        "calls": 15,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_one": true,
+          "overfull_one": true,
+          "overfull_only": true
+        },
+        "first_solver_request": "16639e4807089d15748b1348c9116a1a606e20f548274473b99018185457f8b8"
+      },
+      "bare": {
+        "run": "7cc0eb4e5ec5d4b343d86d7b449905b9",
+        "patch": "fa489716c7e47e8ed839347bbf4688f1fda1f00fe9968506eb47acc8692d2d41",
+        "passed": false,
+        "state": "FAILED",
+        "applied": null,
+        "route": "none",
+        "steps": 9,
+        "calls": 9,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_one": false,
+          "overfull_one": true,
+          "overfull_only": true
+        },
+        "first_solver_request": "bf4514f810c1d53a5200ba00043f77440982b7ab5e27df908be5ba3b8ba38a69"
+      }
+    },
+    {
+      "task": "transfer-size-hook",
+      "snapshot": "cc7d05e3328597d5a28dc0694ad8ce70d2357dee716c02b5b3589aee7db02af2",
+      "repeat": 2,
+      "order": [
+        "bare",
+        "manual"
+      ],
+      "bare": {
+        "run": "afaf167b0b6cab0421502a8c7aa45595",
+        "patch": "d2a5ef5ef64bc3a8b1fb48ed8fb2e671d94dd3e0c7fc6323572e49c793036492",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": null,
+        "route": "none",
+        "steps": 12,
+        "calls": 12,
+        "probes": {
+          "public": true,
+          "base_meter": true,
+          "controls": true,
+          "recency_meter": true
+        },
+        "first_solver_request": "2da60f7f61bf325565ef3e6c40984be13e1665f464c3229336f987ea31c05061"
+      },
+      "manual": {
+        "run": "bd7df12f5d27475d79966b91e75c89c8",
+        "patch": "d2a5ef5ef64bc3a8b1fb48ed8fb2e671d94dd3e0c7fc6323572e49c793036492",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "route": "forced",
+        "steps": 13,
+        "calls": 14,
+        "probes": {
+          "public": true,
+          "base_meter": true,
+          "controls": true,
+          "recency_meter": true
+        },
+        "first_solver_request": "cb7df4bd57d48282e6ab6b5b80df0b4a8d3a1453f8f33873503c54605d02010e"
+      }
+    },
+    {
+      "task": "transfer-queue-packet",
+      "snapshot": "eb1c8981d994a42ffc38387f9dbaa4687e35cd1d5762ff650318ec60ead6df21",
+      "repeat": 2,
+      "order": [
+        "manual",
+        "bare"
+      ],
+      "manual": {
+        "run": "d206563d9e21ea95540c361e5f8007da",
+        "patch": "f221fb85865d4ba591f35718e0527101e10e8e04d8153b20eaf875837b8a16a6",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "route": "forced",
+        "steps": 12,
+        "calls": 14,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "immediate_zero": true,
+          "restored_zero": true
+        },
+        "first_solver_request": "8e33c85c0f3be586487a565b2848cb6eda4d73cad5fa775b40425678c25ec392"
+      },
+      "bare": {
+        "run": "95707560a41e0358cad25d1c427d5f18",
+        "patch": "f975cddffdd2b529a43fd23beec214abc0dded52617c5ed10e0f75cf58f767b4",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": null,
+        "route": "none",
+        "steps": 7,
+        "calls": 7,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "immediate_zero": true,
+          "restored_zero": true
+        },
+        "first_solver_request": "21bd2f57132386e450cf1709459ccd403cb1422b5221d3e5f54fe6f39bc94a59"
+      }
+    }
+  ],
+  "pilot_gate": {
+    "passed": true,
+    "repeated_rescues": {
+      "transfer-cardinality": {
+        "empty_one": 2
+      }
+    }
+  },
+  "billing_by_run": {
+    "03d7b48a7fae6fcd38ed3a89b5867c47": {
+      "calls": 10,
+      "charged_nanos": 6101950000,
+      "reserved_nanos": 0
+    },
+    "078650f18947f2dc797ed68feaf57bc9": {
+      "calls": 15,
+      "charged_nanos": 29590370000,
+      "reserved_nanos": 0
+    },
+    "0a27120c4e9a972fd90ea0bcbcb99f26": {
+      "calls": 9,
+      "charged_nanos": 5355990000,
+      "reserved_nanos": 0
+    },
+    "0dbe6ab0a073c9505ed87a006ad33058": {
+      "calls": 5,
+      "charged_nanos": 3965540000,
+      "reserved_nanos": 0
+    },
+    "17ef37aeda32d66defafb5e942811854": {
+      "calls": 15,
+      "charged_nanos": 32953020000,
+      "reserved_nanos": 0
+    },
+    "22538238f562acbc6a7e0a8e3b5531a6": {
+      "calls": 14,
+      "charged_nanos": 17792670000,
+      "reserved_nanos": 0
+    },
+    "2a0bcda1d7fa418a369cae99bdc27406": {
+      "calls": 12,
+      "charged_nanos": 13442480000,
+      "reserved_nanos": 0
+    },
+    "2d0783bba8167a4c1ba1785740c0fd87": {
+      "calls": 15,
+      "charged_nanos": 19182130000,
+      "reserved_nanos": 0
+    },
+    "2da12e9907e0496b0532ef34defada28": {
+      "calls": 11,
+      "charged_nanos": 10689190000,
+      "reserved_nanos": 0
+    },
+    "32e72de977375585d895d55758e48c23": {
+      "calls": 10,
+      "charged_nanos": 11594620000,
+      "reserved_nanos": 0
+    },
+    "3e1a87722c9e37c99c3f1265e4b121ec": {
+      "calls": 15,
+      "charged_nanos": 14099710000,
+      "reserved_nanos": 0
+    },
+    "414b21eccdbb859914f8ec0e7f4018d3": {
+      "calls": 9,
+      "charged_nanos": 7547620000,
+      "reserved_nanos": 0
+    },
+    "4303801625cfcb26270495f295daafbd": {
+      "calls": 6,
+      "charged_nanos": 5669930000,
+      "reserved_nanos": 0
+    },
+    "438463d720353850a0b7792257a69e0b": {
+      "calls": 10,
+      "charged_nanos": 8718710000,
+      "reserved_nanos": 0
+    },
+    "43d1bb62bb81f0efe87a9a745e592371": {
+      "calls": 8,
+      "charged_nanos": 12584800000,
+      "reserved_nanos": 0
+    },
+    "4a0e768438792698da060f8ed94a5597": {
+      "calls": 15,
+      "charged_nanos": 20054010000,
+      "reserved_nanos": 0
+    },
+    "4b1f7535b7d02d0ec87f5d3ef2e31457": {
+      "calls": 11,
+      "charged_nanos": 12631080000,
+      "reserved_nanos": 0
+    },
+    "4ebaa01b00a421633458eef8312d8cc2": {
+      "calls": 10,
+      "charged_nanos": 6405690000,
+      "reserved_nanos": 0
+    },
+    "4ed58e0e1901c4b90f3058aff7f2bb6e": {
+      "calls": 8,
+      "charged_nanos": 4596540000,
+      "reserved_nanos": 0
+    },
+    "5a5bf421505bcba90dd67750e8f49d0b": {
+      "calls": 11,
+      "charged_nanos": 6612610000,
+      "reserved_nanos": 0
+    },
+    "5bbdbf71877782aeebdf70dda106699f": {
+      "calls": 13,
+      "charged_nanos": 15375040000,
+      "reserved_nanos": 0
+    },
+    "5d85407e858eac60492f33d1f18db97d": {
+      "calls": 8,
+      "charged_nanos": 8082150000,
+      "reserved_nanos": 0
+    },
+    "6016e94734a84b2ef06acc49961caeb2": {
+      "calls": 14,
+      "charged_nanos": 15478100000,
+      "reserved_nanos": 0
+    },
+    "6445fb42df5d9ba3a91675a68c41ef5f": {
+      "calls": 15,
+      "charged_nanos": 23514500000,
+      "reserved_nanos": 0
+    },
+    "67965f7d08cdfe5720b6292a609d1fb0": {
+      "calls": 10,
+      "charged_nanos": 7886560000,
+      "reserved_nanos": 0
+    },
+    "6ec47a7310b1cc4c1e9d525c0b945980": {
+      "calls": 13,
+      "charged_nanos": 11743230000,
+      "reserved_nanos": 0
+    },
+    "76cb542b0f875bdc11c6fe79c634e4c5": {
+      "calls": 9,
+      "charged_nanos": 10263430000,
+      "reserved_nanos": 0
+    },
+    "78f0237d6eca72f0a2d2528dff8ef45f": {
+      "calls": 8,
+      "charged_nanos": 4299400000,
+      "reserved_nanos": 0
+    },
+    "7cc0eb4e5ec5d4b343d86d7b449905b9": {
+      "calls": 9,
+      "charged_nanos": 14721850000,
+      "reserved_nanos": 0
+    },
+    "8387ef89e760496274964026581fe2f9": {
+      "calls": 5,
+      "charged_nanos": 2822350000,
+      "reserved_nanos": 0
+    },
+    "8a8af4a5d928c2e0585fc40093c98ff6": {
+      "calls": 8,
+      "charged_nanos": 6166390000,
+      "reserved_nanos": 0
+    },
+    "8c9b0fcd96761532bc2f2eb088b1c7fa": {
+      "calls": 10,
+      "charged_nanos": 9483410000,
+      "reserved_nanos": 0
+    },
+    "93c004f4946686b96f77c03410242216": {
+      "calls": 10,
+      "charged_nanos": 7872040000,
+      "reserved_nanos": 0
+    },
+    "948f92b270a061664b64b24953fa9184": {
+      "calls": 6,
+      "charged_nanos": 5496950000,
+      "reserved_nanos": 0
+    },
+    "95707560a41e0358cad25d1c427d5f18": {
+      "calls": 7,
+      "charged_nanos": 3689190000,
+      "reserved_nanos": 0
+    },
+    "9e90a30a2d5d046f1e04b1701cb250f6": {
+      "calls": 13,
+      "charged_nanos": 16354940000,
+      "reserved_nanos": 0
+    },
+    "9f75534022491c95931a5469bd4af5ec": {
+      "calls": 15,
+      "charged_nanos": 18243060000,
+      "reserved_nanos": 0
+    },
+    "a3c925ddb12a2606d60c4457e2a16bcf": {
+      "calls": 7,
+      "charged_nanos": 6261090000,
+      "reserved_nanos": 0
+    },
+    "aa6826bcabd152dea553cc505a78692a": {
+      "calls": 9,
+      "charged_nanos": 10002060000,
+      "reserved_nanos": 0
+    },
+    "afaf167b0b6cab0421502a8c7aa45595": {
+      "calls": 12,
+      "charged_nanos": 15571580000,
+      "reserved_nanos": 0
+    },
+    "b14a653e9567986f2b0a6b2f6e78c444": {
+      "calls": 7,
+      "charged_nanos": 3463310000,
+      "reserved_nanos": 0
+    },
+    "b23db09aecf1a05c733d499db7c403c9": {
+      "calls": 9,
+      "charged_nanos": 7436720000,
+      "reserved_nanos": 0
+    },
+    "b7ba5e68e6b99361997e8cfc002c2710": {
+      "calls": 7,
+      "charged_nanos": 4653420000,
+      "reserved_nanos": 0
+    },
+    "bd7df12f5d27475d79966b91e75c89c8": {
+      "calls": 14,
+      "charged_nanos": 19175280000,
+      "reserved_nanos": 0
+    },
+    "caf848ca52c633d20eb36cd45caa02d6": {
+      "calls": 12,
+      "charged_nanos": 12763190000,
+      "reserved_nanos": 0
+    },
+    "cd872786afcdd5908226e5356bdde088": {
+      "calls": 15,
+      "charged_nanos": 25444800000,
+      "reserved_nanos": 0
+    },
+    "d206563d9e21ea95540c361e5f8007da": {
+      "calls": 14,
+      "charged_nanos": 12278510000,
+      "reserved_nanos": 0
+    },
+    "d7a92216e6f11aa8333eb9ec3474387a": {
+      "calls": 9,
+      "charged_nanos": 6103480000,
+      "reserved_nanos": 0
+    },
+    "d9ac249335c6cb877b9c33750b28c5a1": {
+      "calls": 15,
+      "charged_nanos": 22238180000,
+      "reserved_nanos": 0
+    },
+    "dda8a83fc7aac3214056847ac79c00a6": {
+      "calls": 4,
+      "charged_nanos": 1912560000,
+      "reserved_nanos": 0
+    },
+    "deeec12ee78f3cfe6bfd4166802b8c42": {
+      "calls": 5,
+      "charged_nanos": 2277690000,
+      "reserved_nanos": 0
+    },
+    "e39376334329a33eade4b917220fedce": {
+      "calls": 15,
+      "charged_nanos": 16533200000,
+      "reserved_nanos": 0
+    },
+    "e71f6d0cf5fde5e4780cdb7b1378f0b3": {
+      "calls": 13,
+      "charged_nanos": 22806720000,
+      "reserved_nanos": 0
+    },
+    "f52140ecb5fecb67dfa92cecb4fd0357": {
+      "calls": 15,
+      "charged_nanos": 20573070000,
+      "reserved_nanos": 0
+    },
+    "f7cdc39820d1963ff6c2e9a354b4053b": {
+      "calls": 7,
+      "charged_nanos": 4221850000,
+      "reserved_nanos": 0
+    },
+    "fb86eb7e4c50a0907ad4be36e39588d0": {
+      "calls": 10,
+      "charged_nanos": 7897810000,
+      "reserved_nanos": 0
+    }
+  },
+  "support": [
+    "dispatch-01",
+    "dispatch-03",
+    "export-02",
+    "export-04"
+  ],
+  "gate": {
+    "receipt": "605b9ec7d399f974f08cdfd5bbfb2683d6867a45807ff71c4d87aa2ab5a27d5f",
+    "library": "e09f6bd26c283f92834d4482f3a5bef35aded6869d0844982f60dd097ffde9b0",
+    "rows": [
+      {
+        "task_id": "transfer-meter-view",
+        "task_hash": "3f8bbc20ea70d43e8cb5be2a3aa06567c087ca26ab6068af33cb8474c80882e5",
+        "source_group": "profile-tools/meter-view",
+        "split": "dev",
+        "repeat": 0,
+        "baseline_run": "03d7b48a7fae6fcd38ed3a89b5867c47",
+        "candidate_run": "4303801625cfcb26270495f295daafbd",
+        "baseline_pass": false,
+        "candidate_pass": false,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-column-caption",
+        "task_hash": "f4ecca08502a18298a58bd87eedea3100446322e87f9264f38e89a63ec262f0d",
+        "source_group": "profile-tools/column-caption",
+        "split": "dev",
+        "repeat": 0,
+        "baseline_run": "4ebaa01b00a421633458eef8312d8cc2",
+        "candidate_run": "5d85407e858eac60492f33d1f18db97d",
+        "baseline_pass": false,
+        "candidate_pass": false,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-print-ticket",
+        "task_hash": "d64bc8475cebc14aac7163cc11c4805e87f65831281eaf700ec62c874f4f633e",
+        "source_group": "profile-tools/print-ticket",
+        "split": "dev",
+        "repeat": 0,
+        "baseline_run": "0a27120c4e9a972fd90ea0bcbcb99f26",
+        "candidate_run": "aa6826bcabd152dea553cc505a78692a",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-palette-book",
+        "task_hash": "6fda1b9499899eaca8d7857c267d707311a7236fd4471905c5f688e33b490ece",
+        "source_group": "profile-tools/palette-book",
+        "split": "dev",
+        "repeat": 0,
+        "baseline_run": "6ec47a7310b1cc4c1e9d525c0b945980",
+        "candidate_run": "a3c925ddb12a2606d60c4457e2a16bcf",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-meter-view",
+        "task_hash": "3f8bbc20ea70d43e8cb5be2a3aa06567c087ca26ab6068af33cb8474c80882e5",
+        "source_group": "profile-tools/meter-view",
+        "split": "dev",
+        "repeat": 1,
+        "baseline_run": "b7ba5e68e6b99361997e8cfc002c2710",
+        "candidate_run": "5bbdbf71877782aeebdf70dda106699f",
+        "baseline_pass": false,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-column-caption",
+        "task_hash": "f4ecca08502a18298a58bd87eedea3100446322e87f9264f38e89a63ec262f0d",
+        "source_group": "profile-tools/column-caption",
+        "split": "dev",
+        "repeat": 1,
+        "baseline_run": "f7cdc39820d1963ff6c2e9a354b4053b",
+        "candidate_run": "32e72de977375585d895d55758e48c23",
+        "baseline_pass": false,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-print-ticket",
+        "task_hash": "d64bc8475cebc14aac7163cc11c4805e87f65831281eaf700ec62c874f4f633e",
+        "source_group": "profile-tools/print-ticket",
+        "split": "dev",
+        "repeat": 1,
+        "baseline_run": "78f0237d6eca72f0a2d2528dff8ef45f",
+        "candidate_run": "2a0bcda1d7fa418a369cae99bdc27406",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-palette-book",
+        "task_hash": "6fda1b9499899eaca8d7857c267d707311a7236fd4471905c5f688e33b490ece",
+        "source_group": "profile-tools/palette-book",
+        "split": "dev",
+        "repeat": 1,
+        "baseline_run": "4ed58e0e1901c4b90f3058aff7f2bb6e",
+        "candidate_run": "caf848ca52c633d20eb36cd45caa02d6",
+        "baseline_pass": false,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "dispatch-01",
+        "task_hash": "39bb48969988ac4855d903e46d55166e4b980edd2e0d833a2a51bcc6a41db31f",
+        "source_group": "dispatch",
+        "split": "learn",
+        "repeat": 0,
+        "baseline_run": "b14a653e9567986f2b0a6b2f6e78c444",
+        "candidate_run": "0dbe6ab0a073c9505ed87a006ad33058",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "dispatch-03",
+        "task_hash": "573a46b47d2d56b44021723f227fd5ee11b7a17687c397471eac418ec280610e",
+        "source_group": "dispatch",
+        "split": "learn",
+        "repeat": 0,
+        "baseline_run": "deeec12ee78f3cfe6bfd4166802b8c42",
+        "candidate_run": "2da12e9907e0496b0532ef34defada28",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "export-02",
+        "task_hash": "7eb59d76d11c7a8da901f5f3529fd3733efb9e863d586d4677c8380c1eab06e7",
+        "source_group": "export",
+        "split": "learn",
+        "repeat": 0,
+        "baseline_run": "dda8a83fc7aac3214056847ac79c00a6",
+        "candidate_run": "948f92b270a061664b64b24953fa9184",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "export-04",
+        "task_hash": "1760a7ec3df793779763c93b58051ed9e70215e157ef10b25d5da83a6a4ccd6f",
+        "source_group": "export",
+        "split": "learn",
+        "repeat": 0,
+        "baseline_run": "8387ef89e760496274964026581fe2f9",
+        "candidate_run": "e39376334329a33eade4b917220fedce",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      }
+    ],
+    "decision": {
+      "gate": {
+        "policy": "repeated_wins_with_skill_behavior",
+        "required_improved_groups": 2,
+        "required_dev_repeats": 2,
+        "zero_observed_regressions": true,
+        "passed": false
+      },
+      "improved_groups": [
+        "profile-tools/column-caption",
+        "profile-tools/meter-view",
+        "profile-tools/palette-book"
+      ],
+      "repeat_confirmed_improved_groups": [],
+      "wins_without_skill_change": [],
+      "regressions": [],
+      "infrastructure_errors": []
+    }
+  },
+  "holdout": [],
+  "summary": {
+    "pilot": {
+      "arms": {
+        "bare": {
+          "trials": 12,
+          "passed": 5,
+          "applied": 0,
+          "exhausted": 4,
+          "calls": 145,
+          "actions": 140
+        },
+        "manual": {
+          "trials": 12,
+          "passed": 11,
+          "applied": 12,
+          "exhausted": 1,
+          "calls": 154,
+          "actions": 150
+        }
+      },
+      "comparisons": {
+        "manual": {
+          "wins": 6,
+          "losses": 0,
+          "falsy_rescues": 2
+        }
+      },
+      "outcomes": [
+        {
+          "task": "transfer-miss-handler",
+          "repeat": 0,
+          "targets": [],
+          "outcome": "manual_only"
+        },
+        {
+          "task": "transfer-cardinality",
+          "repeat": 0,
+          "targets": [
+            "empty_one",
+            "overfull_one",
+            "overfull_only"
+          ],
+          "outcome": "falsy_rescue"
+        },
+        {
+          "task": "transfer-size-hook",
+          "repeat": 0,
+          "targets": [],
+          "outcome": "both_pass"
+        },
+        {
+          "task": "transfer-queue-packet",
+          "repeat": 0,
+          "targets": [],
+          "outcome": "both_pass"
+        },
+        {
+          "task": "transfer-miss-handler",
+          "repeat": 1,
+          "targets": [],
+          "outcome": "manual_only"
+        },
+        {
+          "task": "transfer-cardinality",
+          "repeat": 1,
+          "targets": [],
+          "outcome": "both_miss"
+        },
+        {
+          "task": "transfer-size-hook",
+          "repeat": 1,
+          "targets": [],
+          "outcome": "manual_only"
+        },
+        {
+          "task": "transfer-queue-packet",
+          "repeat": 1,
+          "targets": [],
+          "outcome": "both_pass"
+        },
+        {
+          "task": "transfer-miss-handler",
+          "repeat": 2,
+          "targets": [],
+          "outcome": "manual_only"
+        },
+        {
+          "task": "transfer-cardinality",
+          "repeat": 2,
+          "targets": [
+            "empty_one"
+          ],
+          "outcome": "falsy_rescue"
+        },
+        {
+          "task": "transfer-size-hook",
+          "repeat": 2,
+          "targets": [],
+          "outcome": "both_pass"
+        },
+        {
+          "task": "transfer-queue-packet",
+          "repeat": 2,
+          "targets": [],
+          "outcome": "both_pass"
+        }
+      ]
+    },
+    "dev": {
+      "arms": {
+        "bare": {
+          "trials": 8,
+          "passed": 3,
+          "applied": 0,
+          "exhausted": 0,
+          "calls": 72,
+          "actions": 69
+        },
+        "manual": {
+          "trials": 8,
+          "passed": 5,
+          "applied": 8,
+          "exhausted": 1,
+          "calls": 85,
+          "actions": 81
+        },
+        "learned": {
+          "trials": 8,
+          "passed": 6,
+          "applied": 8,
+          "exhausted": 0,
+          "calls": 77,
+          "actions": 64
+        }
+      },
+      "comparisons": {
+        "manual": {
+          "wins": 3,
+          "losses": 1,
+          "falsy_rescues": 3
+        },
+        "learned": {
+          "wins": 3,
+          "losses": 0,
+          "falsy_rescues": 3
+        }
+      }
+    },
+    "shared_dev_rescues": 2
+  }
+}

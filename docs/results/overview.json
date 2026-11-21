@@ -68,11 +68,17 @@
     "holdout_runs": 0
   },
   "test_suite": {
-    "code_revision": "85286beaca6f2034869da7f2b39cc85fe251b914",
-    "command": "uv run --locked pytest -q",
-    "tests": 291,
-    "passed": 291,
+    "code_revision": "76f1432c1ef56e09e522f17d12f659c22699793e",
+    "command": "make test && make integration",
+    "tests": 300,
+    "passed": 300,
+    "non_docker": 267,
+    "docker": 33,
     "failed": 0,
     "skipped": 0
+  },
+  "falsy_transfer_evidence": {
+    "pretest_and_configuration": "docs/results/falsy-transfer.json",
+    "caller_owned_objects": "docs/results/falsy-objects.json"
   }
 }

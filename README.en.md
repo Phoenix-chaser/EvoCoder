@@ -4,18 +4,30 @@
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
   <a href="pyproject.toml"><img alt="Python 3.12" src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&amp;logoColor=white"></a>
   <a href="https://github.com/Phoenix-chaser/EvoCoder/actions/workflows/checks.yml"><img alt="View GitHub Actions CI" src="https://img.shields.io/badge/CI-GitHub%20Actions-35495E?logo=githubactions&amp;logoColor=white"></a>
-  <a href="docs/results/overview.json"><img alt="291 tests passed" src="https://img.shields.io/badge/tests-291%20passed-08796E?logo=pytest&amp;logoColor=white"></a>
+  <a href="docs/results/overview.json"><img alt="300 tests passed" src="https://img.shields.io/badge/tests-300%20passed-08796E?logo=pytest&amp;logoColor=white"></a>
   <a href="src/evocoder/sandbox.py"><img alt="Docker sandbox" src="https://img.shields.io/badge/sandbox-Docker-206B9C?logo=docker&amp;logoColor=white"></a>
   <a href="Makefile"><img alt="CPU-only offline demo" src="https://img.shields.io/badge/demo-CPU%20only-586876"></a>
 </p>
 
-EvoCoder tests whether **a coding agent can learn a method from past repairs that helps on the next task**. The model edits Python code, runs tests in an isolated repository and writes a versioned skill from its execution traces. On later tasks it can use or skip that skill. A failed application gives the model evidence to revise when the skill applies, what to do and how to check the fix. Model weights stay fixed throughout.
+EvoCoder tests whether **a coding agent can learn a method from past repairs that helps on the next task**. The model edits Python code, runs tests in an isolated repository and writes a versioned skill from its execution traces. On later tasks it can use or skip that skill. A failed application gives the model evidence to revise when the skill applies, what to do and how to check the fix. EvoCoder keeps the requested model version fixed and does not update its weights.
 
 [Where does self-evolution show up?](#where-does-self-evolution-show-up) · [Earlier experiments](#earlier-experiments) · [Quick start](#quick-start) · [Bring your own tasks](#bring-your-own-tasks)
 
 ## Where does self-evolution show up?
 
-**GLM-5.3 wrote a reusable skill and used it on subsequent tasks. It fixed zero additional development cases in this trial.** From four unassisted repair traces, the model learned to use the default for missing or `None` settings and preserve explicit values such as `0`, `False` and the empty string. It selected that skill on all six subsequent learning cases and passed all six. No qualifying failure triggered a child revision. [Model-authored skill and per-task outcomes](docs/results/optional-control.json)
+### What did the learned skill fix on new configuration tasks?
+
+**Across four fresh configuration applications and two paired attempts per application, GLM-5.3 repaired 3/8 without a skill, 5/8 with a manual reference and 6/8 with its own learned skill.** It selected the learned skill in all eight trials. In the three additional repairs, the submitted patches preserved a zero sampling interval, a blank CSV caption and an empty palette. The reference skill corrected the same boundary on two of those paired trials. [Per-task routes and independent patch checks](docs/results/falsy-transfer.json)
+
+![On the four new tasks all three arms repaired 2/4 in repeat one. The unassisted, manual and learned arms repaired 1/4, 3/4 and 4/4 in repeat two.](docs/images/falsy-dev-en.png)
+
+An independent pretest first established that the manual procedure could correct a repeatable error. On a historical more-itertools defect, all three unassisted patches passed the public test and discarded the caller's falsy exception object on empty input. The reference skill preserved the object and passed the full task twice. All three additional configuration repairs shown above came in the second repeat. **Zero** development groups delivered the repeated wins required for release in this first panel. [Pretest, release rules and reproduction (中文)](docs/falsy-transfer-study.md)
+
+Transfer to **caller-owned objects** produced different results. Across three fresh tasks and two repeats, the unassisted model repaired **5/6**, the manual reference **6/6**, normal routing with the learned skill available **3/6**, and forced injection of that same skill **2/6**. Normal routing injected the skill **0/6** times. All six first solver requests matched the unassisted inputs. The combined release gate rejected the candidate. The model saw **zero of the 30 holdout tasks**, so repair gain as task-family diversity increases remains unmeasured. [Object-task routes, patch checks and combined gate](docs/results/falsy-objects.json)
+
+### How did the model form the skill?
+
+In the original 50-case study, GLM-5.3 learned from four unassisted repair traces to use the default for missing or `None` settings and preserve explicit values such as `0`, `False` and the empty string. It selected that skill on all six subsequent learning cases and passed all six. No qualifying failure triggered a child revision. The original development comparison produced zero additional repairs. [Model-authored skill and per-task outcomes](docs/results/optional-control.json)
 
 | Live development comparison | No skill | Learned skill |
 | --- | ---: | ---: |

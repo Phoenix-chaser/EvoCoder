@@ -1,0 +1,1071 @@
+{
+  "protocol": "38d580576dd171a0a30b21cea4ae084beb716f7c1a85440656b2c2555c40cfb1",
+  "phase": "object_gate_rejected",
+  "dev": [
+    {
+      "task": "object-index-error",
+      "snapshot": "35240f4d1c6775b8c1a3a2dbedfd1e269dc339585b5af7ab1b603eea3aeacaae",
+      "repeat": 0,
+      "order": [
+        "bare",
+        "manual",
+        "learned",
+        "forced_learned"
+      ],
+      "bare": {
+        "run": "75a18202eff46d77b999f786ce4a307e",
+        "patch": "5b1e3f7354fabd94dea7d98dbf359433d9f34d85c44a03e05a641f3ea1b20126",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": null,
+        "route": "none",
+        "steps": 8,
+        "calls": 8,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_selection": true,
+          "missing_key": true
+        },
+        "first_solver_request": "42221d21e96b341189b781b256b4cb0355fc9049ccfffa16398b624c252c395d"
+      },
+      "manual": {
+        "run": "2e644b1dac90bb01fd6a4ee242903b5b",
+        "patch": "058e2c961caabff1415f7cf983259acaeeb1ab2c8d674761ebd01761958ee338",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "route": "forced",
+        "steps": 6,
+        "calls": 6,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_selection": true,
+          "missing_key": true
+        },
+        "first_solver_request": "4ce905d8de2fa34861a74734e3d3c9ea4b57859f3bc7afc37bce226621632ec1"
+      },
+      "learned": {
+        "run": "cb8aa0f508efb29f05250fc4aefacb31",
+        "patch": "058e2c961caabff1415f7cf983259acaeeb1ab2c8d674761ebd01761958ee338",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": null,
+        "route": "skip_invalid",
+        "steps": 10,
+        "calls": 11,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_selection": true,
+          "missing_key": true
+        },
+        "first_solver_request": "42221d21e96b341189b781b256b4cb0355fc9049ccfffa16398b624c252c395d"
+      },
+      "forced_learned": {
+        "run": "849a72b9b9a6d5ee9c16a5fa5fa26890",
+        "patch": "bc4b7b2161b1a3f351a9f2f62f746dd0a7c8ee984cde260aafd979d7b4215fbc",
+        "passed": false,
+        "state": "FAILED",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "route": "forced",
+        "steps": 10,
+        "calls": 11,
+        "probes": {
+          "public": true,
+          "controls": false,
+          "empty_selection": false,
+          "missing_key": false
+        },
+        "first_solver_request": "58752ad78bfb18c2fcd722305ae47f8208d89007b2e430a07c3de041a8987827"
+      }
+    },
+    {
+      "task": "object-label-policy",
+      "snapshot": "cc414d44bb1f8b166fc95307eff01dff99a83c5dd0b779aa381f657cfcb6b23a",
+      "repeat": 0,
+      "order": [
+        "manual",
+        "learned",
+        "forced_learned",
+        "bare"
+      ],
+      "manual": {
+        "run": "042f7fa21ebf27c555bc5498d43b606f",
+        "patch": "5e16cfab0da97a0832db966a5b5bfdd855a46f670f9e6b8508dada58981df2ef",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "route": "forced",
+        "steps": 12,
+        "calls": 14,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_batch": true,
+          "nonempty_batch": true
+        },
+        "first_solver_request": "a4bbe176323200fac369956ee835603ae5e5efc964fe6134ae2122893d5e2476"
+      },
+      "learned": {
+        "run": "bab48cfb78d1893aa3600b30e591bb35",
+        "patch": "e067d809400d39683cd07e2398686d0a3777d9f7d19d065486f3b3f5e8c4caac",
+        "passed": false,
+        "state": "FAILED",
+        "applied": null,
+        "route": "skip",
+        "steps": 6,
+        "calls": 7,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_batch": false,
+          "nonempty_batch": false
+        },
+        "first_solver_request": "0745d8fd1b86a91ac138d6d1ca696cd8dfd6ffa9aa87e6438603a1f956fd223c"
+      },
+      "forced_learned": {
+        "run": "a225ad9b43e5932cd8b952b49f054956",
+        "patch": "bae38814e10dd7cb807e78c9fe062a5cd818275bcf8b1da37155f65e2ddff843",
+        "passed": false,
+        "state": "FAILED",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "route": "forced",
+        "steps": 8,
+        "calls": 8,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_batch": false,
+          "nonempty_batch": false
+        },
+        "first_solver_request": "dc3ab4c75039e647fa495b74c277115ec3e28928b6766d0355c8950703b590ba"
+      },
+      "bare": {
+        "run": "0aa2831ca04bb5300e1ec5d2b4d874d5",
+        "patch": "aeb3eb008aab766482bf1999c2141b1f16dcf49f43c08507446fc688ab676e7d",
+        "passed": false,
+        "state": "FAILED",
+        "applied": null,
+        "route": "none",
+        "steps": 9,
+        "calls": 11,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_batch": false,
+          "nonempty_batch": false
+        },
+        "first_solver_request": "0745d8fd1b86a91ac138d6d1ca696cd8dfd6ffa9aa87e6438603a1f956fd223c"
+      }
+    },
+    {
+      "task": "object-result-sink",
+      "snapshot": "defbcd6fe51a586814f6d4dc0c5b77043600301b8fbf2988053bd5df59d151bb",
+      "repeat": 0,
+      "order": [
+        "learned",
+        "forced_learned",
+        "bare",
+        "manual"
+      ],
+      "learned": {
+        "run": "316e6aa2ff2c3bc9b25ce5710acedc66",
+        "patch": "852e8dd37ded499f7d4ea3cd1c027acb1b5be2b0d61f688c6e34525425c24243",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": null,
+        "route": "skip",
+        "steps": 5,
+        "calls": 6,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_destination": true,
+          "empty_finalization": true
+        },
+        "first_solver_request": "92157fc81f14befd105c6fe163659ddc00bc727eb4111fa2f05fe3e82feefe81"
+      },
+      "forced_learned": {
+        "run": "a6075746466eb73999a9fb45467decfc",
+        "patch": "852e8dd37ded499f7d4ea3cd1c027acb1b5be2b0d61f688c6e34525425c24243",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "route": "forced",
+        "steps": 5,
+        "calls": 5,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_destination": true,
+          "empty_finalization": true
+        },
+        "first_solver_request": "9a41517f9b2bb5c922db8f1b5ff58b58b303c95c1f07b90a47a29db577f2b0fa"
+      },
+      "bare": {
+        "run": "5260be4f8895b443db20f665644288ec",
+        "patch": "852e8dd37ded499f7d4ea3cd1c027acb1b5be2b0d61f688c6e34525425c24243",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": null,
+        "route": "none",
+        "steps": 6,
+        "calls": 6,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_destination": true,
+          "empty_finalization": true
+        },
+        "first_solver_request": "92157fc81f14befd105c6fe163659ddc00bc727eb4111fa2f05fe3e82feefe81"
+      },
+      "manual": {
+        "run": "0d011ce7711803baa058bb378a21a979",
+        "patch": "e29941c90630d6dd4e9d198366cd32edadc77be5f82c8ae92d3f79bcd0844ad6",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "route": "forced",
+        "steps": 8,
+        "calls": 8,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_destination": true,
+          "empty_finalization": true
+        },
+        "first_solver_request": "e5f126bfd14de7c3f46f2e3fdcd498a98efdc076a2cd6ef97327309ce8a51adc"
+      }
+    },
+    {
+      "task": "object-index-error",
+      "snapshot": "35240f4d1c6775b8c1a3a2dbedfd1e269dc339585b5af7ab1b603eea3aeacaae",
+      "repeat": 1,
+      "order": [
+        "forced_learned",
+        "learned",
+        "manual",
+        "bare"
+      ],
+      "forced_learned": {
+        "run": "378e8592df710263f4069a77f54199bb",
+        "patch": "b31cdb4463d97100e94974916df9b992ec0c0ebf5f17c22dd299f8fca0546632",
+        "passed": false,
+        "state": "FAILED",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "route": "forced",
+        "steps": 7,
+        "calls": 8,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_selection": false,
+          "missing_key": true
+        },
+        "first_solver_request": "58752ad78bfb18c2fcd722305ae47f8208d89007b2e430a07c3de041a8987827"
+      },
+      "learned": {
+        "run": "6f4e9d2960a3ade177c1f67aa9583e00",
+        "patch": "058e2c961caabff1415f7cf983259acaeeb1ab2c8d674761ebd01761958ee338",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": null,
+        "route": "skip",
+        "steps": 11,
+        "calls": 12,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_selection": true,
+          "missing_key": true
+        },
+        "first_solver_request": "42221d21e96b341189b781b256b4cb0355fc9049ccfffa16398b624c252c395d"
+      },
+      "manual": {
+        "run": "b8a0599f0bb7cd4050a2f8ff13ec8623",
+        "patch": "058e2c961caabff1415f7cf983259acaeeb1ab2c8d674761ebd01761958ee338",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "route": "forced",
+        "steps": 11,
+        "calls": 12,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_selection": true,
+          "missing_key": true
+        },
+        "first_solver_request": "4ce905d8de2fa34861a74734e3d3c9ea4b57859f3bc7afc37bce226621632ec1"
+      },
+      "bare": {
+        "run": "9c7e7bf00dc4483ccad138416852da10",
+        "patch": "01a1945ccae8c2dd9aa0c3f22fab6d0a6e7e1e1f6ec2bc08ec3484d6c39efd3e",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": null,
+        "route": "none",
+        "steps": 9,
+        "calls": 11,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_selection": true,
+          "missing_key": true
+        },
+        "first_solver_request": "42221d21e96b341189b781b256b4cb0355fc9049ccfffa16398b624c252c395d"
+      }
+    },
+    {
+      "task": "object-label-policy",
+      "snapshot": "cc414d44bb1f8b166fc95307eff01dff99a83c5dd0b779aa381f657cfcb6b23a",
+      "repeat": 1,
+      "order": [
+        "bare",
+        "forced_learned",
+        "learned",
+        "manual"
+      ],
+      "bare": {
+        "run": "a27fc8d43f7d2e844f80b29723ea9048",
+        "patch": "9f1c78f70f4de7710b5e57bb2a8179fe2d7920b2f128d3cead2758bf80eadb37",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": null,
+        "route": "none",
+        "steps": 8,
+        "calls": 8,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_batch": true,
+          "nonempty_batch": true
+        },
+        "first_solver_request": "0745d8fd1b86a91ac138d6d1ca696cd8dfd6ffa9aa87e6438603a1f956fd223c"
+      },
+      "forced_learned": {
+        "run": "63cfe19cea67395909303c542a0d123d",
+        "patch": "2c7e9e701b3e0acbe2dd28992474fe2e7a5cf4fafd916267deb4e64cba2482ce",
+        "passed": false,
+        "state": "FAILED",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "route": "forced",
+        "steps": 8,
+        "calls": 8,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_batch": false,
+          "nonempty_batch": true
+        },
+        "first_solver_request": "dc3ab4c75039e647fa495b74c277115ec3e28928b6766d0355c8950703b590ba"
+      },
+      "learned": {
+        "run": "eb404c0d6362defbfcde9b2dd965a498",
+        "patch": "2e2f8cbf2fe0baded6a329a58d3d45681adb24dfd0f6d57790ba92e584735c99",
+        "passed": false,
+        "state": "FAILED",
+        "applied": null,
+        "route": "uncertain",
+        "steps": 8,
+        "calls": 9,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_batch": false,
+          "nonempty_batch": false
+        },
+        "first_solver_request": "0745d8fd1b86a91ac138d6d1ca696cd8dfd6ffa9aa87e6438603a1f956fd223c"
+      },
+      "manual": {
+        "run": "a86acb41d45ebec5d698ed805d32314e",
+        "patch": "c229086114ed30686c5c38022733d8e400b5af5e4c92f1dd2287daaede8e2a19",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "route": "forced",
+        "steps": 10,
+        "calls": 10,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_batch": true,
+          "nonempty_batch": true
+        },
+        "first_solver_request": "a4bbe176323200fac369956ee835603ae5e5efc964fe6134ae2122893d5e2476"
+      }
+    },
+    {
+      "task": "object-result-sink",
+      "snapshot": "defbcd6fe51a586814f6d4dc0c5b77043600301b8fbf2988053bd5df59d151bb",
+      "repeat": 1,
+      "order": [
+        "manual",
+        "bare",
+        "forced_learned",
+        "learned"
+      ],
+      "manual": {
+        "run": "3d738aa52d4cc719bbb0fd2c310bb2e2",
+        "patch": "852e8dd37ded499f7d4ea3cd1c027acb1b5be2b0d61f688c6e34525425c24243",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "route": "forced",
+        "steps": 5,
+        "calls": 5,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_destination": true,
+          "empty_finalization": true
+        },
+        "first_solver_request": "e5f126bfd14de7c3f46f2e3fdcd498a98efdc076a2cd6ef97327309ce8a51adc"
+      },
+      "bare": {
+        "run": "735f2ecba15a3e40d9be1009dd9e5f72",
+        "patch": "852e8dd37ded499f7d4ea3cd1c027acb1b5be2b0d61f688c6e34525425c24243",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": null,
+        "route": "none",
+        "steps": 6,
+        "calls": 6,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_destination": true,
+          "empty_finalization": true
+        },
+        "first_solver_request": "92157fc81f14befd105c6fe163659ddc00bc727eb4111fa2f05fe3e82feefe81"
+      },
+      "forced_learned": {
+        "run": "9d161e383ede747718c7991ef3204896",
+        "patch": "852e8dd37ded499f7d4ea3cd1c027acb1b5be2b0d61f688c6e34525425c24243",
+        "passed": true,
+        "state": "COMPLETE",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "route": "forced",
+        "steps": 7,
+        "calls": 7,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_destination": true,
+          "empty_finalization": true
+        },
+        "first_solver_request": "9a41517f9b2bb5c922db8f1b5ff58b58b303c95c1f07b90a47a29db577f2b0fa"
+      },
+      "learned": {
+        "run": "50f9d1b9d79c971e5f8a35cea6d88122",
+        "patch": "0c444cfafca797fa06848455629ee96e7e3b45cfbcde7ada387dcb298353c868",
+        "passed": false,
+        "state": "FAILED",
+        "applied": null,
+        "route": "skip",
+        "steps": 5,
+        "calls": 6,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_destination": true,
+          "empty_finalization": false
+        },
+        "first_solver_request": "92157fc81f14befd105c6fe163659ddc00bc727eb4111fa2f05fe3e82feefe81"
+      }
+    }
+  ],
+  "published": false,
+  "curve": [],
+  "holdout_exposures": 0,
+  "costs": {
+    "cost_credits": 165.93319,
+    "reserved_credits": 0.0,
+    "calls": 203
+  },
+  "transport": [],
+  "primary_receipt": "605b9ec7d399f974f08cdfd5bbfb2683d6867a45807ff71c4d87aa2ab5a27d5f",
+  "added_decision": {
+    "gate": {
+      "policy": "repeated_wins_with_skill_behavior",
+      "required_improved_groups": 2,
+      "required_dev_repeats": 2,
+      "zero_observed_regressions": true,
+      "passed": false
+    },
+    "improved_groups": [],
+    "repeat_confirmed_improved_groups": [],
+    "wins_without_skill_change": [],
+    "regressions": [
+      "object-label-policy",
+      "object-result-sink"
+    ],
+    "infrastructure_errors": []
+  },
+  "billing_by_run": {
+    "042f7fa21ebf27c555bc5498d43b606f": {
+      "calls": 14,
+      "charged_nanos": 12311070000,
+      "reserved_nanos": 0
+    },
+    "0aa2831ca04bb5300e1ec5d2b4d874d5": {
+      "calls": 11,
+      "charged_nanos": 6359180000,
+      "reserved_nanos": 0
+    },
+    "0d011ce7711803baa058bb378a21a979": {
+      "calls": 8,
+      "charged_nanos": 5808360000,
+      "reserved_nanos": 0
+    },
+    "2e644b1dac90bb01fd6a4ee242903b5b": {
+      "calls": 6,
+      "charged_nanos": 5308590000,
+      "reserved_nanos": 0
+    },
+    "316e6aa2ff2c3bc9b25ce5710acedc66": {
+      "calls": 6,
+      "charged_nanos": 3313170000,
+      "reserved_nanos": 0
+    },
+    "378e8592df710263f4069a77f54199bb": {
+      "calls": 8,
+      "charged_nanos": 8438410000,
+      "reserved_nanos": 0
+    },
+    "3d738aa52d4cc719bbb0fd2c310bb2e2": {
+      "calls": 5,
+      "charged_nanos": 3816320000,
+      "reserved_nanos": 0
+    },
+    "50f9d1b9d79c971e5f8a35cea6d88122": {
+      "calls": 6,
+      "charged_nanos": 3158350000,
+      "reserved_nanos": 0
+    },
+    "5260be4f8895b443db20f665644288ec": {
+      "calls": 6,
+      "charged_nanos": 3890770000,
+      "reserved_nanos": 0
+    },
+    "63cfe19cea67395909303c542a0d123d": {
+      "calls": 8,
+      "charged_nanos": 9382060000,
+      "reserved_nanos": 0
+    },
+    "6f4e9d2960a3ade177c1f67aa9583e00": {
+      "calls": 12,
+      "charged_nanos": 9579520000,
+      "reserved_nanos": 0
+    },
+    "735f2ecba15a3e40d9be1009dd9e5f72": {
+      "calls": 6,
+      "charged_nanos": 3788660000,
+      "reserved_nanos": 0
+    },
+    "75a18202eff46d77b999f786ce4a307e": {
+      "calls": 8,
+      "charged_nanos": 5806320000,
+      "reserved_nanos": 0
+    },
+    "849a72b9b9a6d5ee9c16a5fa5fa26890": {
+      "calls": 11,
+      "charged_nanos": 13804110000,
+      "reserved_nanos": 0
+    },
+    "9c7e7bf00dc4483ccad138416852da10": {
+      "calls": 11,
+      "charged_nanos": 9074500000,
+      "reserved_nanos": 0
+    },
+    "9d161e383ede747718c7991ef3204896": {
+      "calls": 7,
+      "charged_nanos": 7743550000,
+      "reserved_nanos": 0
+    },
+    "a225ad9b43e5932cd8b952b49f054956": {
+      "calls": 8,
+      "charged_nanos": 8297150000,
+      "reserved_nanos": 0
+    },
+    "a27fc8d43f7d2e844f80b29723ea9048": {
+      "calls": 8,
+      "charged_nanos": 4829130000,
+      "reserved_nanos": 0
+    },
+    "a6075746466eb73999a9fb45467decfc": {
+      "calls": 5,
+      "charged_nanos": 4716610000,
+      "reserved_nanos": 0
+    },
+    "a86acb41d45ebec5d698ed805d32314e": {
+      "calls": 10,
+      "charged_nanos": 7955900000,
+      "reserved_nanos": 0
+    },
+    "b8a0599f0bb7cd4050a2f8ff13ec8623": {
+      "calls": 12,
+      "charged_nanos": 10984140000,
+      "reserved_nanos": 0
+    },
+    "bab48cfb78d1893aa3600b30e591bb35": {
+      "calls": 7,
+      "charged_nanos": 4798090000,
+      "reserved_nanos": 0
+    },
+    "cb8aa0f508efb29f05250fc4aefacb31": {
+      "calls": 11,
+      "charged_nanos": 7207890000,
+      "reserved_nanos": 0
+    },
+    "eb404c0d6362defbfcde9b2dd965a498": {
+      "calls": 9,
+      "charged_nanos": 5561340000,
+      "reserved_nanos": 0
+    }
+  },
+  "support": [
+    "dispatch-01",
+    "dispatch-03",
+    "export-02",
+    "export-04"
+  ],
+  "gate": {
+    "receipt": "f1ed83c1b3f976c7d9494fde57942f39ced3a4d0a9711e806e4e5e53d5d99113",
+    "library": "e09f6bd26c283f92834d4482f3a5bef35aded6869d0844982f60dd097ffde9b0",
+    "rows": [
+      {
+        "task_id": "transfer-meter-view",
+        "task_hash": "3f8bbc20ea70d43e8cb5be2a3aa06567c087ca26ab6068af33cb8474c80882e5",
+        "source_group": "profile-tools/meter-view",
+        "split": "dev",
+        "repeat": 0,
+        "baseline_run": "03d7b48a7fae6fcd38ed3a89b5867c47",
+        "candidate_run": "4303801625cfcb26270495f295daafbd",
+        "baseline_pass": false,
+        "candidate_pass": false,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-column-caption",
+        "task_hash": "f4ecca08502a18298a58bd87eedea3100446322e87f9264f38e89a63ec262f0d",
+        "source_group": "profile-tools/column-caption",
+        "split": "dev",
+        "repeat": 0,
+        "baseline_run": "4ebaa01b00a421633458eef8312d8cc2",
+        "candidate_run": "5d85407e858eac60492f33d1f18db97d",
+        "baseline_pass": false,
+        "candidate_pass": false,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-print-ticket",
+        "task_hash": "d64bc8475cebc14aac7163cc11c4805e87f65831281eaf700ec62c874f4f633e",
+        "source_group": "profile-tools/print-ticket",
+        "split": "dev",
+        "repeat": 0,
+        "baseline_run": "0a27120c4e9a972fd90ea0bcbcb99f26",
+        "candidate_run": "aa6826bcabd152dea553cc505a78692a",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-palette-book",
+        "task_hash": "6fda1b9499899eaca8d7857c267d707311a7236fd4471905c5f688e33b490ece",
+        "source_group": "profile-tools/palette-book",
+        "split": "dev",
+        "repeat": 0,
+        "baseline_run": "6ec47a7310b1cc4c1e9d525c0b945980",
+        "candidate_run": "a3c925ddb12a2606d60c4457e2a16bcf",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "object-index-error",
+        "task_hash": "35240f4d1c6775b8c1a3a2dbedfd1e269dc339585b5af7ab1b603eea3aeacaae",
+        "source_group": "object-contracts/index-error",
+        "split": "dev",
+        "repeat": 0,
+        "baseline_run": "75a18202eff46d77b999f786ce4a307e",
+        "candidate_run": "cb8aa0f508efb29f05250fc4aefacb31",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": null,
+        "candidate_route": "skip_invalid",
+        "skill_behavior": "neither_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "object-label-policy",
+        "task_hash": "cc414d44bb1f8b166fc95307eff01dff99a83c5dd0b779aa381f657cfcb6b23a",
+        "source_group": "object-contracts/label-policy",
+        "split": "dev",
+        "repeat": 0,
+        "baseline_run": "0aa2831ca04bb5300e1ec5d2b4d874d5",
+        "candidate_run": "bab48cfb78d1893aa3600b30e591bb35",
+        "baseline_pass": false,
+        "candidate_pass": false,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": null,
+        "candidate_route": "skip",
+        "skill_behavior": "neither_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "object-result-sink",
+        "task_hash": "defbcd6fe51a586814f6d4dc0c5b77043600301b8fbf2988053bd5df59d151bb",
+        "source_group": "object-contracts/result-sink",
+        "split": "dev",
+        "repeat": 0,
+        "baseline_run": "5260be4f8895b443db20f665644288ec",
+        "candidate_run": "316e6aa2ff2c3bc9b25ce5710acedc66",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": null,
+        "candidate_route": "skip",
+        "skill_behavior": "neither_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-meter-view",
+        "task_hash": "3f8bbc20ea70d43e8cb5be2a3aa06567c087ca26ab6068af33cb8474c80882e5",
+        "source_group": "profile-tools/meter-view",
+        "split": "dev",
+        "repeat": 1,
+        "baseline_run": "b7ba5e68e6b99361997e8cfc002c2710",
+        "candidate_run": "5bbdbf71877782aeebdf70dda106699f",
+        "baseline_pass": false,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-column-caption",
+        "task_hash": "f4ecca08502a18298a58bd87eedea3100446322e87f9264f38e89a63ec262f0d",
+        "source_group": "profile-tools/column-caption",
+        "split": "dev",
+        "repeat": 1,
+        "baseline_run": "f7cdc39820d1963ff6c2e9a354b4053b",
+        "candidate_run": "32e72de977375585d895d55758e48c23",
+        "baseline_pass": false,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-print-ticket",
+        "task_hash": "d64bc8475cebc14aac7163cc11c4805e87f65831281eaf700ec62c874f4f633e",
+        "source_group": "profile-tools/print-ticket",
+        "split": "dev",
+        "repeat": 1,
+        "baseline_run": "78f0237d6eca72f0a2d2528dff8ef45f",
+        "candidate_run": "2a0bcda1d7fa418a369cae99bdc27406",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-palette-book",
+        "task_hash": "6fda1b9499899eaca8d7857c267d707311a7236fd4471905c5f688e33b490ece",
+        "source_group": "profile-tools/palette-book",
+        "split": "dev",
+        "repeat": 1,
+        "baseline_run": "4ed58e0e1901c4b90f3058aff7f2bb6e",
+        "candidate_run": "caf848ca52c633d20eb36cd45caa02d6",
+        "baseline_pass": false,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "object-index-error",
+        "task_hash": "35240f4d1c6775b8c1a3a2dbedfd1e269dc339585b5af7ab1b603eea3aeacaae",
+        "source_group": "object-contracts/index-error",
+        "split": "dev",
+        "repeat": 1,
+        "baseline_run": "9c7e7bf00dc4483ccad138416852da10",
+        "candidate_run": "6f4e9d2960a3ade177c1f67aa9583e00",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": null,
+        "candidate_route": "skip",
+        "skill_behavior": "neither_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "object-label-policy",
+        "task_hash": "cc414d44bb1f8b166fc95307eff01dff99a83c5dd0b779aa381f657cfcb6b23a",
+        "source_group": "object-contracts/label-policy",
+        "split": "dev",
+        "repeat": 1,
+        "baseline_run": "a27fc8d43f7d2e844f80b29723ea9048",
+        "candidate_run": "eb404c0d6362defbfcde9b2dd965a498",
+        "baseline_pass": true,
+        "candidate_pass": false,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": null,
+        "candidate_route": "uncertain",
+        "skill_behavior": "neither_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "object-result-sink",
+        "task_hash": "defbcd6fe51a586814f6d4dc0c5b77043600301b8fbf2988053bd5df59d151bb",
+        "source_group": "object-contracts/result-sink",
+        "split": "dev",
+        "repeat": 1,
+        "baseline_run": "735f2ecba15a3e40d9be1009dd9e5f72",
+        "candidate_run": "50f9d1b9d79c971e5f8a35cea6d88122",
+        "baseline_pass": true,
+        "candidate_pass": false,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": null,
+        "candidate_route": "skip",
+        "skill_behavior": "neither_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "dispatch-01",
+        "task_hash": "39bb48969988ac4855d903e46d55166e4b980edd2e0d833a2a51bcc6a41db31f",
+        "source_group": "dispatch",
+        "split": "learn",
+        "repeat": 0,
+        "baseline_run": "b14a653e9567986f2b0a6b2f6e78c444",
+        "candidate_run": "0dbe6ab0a073c9505ed87a006ad33058",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "dispatch-03",
+        "task_hash": "573a46b47d2d56b44021723f227fd5ee11b7a17687c397471eac418ec280610e",
+        "source_group": "dispatch",
+        "split": "learn",
+        "repeat": 0,
+        "baseline_run": "deeec12ee78f3cfe6bfd4166802b8c42",
+        "candidate_run": "2da12e9907e0496b0532ef34defada28",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "export-02",
+        "task_hash": "7eb59d76d11c7a8da901f5f3529fd3733efb9e863d586d4677c8380c1eab06e7",
+        "source_group": "export",
+        "split": "learn",
+        "repeat": 0,
+        "baseline_run": "dda8a83fc7aac3214056847ac79c00a6",
+        "candidate_run": "948f92b270a061664b64b24953fa9184",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "export-04",
+        "task_hash": "1760a7ec3df793779763c93b58051ed9e70215e157ef10b25d5da83a6a4ccd6f",
+        "source_group": "export",
+        "split": "learn",
+        "repeat": 0,
+        "baseline_run": "8387ef89e760496274964026581fe2f9",
+        "candidate_run": "e39376334329a33eade4b917220fedce",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      }
+    ],
+    "decision": {
+      "gate": {
+        "policy": "repeated_wins_with_skill_behavior",
+        "required_improved_groups": 2,
+        "required_dev_repeats": 2,
+        "zero_observed_regressions": true,
+        "passed": false
+      },
+      "improved_groups": [
+        "profile-tools/column-caption",
+        "profile-tools/meter-view",
+        "profile-tools/palette-book"
+      ],
+      "repeat_confirmed_improved_groups": [],
+      "wins_without_skill_change": [],
+      "regressions": [
+        "object-label-policy",
+        "object-result-sink"
+      ],
+      "infrastructure_errors": []
+    }
+  },
+  "holdout": [],
+  "summary": {
+    "arms": {
+      "bare": {
+        "trials": 6,
+        "passed": 5,
+        "applied": 0,
+        "exhausted": 0,
+        "calls": 50,
+        "actions": 46
+      },
+      "manual": {
+        "trials": 6,
+        "passed": 6,
+        "applied": 6,
+        "exhausted": 0,
+        "calls": 55,
+        "actions": 52
+      },
+      "learned": {
+        "trials": 6,
+        "passed": 3,
+        "applied": 0,
+        "exhausted": 0,
+        "calls": 51,
+        "actions": 45
+      },
+      "forced_learned": {
+        "trials": 6,
+        "passed": 2,
+        "applied": 6,
+        "exhausted": 0,
+        "calls": 47,
+        "actions": 45
+      }
+    },
+    "matched_first_solver_inputs": [
+      {
+        "task": "object-index-error",
+        "repeat": 0,
+        "comparison": "bare",
+        "grade_agrees": true
+      },
+      {
+        "task": "object-label-policy",
+        "repeat": 0,
+        "comparison": "bare",
+        "grade_agrees": true
+      },
+      {
+        "task": "object-result-sink",
+        "repeat": 0,
+        "comparison": "bare",
+        "grade_agrees": true
+      },
+      {
+        "task": "object-index-error",
+        "repeat": 1,
+        "comparison": "bare",
+        "grade_agrees": true
+      },
+      {
+        "task": "object-label-policy",
+        "repeat": 1,
+        "comparison": "bare",
+        "grade_agrees": false
+      },
+      {
+        "task": "object-result-sink",
+        "repeat": 1,
+        "comparison": "bare",
+        "grade_agrees": false
+      }
+    ],
+    "comparisons": {
+      "manual": {
+        "wins": 1,
+        "losses": 0,
+        "falsy_rescues": 1,
+        "overlap_with_manual": 1
+      },
+      "learned": {
+        "wins": 0,
+        "losses": 2,
+        "falsy_rescues": 0,
+        "overlap_with_manual": 0
+      },
+      "forced_learned": {
+        "wins": 0,
+        "losses": 3,
+        "falsy_rescues": 0,
+        "overlap_with_manual": 0
+      }
+    },
+    "routing_skips": [
+      {
+        "task": "object-index-error",
+        "repeat": 0
+      },
+      {
+        "task": "object-label-policy",
+        "repeat": 0
+      },
+      {
+        "task": "object-result-sink",
+        "repeat": 0
+      },
+      {
+        "task": "object-index-error",
+        "repeat": 1
+      },
+      {
+        "task": "object-label-policy",
+        "repeat": 1
+      },
+      {
+        "task": "object-result-sink",
+        "repeat": 1
+      }
+    ]
+  }
+}
