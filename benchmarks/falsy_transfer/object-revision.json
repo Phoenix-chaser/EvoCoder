@@ -1,0 +1,545 @@
+{
+  "study": "caller-object-skill-revision-v1",
+  "codes": {
+    "run_falsy_transfer.py": "feefcda0b89632404350e710b1fe9807bb1b7376753f0770eee08c67f5bd3173",
+    "falsy_transfer_cases.py": "c87dc742189af7460874d2d46e995116d943653bbdab1bb10daee845474cdf99",
+    "falsy_transfer_protocol.py": "762baf604802fb405064b0fbda2c36fb4d938fe55327fa66ba62f886d9b97cb0",
+    "run_optional_control.py": "e043a3b26121e7dfcac8611773d5ae70561156d262aed822e7e6c3d98b326a34",
+    "runtime": "77a0dd284745a1bd173586eba1b285a3de2d19818488a8ecb988c6b3f13d1aab",
+    "falsy_object_cases.py": "2a13048e6fa496abe74660be9a2cf96d19624e1986b73841457222546c0938f1",
+    "run_falsy_objects.py": "86b56eeb0fc11b847390fee9085b415b6347f43a6cb8463d94eeafc9bd0f6d87",
+    "object_revision_cases.py": "c74eaf24c32862275524b120c56553125ba94e699b817796107ed78a3e3fdbc0",
+    "run_object_revision.py": "a735206c1c9cbdd587d3248f7375959e2cff5613dee1b555eeaa7126f2a2cf74"
+  },
+  "model": "glm-5.3",
+  "image": "sha256:a7eec604ebe32971d0b509d5157c8e814dc875a0f68aa541b3fd90ab391ef742",
+  "settings": "94273fc55c3e3e3fd18be405728eec795db77bcafc40149fc84a97881a608804",
+  "parent": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+  "manual": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+  "old_panel": "38d580576dd171a0a30b21cea4ae084beb716f7c1a85440656b2c2555c40cfb1",
+  "old_gate": "f1ed83c1b3f976c7d9494fde57942f39ced3a4d0a9711e806e4e5e53d5d99113",
+  "published_observations": {
+    "falsy-transfer": "8784552fb9dea2280305ce6485bd0a8c230d7a8f55a42bb8ee0b106eded2d27f",
+    "falsy-objects": "a560804dce28086d6356011b9ee201ca393505e2c6830ab9dfc76c7db71181e4"
+  },
+  "tasks": [
+    {
+      "id": "learn-tile-compositor",
+      "path": "learn-tile-compositor.json",
+      "hash": "350d723d09fdccc897f61a097d0f37a9bb414554d8004c421d8d3a61c8c91902",
+      "source_group": "python-workflows/tile-compositor",
+      "split": "learn"
+    },
+    {
+      "id": "learn-scheduler-watch",
+      "path": "learn-scheduler-watch.json",
+      "hash": "7122a63a225bc1c8f02db29785018ec0e806980b84e73b62800fd5324e7d2d3b",
+      "source_group": "python-workflows/scheduler-watch",
+      "split": "learn"
+    },
+    {
+      "id": "learn-undo-journal",
+      "path": "learn-undo-journal.json",
+      "hash": "ad769baaddac63f83d613bf5197d10aac982ca5212b379ac913096a7cc08c53e",
+      "source_group": "python-workflows/undo-journal",
+      "split": "learn"
+    },
+    {
+      "id": "learn-stream-framing",
+      "path": "learn-stream-framing.json",
+      "hash": "8d690f35e40379bd515d82efd1e99979b37c29846fea342842ebb131bc0242c0",
+      "source_group": "python-workflows/stream-framing",
+      "split": "learn"
+    },
+    {
+      "id": "learn-incremental-walk",
+      "path": "learn-incremental-walk.json",
+      "hash": "b38d87325356b0037fc7ca8529c44233d58d765c96352b176dffe13dc43422c6",
+      "source_group": "python-workflows/incremental-walk",
+      "split": "learn"
+    },
+    {
+      "id": "learn-subscription-lease",
+      "path": "learn-subscription-lease.json",
+      "hash": "3d9a523cdd3dbf44359145414ed39bd7678abe1c3a29a7135a0ce06b2afdba23",
+      "source_group": "python-workflows/subscription-lease",
+      "split": "learn"
+    },
+    {
+      "id": "dispatch-01",
+      "path": "dispatch-01.json",
+      "hash": "39bb48969988ac4855d903e46d55166e4b980edd2e0d833a2a51bcc6a41db31f",
+      "source_group": "dispatch",
+      "split": "learn"
+    },
+    {
+      "id": "dispatch-03",
+      "path": "dispatch-03.json",
+      "hash": "573a46b47d2d56b44021723f227fd5ee11b7a17687c397471eac418ec280610e",
+      "source_group": "dispatch",
+      "split": "learn"
+    },
+    {
+      "id": "export-02",
+      "path": "export-02.json",
+      "hash": "7eb59d76d11c7a8da901f5f3529fd3733efb9e863d586d4677c8380c1eab06e7",
+      "source_group": "export",
+      "split": "learn"
+    },
+    {
+      "id": "export-04",
+      "path": "export-04.json",
+      "hash": "1760a7ec3df793779763c93b58051ed9e70215e157ef10b25d5da83a6a4ccd6f",
+      "source_group": "export",
+      "split": "learn"
+    },
+    {
+      "id": "object-index-error",
+      "path": "object-index-error.json",
+      "hash": "35240f4d1c6775b8c1a3a2dbedfd1e269dc339585b5af7ab1b603eea3aeacaae",
+      "source_group": "object-contracts/index-error",
+      "split": "dev"
+    },
+    {
+      "id": "object-label-policy",
+      "path": "object-label-policy.json",
+      "hash": "cc414d44bb1f8b166fc95307eff01dff99a83c5dd0b779aa381f657cfcb6b23a",
+      "source_group": "object-contracts/label-policy",
+      "split": "dev"
+    },
+    {
+      "id": "object-result-sink",
+      "path": "object-result-sink.json",
+      "hash": "defbcd6fe51a586814f6d4dc0c5b77043600301b8fbf2988053bd5df59d151bb",
+      "source_group": "object-contracts/result-sink",
+      "split": "dev"
+    },
+    {
+      "id": "transfer-meter-view",
+      "path": "transfer-meter-view.json",
+      "hash": "3f8bbc20ea70d43e8cb5be2a3aa06567c087ca26ab6068af33cb8474c80882e5",
+      "source_group": "profile-tools/meter-view",
+      "split": "dev"
+    },
+    {
+      "id": "transfer-column-caption",
+      "path": "transfer-column-caption.json",
+      "hash": "f4ecca08502a18298a58bd87eedea3100446322e87f9264f38e89a63ec262f0d",
+      "source_group": "profile-tools/column-caption",
+      "split": "dev"
+    },
+    {
+      "id": "transfer-print-ticket",
+      "path": "transfer-print-ticket.json",
+      "hash": "d64bc8475cebc14aac7163cc11c4805e87f65831281eaf700ec62c874f4f633e",
+      "source_group": "profile-tools/print-ticket",
+      "split": "dev"
+    },
+    {
+      "id": "transfer-palette-book",
+      "path": "transfer-palette-book.json",
+      "hash": "6fda1b9499899eaca8d7857c267d707311a7236fd4471905c5f688e33b490ece",
+      "source_group": "profile-tools/palette-book",
+      "split": "dev"
+    },
+    {
+      "id": "cache-01",
+      "path": "cache-01.json",
+      "hash": "23381441146c78e9be2fe719e4f3e9632de484b766bec004581d33f1bedb9a89",
+      "source_group": "cache",
+      "split": "test"
+    },
+    {
+      "id": "cache-02",
+      "path": "cache-02.json",
+      "hash": "8e6aa3b396c63fd059263aad65a7e8d0a1c6e59312ac9ec8549047a754345bf7",
+      "source_group": "cache",
+      "split": "test"
+    },
+    {
+      "id": "cache-03",
+      "path": "cache-03.json",
+      "hash": "88d319ccca1cb1505c96a7b69b2ff697b85d01b0b0e1fbc727b8366c3e261a3d",
+      "source_group": "cache",
+      "split": "test"
+    },
+    {
+      "id": "cache-04",
+      "path": "cache-04.json",
+      "hash": "11c71625c133e3cdadf2635113c4de00457477a2a52f4a7e87a5c9d71994ae01",
+      "source_group": "cache",
+      "split": "test"
+    },
+    {
+      "id": "cache-05",
+      "path": "cache-05.json",
+      "hash": "e5d51e0650213d69e7dc9a1398ca25e18ed0ac926c4f125abf0fe390bcce0c94",
+      "source_group": "cache",
+      "split": "test"
+    },
+    {
+      "id": "report-01",
+      "path": "report-01.json",
+      "hash": "34622c114f9c847dc6b7bcf0ebd011d7e7f07b448cba03ce03f114deb5d1fbca",
+      "source_group": "report",
+      "split": "test"
+    },
+    {
+      "id": "report-02",
+      "path": "report-02.json",
+      "hash": "45b00c0ed1d58b66f3ca9703a0206cec34df901574762cdc5e2f014c4e9a0686",
+      "source_group": "report",
+      "split": "test"
+    },
+    {
+      "id": "report-03",
+      "path": "report-03.json",
+      "hash": "caf08e2619133541576620896d55891c38df16e54d9b88d9266a10307c7fb768",
+      "source_group": "report",
+      "split": "test"
+    },
+    {
+      "id": "report-04",
+      "path": "report-04.json",
+      "hash": "657ccb0746a1f7764005c672cc1555fab77c9348d7488b5f5166244c042b4d94",
+      "source_group": "report",
+      "split": "test"
+    },
+    {
+      "id": "report-05",
+      "path": "report-05.json",
+      "hash": "5e1a588a85d83809f8d61468d95f3d2504e90418ff2f6a59126bc48fbf53d0e1",
+      "source_group": "report",
+      "split": "test"
+    },
+    {
+      "id": "notify-01",
+      "path": "notify-01.json",
+      "hash": "0ca77fd2dc31e7f01ba9d14f09113f3a146f1a4f193f6d564aaf4dd07bf9320f",
+      "source_group": "notify",
+      "split": "test"
+    },
+    {
+      "id": "notify-02",
+      "path": "notify-02.json",
+      "hash": "07b7ecace1a366a78670a069527477272334d2afec3ab9e87c0ff29b3b54cbc9",
+      "source_group": "notify",
+      "split": "test"
+    },
+    {
+      "id": "notify-03",
+      "path": "notify-03.json",
+      "hash": "974860146984c2d86b4f474c416cf6ca1b3fa685d7fbdec5307ac675f58f3b1e",
+      "source_group": "notify",
+      "split": "test"
+    },
+    {
+      "id": "notify-04",
+      "path": "notify-04.json",
+      "hash": "a46664ef7dfca521fd7210c2d0a7ec55df596c3ce4598bf877fba159fffc8db7",
+      "source_group": "notify",
+      "split": "test"
+    },
+    {
+      "id": "notify-05",
+      "path": "notify-05.json",
+      "hash": "bc15ebbabdb2fb8eea6b3ff7fc62f92ee297d5ef7b167cbd25f274a10dcb6a21",
+      "source_group": "notify",
+      "split": "test"
+    },
+    {
+      "id": "renderer-01",
+      "path": "renderer-01.json",
+      "hash": "8dacf25f8e36f1fd9d35fbc83ba593553c5fd63ee7b21683ff6e459319d6201a",
+      "source_group": "renderer",
+      "split": "test"
+    },
+    {
+      "id": "renderer-02",
+      "path": "renderer-02.json",
+      "hash": "fe08eed0f19a0169992859344da0699e748c8e3e75820c0451029f0eb3df434c",
+      "source_group": "renderer",
+      "split": "test"
+    },
+    {
+      "id": "renderer-03",
+      "path": "renderer-03.json",
+      "hash": "4e5b4dcd20591661ca748ff6c3a51e43f4a0752c486be23d9cf1cd8c6b10599a",
+      "source_group": "renderer",
+      "split": "test"
+    },
+    {
+      "id": "renderer-04",
+      "path": "renderer-04.json",
+      "hash": "241038ae064c5e01d8adb4e7b18a10a908c8cc5a2205e59917fc9c5379f246ec",
+      "source_group": "renderer",
+      "split": "test"
+    },
+    {
+      "id": "renderer-05",
+      "path": "renderer-05.json",
+      "hash": "270a00f04c44e44092c1ee0e4d162b1d66e281d421a40980dd13e80ef94f0a5c",
+      "source_group": "renderer",
+      "split": "test"
+    },
+    {
+      "id": "events-01",
+      "path": "events-01.json",
+      "hash": "209524380bd4f07b12a50e60209c061768607b1b2d0175ff24fefdae8b613076",
+      "source_group": "events",
+      "split": "test"
+    },
+    {
+      "id": "events-02",
+      "path": "events-02.json",
+      "hash": "70aaaf94713741240ab485cd70e6a303661f9df17cae5c5f1c954d18b6459f94",
+      "source_group": "events",
+      "split": "test"
+    },
+    {
+      "id": "events-03",
+      "path": "events-03.json",
+      "hash": "0841ca246af42114d729835fc6c045bc19d9bf4775d12df0ed524d49262444bc",
+      "source_group": "events",
+      "split": "test"
+    },
+    {
+      "id": "events-04",
+      "path": "events-04.json",
+      "hash": "404896717a942f115623128748dac171c7caf215982d8cb000e00e2d34f17633",
+      "source_group": "events",
+      "split": "test"
+    },
+    {
+      "id": "events-05",
+      "path": "events-05.json",
+      "hash": "4b6f61c53f06a21d837ef6b65fa8e432b8f5f65e698c680f1ada545d81f8f50a",
+      "source_group": "events",
+      "split": "test"
+    },
+    {
+      "id": "checkpoint-01",
+      "path": "checkpoint-01.json",
+      "hash": "453bfb024563e28ae9906fc5dc5063ac4b3254604725576f099d7457c5aaf396",
+      "source_group": "checkpoint",
+      "split": "test"
+    },
+    {
+      "id": "checkpoint-02",
+      "path": "checkpoint-02.json",
+      "hash": "596328363c8430b1662194c479fd2b3bad8114a3602a12527ffa871916bfa68d",
+      "source_group": "checkpoint",
+      "split": "test"
+    },
+    {
+      "id": "checkpoint-03",
+      "path": "checkpoint-03.json",
+      "hash": "26c75c8b659755d2b9ad036e7966f4677a82375da887047fe6a435c08f1a764b",
+      "source_group": "checkpoint",
+      "split": "test"
+    },
+    {
+      "id": "checkpoint-04",
+      "path": "checkpoint-04.json",
+      "hash": "dbb91eae3f41858b38ff8abd0590ffea4101b6dc6da3c6aeda347aedf0e3a729",
+      "source_group": "checkpoint",
+      "split": "test"
+    },
+    {
+      "id": "checkpoint-05",
+      "path": "checkpoint-05.json",
+      "hash": "01c124a2d9b5a16da0d10914b14c382a5230ccc40ea2a6c0f059972e39517771",
+      "source_group": "checkpoint",
+      "split": "test"
+    }
+  ],
+  "calibration": [
+    {
+      "id": "learn-tile-compositor",
+      "snapshot": "350d723d09fdccc897f61a097d0f37a9bb414554d8004c421d8d3a61c8c91902",
+      "reference": "14839cf1134694bfc7ccd4b34b478814b9adcf5635af77558c6ea4294318eb55",
+      "broken": {
+        "public": false,
+        "controls": true,
+        "initially_empty_brush": false,
+        "padding_first": false
+      },
+      "fixed": {
+        "public": true,
+        "controls": true,
+        "initially_empty_brush": true,
+        "padding_first": true
+      }
+    },
+    {
+      "id": "learn-scheduler-watch",
+      "snapshot": "7122a63a225bc1c8f02db29785018ec0e806980b84e73b62800fd5324e7d2d3b",
+      "reference": "f8c687bf3b2561bd07228812a3a728f26438c86ee83e9283aae9169588113edb",
+      "broken": {
+        "public": false,
+        "controls": true,
+        "start_replay": false,
+        "wake_replay": false
+      },
+      "fixed": {
+        "public": true,
+        "controls": true,
+        "start_replay": true,
+        "wake_replay": true
+      }
+    },
+    {
+      "id": "learn-undo-journal",
+      "snapshot": "ad769baaddac63f83d613bf5197d10aac982ca5212b379ac913096a7cc08c53e",
+      "reference": "5a03e308f31d24e821c3b3c267b9e15cb7b546a97595f39f97956f8b14786abe",
+      "broken": {
+        "public": false,
+        "controls": true,
+        "nested_before_record": false,
+        "abort_empty_origin": false
+      },
+      "fixed": {
+        "public": true,
+        "controls": true,
+        "nested_before_record": true,
+        "abort_empty_origin": true
+      }
+    },
+    {
+      "id": "learn-stream-framing",
+      "snapshot": "8d690f35e40379bd515d82efd1e99979b37c29846fea342842ebb131bc0242c0",
+      "reference": "6ef19f2187ff71438aa22f12d991c34aa26e3b124bfce879f8e4b02b2356a0b4",
+      "broken": {
+        "public": false,
+        "controls": true,
+        "drain_idle": false,
+        "drain_after_data": false
+      },
+      "fixed": {
+        "public": true,
+        "controls": true,
+        "drain_idle": true,
+        "drain_after_data": true
+      }
+    },
+    {
+      "id": "learn-incremental-walk",
+      "snapshot": "b38d87325356b0037fc7ca8529c44233d58d765c96352b176dffe13dc43422c6",
+      "reference": "e341201cb20ff89db9a2d3d933bbe8457ada8794a25c6799b6403155a5393191",
+      "broken": {
+        "public": false,
+        "controls": true,
+        "shared_empty_forest": false,
+        "truth_independent": false
+      },
+      "fixed": {
+        "public": true,
+        "controls": true,
+        "shared_empty_forest": true,
+        "truth_independent": true
+      }
+    },
+    {
+      "id": "learn-subscription-lease",
+      "snapshot": "3d9a523cdd3dbf44359145414ed39bd7678abe1c3a29a7135a0ce06b2afdba23",
+      "reference": "52d849822b90bdcd99f435ef14150c7af62285054a54dafb6737385372a24dfa",
+      "broken": {
+        "public": false,
+        "controls": true,
+        "direct_borrow": false,
+        "deferred_borrow": false
+      },
+      "fixed": {
+        "public": true,
+        "controls": true,
+        "direct_borrow": true,
+        "deferred_borrow": true
+      }
+    }
+  ],
+  "learn": [
+    "learn-tile-compositor",
+    "learn-scheduler-watch",
+    "learn-undo-journal",
+    "learn-stream-framing",
+    "learn-incremental-walk",
+    "learn-subscription-lease"
+  ],
+  "objects": [
+    "object-index-error",
+    "object-label-policy",
+    "object-result-sink"
+  ],
+  "config": [
+    "transfer-meter-view",
+    "transfer-column-caption",
+    "transfer-print-ticket",
+    "transfer-palette-book"
+  ],
+  "root_support": [
+    "dispatch-01",
+    "dispatch-03",
+    "export-02",
+    "export-04"
+  ],
+  "holdout": {
+    "scalar": [
+      "cache-01",
+      "cache-02",
+      "cache-03",
+      "cache-04",
+      "cache-05",
+      "report-01",
+      "report-02",
+      "report-03",
+      "report-04",
+      "report-05"
+    ],
+    "layers": [
+      "notify-01",
+      "notify-02",
+      "notify-03",
+      "notify-04",
+      "notify-05",
+      "renderer-01",
+      "renderer-02",
+      "renderer-03",
+      "renderer-04",
+      "renderer-05"
+    ],
+    "batch": [
+      "events-01",
+      "events-02",
+      "events-03",
+      "events-04",
+      "events-05",
+      "checkpoint-01",
+      "checkpoint-02",
+      "checkpoint-03",
+      "checkpoint-04",
+      "checkpoint-05"
+    ]
+  },
+  "object_arms": [
+    "bare",
+    "parent",
+    "child",
+    "fixed_parent",
+    "fixed_child",
+    "manual"
+  ],
+  "config_arms": [
+    "bare",
+    "parent",
+    "child"
+  ],
+  "repeats": 2,
+  "solver_slots": 15,
+  "workers": 3,
+  "proposal_policy": "grounded_scope",
+  "learning": "Once normally routed and twice with the parent explicitly applied on each new learn task. Only terminal failed/exhausted actual parent applications with qualifying execution feedback can trigger revision. Choose up to three different tasks, submitted failures first. Add up to one same-task natural skip and one successful parent application for contrast.",
+  "proposal": "Use the parent, selected learn episodes and verified patch/test receipts. The proposer sees no development, holdout, manual text, reference fixes or hidden probes. Stop at the first accepted child. One identical-evidence retry only for a settled invalid proposal.",
+  "comparison": "Three object tasks from the previously observed panel, four original configuration dev tasks, two reversed-order repeats. New runs for all arms. Controlled and manual arms are descriptive. Near manual means at least 5/6 and within one repair of the concurrent manual arm, descriptively.",
+  "release": "Require normal child vs normal parent to pass the standard repeated-win gate on object tasks and on the complete development/support comparison. Require the normal child vs no skill to pass the standard full-library gate on all seven tasks and all ancestral support. Retain every observed loss. No adjustment after inspecting development. A historical 2/6 is forced-parent only.",
+  "test": "After actual library activation only, evaluate the original 30 once in matched no-skill/normal-child pairs with no learning. Scalar, layered and batch are configuration strata. The object panel is a revisited development panel, not an unseen caller-object generalization test."
+}

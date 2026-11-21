@@ -125,7 +125,7 @@ def parser():
     propose = commands.add_parser("propose")
     propose.add_argument("--runs", nargs="+", required=True)
     propose.add_argument("--parent")
-    propose.add_argument("--proposal-policy", choices=["grounded_patch_tests", "bound_procedure"])
+    propose.add_argument("--proposal-policy", choices=["grounded_patch_tests", "grounded_scope", "bound_procedure"])
     propose.add_argument("--manifest", type=Path, help="original task snapshots for archived learning runs")
     propose.add_argument("--feedback-policy", choices=FEEDBACK_POLICIES,
                          default="post_edit_or_budget")

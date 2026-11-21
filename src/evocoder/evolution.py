@@ -24,7 +24,8 @@ You may reject a generalization by narrowing applicability. Do not claim measure
 """
 
 FEEDBACK_POLICIES = ("final_public_failure", "post_edit_or_budget", "learn_outcome")
-PROPOSAL_POLICIES = ("standard", "bounded_public_tests", "grounded_patch_tests", "learn_procedure_feedback", "bound_procedure")
+PROPOSAL_POLICIES = ("standard", "bounded_public_tests", "grounded_patch_tests", "grounded_scope",
+                     "learn_procedure_feedback", "bound_procedure")
 
 BOUNDED_PUBLIC_TESTS = """
 Write a minimal, budget-aware revision. The dedicated test action runs the frozen public suite
@@ -248,7 +249,7 @@ class Evolution:
         request = {"evidence": projection, "parent": parent, "allowed_evidence_refs": sorted(visible_refs)}
         catalog = None
         catalog_hash = None
-        if policy == "grounded_patch_tests" or procedure:
+        if policy in {"grounded_patch_tests", "grounded_scope"} or procedure:
             if not parent_id:
                 raise ValueError("grounded revision requires a parent")
             tasks = self.grounding_tasks
@@ -293,6 +294,14 @@ class Evolution:
             )
         if policy in {"bounded_public_tests", "grounded_patch_tests"}:
             prompt += BOUNDED_PUBLIC_TESTS
+        if policy == "grounded_scope":
+            prompt += (
+                "\nCompare the public contracts of these learning episodes with the parent's applicability "
+                "and exclusions. Explain the reusable decision in the revised applicability and ordered steps. "
+                "A forced application establishes what was tried; it is not a natural routing decision. "
+                "Preserve still-supported cases. A proposed check is an instruction for future work. "
+                "Keep the procedure short enough to use within the solver's action budget."
+            )
         if procedure:
             prompt += (
                 "\nRevise the ordered steps of the parent skill using only these failed learning applications. "
