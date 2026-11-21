@@ -100,14 +100,15 @@ def test_exhaustion_records_workspace_test_separately(recorded):
     assert "final grade not_run" in summary
 
 
-def test_default_mock_revision_requires_receipts_and_rejects_external_summary(recorded):
+@pytest.mark.parametrize("policy", [None, "grounded_scope"])
+def test_grounded_revision_requires_receipts_and_rejects_external_summary(recorded, policy):
     from evocoder.evolution import RECEIPT_MARKER
     from evocoder.model import Model
 
     task, store, _ = recorded
     settings = Settings(_env_file=None, state_dir=store.root)
-    evolution = Evolution(settings, store)
-    parent = evolution.propose(["r1"])
+    parent = Evolution(settings, store).propose(["r1"])
+    evolution = Evolution(settings, store, proposal_policy=policy)
     with store.connect(write=True) as db:
         db.execute("INSERT INTO runs VALUES(?,?,?,?,?,?,?,?,?,?,?)", (
             "r2", task.id, "learn", digest(task.model_dump()), parent, "mock", "solve", "EXHAUSTED",
@@ -133,4 +134,4 @@ def test_default_mock_revision_requires_receipts_and_rejects_external_summary(re
             return Model.mock_skill(data).model_copy(update={"change_summary": "All methods were repaired."})
 
     with pytest.raises(ValueError, match="rejected free-text summary"):
-        Evolution(settings, store, FabricatingProposer()).propose(["r1", "r2"], parent)
+        Evolution(settings, store, FabricatingProposer(), proposal_policy=policy).propose(["r1", "r2"], parent)
