@@ -1,0 +1,1157 @@
+{
+  "schema": 1,
+  "manifest_hash": "334fa0145eff7f8cdbbf3e5372d3004b53d2f2504408abdce460bc65933b6b0c",
+  "quotas": {
+    "dateutil/dateutil": [
+      1,
+      1,
+      1
+    ],
+    "mahmoud/boltons": [
+      11,
+      5,
+      10
+    ],
+    "more-itertools/more-itertools": [
+      4,
+      2,
+      4
+    ],
+    "pallets/click": [
+      9,
+      4,
+      9
+    ],
+    "python-attrs/attrs": [
+      3,
+      2,
+      3
+    ],
+    "theskumar/python-dotenv": [
+      2,
+      1,
+      2
+    ],
+    "tkem/cachetools": [
+      2,
+      1,
+      3
+    ]
+  },
+  "cases": [
+    {
+      "repository": "dateutil/dateutil",
+      "base_commit": "df91cdd2ed57785b157c0ca0641450d7423170a3",
+      "fixed_commit": "950abb6d1602a87d590a6ce2d139517b96c7603b",
+      "message": "fix(rrule): don't die on experimental properties",
+      "task_hash": "72d7ff93e920fc17c327fe4afbab45a04486890cc8d33dab3e802b59c98e6004",
+      "split": "learn",
+      "functions": [
+        "src/dateutil/rrule.py::_parse_rfc"
+      ],
+      "patch_fingerprint": "77180c224c8cc11d6d3a77ca8fec41371922a96c8c9d51e84d68db44faa394a7",
+      "timestamp": 1792534695
+    },
+    {
+      "repository": "dateutil/dateutil",
+      "base_commit": "bc90ab44491154ec38b6b5b4d8ec11fb25b434d0",
+      "fixed_commit": "68994217fbe253835989e7c1e3eeef5c653088d1",
+      "message": "Fix dateutil/dateutil#1157",
+      "task_hash": "2ce7cd962259b2b72d7a4798122c92d151a9adb07fa8dfb82bf631ff225af22f",
+      "split": "dev",
+      "functions": [
+        "src/dateutil/relativedelta.py::<module>"
+      ],
+      "patch_fingerprint": "d4e93fe8082fd3912232a007ad0cf7f84abc771e1eb7f92da5264d5a44eaab2b",
+      "timestamp": 1792535456
+    },
+    {
+      "repository": "dateutil/dateutil",
+      "base_commit": "5391455e7c7839e300b63649041806fb5219432e",
+      "fixed_commit": "d23ff760f8448b51579016d96f39590018445724",
+      "message": "Fix yearday=366 resolving to Dec 30 in leap years",
+      "task_hash": "cd010c577b471e6f72c38d0f1b9295e390a231b177b3f235ade647ab6ffd9dd3",
+      "split": "test",
+      "functions": [
+        "src/dateutil/relativedelta.py::__init__"
+      ],
+      "patch_fingerprint": "7836479d8dd1507de32a4ed8843288eb68ec32120e13e8d27a83372bf0a12b88",
+      "timestamp": 1793506296
+    },
+    {
+      "repository": "mahmoud/boltons",
+      "base_commit": "1819f52f1ed655772c425057fc3e4a9899fba74d",
+      "fixed_commit": "9b3392a81398d5d12a9faed9102678244cb15d79",
+      "message": "make chunked bytes work as expected on py3, fixes #231",
+      "task_hash": "b17b0436579aa2a142f5d4317b563f0d22ddc9e2a4dc7bb9f6534dc505cfe7dc",
+      "split": "learn",
+      "functions": [
+        "boltons/iterutils.py::<module>",
+        "boltons/iterutils.py::chunked_iter"
+      ],
+      "patch_fingerprint": "742f43c32966afe786884829825682389635da3a510867dc0c00020c61e51340",
+      "timestamp": 1578378557
+    },
+    {
+      "repository": "mahmoud/boltons",
+      "base_commit": "81e44a2319ce0bef0de44f1059762b97879cb35d",
+      "fixed_commit": "0a20b37cc94784197a7353130cc61b5becfb12c7",
+      "message": "Fix NetstringSocket to correctly use arguments to .read_ns() method.",
+      "task_hash": "5d48921531b15af8bb4de8c1c982dc811f0de272943ff11bbeae2cc86c5bee4b",
+      "split": "learn",
+      "functions": [
+        "boltons/socketutils.py::read_ns",
+        "boltons/socketutils.py::setmaxsize"
+      ],
+      "patch_fingerprint": "ced09b26c3aec998d859bcddc2ca7130c7172fb64acd05f12a1daea2112874b1",
+      "timestamp": 1585384712
+    },
+    {
+      "repository": "mahmoud/boltons",
+      "base_commit": "913aef46f58b9869cd93684917f5c231fba42b4a",
+      "fixed_commit": "4457decc614ee795804f2bb9c44ae9be30831d53",
+      "message": "fix IndexedSet.index() to account for removals, fixes #240",
+      "task_hash": "5449b56b921121f3b2d2f12d8e91bab799dd03f9358693b370cc026ffaa484fe",
+      "split": "learn",
+      "functions": [
+        "boltons/setutils.py::_get_apparent_index",
+        "boltons/setutils.py::index"
+      ],
+      "patch_fingerprint": "6bd3388365979f4e080a3da7a13720114d6c9ac9e18bb4efcdd036b051a4e523",
+      "timestamp": 1585535262
+    },
+    {
+      "repository": "mahmoud/boltons",
+      "base_commit": "47e0c3bfcbd3291a1366f34069f23e43659717cd",
+      "fixed_commit": "41a926e64ff69e152d14dff87a2766b27ae2b53b",
+      "message": "add IndexedSet.__rsub__ which respects proper argument order, fixes #252",
+      "task_hash": "00d270a00c791722bfa072752a4e8817778395246a340a688c99353074f9313d",
+      "split": "learn",
+      "functions": [
+        "boltons/setutils.py::<module>",
+        "boltons/setutils.py::__rsub__"
+      ],
+      "patch_fingerprint": "8baf7768e77d38141f399de0f3cbc88443d9bbc66671152c69fa94de125922f2",
+      "timestamp": 1587459806
+    },
+    {
+      "repository": "mahmoud/boltons",
+      "base_commit": "41bd3e7c607123c6bfd3415dec43d6a77e15d34b",
+      "fixed_commit": "3d55169c278299854e9d083dfb9cb2a9a6faacd4",
+      "message": "Rewrite ANSI stripping code with a regex, add tests. (#258)",
+      "task_hash": "ac5fed5ea7abd7c9c8ed9feff35925767feed429d1011c046444c8cfd9b89a18",
+      "split": "learn",
+      "functions": [
+        "boltons/strutils.py::<module>",
+        "boltons/strutils.py::strip_ansi"
+      ],
+      "patch_fingerprint": "aa99a13dd12d8ea4a730eed289fa4f8079d2220b0354d40844e17b76f1c34f33",
+      "timestamp": 1592799992
+    },
+    {
+      "repository": "mahmoud/boltons",
+      "base_commit": "8c5e87d7d7bd3ecd37cedccbf0e6110b5d1f5688",
+      "fixed_commit": "8e1526e8a5367e79b9542609a326c5ab1d7ad160",
+      "message": "Tox GH Action (#286)",
+      "task_hash": "9cd5eed5d2d4cd76aa67b549663b34fab1facbbfceb7313172ae1741076c4edc",
+      "split": "learn",
+      "functions": [
+        "boltons/fileutils.py::atomic_save",
+        "boltons/jsonutils.py::<module>",
+        "boltons/jsonutils.py::reverse_iter_lines"
+      ],
+      "patch_fingerprint": "43c94867e24fffd39ad44efc1eedf5f54e66ec607ed2ae601b5e8646ff4c54a3",
+      "timestamp": 1621062533
+    },
+    {
+      "repository": "mahmoud/boltons",
+      "base_commit": "270e974975984f662f998c8f6eb0ebebd964de82",
+      "fixed_commit": "395f690f4a24331c4554e2169ac18a15955a4eab",
+      "message": "Chaining `boltons.urlutils.URL.navigate()` results in `TypeError` (#298)",
+      "task_hash": "ab5c0230599301b6f7604e384c78257b533ae012f77cda133d99ce9bfa28ffda",
+      "split": "learn",
+      "functions": [
+        "boltons/urlutils.py::navigate"
+      ],
+      "patch_fingerprint": "3d1c79a009ee4f155e7cd8ebdca2baa975d4f5eae152f803ba66b4161ff99760",
+      "timestamp": 1642288120
+    },
+    {
+      "repository": "mahmoud/boltons",
+      "base_commit": "f892a2b46e7fd31c639723d1d9bf4d9ad63752d6",
+      "fixed_commit": "475462811ea4f9dea23c8af4cc2b6ead2dc03845",
+      "message": "Update tbutils.py to parse tracebacks with anchor lines (#332)",
+      "task_hash": "dd9d79fee440cf2a32570092c45dc48a863c1aa32457b995249289fe9da2f0e7",
+      "split": "learn",
+      "functions": [
+        "boltons/tbutils.py::<module>",
+        "boltons/tbutils.py::from_string"
+      ],
+      "patch_fingerprint": "85ca37547d1e8484de7d00f9e2ac5bb7f3bd876d7231d36d904205c7756fb1db",
+      "timestamp": 1680462687
+    },
+    {
+      "repository": "mahmoud/boltons",
+      "base_commit": "0341ab3d79e6430c0e6a4149df9c92679988a534",
+      "fixed_commit": "c2b04b4cb16410d7bf9ff781c78dee3ca908dc32",
+      "message": "fix: make copy_function work with keyword-only defaults (#336)",
+      "task_hash": "02b9cc98bc9e740b024f601ebec0cda20dbd28d1733cd090f69e9f1b915b8d9f",
+      "split": "learn",
+      "functions": [
+        "boltons/funcutils.py::copy_function"
+      ],
+      "patch_fingerprint": "e39d6add4f65ab053061a9ed6799e7ea84026fb049e4de439ae9e1be7db55bff",
+      "timestamp": 1682062537
+    },
+    {
+      "repository": "mahmoud/boltons",
+      "base_commit": "c2b04b4cb16410d7bf9ff781c78dee3ca908dc32",
+      "fixed_commit": "46599bc0d498dd8adc3aea833ce1445feed349dd",
+      "message": "Support `ior` for `dictutils.OMD` (#341)",
+      "task_hash": "6c1e59e23e816467ce5334f7b5221691df85bf7b1de1ce1b39ef4f882fca50ec",
+      "split": "learn",
+      "functions": [
+        "boltons/dictutils.py::__ior__"
+      ],
+      "patch_fingerprint": "92efcca2f29159d574ce4fe28156571aca5a9d8b89c40aab14468f853b945768",
+      "timestamp": 1683393938
+    },
+    {
+      "repository": "mahmoud/boltons",
+      "base_commit": "46599bc0d498dd8adc3aea833ce1445feed349dd",
+      "fixed_commit": "4815fc8dd1768da5f2d903846d2ab994aa57b0cf",
+      "message": "Test and fix for #348 (#349)",
+      "task_hash": "65240d4f222d0d826903f64d3e5f4f180f42db3b52124d2ac13770bf027ffc16",
+      "split": "learn",
+      "functions": [
+        "boltons/cacheutils.py::__setitem__"
+      ],
+      "patch_fingerprint": "374cbaba364b383f44710601260200a49a0744fa5d6ed92896adebfa0c4ba20d",
+      "timestamp": 1698640276
+    },
+    {
+      "repository": "mahmoud/boltons",
+      "base_commit": "985df86bbf511b244ce6acf7a9c3b8a0d09d0fb3",
+      "fixed_commit": "6cac49ce4eba506a3582e8089bcc347c6b2fa70f",
+      "message": "fix OneToOne.update behavior with empty iterables",
+      "task_hash": "b82f7a880db734a1bc5e2b0ea0c7b9060c466084788f0f94459f8cbcd918fa85",
+      "split": "dev",
+      "functions": [
+        "boltons/dictutils.py::update"
+      ],
+      "patch_fingerprint": "33135d3f7fab376b17be9bc4fda012c12d105ab065c3f99c3113c7dec6d8e514",
+      "timestamp": 1698942731
+    },
+    {
+      "repository": "mahmoud/boltons",
+      "base_commit": "0c88f25323de3ff85bcca844b9ce6cd171a80392",
+      "fixed_commit": "f9c4f30511b58c543bda7e4c04193fd480f68b24",
+      "message": "Fix barrellist sort with multiple lists",
+      "task_hash": "9fd207b9dfa3ba2f3a6f462afeefe6a22e7f85c45e907d151afa314a5bd8c806",
+      "split": "dev",
+      "functions": [
+        "boltons/listutils.py::sort"
+      ],
+      "patch_fingerprint": "afaac44e5dc4102694f39e7c663e32cd07b250a3d07b41dd4fadb9133373312c",
+      "timestamp": 1759602090
+    },
+    {
+      "repository": "mahmoud/boltons",
+      "base_commit": "8a2a93d8213e1fa4da30c8167ab1a18caad17a17",
+      "fixed_commit": "766b5547392fe8d54c1e000098499dc556bb5cb7",
+      "message": "fix(strutils): bytes2human rolls over at exact powers of 1024",
+      "task_hash": "8cdaff1539fc1ed66f7c1739ddd4628871d75d9ce486271ba2684a9dd2e38d3b",
+      "split": "dev",
+      "functions": [
+        "boltons/strutils.py::bytes2human"
+      ],
+      "patch_fingerprint": "87c653270214975a06764832df3800f3e5207e270da0e6fab4c5034339138a95",
+      "timestamp": 1781729745
+    },
+    {
+      "repository": "mahmoud/boltons",
+      "base_commit": "3970a80f63807392e512340c25dc2db473bcba70",
+      "fixed_commit": "4aa77cddb5d06def130df6f09aefab4018fa487c",
+      "message": "Fix split maxsplit zero handling",
+      "task_hash": "af0fbf07353ac23feeb0fb49e669e12a96644d7b2ef24344d7bfbec463408188",
+      "split": "dev",
+      "functions": [
+        "boltons/iterutils.py::split_iter"
+      ],
+      "patch_fingerprint": "4877038217e09b4671a9aec9c4e5367a7c5fd3aed938e33d2a9195dc68d7bd32",
+      "timestamp": 1781837038
+    },
+    {
+      "repository": "mahmoud/boltons",
+      "base_commit": "609cabe932a1ea1423b24568644945abb1b8bb84",
+      "fixed_commit": "d0a284fc7ef1aebceb54798600d73be4eeb76ed8",
+      "message": "fix IndexedSet out-of-range negative indexing wrapping around (x[-n-k], pop(-n-k))",
+      "task_hash": "a917f9fed753df17eba53155374681ce3ea5f78fd7cfcd898a8913ebdab1198b",
+      "split": "dev",
+      "functions": [
+        "boltons/setutils.py::__getitem__",
+        "boltons/setutils.py::_get_real_index"
+      ],
+      "patch_fingerprint": "e11199919d7468c6339e0d11e2828f63038a0014c3b2a86cff3da5621e0305fe",
+      "timestamp": 1784270193
+    },
+    {
+      "repository": "mahmoud/boltons",
+      "base_commit": "ebc7a8f776debfa33f0b380b57a444bca75a251b",
+      "fixed_commit": "55dfe5077bcb5fa76611b5f2a557ea6c442ad87c",
+      "message": "fix(fileutils): accept os.PathLike in AtomicSaver",
+      "task_hash": "32c3b85a14980d97473488227752b8ab8b19ab3414cee788669a9781b11a457a",
+      "split": "test",
+      "functions": [
+        "boltons/fileutils.py::__init__",
+        "boltons/fileutils.py::iter_find_files"
+      ],
+      "patch_fingerprint": "d2d42b3117116be17800a07f86ee6125da81dc2ac73330377d035671d6ecf57c",
+      "timestamp": 1784275878
+    },
+    {
+      "repository": "mahmoud/boltons",
+      "base_commit": "57cb026b7f47cd2765a0d5acdc83849ed5f1f6a3",
+      "fixed_commit": "ead236e278ca0466bf468de746b5960fb12d7e5b",
+      "message": "fix: backoff_iter with factor=1.0 and no count raised ZeroDivisionError",
+      "task_hash": "84566f4cbb301f86c7abe684c188eaf84aba97cb89628d16a23a334377b0be48",
+      "split": "test",
+      "functions": [
+        "boltons/iterutils.py::backoff_iter"
+      ],
+      "patch_fingerprint": "a37442b5cb74258336a5acf2572c4cd36e9392a11208a25fa77d63bb669cfac8",
+      "timestamp": 1784335402
+    },
+    {
+      "repository": "mahmoud/boltons",
+      "base_commit": "e66cade323f5c11cebb4bd0f099e634b245adccd",
+      "fixed_commit": "99dec84c99d02d8259093c0d520769b28d4d2aaf",
+      "message": "Fix US timezone fold handling",
+      "task_hash": "82a21aa63a0ad4b4398aa395f5b77e4d46a52abea420e963379fcd003fa8850d",
+      "split": "test",
+      "functions": [
+        "boltons/timeutils.py::<module>",
+        "boltons/timeutils.py::_dst_range",
+        "boltons/timeutils.py::dst"
+      ],
+      "patch_fingerprint": "95dc524f1f7c9415a67ccc0f83026db627be8d04215c63bdb59ae7f417be5309",
+      "timestamp": 1785676009
+    },
+    {
+      "repository": "mahmoud/boltons",
+      "base_commit": "e66cade323f5c11cebb4bd0f099e634b245adccd",
+      "fixed_commit": "eb659013fbe4f355561fbead2116868366ba6e26",
+      "message": "tableutils: fix Table.to_text crashes on degenerate tables and headers",
+      "task_hash": "11e4c8b0262015e5fe3c3765e084ef1eda4f63d4e003dc5f8ee1268307609879",
+      "split": "test",
+      "functions": [
+        "boltons/tableutils.py::_set_width",
+        "boltons/tableutils.py::to_text"
+      ],
+      "patch_fingerprint": "ebedf4618e6b299e48c9bdf158db8c14395ca79fd0188cc3f53526deb9a67224",
+      "timestamp": 1786043499
+    },
+    {
+      "repository": "mahmoud/boltons",
+      "base_commit": "435774ef8b10c1355bf77483a837945034011754",
+      "fixed_commit": "f1034b07ddf71f4d9285134a47a4ade16fe40789",
+      "message": "jsonutils: fix JSONLIterator nontermination at EOF and negative rel_seek",
+      "task_hash": "836cce217b75371c60d68d1db579ecfa1bd84680d4a2d618a4e304107323f168",
+      "split": "test",
+      "functions": [
+        "boltons/jsonutils.py::__init__",
+        "boltons/jsonutils.py::_align_to_newline"
+      ],
+      "patch_fingerprint": "20c50680c63de52a6cbed4b24bc611fcac1d435a28b9c52db78818df1fd27d84",
+      "timestamp": 1786043528
+    },
+    {
+      "repository": "mahmoud/boltons",
+      "base_commit": "e66cade323f5c11cebb4bd0f099e634b245adccd",
+      "fixed_commit": "c1c25da365cf14878cf5317147e7a09b5d124df5",
+      "message": "Fix off-by-one in Bits length check",
+      "task_hash": "e05a4ccaf7fa2beb35ad5f5df78948afaba03fef1498a2977e910f86f396efbe",
+      "split": "test",
+      "functions": [
+        "boltons/mathutils.py::__init__"
+      ],
+      "patch_fingerprint": "b7b59e82b692a3caa6a45d1de8d57c78f40308c0c5b6ae62d3c72740df4f804c",
+      "timestamp": 1786048547
+    },
+    {
+      "repository": "mahmoud/boltons",
+      "base_commit": "78e8638e695d78ccc2dc641ef87e38fa51185840",
+      "fixed_commit": "b5c495bec206741ec25cd82ecc869e0b59bb0d10",
+      "message": "funcutils: forward target-keyword-only args as keywords in wraps invocations (#445)",
+      "task_hash": "66ef694569f2a02c0b8c51aa3d3e54881744fe593490d8db5ca00dd04e2b23d1",
+      "split": "test",
+      "functions": [
+        "boltons/funcutils.py::get_invocation_str",
+        "boltons/funcutils.py::update_wrapper"
+      ],
+      "patch_fingerprint": "4b5afa4cc7cd0a791865249f3257cd9f9fd1a20dfdbc6dca36d12152354cfaae",
+      "timestamp": 1786137006
+    },
+    {
+      "repository": "mahmoud/boltons",
+      "base_commit": "b5c495bec206741ec25cd82ecc869e0b59bb0d10",
+      "fixed_commit": "ec1ff9f6728f5f857402b294c218be731c62af5f",
+      "message": "Fix issupserset typo in _ComplementSet comparisons (#438)",
+      "task_hash": "ee108eab99ab6b982bd4d984d94031ff8690052c08677669e8189ba8347e8a57",
+      "split": "test",
+      "functions": [
+        "boltons/setutils.py::__ge__",
+        "boltons/setutils.py::__le__"
+      ],
+      "patch_fingerprint": "358726d7c3b78a382dce846173a62ca683da83061a7a7f3bd94bc949bf21d409",
+      "timestamp": 1786137620
+    },
+    {
+      "repository": "mahmoud/boltons",
+      "base_commit": "d45cc414e33aa4e08a73e0993574df4397e2e9db",
+      "fixed_commit": "a1ea1030ed85137e999c0bd9b11d16368d3ab241",
+      "message": "dictutils: preserve iterator values in addlist (#458)",
+      "task_hash": "1171fc78150df58de83b9ffd0dbeb4122bc1cb4aa28a87ee81394bf0565d84bc",
+      "split": "test",
+      "functions": [
+        "boltons/dictutils.py::addlist",
+        "boltons/urlutils.py::addlist"
+      ],
+      "patch_fingerprint": "94dd7c2f167a125383b1cc65899dbb5cae2d7df1267e40be5ef18f4d928dd1e2",
+      "timestamp": 1788770494
+    },
+    {
+      "repository": "mahmoud/boltons",
+      "base_commit": "3913220988e1e7c80620796fdcb4f74eb598d179",
+      "fixed_commit": "73e22c90de25aaae3e6aed57f7438ffe57349339",
+      "message": "statsutils: finish Pearson zero-denominator review and regression coverage",
+      "task_hash": "e5ff8d53d94760e736879bcf49e4ad15d2d6f01063737ff957d8eec0115ae6b5",
+      "split": "test",
+      "functions": [
+        "boltons/statsutils.py::_calc_pearson_type"
+      ],
+      "patch_fingerprint": "97aa7baa3439212a08585ca6cc0cc292d664d4a21d1e6fe9cf1af7e0141787ab",
+      "timestamp": 1788777171
+    },
+    {
+      "repository": "more-itertools/more-itertools",
+      "base_commit": "13638be1c2ad38e55731ba62a5e0c519c2fe865f",
+      "fixed_commit": "b1042ae2e9cb6e6588806b4aebf7af5e76cb90bc",
+      "message": "nth_product fixes",
+      "task_hash": "70f73bed8de63bfe0db5f90bcca8d22a898c23af0df6975724604042c8fa893c",
+      "split": "learn",
+      "functions": [
+        "more_itertools/recipes.py::<module>",
+        "more_itertools/recipes.py::nth_product"
+      ],
+      "patch_fingerprint": "ea14d2b4bba26fa5a6cc3a1f1d37d4a20711d0a198783f9a9596ea34e4adbe1e",
+      "timestamp": 1602883184
+    },
+    {
+      "repository": "more-itertools/more-itertools",
+      "base_commit": "c7e73ffbf9c7e15969f9ed301d0431770061ab90",
+      "fixed_commit": "2e81a562fbaccc996c19c069090a53f52ec894fe",
+      "message": "Fix split_before for an empty collections.",
+      "task_hash": "6c80b881273eb4f383416abf68538a58f2f4d3ca8448b3359c984db0deafd2cb",
+      "split": "learn",
+      "functions": [
+        "more_itertools/more.py::split_before"
+      ],
+      "patch_fingerprint": "ad7bea9e1c43add5492b3e2da250f31933dfe896fe5ca0ac634a4ac25a293266",
+      "timestamp": 1615387108
+    },
+    {
+      "repository": "more-itertools/more-itertools",
+      "base_commit": "aac2dfbed14bb7b10c54abfe7fba1b5a021877da",
+      "fixed_commit": "ddbbea2c50b51d879ca72089ef267c6e46529dbe",
+      "message": "Add function `longest_common_prefix`",
+      "task_hash": "61fd022143dda6490b3b8591c02ce1d59442bbf3a8b0e6519c3df068f0c47b31",
+      "split": "learn",
+      "functions": [
+        "more_itertools/more.py::<module>",
+        "more_itertools/more.py::longest_common_prefix"
+      ],
+      "patch_fingerprint": "d3dc17308993aa6c3c79c589ca85d139e2fa5b3480fd97e905754166f59d6bb0",
+      "timestamp": 1659588252
+    },
+    {
+      "repository": "more-itertools/more-itertools",
+      "base_commit": "6793bd3e4ed15318746ed2511733f12a9932eb64",
+      "fixed_commit": "9245cd04c043d0d646497934df72549943d5f868",
+      "message": "Fix issue 658 for split_after",
+      "task_hash": "4bd92a38956dd75cff0502839dd8d65b96d157451d83feb66161b96269823019",
+      "split": "learn",
+      "functions": [
+        "more_itertools/more.py::split_after"
+      ],
+      "patch_fingerprint": "aa3d4a707d8cb94f2b57fc905f7a8b0503e9c834d92d54ee5568c7dd3c46c904",
+      "timestamp": 1669128478
+    },
+    {
+      "repository": "more-itertools/more-itertools",
+      "base_commit": "7c1b6482a00cb9c1f76061c12be192ed5043e5ea",
+      "fixed_commit": "cd0a3a87d231033db06a3c222fe893025e398a86",
+      "message": "Issue #707: fix ``iterate()`` to enable ``func`` to raise StopIteration",
+      "task_hash": "09a0598189d0c699237ff1a2e9e4ac84d894581ed83ddcfd99f2ef76b9fa92c0",
+      "split": "dev",
+      "functions": [
+        "more_itertools/more.py::iterate"
+      ],
+      "patch_fingerprint": "ae34f2c005c856524e5bc9620d1c6d1455ba4ae4cccd3ae3fa7ec31a7cbbe223",
+      "timestamp": 1681910452
+    },
+    {
+      "repository": "more-itertools/more-itertools",
+      "base_commit": "f36c88fe03688fa442154ef14f429bcfa4c38525",
+      "fixed_commit": "ae37eb38a1d3958d764ff3ec43107116dfe29135",
+      "message": "Add more sample() tests and fix bug in strict option with counts",
+      "task_hash": "81d426ed32508ac4eb7c16f23fb2170fec4aba868bbe97f4fd4067600e898559",
+      "split": "dev",
+      "functions": [
+        "more_itertools/more.py::_sample_counted"
+      ],
+      "patch_fingerprint": "d5a1bc754a9b487e5ddd3713445b47d22f103b07254d6326c34613722bf18a9b",
+      "timestamp": 1736603800
+    },
+    {
+      "repository": "more-itertools/more-itertools",
+      "base_commit": "c834d6e4a0c4280b7b7750cb0de8dd8acb3d4c2c",
+      "fixed_commit": "cca32949f12d473fd823e37a5530c30d2faa1332",
+      "message": "fix last() when __reversed__ is None",
+      "task_hash": "6a5271c722c61f2daa1e9cfddb0ad96533ba90e4245e1a6ceb36c88bfe7ea9ce",
+      "split": "test",
+      "functions": [
+        "more_itertools/more.py::last"
+      ],
+      "patch_fingerprint": "3471b0f661954e797aefa1b03b1e0916e0953e29a967c46978e728dbfef11ba0",
+      "timestamp": 1752452959
+    },
+    {
+      "repository": "more-itertools/more-itertools",
+      "base_commit": "aa8c480086052d4c2a64490d3214e67b7c6e674b",
+      "fixed_commit": "cf186b5de4797602fef76c3391da2d110b88a954",
+      "message": "Fix product_index() with iterator input",
+      "task_hash": "8750bbb9687290c4f9a38a94498de738a02a98f92d6f6c611076ce938e530814",
+      "split": "test",
+      "functions": [
+        "more_itertools/more.py::product_index"
+      ],
+      "patch_fingerprint": "cc724e565b90c3faacbf7eebb55c5792d0040a392ef4f2bcfb379a675e3b7318",
+      "timestamp": 1760101988
+    },
+    {
+      "repository": "more-itertools/more-itertools",
+      "base_commit": "f75535b5ed95394a3a24c1495e1f8508a06d56ab",
+      "fixed_commit": "adeda34bd11ff636f5f19238cf422a73e1455483",
+      "message": "Fix bug for negative inputs to exactly_n(). Optimize code.",
+      "task_hash": "04110c46c95d290b9f0c35efc1a5657e29f8339fded45f8fd3169d8650855fd2",
+      "split": "test",
+      "functions": [
+        "more_itertools/more.py::exactly_n"
+      ],
+      "patch_fingerprint": "5c30f637e5d6c964f25a6f1377a68ef15bc1ff10f21dbe3e2c899686341e4fa1",
+      "timestamp": 1761693155
+    },
+    {
+      "repository": "more-itertools/more-itertools",
+      "base_commit": "073d23421b60e05a99872e7b174902f4aa151f31",
+      "fixed_commit": "b0aa91efbb452eeb8ffa0447047519c6e84d5292",
+      "message": "Fix random_product() as well",
+      "task_hash": "0d58ca41af70516d4c4ae08b1fa9a9cd6cc04dc56f89c9682f7641c766e073f9",
+      "split": "test",
+      "functions": [
+        "more_itertools/recipes.py::random_product"
+      ],
+      "patch_fingerprint": "071eeb877961d0beedea47850cea182e52cb913034b5dcc725c3fd338c536ffc",
+      "timestamp": 1767138637
+    },
+    {
+      "repository": "pallets/click",
+      "base_commit": "8efb348e2bc820aeba60d4cce6939708c6b2b11c",
+      "fixed_commit": "42ee8a1f6011e0f4a8a19c34a545f3eb7ae978fa",
+      "message": "fix formatting with empty options_metavar",
+      "task_hash": "242be08209efc8f22abd0d569e75568ccaf8e45693d90fe705030d5fb5c94ef6",
+      "split": "learn",
+      "functions": [
+        "src/click/core.py::collect_usage_pieces"
+      ],
+      "patch_fingerprint": "5a4910bc0bbe30fe55f2100f5a049ce5ff114a3b758a89033aeb1717a49033cf",
+      "timestamp": 1602553127
+    },
+    {
+      "repository": "pallets/click",
+      "base_commit": "6c7624491911f0b18f869e5d0a989506e7b416f8",
+      "fixed_commit": "043511294a9eec59d08e64c351621e790ae74b76",
+      "message": "Fixed inconsistency in forwarding params",
+      "task_hash": "3e4e68ca7447e3ac69076a842fee3d1ac7eb964a2511395d584b12fd4ba72941",
+      "split": "learn",
+      "functions": [
+        "src/click/core.py::forward",
+        "src/click/core.py::invoke"
+      ],
+      "patch_fingerprint": "fa5ab27fa267ffdef1e188b1956526f878d5a3ec1624f4279748eb301cc472d3",
+      "timestamp": 1618281238
+    },
+    {
+      "repository": "pallets/click",
+      "base_commit": "19be092b6db4e4300e31906498e354ec0adf870c",
+      "fixed_commit": "e0033315510510acdba14e880a361ccca091fb4b",
+      "message": "fix ParamType.to_info_dict() with no name",
+      "task_hash": "aecc1b9d13e02aa431180bf0e4adac291b5175d55e7471df07a9b1f25f5da3c2",
+      "split": "learn",
+      "functions": [
+        "src/click/types.py::to_info_dict"
+      ],
+      "patch_fingerprint": "616e5139af29b43ab9d34699dcd7c5633487ab22f571ce5691f860d4c0275664",
+      "timestamp": 1647714379
+    },
+    {
+      "repository": "pallets/click",
+      "base_commit": "eb1d760fb433d08278816d7ba49477ce86b691a7",
+      "fixed_commit": "e002dbc40ceb6a7e78dbe5e5868744690ba3120f",
+      "message": "Fix return value and type signature of `shell_completion.add_completion_class` function (#2421)",
+      "task_hash": "26e215936eb207a71630a426e3ca98c31ab72e036572918499f883e73ad5c5b9",
+      "split": "learn",
+      "functions": [
+        "src/click/shell_completion.py::<module>",
+        "src/click/shell_completion.py::add_completion_class"
+      ],
+      "patch_fingerprint": "9fddc37f427699222c8faa91ec54eba65c46fb666e267f1b77c20c5b625bfcec",
+      "timestamp": 1683518481
+    },
+    {
+      "repository": "pallets/click",
+      "base_commit": "c021f05c838c1d0401ebc340d1de9b663c7fb578",
+      "fixed_commit": "61f8101f4e0d02cb902ef17853fa35ad88185265",
+      "message": "Fix printing of default option value to handle empty strings",
+      "task_hash": "8a5a009ff18c6a900a48504aa057a4dc1f86d2c7569130b6256e5f4414a8a9c0",
+      "split": "learn",
+      "functions": [
+        "src/click/core.py::get_help_record"
+      ],
+      "patch_fingerprint": "756785a5aae3b95a58d193e38b15d33e376cbb9b623371d66f54e44d83d2896e",
+      "timestamp": 1716308656
+    },
+    {
+      "repository": "pallets/click",
+      "base_commit": "02046e7a19480f85fff7e4577486518abe47e401",
+      "fixed_commit": "1a4d8c1bb1e8f8e214ede7223bd2c05dc2ce006a",
+      "message": "Fix metavar for Choice options when show_choices=False (#2365)",
+      "task_hash": "2ea8971e9ad310672c7979f589b97398799af39445827b930ce144a258ab62dc",
+      "split": "learn",
+      "functions": [
+        "src/click/types.py::get_metavar"
+      ],
+      "patch_fingerprint": "67a0862f0ab210c23bb6c577d808af034baf3090a3e304aa57fcc44aee513f0a",
+      "timestamp": 1730587503
+    },
+    {
+      "repository": "pallets/click",
+      "base_commit": "a8c05427602d12842c53ce48b03b5d6b5c0c6693",
+      "fixed_commit": "c326df95e9e3da0425360e030413f6a3ee25fdee",
+      "message": "Fix closing of callbacks on CLI exit (#2680)",
+      "task_hash": "be3db5ece0402a13598de062eb9d15369139fe634929a9e92672da731e3b69be",
+      "split": "learn",
+      "functions": [
+        "src/click/core.py::exit"
+      ],
+      "patch_fingerprint": "7def3dd4df2f31ab76038b0c2c5fcaa8b2ba9b15bbc6ce8a46d0bf5b090b66c4",
+      "timestamp": 1730637315
+    },
+    {
+      "repository": "pallets/click",
+      "base_commit": "9ce34f20d2370f2e298268227edf0ffce6b9725f",
+      "fixed_commit": "4fd2fea0db423d242aedcae0a5f664efe0a93484",
+      "message": "Fix condition for setting flag value when type is provided",
+      "task_hash": "50f44b3adde4af7b11c4c2fcdbaf0167bbc59937426be3602b079e1a3c45a88c",
+      "split": "learn",
+      "functions": [
+        "src/click/core.py::__init__"
+      ],
+      "patch_fingerprint": "e1da55284fec3b353424165cfd884af6c648bd8a313f26e637e5eaa994f80081",
+      "timestamp": 1747744546
+    },
+    {
+      "repository": "pallets/click",
+      "base_commit": "884af5c20fdc95c9c7352df35c37273391464fb9",
+      "fixed_commit": "ac6a2acfdb4550c35ce69ce54db502ba96c96324",
+      "message": "Fix shell completion for nested groups",
+      "task_hash": "53f2398bf56902fb650edbb4254f6173420983a8512a03cb3d881fe1768837f4",
+      "split": "learn",
+      "functions": [
+        "src/click/shell_completion.py::_resolve_context"
+      ],
+      "patch_fingerprint": "3955c9393f1a888dd4d15b2127696c55835afef76fc8f89336442d54978de2bc",
+      "timestamp": 1747772015
+    },
+    {
+      "repository": "pallets/click",
+      "base_commit": "3be1f33c8e0b13295853f6aa64d1f7412b5312df",
+      "fixed_commit": "701b313160be12752e49b3f7cea32402c0969a69",
+      "message": "Fix completions for quoted/escaped parameters in Fish (#3013)",
+      "task_hash": "99d4245f20d7df33e2f0937e514ea4f2288512cf8e765151f48805982f826dbc",
+      "split": "dev",
+      "functions": [
+        "src/click/shell_completion.py::get_completion_args"
+      ],
+      "patch_fingerprint": "a3617bb5c10e4ec9f3aaa594c1eae346b224be351e7839e3b3d6ea89c776994e",
+      "timestamp": 1754747026
+    },
+    {
+      "repository": "pallets/click",
+      "base_commit": "6a1c0d077311f180b356965914e2de5b9e0fdb44",
+      "fixed_commit": "1c20dc6e724cd5625faaa17b715ba928d44c08bf",
+      "message": "Fix default handling to defer UNSET normalization",
+      "task_hash": "a9194e2948ceb92cd89db271f2304993960bc0c28a651fafe921af2858a89f4b",
+      "split": "dev",
+      "functions": [
+        "src/click/core.py::handle_parse_result",
+        "src/click/core.py::parse_args"
+      ],
+      "patch_fingerprint": "a04b584448126c8f465464f460664ba30a8b37a8a61387c64c0e9ed347de24a7",
+      "timestamp": 1758723433
+    },
+    {
+      "repository": "pallets/click",
+      "base_commit": "ea70da487b05d6bb758d472a3a9ffab4a5b7fcd5",
+      "fixed_commit": "437e1e3295c7ec979fc1bf285bb402ca20d847e7",
+      "message": "Temporarily provide a fake context to the callback to hide `UNSET` values as `None`",
+      "task_hash": "e2888793cd161b64478d03f237d51be6ab5147d724e414c00ba9c58f38d6f00f",
+      "split": "dev",
+      "functions": [
+        "src/click/core.py::process_value"
+      ],
+      "patch_fingerprint": "3fc4b1a216ee528bb7bc952bb83fac02b386a75ee2ff3c6ea6d0a5ed3eeb4f0b",
+      "timestamp": 1762927670
+    },
+    {
+      "repository": "pallets/click",
+      "base_commit": "1339fd3323357119a9c7a6326c788f80295954ce",
+      "fixed_commit": "4f9086bf8fd98aca1d804bf742f4f1ceb6c12295",
+      "message": "Patch `pdb` in `CliRunner` to allow debugger interactions in tests",
+      "task_hash": "08a706fec0a625365902235ce35d89f4d5f9935e7816314bfe336ca4f262e33b",
+      "split": "dev",
+      "functions": [
+        "src/click/testing.py::<module>",
+        "src/click/testing.py::_patched_pdb_init",
+        "src/click/testing.py::isolation"
+      ],
+      "patch_fingerprint": "f33c4f64a335b144fe1763ee551d3273ee448cbb147944fe3117b0fb7d888d18",
+      "timestamp": 1775744624
+    },
+    {
+      "repository": "pallets/click",
+      "base_commit": "f1f191ecd2c790b161187c78e7c88440e9524e5c",
+      "fixed_commit": "1241abaed4e441582a21f4bf90c8482de02b92df",
+      "message": "Use non-shadowed help option name in error hint",
+      "task_hash": "2b85ea3deb14cdb65f470a627a119c5f7ca72212f5c2b3c5a7ffc3e44952d694",
+      "split": "test",
+      "functions": [
+        "src/click/exceptions.py::show"
+      ],
+      "patch_fingerprint": "28c6bede141f8abc5c844686f302181b3dcf8cf05f819c6f0d7b734e3ebabb80",
+      "timestamp": 1776787332
+    },
+    {
+      "repository": "pallets/click",
+      "base_commit": "8bd8b4a074c55c03b6eb5666edc44a9c43df38a2",
+      "fixed_commit": "3a3e0350b6a2ea3e799440d48e779acabcf44de9",
+      "message": "Split string values from `default_map` for multi-value parameters",
+      "task_hash": "9fe091a5f8b6a7733211464c3719dccaabd42a9581bcecb0983ecd856faccaa6",
+      "split": "test",
+      "functions": [
+        "src/click/core.py::consume_value"
+      ],
+      "patch_fingerprint": "099661e7193efe161729e8915d495b1546d155e4a8f0931d03687ecb99d72a93",
+      "timestamp": 1777301753
+    },
+    {
+      "repository": "pallets/click",
+      "base_commit": "fc6c7c47edd6110b6bd5a1a5297b2035214b0cd1",
+      "fixed_commit": "a09c1c655eef3d43181eb46036b66cf058d72df4",
+      "message": "fix: show custom error message in prompt with hide_input=True",
+      "task_hash": "e289cddd06a3151aac00dbeb8274eea402e2c89712ae74ee3f80d287330ca556",
+      "split": "test",
+      "functions": [
+        "src/click/termui.py::prompt"
+      ],
+      "patch_fingerprint": "4ad55c251c0d808ddb075de2dc819b98b2a45e0636e0372ee67f0d97bac15f05",
+      "timestamp": 1778249099
+    },
+    {
+      "repository": "pallets/click",
+      "base_commit": "7c99ebe23b931f27562d926814423cce85fd9766",
+      "fixed_commit": "0551bf53588ae87f462d336f24f853a156fefe3a",
+      "message": "Fix `HelpFormatter.write_usage` producing spurious characters",
+      "task_hash": "07a8ffc1b855bdef3aa2b39a7424d1536daa2943982ee4edb745edc978e4e9e9",
+      "split": "test",
+      "functions": [
+        "src/click/formatting.py::write_usage"
+      ],
+      "patch_fingerprint": "4672a3b93c123a06ce7b3e87584c0e7eb22fc5c5a2b6d56e0b5ca589d3e1c012",
+      "timestamp": 1778913571
+    },
+    {
+      "repository": "pallets/click",
+      "base_commit": "8929d392781c8113bc569f388c15c47b94f86581",
+      "fixed_commit": "762c97eef7c1b3779678992f26a553a2a8c80793",
+      "message": "Fix double-bracketing of choices in synopsis",
+      "task_hash": "1b961c05312625988a8e93038df49cbdb90090a2e7f759466494214241295608",
+      "split": "test",
+      "functions": [
+        "src/click/core.py::make_metavar"
+      ],
+      "patch_fingerprint": "37d051a4230d9258ff12a4c966bfce38b0cf83c2ae983391c34919fdd8bed2bd",
+      "timestamp": 1781098297
+    },
+    {
+      "repository": "pallets/click",
+      "base_commit": "916883afad450c0c9bbc4212817900949131adbd",
+      "fixed_commit": "bec59289d8cf9b9b4010642b2fee483e5f8eeefc",
+      "message": "Fix `package_name` resolution when top-level module differs from distribution name",
+      "task_hash": "46735b792c42806040b3e08c5fab3e32122edef1a86d4914e1824e71c13b44d8",
+      "split": "test",
+      "functions": [
+        "src/click/decorators.py::callback",
+        "src/click/decorators.py::version_option"
+      ],
+      "patch_fingerprint": "2ad42671b667cb126affd5e52ed25031301eeabae2f81ceb5e1a93d1aa1d0ee9",
+      "timestamp": 1781412833
+    },
+    {
+      "repository": "pallets/click",
+      "base_commit": "7925a3410d7098c28cfca3b2baa6c852666bbd14",
+      "fixed_commit": "07c909f23f0f83b5ca137c167b9a134d66201f67",
+      "message": "Validate style() color arguments, fix explicit black color argument",
+      "task_hash": "e21b0996a334857095048c89055322ef54440b4da56c17f19ef66f452523226b",
+      "split": "test",
+      "functions": [
+        "src/click/termui.py::_interpret_color",
+        "src/click/termui.py::style"
+      ],
+      "patch_fingerprint": "1650099e00621d6caeb1cd6b3f315822e3a11a2ee57ef42e9fef8d61936c06cc",
+      "timestamp": 1783521999
+    },
+    {
+      "repository": "pallets/click",
+      "base_commit": "420c8fb44eeadb537cae69d2fee3796e808558dd",
+      "fixed_commit": "f58ca3e81424a35626c8a475eb59ab95589008ce",
+      "message": "Fix `copy`, `deepcopy` and `pickle` of `Sentinel` members",
+      "task_hash": "792817a13d9f6a426468922cf906d6f08e4c6698f5945461e7e7607c55e13891",
+      "split": "test",
+      "functions": [
+        "src/click/_utils.py::__copy__"
+      ],
+      "patch_fingerprint": "e9c2873df9060c4eac7fe21192e9ca79c474f2d3572bf646e80eb860cd282029",
+      "timestamp": 1787986435
+    },
+    {
+      "repository": "pallets/click",
+      "base_commit": "bb695aaecdef95832d167fc1d508921745aa824e",
+      "fixed_commit": "c53d3732b98c764932e146c007146ad402acb229",
+      "message": "Fix `show_envvar` output for a sequence or an empty `envvar`",
+      "task_hash": "012adc412754d31ea4b08613386f5ed1af1faa149aead803e7e2cb13173a09dd",
+      "split": "test",
+      "functions": [
+        "src/click/core.py::get_error_hint",
+        "src/click/core.py::get_help_extra"
+      ],
+      "patch_fingerprint": "08faefaac7eb471d22148a48bb9334f51dc848c129f09e23301a22dc44ab7055",
+      "timestamp": 1791294878
+    },
+    {
+      "repository": "python-attrs/attrs",
+      "base_commit": "09161fc9181bf94aa3bbc5509c663d736a9553dc",
+      "fixed_commit": "fd7538f0e23a49ec34b636484de2d1b4b690c7fb",
+      "message": "validators.in_ now transforms certain unhashable options to tuples (#1320)",
+      "task_hash": "eb793006d52c4e7f0034da5a679da2e9168bcb707fed079c6c13fffa729018c1",
+      "split": "learn",
+      "functions": [
+        "src/attr/validators.py::<module>",
+        "src/attr/validators.py::__call__",
+        "src/attr/validators.py::__repr__",
+        "src/attr/validators.py::in_"
+      ],
+      "patch_fingerprint": "050fbb93dc223abd18f58b3c5ad5849dcbb772dc5a2a4fb4e6b2ce7f758b3bfa",
+      "timestamp": 1722684921
+    },
+    {
+      "repository": "python-attrs/attrs",
+      "base_commit": "fd7538f0e23a49ec34b636484de2d1b4b690c7fb",
+      "fixed_commit": "dbb25ce34787a30e2ffa65685f6c689a269c3521",
+      "message": "Add support for __attrs_init_subclass__ (#1321)",
+      "task_hash": "541de68f4a0557231f71c606c544f4f1906f61364d77dc809c115f167b276fa0",
+      "split": "learn",
+      "functions": [
+        "src/attr/_make.py::<module>",
+        "src/attr/_make.py::attrs",
+        "src/attr/_make.py::build_class",
+        "src/attr/_next_gen.py::define"
+      ],
+      "patch_fingerprint": "3922ae5310977c185dadf7f01e0990e622386a43dd0256039a27cf7e07a0265e",
+      "timestamp": 1722685092
+    },
+    {
+      "repository": "python-attrs/attrs",
+      "base_commit": "53e632c5218b729da6ac37a35b4b68379dc18999",
+      "fixed_commit": "6fda0a4e086b56d7058855e4c15112c8f58de74c",
+      "message": "Make Converter a kind of adapter, fix converters.pipe (#1328)",
+      "task_hash": "0823d7c9806cb3dceaecc54ebcbecdd80006e16c636971825b44883e572d19a1",
+      "split": "learn",
+      "functions": [
+        "src/attr/_make.py::__init__",
+        "src/attr/_make.py::pipe_converter",
+        "src/attr/setters.py::<module>",
+        "src/attr/setters.py::convert"
+      ],
+      "patch_fingerprint": "e1f268881a1782a5994ffc7526b57db8665f8c1b3e9954f81d2f9c6504be1afe",
+      "timestamp": 1722944983
+    },
+    {
+      "repository": "python-attrs/attrs",
+      "base_commit": "58cd3ae112abf36fcd8c1cdf2a55e21b3a5734d3",
+      "fixed_commit": "1921da6eac6231b7bc058b076c0648b2d1b5c042",
+      "message": "allow __suppress_context__ and __notes__ to be mutated on frozen exceptions (#1365)",
+      "task_hash": "5fd780a59bef90faf82110651e4b632a21666fcc14529094dc0c6e5f4803fe1f",
+      "split": "dev",
+      "functions": [
+        "src/attr/_make.py::_frozen_delattrs",
+        "src/attr/_make.py::_frozen_setattrs"
+      ],
+      "patch_fingerprint": "84a8127bf671761816ec3a0fdfa90eae2ef80d464062dac8b8e681105189fe15",
+      "timestamp": 1729941644
+    },
+    {
+      "repository": "python-attrs/attrs",
+      "base_commit": "75723b7720952ac0a4c7d3e277b6714ba55ded18",
+      "fixed_commit": "e048efcb395443608d184a149c0adbca166cb833",
+      "message": "Perform attr order checks after field transformer. (#1401)",
+      "task_hash": "b08293723189a4dc36745c4547e0e723d3bfc8e9982a1750837cc8e4802c8171",
+      "split": "dev",
+      "functions": [
+        "src/attr/_make.py::_transform_attrs"
+      ],
+      "patch_fingerprint": "1967ca2a9a3ed2ee19865bcab4b4acf3472f5807787ad694a5b2f531995c484b",
+      "timestamp": 1739086091
+    },
+    {
+      "repository": "python-attrs/attrs",
+      "base_commit": "eccd966d80aff5196efc959316961cfa780439f9",
+      "fixed_commit": "ce89f5d11feb0805da9ed10bb165238cc959f1bb",
+      "message": "Fix message passing in frozen errors",
+      "task_hash": "38a6a535ce4fa4b24c0f0e4042b81518d45ab27a09330a859d44a8e52bf48634",
+      "split": "test",
+      "functions": [
+        "src/attr/exceptions.py::<module>",
+        "src/attr/exceptions.py::__init__"
+      ],
+      "patch_fingerprint": "3043fb256cf1d7f8ec9010374dd5ebecefd88c0ac5458b61a96ffb75f6542a51",
+      "timestamp": 1773494050
+    },
+    {
+      "repository": "python-attrs/attrs",
+      "base_commit": "ab7f8b2f4c0f747d5b1575247ce35e5adaad182e",
+      "fixed_commit": "af9c510912ce604a94896cc35c27368d5baf6ae6",
+      "message": "Fix validators.disabled() to save/restore state on nesting (#1513)",
+      "task_hash": "c27bce6fd6aa55883914196dd3302226bbdc98118796a6e7900719da9fa6eb96",
+      "split": "test",
+      "functions": [
+        "src/attr/validators.py::disabled"
+      ],
+      "patch_fingerprint": "cebe28266fa1d07039926a265f32c785d23255941fcf197371e220d536324474",
+      "timestamp": 1773498233
+    },
+    {
+      "repository": "python-attrs/attrs",
+      "base_commit": "6851ab593cd25f3c14393e9355d57d22bec2a074",
+      "fixed_commit": "97f8d175656bc03c373a1c9038048a4d312c307c",
+      "message": "Fix ClassVar forward reference detection (#1593)",
+      "task_hash": "3128aa85bab9443876134385eb6751c20fe3502ccca47c478c1bda94cf91405f",
+      "split": "test",
+      "functions": [
+        "src/attr/_make.py::_is_class_var"
+      ],
+      "patch_fingerprint": "72c4b1e1a62d02661bb121485d8e10dc0c808edc07df09842913288f338381c0",
+      "timestamp": 1785504486
+    },
+    {
+      "repository": "theskumar/python-dotenv",
+      "base_commit": "6ca2e2ab399c7e41be276bc830f21af3092f5d28",
+      "fixed_commit": "7b172fe24830bb8fd8cd943b73570e8cd6515ba1",
+      "message": "Fix parsing of unquoted values with two spaces",
+      "task_hash": "ee096b3327911aae96e5a32972b1268f4fa1d16b3f4892b5429f8c0e26c0a6dc",
+      "split": "learn",
+      "functions": [
+        "src/dotenv/parser.py::<module>",
+        "src/dotenv/parser.py::parse_unquoted_value"
+      ],
+      "patch_fingerprint": "43a003ce1c3749cffbc06713fcc04015f37e501fe0ea1e8a04d53a92255e631d",
+      "timestamp": 1600895438
+    },
+    {
+      "repository": "theskumar/python-dotenv",
+      "base_commit": "68ea2d10dd8e97e6dea67c32742085f27729e3fe",
+      "fixed_commit": "bca6644d9aedbe287b792b756b3ae3d650cd0d3a",
+      "message": "fix: strip UTF-8 BOM from .env files (#640)",
+      "task_hash": "15c62dd5ec74b4c70428f3d35cf69f0f1c1489a43c4feeb662b3e4e255b10cd2",
+      "split": "learn",
+      "functions": [
+        "src/dotenv/parser.py::__init__"
+      ],
+      "patch_fingerprint": "c61880d0e99e899251de22797e3bb9401eaef1e08452106848cf768b08e2949a",
+      "timestamp": 1776627551
+    },
+    {
+      "repository": "theskumar/python-dotenv",
+      "base_commit": "49515afee2d50c33cad9419b3800b3a0dc93fc59",
+      "fixed_commit": "f5485a61eefa5e686d6d5bdc7aa9ad6b104b1e92",
+      "message": "fix: parse empty unquoted value with inline comment as empty string",
+      "task_hash": "2c7f0ccd7e01adc1b5a57ad22f0feee375174d6370ea06c70e615034d6b8ccfb",
+      "split": "dev",
+      "functions": [
+        "src/dotenv/parser.py::parse_binding"
+      ],
+      "patch_fingerprint": "fdf7c76e74691db0f4e6478a97bf5f3dbe4ea55618987bec5ddbeae6e54236dd",
+      "timestamp": 1786952491
+    },
+    {
+      "repository": "theskumar/python-dotenv",
+      "base_commit": "6a49d6d88fd9bd99bef8d63b9eb6f2e46ecc7072",
+      "fixed_commit": "6bdf86adb2b8e3d9e3031b3a81f24851c8bfca0e",
+      "message": "fix: don't leak or mask errors when rewrite cleanup fails on Windows (#686)",
+      "task_hash": "26273edb0e064863eaeb3b3a973b0bd9053863f3789182cf56e36a2c3e69e686",
+      "split": "test",
+      "functions": [
+        "src/dotenv/main.py::_discard_temp_file",
+        "src/dotenv/main.py::rewrite"
+      ],
+      "patch_fingerprint": "b376f2b85fcaf8b4a8172c292a3678f76244ac58bcb6d4ef5da39ab4b73a0a73",
+      "timestamp": 1790836540
+    },
+    {
+      "repository": "theskumar/python-dotenv",
+      "base_commit": "791414804eff08a23f0b7970968e1717e3b28e66",
+      "fixed_commit": "0b2880591780a426b0551436f47a17e7a76d954f",
+      "message": "fix: expand ~ in find_dotenv and the %dotenv magic (#714)",
+      "task_hash": "48ff07583f43c734263d06edbd1d6046ad84663de5c20f6e9337b66024b6d264",
+      "split": "test",
+      "functions": [
+        "src/dotenv/main.py::find_dotenv"
+      ],
+      "patch_fingerprint": "5cde9270136f5a82f55a822c4af71f1431380d11d4f9a97cdf76658f368327c1",
+      "timestamp": 1790840074
+    },
+    {
+      "repository": "tkem/cachetools",
+      "base_commit": "8f0d74a145f90e2672371b61aa8f82614adeefd7",
+      "fixed_commit": "d3598664ca921b11a35e42087b46a4686fa10f37",
+      "message": "Fix #256: Deprecate @mru_cache decorator.",
+      "task_hash": "f98d4a7af3a3a844c720c1edfa9ac5b9e977f95b886a2c9379acf4e787b5155d",
+      "split": "learn",
+      "functions": [
+        "src/cachetools/func.py::mru_cache"
+      ],
+      "patch_fingerprint": "8229146c36a7e19d1ea09a0dce04b8a9e5e47a21b992bec3b3fee23606b3c1b0",
+      "timestamp": 1721068448
+    },
+    {
+      "repository": "tkem/cachetools",
+      "base_commit": "726b0111e06f655c332ea4765a89d4669719649b",
+      "fixed_commit": "bb4b37cfc76ba42707db59a90220bf724393d263",
+      "message": "Fix #292, fix #205, fix #103: TTLCache.expire() returns iterable of expired (key, value) pairs.",
+      "task_hash": "91b1966d921a1a0e4c0c22f284982aa41c2ad1073fbcd82ceb466e212c737b59",
+      "split": "learn",
+      "functions": [
+        "src/cachetools/__init__.py::<module>",
+        "src/cachetools/__init__.py::expire"
+      ],
+      "patch_fingerprint": "869ebc573682fd8ca834bcefab521951353c053132bf9b5a5a10722809bdf1ee",
+      "timestamp": 1724005498
+    },
+    {
+      "repository": "tkem/cachetools",
+      "base_commit": "eadb91cc9d54a57d6738386bc5c575ff3c7d22ec",
+      "fixed_commit": "bcf9e8176ebe16da58751fce971c98ffe045ede1",
+      "message": "Fix #423: Detect an empty RRCache before calling choice.",
+      "task_hash": "cde4fbdc3a96f5fd20ee4e9f9e45cc070b2829e910f3a377f10ba9738c891fb3",
+      "split": "dev",
+      "functions": [
+        "src/cachetools/__init__.py::popitem"
+      ],
+      "patch_fingerprint": "db3f0e856da589a96f809c34f1f5d67cbf10df14b41691f0257cae523683fb96",
+      "timestamp": 1790539932
+    },
+    {
+      "repository": "tkem/cachetools",
+      "base_commit": "aa73a19299432530eb9b1c0f9acecde6ad96c9e0",
+      "fixed_commit": "ec0b97b8a43dbd61fa83d702dadd2ff21131bd26",
+      "message": "Fix #437: Preserve cachedmethod super dispatch and expand inheritance coverage",
+      "task_hash": "2c0324edcdae17d01d05de6a934c79e07caa7a1e3b4c5daf9cbabd05dfa5f11c",
+      "split": "test",
+      "functions": [
+        "src/cachetools/_cachedmethod.py::__get__"
+      ],
+      "patch_fingerprint": "104d4490f54d03317cecf37e23eb6d295d6720028a451bdcc5637de5a9e524ab",
+      "timestamp": 1792011431
+    },
+    {
+      "repository": "tkem/cachetools",
+      "base_commit": "eba200635273fe45b67e669b84cb45f995b27c24",
+      "fixed_commit": "95e6addbd82afd75f81cb5650f32f6d74af2f1f9",
+      "message": "Fix #443: Restore autospec calls to @cachedmethod decorated methods",
+      "task_hash": "ef18967b01cd5187177c632c96aeede0ee2bc0545505c5bb046885025cfe1aa0",
+      "split": "test",
+      "functions": [
+        "src/cachetools/_descriptor.py::<module>",
+        "src/cachetools/_descriptor.py::__get_unbound"
+      ],
+      "patch_fingerprint": "6d4dbfb9626c0a71eb17b4781a807ef7ed4bb522d0e9a38f9f58504e60d9cec4",
+      "timestamp": 1792430038
+    },
+    {
+      "repository": "tkem/cachetools",
+      "base_commit": "36d4e87f3fd6ec557323e150dcb40123312f2730",
+      "fixed_commit": "b34643f37174751df37016899f4e7f5f6b189012",
+      "message": "Fix @cachedmethod class access with receiver as keyword argument.",
+      "task_hash": "a896b4a8e0784b22203ecc95c4af37069c9c78d7e498a43b350690aef41bc314",
+      "split": "test",
+      "functions": [
+        "src/cachetools/_descriptor.py::__call__",
+        "src/cachetools/_descriptor.py::__init__",
+        "src/cachetools/_descriptor.py::__pop_receiver"
+      ],
+      "patch_fingerprint": "5a5fb46b0043f3e06a60810ba510479e996b8fb1b904cd1bd554f69c1e1983ff",
+      "timestamp": 1792875714
+    }
+  ],
+  "excluded": [
+    {
+      "id": "mahmoud-boltons-64e6430024",
+      "reason": "overlapping changed-function group"
+    },
+    {
+      "id": "mahmoud-boltons-8a2a93d821",
+      "reason": "overlapping changed-function group"
+    },
+    {
+      "id": "mahmoud-boltons-ebc7a8f776",
+      "reason": "overlapping changed-function group"
+    },
+    {
+      "id": "pallets-click-70c673d37e",
+      "reason": "overlapping changed-function group"
+    },
+    {
+      "id": "pallets-click-8762c7752c",
+      "reason": "overlapping changed-function group"
+    },
+    {
+      "id": "pallets-click-d340b0c120",
+      "reason": "overlapping changed-function group"
+    },
+    {
+      "id": "theskumar-python-dotenv-c68e78fe8d",
+      "reason": "overlapping changed-function group"
+    }
+  ]
+}

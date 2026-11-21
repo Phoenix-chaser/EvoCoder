@@ -1,0 +1,175 @@
+{
+  "original_skill": {
+    "applicability": [
+      "Click/CLI terminal-rendering bugs: help/usage separator spacing, blank lines, conditional optional fragments",
+      "Progress-bar or batched update behavior where the final position/count is under-reported when closing the display",
+      "Terminal width calculation involving ANSI escape sequences (term_len/strip_ansi) where styled text wraps early or leaks escape fragments",
+      "Issues that name multiple output surfaces or feature states (visible/hidden, color enabled/disabled) even when the supplied tests reproduce only one"
+    ],
+    "change_summary": "Run 2e229b043d067c2431aa604bf2717cc0: submitted patch (event 48) changed 1 file(s); submitted public test passed (event 49); final grade passed (event 50). Frozen tests reported feature states: disabled, enabled. Green saves: 1; verified restores: 0. Touched src/click/_termui_impl.py (ProgressBar.__exit__, ProgressBar.finish).\nRun bcd4c8e51fee9bef26a4af55b3948d41: submitted patch (event 45) changed 1 file(s); submitted public test passed (event 46); final grade passed (event 47). Frozen tests reported feature states: disabled, enabled. Green saves: 1; verified restores: 0. Touched src/click/_termui_impl.py (ProgressBar._flush_pending_steps, ProgressBar.finish, ProgressBar.render_finish).\nRun f17b66f78ee25172d1db663a60c56c58: submitted patch (event 52) changed 1 file(s); submitted public test passed (event 53); final grade passed (event 54). Frozen tests reported feature states: disabled, enabled. Green saves: 1; verified restores: 0. Touched src/click/_compat.py.",
+    "counterexamples": [
+      "A patch fixing only the visible-progress path passed the enabled-state test but failed the hidden-state test in run 2e229b043d067c2431aa604bf2717cc0 (done=8 vs done=11); a single passing state does not establish correctness.",
+      "In run bcd4c8e51fee9bef26a4af55b3948d41 fixing only the accounting (pos) left the enabled test failing until rendering was also flushed; a symbol change alone did not fix the observable behavior.",
+      "Fixing term_len only for SGR-final forms in run f17b66f78ee25172d1db663a60c56c58 initially failed both states; success came after checking colon-form CSI, ESC[1m-style and incomplete sequences via a direct probe.",
+      "Post-edit public failures (both states failing) occurred in all three runs before recovery; they were repaired by further edits and re-verification, not ignored — a failing state after an edit must be re-run, not assumed fixed.",
+      "A saved green snapshot was never restored in any observed run; a save alone did not recover anything, and no run demonstrated that saving replaces verification after later edits."
+    ],
+    "evidence_refs": [
+      "2e229b043d067c2431aa604bf2717cc0",
+      "bcd4c8e51fee9bef26a4af55b3948d41",
+      "f17b66f78ee25172d1db663a60c56c58"
+    ],
+    "exclusions": [
+      "Do not apply to runtime/semantic behavior of command parsing; only rendering/formatting/progress-display output",
+      "Do not hardcode literal expected strings, terminal widths, regex bodies or test names from any single failing test into product code; a one-character fix verified only against one state is not proven",
+      "Not applicable when the mismatch is in wording rather than layout, counts, or escape handling",
+      "A rejected action (invalid search query, empty reason) is procedural noise, not evidence about the code; retry with corrected parameters",
+      "Do not expand pytest discovery to a directory or escalate warnings globally as a verification strategy; use the supplied public suite plus targeted two-state runs and direct probes",
+      "A passing run of only one feature state is not proof of completeness when the issue names other states or surfaces"
+    ],
+    "name": "verify-usage-separator-formatting",
+    "parent": "44f5b7395bfde5e84e0cfebe25ef88a9582781e17658c9a284a6767536710201",
+    "steps": [
+      "Run the dedicated public test action BEFORE any edit to capture the original broken behavior; record the exact failing assertion output, including diff hints and any 'Skipping N identical leading' truncation.",
+      "Read the failure diff carefully: hidden differences (trailing spaces, escape fragments, off-by-count positions like 'done=8' vs 'done=11') are often masked by truncation. Split actual vs expected and identify whether the defect is in the computed value, the rendering, or the width/escape handling.",
+      "Identify every named feature state and output surface in the issue (e.g. visible vs hidden display, color enabled vs disabled, manual vs iterator updates, multiple CSI forms including colon-form RGB). The supplied public suite typically contains one test per registered state — treat each named state as a separate check, not as covered by a passing sibling.",
+      "Locate the assembly/update point: for separator or optional-fragment issues, emit separators only between non-empty parts; for batched-progress under-counting, flush any remaining pending partial batch when the progress bar finishes (both explicit finish and context-manager exit) so hidden and visible paths share correct accounting; for width bugs, make the escape-stripping pattern cover all valid CSI forms while leaving adjacent text and incomplete sequences intact.",
+      "Fix the root cause once, covering all named states; do not special-case literal strings, widths, or test names.",
+      "When behavior is uncertain, run a small isolated probe through the library API (e.g. import the width/escape helpers and print term_len/strip_ansi on representative sequences) before editing, to confirm which inputs are mishandled; keep probes read-only.",
+      "Run the dedicated public test action after the edit and check EACH named state's result individually; one passing and one failing state means the fix is incomplete (observed: hidden-state 'done=8' persisted while the enabled state passed after the first edit).",
+      "When both states pass, save a green checkpoint of the verified editable snapshot; if any later edit regresses a state, use restore_checkpoint to return to the saved green rather than re-deriving the fix, then re-verify with the public test action.",
+      "Reserve the final step for a full clean verification run of the exact public command; stop editing after a verified pass and submit only from that state."
+    ],
+    "verification": [
+      "The dedicated public test action passes after the final edit, with every registered named state (e.g. disabled and enabled) reported passing individually, not just an aggregate exit code.",
+      "Every state and surface named in the issue is explicitly checked: hidden display stays silent with the correct final summary; visible display reaches the full position with normal position/percent formatting; styled and plain renderings wrap at the same visible columns with styles preserved and no escape fragments when color is off.",
+      "Behavior for already-correct inputs (non-empty fragments, complete non-batched updates, plain text) is unchanged — verified by the paired disabled/enabled assertions, not visual inspection.",
+      "A clean run of the exact public command on the final snapshot was performed (saved green) and no edit follows it without re-verification; the restore path was exercised only if a regression appeared.",
+      "No step or command budget exhausted at submission; post-success edits without a re-verification run are not allowed."
+    ]
+  },
+  "admission": {
+    "schema": 1,
+    "model_calls": 0,
+    "candidate": "4a88b651b305e5e5fa1563d7e62453c232de18e61605462411a8be3c933dfdf9",
+    "step": "Run the dedicated public test action after the edit and check EACH named state's result individually; one passing and one failing state means the fix is incomplete (observed: hidden-state 'done=8' persisted while the enabled state passed after the first edit).",
+    "historical_audit_hash": "12bd5dcc8a7dee912a9d219482788dd0cd1680ef46db0c78959b9a229da7a7c0",
+    "cited_runs": [
+      "2e229b043d067c2431aa604bf2717cc0",
+      "bcd4c8e51fee9bef26a4af55b3948d41",
+      "f17b66f78ee25172d1db663a60c56c58"
+    ],
+    "test_observations": [
+      {
+        "run_id": "2e229b043d067c2431aa604bf2717cc0",
+        "task_id": "pallets-click-f316d5cb3a",
+        "task_hash": "ea0752d9da2f05720099b076574635cbeccf5a3c06c780edf57814537251316c",
+        "checkpoint_tested_seq": 21,
+        "observation_seq": 22,
+        "output_hash": "c8b84a8ec0764a86431dd523254dc78e5434e018015113326f778cd296596646",
+        "patch_hash": "3573466130d7f81549f5e25ce2d256a73b6155cfe207cd00e2d82369b698d0eb",
+        "named_states": {
+          "enabled": "failed",
+          "disabled": "failed"
+        },
+        "first_changed_public_check": true,
+        "observed_edit_or_write_seqs": [
+          15
+        ],
+        "disabled_actual_line": "E         + done=8"
+      },
+      {
+        "run_id": "2e229b043d067c2431aa604bf2717cc0",
+        "task_id": "pallets-click-f316d5cb3a",
+        "task_hash": "ea0752d9da2f05720099b076574635cbeccf5a3c06c780edf57814537251316c",
+        "checkpoint_tested_seq": 43,
+        "observation_seq": 45,
+        "output_hash": "1aef1e9192000f1419833ad26473734a0e8b718888cb1d04cc9618e0f042f47e",
+        "patch_hash": "fbb1249d9add32d90afd70b32ccceecdcbc6d25d96455f8ccea197c88747359b",
+        "named_states": {
+          "enabled": "passed",
+          "disabled": "passed"
+        },
+        "first_changed_public_check": false,
+        "observed_edit_or_write_seqs": [
+          15,
+          37,
+          40
+        ],
+        "disabled_actual_line": null
+      },
+      {
+        "run_id": "bcd4c8e51fee9bef26a4af55b3948d41",
+        "task_id": "pallets-click-f316d5cb3a",
+        "task_hash": "ea0752d9da2f05720099b076574635cbeccf5a3c06c780edf57814537251316c",
+        "checkpoint_tested_seq": 33,
+        "observation_seq": 34,
+        "output_hash": "df65a65a77bb31f55dc391cf2342545aa0999223f690b97270f65dba0c6d3beb",
+        "patch_hash": "89c4cc9f487e2033393aff3e82203bbc71f4e3ffec219a4910d5017aca0ab606",
+        "named_states": {
+          "enabled": "failed",
+          "disabled": "passed"
+        },
+        "first_changed_public_check": true,
+        "observed_edit_or_write_seqs": [
+          27,
+          30
+        ],
+        "disabled_actual_line": null
+      },
+      {
+        "run_id": "bcd4c8e51fee9bef26a4af55b3948d41",
+        "task_id": "pallets-click-f316d5cb3a",
+        "task_hash": "ea0752d9da2f05720099b076574635cbeccf5a3c06c780edf57814537251316c",
+        "checkpoint_tested_seq": 40,
+        "observation_seq": 42,
+        "output_hash": "1aef1e9192000f1419833ad26473734a0e8b718888cb1d04cc9618e0f042f47e",
+        "patch_hash": "cdf7c1053b6683d005e91ecbda49905ea13205feab33d4d4ae8d9a049e526ce6",
+        "named_states": {
+          "enabled": "passed",
+          "disabled": "passed"
+        },
+        "first_changed_public_check": false,
+        "observed_edit_or_write_seqs": [
+          27,
+          30,
+          37
+        ],
+        "disabled_actual_line": null
+      }
+    ],
+    "claimed": {
+      "run_id": "2e229b043d067c2431aa604bf2717cc0",
+      "observation_seq": 22,
+      "enabled": "passed",
+      "disabled": "failed"
+    },
+    "positive_control": {
+      "run_id": "2e229b043d067c2431aa604bf2717cc0",
+      "observation_seq": 22,
+      "enabled": "failed",
+      "disabled": "failed"
+    },
+    "checks": [
+      {
+        "case": "archived_unstructured_step",
+        "accepted": false,
+        "skill_rows_added": 0,
+        "reason": "1 validation error for StepRevision"
+      },
+      {
+        "case": "joint_statuses_without_same_invocation",
+        "accepted": false,
+        "skill_rows_added": 0,
+        "reason": "feature-state claim lacks one matching cited test invocation"
+      },
+      {
+        "case": "actual_same_invocation",
+        "accepted": true,
+        "skill_rows_added": 1,
+        "reason": null
+      }
+    ],
+    "scope": "Steps generated in bound_procedure mode contain typed actions. Public node outcomes are rendered only from a single cited event. Arbitrary narrative, timing, and causal claims are unsupported."
+  }
+}

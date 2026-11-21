@@ -1,0 +1,26 @@
+[project]
+name = "evocoder"
+version = "0.1.0"
+description = "Execution-feedback-driven, versioned skill revision for coding agents"
+requires-python = ">=3.12,<3.13"
+dependencies = ["pydantic>=2.9,<3", "pydantic-settings>=2.5,<3", "httpx>=0.27,<1", "python-dotenv>=1,<2"]
+
+[project.scripts]
+evocoder = "evocoder.cli:main"
+
+[build-system]
+requires = ["hatchling>=1.26,<2"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "ruff>=0.9,<1"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["docker: uses real Docker containers"]
+
+[tool.ruff]
+line-length = 110
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]

@@ -1,0 +1,420 @@
+{
+  "schema": 1,
+  "origin": {
+    "experiment": "comparison-live-004",
+    "provider_model": "deepseek-flash",
+    "source_hash": "23fa699eb1b21721a32e93da8c3241d9983be954bc8b73b58c7a6cacd296c5ca",
+    "manifest_hash": "334fa0145eff7f8cdbbf3e5372d3004b53d2f2504408abdce460bc65933b6b0c",
+    "claim": "historical revision trace",
+    "solver_received_upstream_location_hint": true
+  },
+  "parent": {
+    "id": "2e387779bd197a7be5c5b0ec2e45c795f7a7e08de50efd2e188424fd633f5e66",
+    "skill": {
+      "applicability": [
+        "A CLI framework builds a usage/help line by concatenating metavar fragments, and the reported defect is malformed formatting when a metavar (e.g. options_metavar) is empty or falsy.",
+        "The usage pieces are produced by a method that returns a list of strings which a formatter later joins with separators.",
+        "The fix must preserve existing behavior for non-empty metavars and only change the empty/falsy case.",
+        "Also applies to help-record assembly where a default value or similar fragment is rendered even when it is an empty string, producing stray punctuation or spacing."
+      ],
+      "change_summary": "Extends the parent skill in response to run 6501dc311b954ffda2fcd68c78278607, where the skill was applied to a related but distinct defect (printing a default option value that is an empty string) and the episode ended with the step budget exhausted, five writes, and zero public successes after any edit. Retained the parent's core diagnostic (guard a falsy fragment before appending it to a piece list) and its verification discipline, but: (1) broadened applicability to help-record/default-value assembly, not just usage pieces; (2) added a baseline-run step and an explicit \"re-read the failure before a second edit\" step to counter blind iteration; (3) added a stop rule forbidding writes after the last green run; (4) added verification that no writes follow the last passing run; (5) added counterexamples citing 6501dc311b954ffda2fcd68c78278607 to warn that a truthiness guard is not automatically correct for empty defaults and that repeated writes without a passing checkpoint signal a wrong diagnosis. No measured improvement is claimed.",
+      "counterexamples": [
+        "If the empty fragment is needed to preserve a separator position for downstream alignment, dropping it would change output; verify against existing formatting tests before applying.",
+        "A single passing run of the targeted test does not prove the guard is the only needed change; the full suite must also pass to rule out regressions in other usage-line tests.",
+        "Run 6501dc311b954ffda2fcd68c78278607 shows the skill was applied to a help-record/default-value defect and the step budget was exhausted with five writes and zero post-edit public successes; a truthiness guard on a default value is not automatically the right fix, so confirm the failing assertion names the empty-default case before editing.",
+        "A green targeted module does not license further edits: in 6501dc311b954ffda2fcd68c78278607 no public success was recorded after any edit, so repeated writes without a passing checkpoint indicate the diagnosis is wrong, not that more edits are needed."
+      ],
+      "evidence_refs": [
+        "a0ff74553beb45239dd95fe4f08fc484",
+        "6501dc311b954ffda2fcd68c78278607"
+      ],
+      "exclusions": [
+        "Not applicable when the defect is in the formatter's join/separator logic rather than in the list of usage pieces.",
+        "Not applicable when the metavar is intentionally required to occupy a slot even when empty (e.g. fixed-width alignment contracts).",
+        "Not applicable to non-formatting defects such as parsing, type conversion, or completion behavior.",
+        "Not applicable when the empty value is semantically meaningful and must be rendered (e.g. an explicitly empty default that should display as '')."
+      ],
+      "name": "empty-metavar-usage-line-repair",
+      "parent": "72bac599b100589e1769cd08c5e04662c36ee9c2b7bcb30a0bcd815a98b9ffd1",
+      "steps": [
+        "Locate the function that assembles the usage pieces (e.g. collect_usage_pieces) or the help record (e.g. get_help_record) and read how its return value is consumed by the formatter/joiner.",
+        "Identify whether the empty/falsy fragment is being inserted unconditionally, producing a stray empty fragment that the joiner renders as extra whitespace, a dangling separator, or stray punctuation.",
+        "Change the assembly so the fragment is appended only when it is truthy (guard with `if <fragment>:` before appending), leaving the rest of the list construction unchanged.",
+        "Do not alter the formatter/joiner or the metavar/default values; keep the change minimal and local to the piece-collection or help-record function.",
+        "Before editing, run the targeted public test module once to record the baseline; after editing, run the targeted module, then the full public suite.",
+        "If the targeted module still fails after one edit, re-read the failing assertion output and the surrounding assembly code before making a second edit; do not iterate blindly.",
+        "Stop editing once the targeted module and the full public suite pass; do not continue making speculative writes after the last green run."
+      ],
+      "verification": [
+        "Run the targeted test file (e.g. public_checks/test_formatting.py or public_checks/test_options.py) and confirm it passes.",
+        "Run the full public test suite and confirm all tests pass, checking that help/usage output tests for non-empty metavars and non-empty defaults are unaffected.",
+        "Inspect the diff to confirm only the empty/falsy branch changed and no unrelated formatting logic was touched.",
+        "Confirm no writes were made after the last passing public run; if a write followed a green run, re-run the suite to re-establish the green state."
+      ]
+    }
+  },
+  "candidate": {
+    "id": "9efa67ccddd0b12e4f034f02f056ebe3e7adf9e48bfd959f9518c50b16a7da8a",
+    "skill": {
+      "applicability": [
+        "A CLI framework builds a usage/help line by concatenating metavar fragments, and the reported defect is malformed formatting when a metavar (e.g. options_metavar) is empty or falsy.",
+        "The usage pieces are produced by a method that returns a list of strings which a formatter later joins with separators.",
+        "The fix must preserve existing behavior for non-empty metavars and only change the empty/falsy case.",
+        "Also applies to help-record assembly where a default value or similar fragment is rendered even when it is an empty string, producing stray punctuation or spacing.",
+        "Applies to metavar construction for typed options (e.g. Choice with show_choices=False) where the produced metavar string is empty or malformed."
+      ],
+      "change_summary": "Extends the parent skill in response to two failed applications: run 6501dc311b954ffda2fcd68c78278607 (help-record/default-value defect; budget exhausted, 5 writes, 0 post-edit public successes) and run 91628047941c403d8c2dc2d38ae5f130 (Choice metavar with show_choices=False; budget exhausted, 1 write, 0 post-edit public successes). Retained the parent's core diagnostic (guard a falsy fragment before appending it to a piece list) and its verification discipline, but: (1) broadened applicability to metavar construction for typed options, not just usage pieces and help records; (2) added get_metavar to the step that locates the producer of the malformed string, so the solver checks whether the defect is upstream of the usage-piece list; (3) added a counterexample citing 91628047941c403d8c2dc2d38ae5f130 warning that a truthiness guard in the usage-piece list is not automatically correct when the defect lives in metavar construction; (4) added a counterexample citing a0ff74553beb45239dd95fe4f08fc484 as the target episode shape (one minimal write, then verification) without claiming it proves generalization. No measured improvement is claimed.",
+      "counterexamples": [
+        "If the empty fragment is needed to preserve a separator position for downstream alignment, dropping it would change output; verify against existing formatting tests before applying.",
+        "A single passing run of the targeted test does not prove the guard is the only needed change; the full suite must also pass to rule out regressions in other usage-line tests.",
+        "Run 6501dc311b954ffda2fcd68c78278607 shows the skill was applied to a help-record/default-value defect and the step budget was exhausted with five writes and zero post-edit public successes; a truthiness guard on a default value is not automatically the right fix, so confirm the failing assertion names the empty-default case before editing.",
+        "Run 91628047941c403d8c2dc2d38ae5f130 shows the skill applied to a Choice metavar defect and also ended with the step budget exhausted and zero post-edit public successes; a truthiness guard in the usage-piece list is not automatically the right fix when the defect lives in metavar construction, so locate the actual producer of the malformed string first.",
+        "A green targeted module does not license further edits: in 6501dc311b954ffda2fcd68c78278607 and 91628047941c403d8c2dc2d38ae5f130 no public success was recorded after any edit, so repeated writes without a passing checkpoint indicate the diagnosis is wrong, not that more edits are needed.",
+        "Run a0ff74553beb45239dd95fe4f08fc484 succeeded with a single write and no post-edit failures; treat that as the target shape of an episode (one minimal edit, then verification), not as proof that the guard generalizes to every empty-fragment defect."
+      ],
+      "evidence_refs": [
+        "a0ff74553beb45239dd95fe4f08fc484",
+        "6501dc311b954ffda2fcd68c78278607",
+        "91628047941c403d8c2dc2d38ae5f130"
+      ],
+      "exclusions": [
+        "Not applicable when the defect is in the formatter's join/separator logic rather than in the list of usage pieces.",
+        "Not applicable when the metavar is intentionally required to occupy a slot even when empty (e.g. fixed-width alignment contracts).",
+        "Not applicable to non-formatting defects such as parsing, type conversion, or completion behavior.",
+        "Not applicable when the empty value is semantically meaningful and must be rendered (e.g. an explicitly empty default that should display as '')."
+      ],
+      "name": "empty-metavar-usage-line-repair",
+      "parent": "2e387779bd197a7be5c5b0ec2e45c795f7a7e08de50efd2e188424fd633f5e66",
+      "steps": [
+        "Locate the function that assembles the usage pieces (e.g. collect_usage_pieces), the help record (e.g. get_help_record), or the metavar builder (e.g. get_metavar) and read how its return value is consumed by the formatter/joiner.",
+        "Identify whether the empty/falsy fragment is being inserted unconditionally, producing a stray empty fragment that the joiner renders as extra whitespace, a dangling separator, or stray punctuation.",
+        "Change the assembly so the fragment is appended only when it is truthy (guard with `if <fragment>:` before appending), leaving the rest of the list construction unchanged.",
+        "Do not alter the formatter/joiner or the metavar/default values; keep the change minimal and local to the piece-collection, help-record, or metavar function.",
+        "Before editing, run the targeted public test module once to record the baseline; after editing, run the targeted module, then the full public suite.",
+        "If the targeted module still fails after one edit, re-read the failing assertion output and the surrounding assembly code before making a second edit; do not iterate blindly.",
+        "Stop editing once the targeted module and the full public suite pass; do not continue making speculative writes after the last green run."
+      ],
+      "verification": [
+        "Run the targeted test file (e.g. public_checks/test_formatting.py or public_checks/test_options.py) and confirm it passes.",
+        "Run the full public test suite and confirm all tests pass, checking that help/usage output tests for non-empty metavars and non-empty defaults are unaffected.",
+        "Inspect the diff to confirm only the empty/falsy branch changed and no unrelated formatting logic was touched.",
+        "Confirm no writes were made after the last passing public run; if a write followed a green run, re-run the suite to re-establish the green state."
+      ]
+    }
+  },
+  "failure_excerpt": {
+    "run_id": "91628047941c403d8c2dc2d38ae5f130",
+    "task_id": "pallets-click-1a4d8c1bb1",
+    "issue_excerpt": "Fix metavar for Choice options when show_choices=False (#2365)",
+    "state": "EXHAUSTED",
+    "applied_skill_id": "2e387779bd197a7be5c5b0ec2e45c795f7a7e08de50efd2e188424fd633f5e66",
+    "route": "apply",
+    "model_steps": 16,
+    "feedback": {
+      "post_edit_public_failure_sequences": [],
+      "rejected_actions": 0,
+      "step_budget_exhausted": true,
+      "command_budget_exhausted": false,
+      "write_count": 1,
+      "public_success_count_after_edit": 0,
+      "writes_after_last_public_success": 0
+    },
+    "observations": [
+      {
+        "seq": 49,
+        "tool": "edit",
+        "path": "src/click/types.py",
+        "public_check": false,
+        "exit_code": 0
+      }
+    ]
+  },
+  "receipt": {
+    "id": "bb31eed014e31a4e2eb3c07142825d4d68def6650b074aadaabef56de32b8707",
+    "report": {
+      "baseline_library": null,
+      "baseline_members": [],
+      "candidate": "9efa67ccddd0b12e4f034f02f056ebe3e7adf9e48bfd959f9518c50b16a7da8a",
+      "claim": "exploratory",
+      "config_hash": "9cc4474325f3a8e1f41490abadf2db70fa1a7fe7f455fde2859e480261f36549",
+      "costs": {
+        "baseline": {
+          "calls": 212,
+          "cost_usd": 0.128855412,
+          "reserved_usd": 0.0
+        },
+        "candidate": {
+          "calls": 241,
+          "cost_usd": 0.148393848,
+          "reserved_usd": 0.0
+        }
+      },
+      "gate": {
+        "passed": false,
+        "required_improved_groups": 2,
+        "zero_observed_regressions": true
+      },
+      "improved_groups": [],
+      "infrastructure_errors": [],
+      "kind": "library_evaluation",
+      "library_id": "f64e91a9f06fcb2a7807e1d0358357811e3127388c3bd0636064b173d03fe1ab",
+      "members": [
+        "9efa67ccddd0b12e4f034f02f056ebe3e7adf9e48bfd959f9518c50b16a7da8a"
+      ],
+      "mode": "live",
+      "regressions": [
+        "mahmoud-boltons-4aa77cddb5"
+      ],
+      "rows": [
+        {
+          "baseline_applied_skill": null,
+          "baseline_pass": true,
+          "baseline_run": "ab470c3a878a478a9e89cea48192ea72",
+          "candidate_applied_skill": null,
+          "candidate_pass": true,
+          "candidate_run": "b4eafe5a5880499289f2f2a215ba1801",
+          "infrastructure_error": false,
+          "source_group": "dateutil/dateutil::src/dateutil/relativedelta.py::<module>",
+          "split": "dev",
+          "task_hash": "2ce7cd962259b2b72d7a4798122c92d151a9adb07fa8dfb82bf631ff225af22f",
+          "task_id": "dateutil-dateutil-68994217fb"
+        },
+        {
+          "baseline_applied_skill": null,
+          "baseline_pass": true,
+          "baseline_run": "25d5792aa95c4896a08b200d81692f22",
+          "candidate_applied_skill": null,
+          "candidate_pass": true,
+          "candidate_run": "25aee07743f5492284eeae2c1f22613f",
+          "infrastructure_error": false,
+          "source_group": "mahmoud/boltons::boltons/dictutils.py::update",
+          "split": "dev",
+          "task_hash": "b82f7a880db734a1bc5e2b0ea0c7b9060c466084788f0f94459f8cbcd918fa85",
+          "task_id": "mahmoud-boltons-6cac49ce4e"
+        },
+        {
+          "baseline_applied_skill": null,
+          "baseline_pass": true,
+          "baseline_run": "a515ea1ac74647afa1ee6ca858beae5f",
+          "candidate_applied_skill": null,
+          "candidate_pass": true,
+          "candidate_run": "51a9113e5e1949199c215c022d5a213b",
+          "infrastructure_error": false,
+          "source_group": "mahmoud/boltons::boltons/listutils.py::sort",
+          "split": "dev",
+          "task_hash": "9fd207b9dfa3ba2f3a6f462afeefe6a22e7f85c45e907d151afa314a5bd8c806",
+          "task_id": "mahmoud-boltons-f9c4f30511"
+        },
+        {
+          "baseline_applied_skill": null,
+          "baseline_pass": true,
+          "baseline_run": "d48949a328fd4e45ac654ffc64352f69",
+          "candidate_applied_skill": null,
+          "candidate_pass": true,
+          "candidate_run": "bc7c487dde4a459e83b4b2e4aa0549a7",
+          "infrastructure_error": false,
+          "source_group": "mahmoud/boltons::boltons/strutils.py::bytes2human",
+          "split": "dev",
+          "task_hash": "8cdaff1539fc1ed66f7c1739ddd4628871d75d9ce486271ba2684a9dd2e38d3b",
+          "task_id": "mahmoud-boltons-766b554739"
+        },
+        {
+          "baseline_applied_skill": null,
+          "baseline_pass": true,
+          "baseline_run": "ff874b3dc424474fae4bed8b62be53ee",
+          "candidate_applied_skill": null,
+          "candidate_pass": false,
+          "candidate_run": "22d91b07c6704ab4b9d5b7fe65627826",
+          "infrastructure_error": false,
+          "source_group": "mahmoud/boltons::boltons/iterutils.py::split_iter",
+          "split": "dev",
+          "task_hash": "af0fbf07353ac23feeb0fb49e669e12a96644d7b2ef24344d7bfbec463408188",
+          "task_id": "mahmoud-boltons-4aa77cddb5"
+        },
+        {
+          "baseline_applied_skill": null,
+          "baseline_pass": false,
+          "baseline_run": "b73a6b545c4442cfbbe12cc1a9788801",
+          "candidate_applied_skill": null,
+          "candidate_pass": false,
+          "candidate_run": "e11ab21c4f7a4b0eabceb3979fb44fc7",
+          "infrastructure_error": false,
+          "source_group": "mahmoud/boltons::boltons/setutils.py::__getitem__,boltons/setutils.py::_get_real_index",
+          "split": "dev",
+          "task_hash": "a917f9fed753df17eba53155374681ce3ea5f78fd7cfcd898a8913ebdab1198b",
+          "task_id": "mahmoud-boltons-d0a284fc7e"
+        },
+        {
+          "baseline_applied_skill": null,
+          "baseline_pass": true,
+          "baseline_run": "4d0d05eeb2cc473dae89caf9a36711ee",
+          "candidate_applied_skill": null,
+          "candidate_pass": true,
+          "candidate_run": "0b087d21c06a44ae891ec16615d1c06e",
+          "infrastructure_error": false,
+          "source_group": "more-itertools/more-itertools::more_itertools/more.py::iterate",
+          "split": "dev",
+          "task_hash": "09a0598189d0c699237ff1a2e9e4ac84d894581ed83ddcfd99f2ef76b9fa92c0",
+          "task_id": "more-itertools-more-itertools-cd0a3a87d2"
+        },
+        {
+          "baseline_applied_skill": null,
+          "baseline_pass": true,
+          "baseline_run": "6c12043e0ea5499eba76026ba0de8bbe",
+          "candidate_applied_skill": null,
+          "candidate_pass": true,
+          "candidate_run": "901413fc700e4086aa26b75873c231fe",
+          "infrastructure_error": false,
+          "source_group": "more-itertools/more-itertools::more_itertools/more.py::_sample_counted",
+          "split": "dev",
+          "task_hash": "81d426ed32508ac4eb7c16f23fb2170fec4aba868bbe97f4fd4067600e898559",
+          "task_id": "more-itertools-more-itertools-ae37eb38a1"
+        },
+        {
+          "baseline_applied_skill": null,
+          "baseline_pass": false,
+          "baseline_run": "9c31f6811bb14ceb852c2c0539107fad",
+          "candidate_applied_skill": null,
+          "candidate_pass": false,
+          "candidate_run": "a7e3148ee1514481a90ed901818c0a08",
+          "infrastructure_error": false,
+          "source_group": "pallets/click::src/click/shell_completion.py::get_completion_args",
+          "split": "dev",
+          "task_hash": "99d4245f20d7df33e2f0937e514ea4f2288512cf8e765151f48805982f826dbc",
+          "task_id": "pallets-click-701b313160"
+        },
+        {
+          "baseline_applied_skill": null,
+          "baseline_pass": false,
+          "baseline_run": "4a765d1ce0484fefbf8004b0eaeb7623",
+          "candidate_applied_skill": null,
+          "candidate_pass": false,
+          "candidate_run": "b578f47b2fd547678942647ad7edf6d6",
+          "infrastructure_error": false,
+          "source_group": "pallets/click::src/click/core.py::handle_parse_result,src/click/core.py::parse_args",
+          "split": "dev",
+          "task_hash": "a9194e2948ceb92cd89db271f2304993960bc0c28a651fafe921af2858a89f4b",
+          "task_id": "pallets-click-1c20dc6e72"
+        },
+        {
+          "baseline_applied_skill": null,
+          "baseline_pass": false,
+          "baseline_run": "3506d6a7e4d94f9a80399507f018dbf5",
+          "candidate_applied_skill": null,
+          "candidate_pass": false,
+          "candidate_run": "cc26cf9e24cf473cbc53d038a07534bf",
+          "infrastructure_error": false,
+          "source_group": "pallets/click::src/click/core.py::process_value",
+          "split": "dev",
+          "task_hash": "e2888793cd161b64478d03f237d51be6ab5147d724e414c00ba9c58f38d6f00f",
+          "task_id": "pallets-click-437e1e3295"
+        },
+        {
+          "baseline_applied_skill": null,
+          "baseline_pass": false,
+          "baseline_run": "d9e75490361d43dfb89fbc6ccc89095a",
+          "candidate_applied_skill": null,
+          "candidate_pass": false,
+          "candidate_run": "1099e3330ab341c6866aa083219761a6",
+          "infrastructure_error": false,
+          "source_group": "pallets/click::src/click/testing.py::<module>,src/click/testing.py::_patched_pdb_init,src/click/testing.py::isolation",
+          "split": "dev",
+          "task_hash": "08a706fec0a625365902235ce35d89f4d5f9935e7816314bfe336ca4f262e33b",
+          "task_id": "pallets-click-4f9086bf8f"
+        },
+        {
+          "baseline_applied_skill": null,
+          "baseline_pass": false,
+          "baseline_run": "3cd0fc3b790a49e992643759f4836cdb",
+          "candidate_applied_skill": null,
+          "candidate_pass": false,
+          "candidate_run": "d83e5be431214d2d893e9b301d81a118",
+          "infrastructure_error": false,
+          "source_group": "python-attrs/attrs::src/attr/_make.py::_frozen_delattrs,src/attr/_make.py::_frozen_setattrs",
+          "split": "dev",
+          "task_hash": "5fd780a59bef90faf82110651e4b632a21666fcc14529094dc0c6e5f4803fe1f",
+          "task_id": "python-attrs-attrs-1921da6eac"
+        },
+        {
+          "baseline_applied_skill": null,
+          "baseline_pass": true,
+          "baseline_run": "5e1216214a4046798104ec6fbbf3d8de",
+          "candidate_applied_skill": null,
+          "candidate_pass": true,
+          "candidate_run": "6589759e710b4bb48217a4d5b297272d",
+          "infrastructure_error": false,
+          "source_group": "python-attrs/attrs::src/attr/_make.py::_transform_attrs",
+          "split": "dev",
+          "task_hash": "b08293723189a4dc36745c4547e0e723d3bfc8e9982a1750837cc8e4802c8171",
+          "task_id": "python-attrs-attrs-e048efcb39"
+        },
+        {
+          "baseline_applied_skill": null,
+          "baseline_pass": false,
+          "baseline_run": "975ccea9971242a6ae70ba2caf0dc02f",
+          "candidate_applied_skill": null,
+          "candidate_pass": false,
+          "candidate_run": "9cc43800ffcd441d84fe0db587a930b5",
+          "infrastructure_error": false,
+          "source_group": "theskumar/python-dotenv::src/dotenv/parser.py::parse_binding",
+          "split": "dev",
+          "task_hash": "2c7f0ccd7e01adc1b5a57ad22f0feee375174d6370ea06c70e615034d6b8ccfb",
+          "task_id": "theskumar-python-dotenv-f5485a61ee"
+        },
+        {
+          "baseline_applied_skill": null,
+          "baseline_pass": true,
+          "baseline_run": "1e40adf9a53f4e61ac743354d85e2625",
+          "candidate_applied_skill": null,
+          "candidate_pass": true,
+          "candidate_run": "700b34e7f299474ab005b22786bcdfbf",
+          "infrastructure_error": false,
+          "source_group": "tkem/cachetools::src/cachetools/__init__.py::popitem",
+          "split": "dev",
+          "task_hash": "cde4fbdc3a96f5fd20ee4e9f9e45cc070b2829e910f3a377f10ba9738c891fb3",
+          "task_id": "tkem-cachetools-bcf9e8176e"
+        },
+        {
+          "baseline_applied_skill": null,
+          "baseline_pass": true,
+          "baseline_run": "32f299189d0f4c97b7175ea7a9196461",
+          "candidate_applied_skill": "9efa67ccddd0b12e4f034f02f056ebe3e7adf9e48bfd959f9518c50b16a7da8a",
+          "candidate_pass": true,
+          "candidate_run": "1373740bc7944f47b9b4032ace9444e4",
+          "infrastructure_error": false,
+          "source_group": "pallets/click::src/click/core.py::collect_usage_pieces",
+          "split": "learn",
+          "task_hash": "242be08209efc8f22abd0d569e75568ccaf8e45693d90fe705030d5fb5c94ef6",
+          "task_id": "pallets-click-42ee8a1f60"
+        },
+        {
+          "baseline_applied_skill": null,
+          "baseline_pass": false,
+          "baseline_run": "c67f5eea4ae341e1a77a2de27d149123",
+          "candidate_applied_skill": "9efa67ccddd0b12e4f034f02f056ebe3e7adf9e48bfd959f9518c50b16a7da8a",
+          "candidate_pass": false,
+          "candidate_run": "fe1996782b584222ae02d9dfff9bc3bd",
+          "infrastructure_error": false,
+          "source_group": "pallets/click::src/click/core.py::get_help_record",
+          "split": "learn",
+          "task_hash": "8a5a009ff18c6a900a48504aa057a4dc1f86d2c7569130b6256e5f4414a8a9c0",
+          "task_id": "pallets-click-61f8101f4e"
+        },
+        {
+          "baseline_applied_skill": null,
+          "baseline_pass": false,
+          "baseline_run": "cfd8e31ae95d4ad49d422a1a45b98b70",
+          "candidate_applied_skill": "9efa67ccddd0b12e4f034f02f056ebe3e7adf9e48bfd959f9518c50b16a7da8a",
+          "candidate_pass": false,
+          "candidate_run": "3e0413a896db4d99a2f64b1d61d7b3af",
+          "infrastructure_error": false,
+          "source_group": "pallets/click::src/click/types.py::get_metavar",
+          "split": "learn",
+          "task_hash": "2ea8971e9ad310672c7979f589b97398799af39445827b930ce144a258ab62dc",
+          "task_id": "pallets-click-1a4d8c1bb1"
+        }
+      ],
+      "schema": 1
+    }
+  }
+}

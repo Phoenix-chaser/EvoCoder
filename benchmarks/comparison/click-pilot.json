@@ -1,0 +1,47 @@
+{
+  "family": "click-help-text",
+  "repository": "pallets/click",
+  "seed_task_id": "pallets-click-42ee8a1f60",
+  "tasks": [
+    {
+      "commit": "42ee8a1f6011e0f4a8a19c34a545f3eb7ae978fa",
+      "split": "learn",
+      "issue": "A command that displays usage with an empty options metavar acquires an extra space. Keep the separators correct when the optional usage fragment is empty."
+    },
+    {
+      "commit": "61f8101f4e0d02cb902ef17853fa35ad88185265",
+      "split": "learn",
+      "issue": "A CLI option has an explicit empty-string default and is configured to display its default in help. The help text drops that default. Preserve the distinction between an empty default and an absent default."
+    },
+    {
+      "commit": "1a4d8c1bb1e8f8e214ede7223bd2c05dc2ce006a",
+      "split": "learn",
+      "issue": "An option with a choice type displays the wrong placeholder when the author disables showing its choices. The synopsis should respect that display option while preserving its accepted values."
+    },
+    {
+      "commit": "762c97eef7c1b3779678992f26a553a2a8c80793",
+      "split": "dev",
+      "issue": "A choice parameter in the command synopsis can be surrounded by two layers of brackets. Show it with the expected single level while keeping the optional-parameter notation."
+    },
+    {
+      "commit": "c53d3732b98c764932e146c007146ad402acb229",
+      "split": "dev",
+      "issue": "Help and error hints do not display environment-variable names consistently for options with a sequence of names or an empty name. Keep the formatting correct in both cases."
+    },
+    {
+      "commit": "dcd991d986d43c4f12cc838c4008dfafc015c21d",
+      "split": "test",
+      "issue": "Help paragraphs wrap early and leave unused space at the configured width. Format help text using the requested width while preserving indentation."
+    },
+    {
+      "commit": "244d914364e447175549dab8c2414cdb73d86a3c",
+      "split": "test",
+      "issue": "A documentation formatting marker appears verbatim in a command's short help. Produce a clean short summary from the original multiline help text."
+    },
+    {
+      "commit": "70c673d37eb91ba42a129be9037caf3ebed62f3e",
+      "split": "test",
+      "issue": "A custom help option and a second eager option run in the wrong order. When help is given first, it should exit without triggering the later option's callback."
+    }
+  ]
+}

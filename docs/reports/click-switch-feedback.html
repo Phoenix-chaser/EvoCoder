@@ -1,0 +1,707 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>EvoCoder · 16 步内的开关覆盖实验</title><style>body{font:16px/1.65 system-ui,sans-serif;color:#1e2731;max-width:1100px;margin:2.5rem auto;padding:0 1rem}table{border-collapse:collapse;width:100%}td,th{padding:.38rem .55rem;border-bottom:1px solid #d1d8df;text-align:left}th{background:#edf3f4}.scroll{overflow:auto}pre{background:#f4f6f8;padding:1rem;overflow:auto}details{margin:.5rem 0}small{color:#4d5966}summary{cursor:pointer}h2{margin-top:2rem}</style><main><h1>GLM 能在 16 步内写出能检出关闭回归的断言吗？</h1>
+<h2>独立学习题</h2>
+<div class="scroll"><table><thead><tr><th>任务</th><th>轮次</th><th>版本</th><th>路由</th><th>总步数</th><th>自写检查跑到关闭侧</th><th>首次检出步骤</th><th>提交版本上检出</th><th>修复通过</th></tr></thead><tbody>
+<tr><td>Choice 原始拼写</td><td>1</td><td>父版</td><td>skip</td><td>7</td><td>是</td><td>6</td><td>是</td><td>是</td></tr>
+<tr><td>Choice 原始拼写</td><td>1</td><td>子版</td><td>skip</td><td>8</td><td>是</td><td>6</td><td>是</td><td>是</td></tr>
+<tr><td>自动环境变量</td><td>1</td><td>父版</td><td>skip</td><td>9</td><td>是</td><td>7</td><td>是</td><td>是</td></tr>
+<tr><td>自动环境变量</td><td>1</td><td>子版</td><td>skip</td><td>10</td><td>是</td><td>8</td><td>是</td><td>是</td></tr>
+</tbody></table></div>
+<h2>正常路由父子对照</h2>
+<div class="scroll"><table><thead><tr><th>任务</th><th>轮次</th><th>版本</th><th>路由</th><th>总步数</th><th>自写检查跑到关闭侧</th><th>首次检出步骤</th><th>提交版本上检出</th><th>修复通过</th></tr></thead><tbody>
+<tr><td>计数选项</td><td>1</td><td>父版</td><td>apply</td><td>15</td><td>是</td><td>13</td><td>是</td><td>是</td></tr>
+<tr><td>计数选项</td><td>1</td><td>子版</td><td>apply</td><td>16</td><td>是</td><td>15</td><td>是</td><td>是</td></tr>
+<tr><td>Click #557</td><td>1</td><td>父版</td><td>apply</td><td>16</td><td>是</td><td>—</td><td>否</td><td>是</td></tr>
+<tr><td>Click #557</td><td>1</td><td>子版</td><td>apply</td><td>11</td><td>是</td><td>9</td><td>是</td><td>是</td></tr>
+<tr><td>计数选项</td><td>2</td><td>父版</td><td>apply</td><td>16</td><td>是</td><td>—</td><td>否</td><td>是</td></tr>
+<tr><td>计数选项</td><td>2</td><td>子版</td><td>apply</td><td>16</td><td>是</td><td>—</td><td>否</td><td>是</td></tr>
+<tr><td>Click #557</td><td>2</td><td>父版</td><td>apply</td><td>16</td><td>否</td><td>—</td><td>否</td><td>否</td></tr>
+<tr><td>Click #557</td><td>2</td><td>子版</td><td>apply</td><td>16</td><td>否</td><td>—</td><td>否</td><td>否</td></tr>
+</tbody></table></div>
+<h2>门禁与费用</h2>
+<p>重复确认改善的独立开发组 0 个，发生退化的任务 0 个。门禁要求至少两个组各连续两次配对改善，且回归与基础设施错误均为零。留出配对完成 0 次。本轮调用 156 次，按项目账本记 370.62 套餐积分。</p>
+<p>每次求解含语义路由，上限 16 步。学习题每个版本各一次，开发题各两次。两版同享覆盖反馈。公开测试、自写检查与补丁独立评分分别记账。检出须同时复现当时的执行结果、在上游版本通过，并在只改变关闭行为的对照版本触发自写断言。本轮未设置关闭反馈的配对组。</p><h2>逐次自写检查</h2>
+<details><summary>Choice 原始拼写 · 父版 · 第 1 轮（2 次）</summary><p>运行 <code>86a7763dc5629026a9240f7ab6e8f33d</code></p>
+<p>第 5 步，行动前未观察到 disabled, enabled。原执行码 0，上游执行码 0，关闭回归执行码 0。严格检出 否，断言行 —。</p><pre>import click
+from click.testing import CliRunner
+
+@click.command()
+@click.option(&#x27;-c&#x27;, &#x27;--choice&#x27;, type=click.Choice([&#x27;Apple&#x27;, &#x27;Banana&#x27;], case_sensitive=False))
+def cli(choice):
+    click.echo(&#x27;got:%s&#x27; % choice)
+
+r = CliRunner()
+res = r.invoke(cli, [&#x27;-c&#x27;, &#x27;APPLE&#x27;])
+assert res.exit_code == 0, res.output
+assert res.output.strip() == &#x27;got:Apple&#x27;, res.output
+print(&#x27;ok&#x27;)
+</pre>
+<p>第 6 步，行动前未观察到 disabled。原执行码 0，上游执行码 0，关闭回归执行码 1。严格检出 是，断言行 11。</p><pre>import click
+from click.testing import CliRunner
+
+@click.command()
+@click.option(&#x27;-c&#x27;, &#x27;--choice&#x27;, type=click.Choice([&#x27;Apple&#x27;, &#x27;Banana&#x27;]))
+def cli(choice):
+    click.echo(&#x27;got:%s&#x27; % choice)
+
+r = CliRunner()
+res = r.invoke(cli, [&#x27;-c&#x27;, &#x27;APPLE&#x27;])
+assert res.exit_code != 0, res.output
+assert &#x27;Invalid value&#x27; in res.output or &#x27;invalid choice&#x27; in res.output, res.output
+res2 = r.invoke(cli, [&#x27;-c&#x27;, &#x27;Apple&#x27;])
+assert res2.exit_code == 0, res2.output
+assert res2.output.strip() == &#x27;got:Apple&#x27;, res2.output
+print(&#x27;ok&#x27;)
+</pre>
+</details>
+<details><summary>Choice 原始拼写 · 子版 · 第 1 轮（2 次）</summary><p>运行 <code>768565eb6fe165c4d0cd10b119365eba</code></p>
+<p>第 6 步，行动前未观察到 disabled, enabled。原执行码 0，上游执行码 0，关闭回归执行码 1。严格检出 是，断言行 20。</p><pre>import click
+from click.testing import CliRunner
+
+@click.command()
+@click.option(&#x27;-c&#x27;, &#x27;--choice&#x27;, type=click.Choice([&#x27;Foo&#x27;, &#x27;BAR&#x27;], case_sensitive=False))
+def cli(choice):
+    click.echo(&#x27;got=%s&#x27; % choice)
+
+r = CliRunner().invoke(cli, [&#x27;-c&#x27;, &#x27;bar&#x27;])
+assert r.exit_code == 0, r.output
+assert &#x27;got=BAR&#x27; in r.output, r.output
+
+# case-sensitive rejection preserved
+@click.command()
+@click.option(&#x27;-c&#x27;, &#x27;--choice&#x27;, type=click.Choice([&#x27;Foo&#x27;, &#x27;BAR&#x27;]))
+def cli2(choice):
+    click.echo(&#x27;got=%s&#x27; % choice)
+
+r2 = CliRunner().invoke(cli2, [&#x27;-c&#x27;, &#x27;bar&#x27;])
+assert r2.exit_code != 0, r2.output
+
+# token normalization still applies (strip spaces, case-insensitive)
+def norm(x): return x.strip()
+@click.command()
+@click.option(&#x27;-c&#x27;, &#x27;--choice&#x27;, type=click.Choice([&#x27;Foo&#x27;], case_sensitive=False))
+@click.pass_context
+def cli3(ctx, choice):
+    ctx.token_normalize_func = norm
+    click.echo(&#x27;got=%s&#x27; % choice)
+
+print(&#x27;OK&#x27;)
+</pre>
+<p>第 7 步，行动前未观察到 无。原执行码 0，上游执行码 0，关闭回归执行码 1。严格检出 是，断言行 20。</p><pre>import click
+from click.testing import CliRunner
+
+@click.command()
+@click.option(&#x27;-c&#x27;, &#x27;--choice&#x27;, type=click.Choice([&#x27;Foo&#x27;, &#x27;BAR&#x27;], case_sensitive=False))
+def cli(choice):
+    click.echo(&#x27;got=%s&#x27; % choice)
+
+r = CliRunner().invoke(cli, [&#x27;-c&#x27;, &#x27;bar&#x27;])
+assert r.exit_code == 0, r.output
+assert &#x27;got=BAR&#x27; in r.output, r.output
+
+# disabled switch: must still reject wrong-case input
+@click.command()
+@click.option(&#x27;-c&#x27;, &#x27;--choice&#x27;, type=click.Choice([&#x27;Foo&#x27;, &#x27;BAR&#x27;], case_sensitive=True))
+def cli2(choice):
+    click.echo(&#x27;got=%s&#x27; % choice)
+
+r2 = CliRunner().invoke(cli2, [&#x27;-c&#x27;, &#x27;bar&#x27;])
+assert r2.exit_code != 0, r2.output
+assert &#x27;invalid choice&#x27; in r2.output, r2.output
+
+# token normalization retained, declared spelling returned
+@click.command()
+@click.option(&#x27;-c&#x27;, &#x27;--choice&#x27;, type=click.Choice([&#x27; Foo &#x27;], case_sensitive=False))
+@click.pass_context
+def cli3(ctx, choice):
+    click.echo(&#x27;got=%r&#x27; % choice)
+
+def norm(x): return x.strip()
+ctx_holder = {}
+import click as _c
+orig = CliRunner.invoke
+
+# simpler: set token_normalize_func via context_settings
+@click.command(context_settings=dict(token_normalize_func=lambda x: x.strip()))
+@click.option(&#x27;-c&#x27;, &#x27;--choice&#x27;, type=click.Choice([&#x27;Foo Bar&#x27;], case_sensitive=False))
+def cli4(choice):
+    click.echo(&#x27;got=%s&#x27; % choice)
+
+r4 = CliRunner().invoke(cli4, [&#x27;-c&#x27;, &#x27; foo bar &#x27;])
+assert r4.exit_code == 0, r4.output
+assert &#x27;got=Foo Bar&#x27; in r4.output, r4.output
+
+print(&#x27;OK&#x27;)</pre>
+</details>
+<details><summary>自动环境变量 · 父版 · 第 1 轮（1 次）</summary><p>运行 <code>431f350b174ff81ea066724d05d651c5</code></p>
+<p>第 7 步，行动前未观察到 disabled, enabled。原执行码 0，上游执行码 0，关闭回归执行码 1。严格检出 是，断言行 28。</p><pre>import click
+from click.testing import CliRunner
+
+runner = CliRunner()
+
+# Empty auto envvar should act as unset (falls back to default).
+@click.command()
+@click.option(&quot;--name&quot;, default=&quot;fallback&quot;)
+def cmd(name):
+    click.echo(name)
+
+r = runner.invoke(cmd, [], env={&quot;CLI_NAME&quot;: &quot;&quot;}, auto_envvar_prefix=&quot;CLI&quot;)
+assert r.exit_code == 0, r.output
+assert r.output.strip() == &quot;fallback&quot;, r.output
+
+# Populated auto envvar is still used.
+r = runner.invoke(cmd, [], env={&quot;CLI_NAME&quot;: &quot;set&quot;}, auto_envvar_prefix=&quot;CLI&quot;)
+assert r.output.strip() == &quot;set&quot;, r.output
+
+# Disabled automatic lookup: prefixed var must be ignored.
+@click.command()
+@click.option(&quot;--name&quot;, default=&quot;fallback&quot;, allow_from_autoenv=False)
+def cmd2(name):
+    click.echo(name)
+
+r = runner.invoke(cmd2, [], env={&quot;CLI2_NAME&quot;: &quot;ignored&quot;}, auto_envvar_prefix=&quot;CLI2&quot;)
+assert r.exit_code == 0, r.output
+assert r.output.strip() == &quot;fallback&quot;, r.output
+
+print(&quot;ok&quot;)
+</pre>
+</details>
+<details><summary>自动环境变量 · 子版 · 第 1 轮（2 次）</summary><p>运行 <code>26d152be9d064ee8d6722911b072ffa6</code></p>
+<p>第 7 步，行动前未观察到 disabled, enabled。原执行码 1，上游执行码 1，关闭回归执行码 1。严格检出 否，断言行 29。</p><pre>import os, click
+from click.testing import CliRunner
+
+@click.command()
+@click.option(&quot;-a&quot;, &quot;--above&quot;, default=&quot;fb&quot;)
+@click.option(&quot;-n&quot;, &quot;--name&quot;, &quot;num&quot;, default=&quot;dflt&quot;)
+def cli(above, num):
+    click.echo(f&quot;{above}|{num}&quot;)
+
+r = CliRunner()
+
+with r.isolation(env={&quot;TOOL_ABOVE&quot;: &quot;envval&quot;, &quot;TOOL_NUM&quot;: &quot;envnum&quot;}):
+    res = r.invoke(cli, [], auto_envvar_prefix=&quot;TOOL&quot;, prog_name=&quot;tool&quot;)
+assert res.output == &quot;envval|envnum\n&quot;, res.output
+
+# empty auto env var acts as unset -&gt; default used
+with r.isolation(env={&quot;TOOL_ABOVE&quot;: &quot;&quot;, &quot;TOOL_NUM&quot;: &quot;envnum&quot;}):
+    res = r.invoke(cli, [], auto_envvar_prefix=&quot;TOOL&quot;, prog_name=&quot;tool&quot;)
+assert res.output == &quot;fb|envnum\n&quot;, res.output
+
+# option disabling automatic lookup ignores env entirely
+@click.command()
+@click.option(&quot;-n&quot;, &quot;--name&quot;, &quot;num&quot;, default=&quot;dflt&quot;, allow_from_autoenv=False)
+def cli2(num):
+    click.echo(num)
+
+with r.isolation(env={&quot;TOOL_NUM&quot;: &quot;envnum&quot;}):
+    res = r.invoke(cli2, [], auto_envvar_prefix=&quot;TOOL&quot;, prog_name=&quot;tool&quot;)
+assert res.output == &quot;dflt\n&quot;, res.output
+
+# explicit envvar empty is still honored as a set value
+@click.command()
+@click.option(&quot;-n&quot;, &quot;--num&quot;, &quot;num&quot;, default=&quot;dflt&quot;, envvar=&quot;EXPLICIT_NUM&quot;)
+def cli3(num):
+    click.echo(num)
+
+with r.isolation(env={&quot;EXPLICIT_NUM&quot;: &quot;&quot;}):
+    res = r.invoke(cli3, [], auto_envvar_prefix=&quot;TOOL&quot;, prog_name=&quot;tool&quot;)
+assert res.output == &quot;\n&quot;, repr(res.output)
+print(&quot;ok&quot;)</pre>
+<p>第 8 步，行动前未观察到 无。原执行码 0，上游执行码 0，关闭回归执行码 1。严格检出 是，断言行 29。</p><pre>import click
+from click.testing import CliRunner
+
+@click.command()
+@click.option(&quot;-a&quot;, &quot;--above&quot;, default=&quot;fb&quot;)
+@click.option(&quot;-n&quot;, &quot;--name&quot;, &quot;num&quot;, default=&quot;dflt&quot;)
+def cli(above, num):
+    click.echo(f&quot;{above}|{num}&quot;)
+
+r = CliRunner()
+
+with r.isolation(env={&quot;TOOL_ABOVE&quot;: &quot;envval&quot;, &quot;TOOL_NUM&quot;: &quot;envnum&quot;}):
+    res = r.invoke(cli, [], auto_envvar_prefix=&quot;TOOL&quot;, prog_name=&quot;tool&quot;)
+assert res.output == &quot;envval|envnum\n&quot;, res.output
+
+# empty auto env var acts as unset -&gt; default used
+with r.isolation(env={&quot;TOOL_ABOVE&quot;: &quot;&quot;, &quot;TOOL_NUM&quot;: &quot;envnum&quot;}):
+    res = r.invoke(cli, [], auto_envvar_prefix=&quot;TOOL&quot;, prog_name=&quot;tool&quot;)
+assert res.output == &quot;fb|envnum\n&quot;, res.output
+
+# option disabling automatic lookup ignores env entirely
+@click.command()
+@click.option(&quot;-n&quot;, &quot;--name&quot;, &quot;num&quot;, default=&quot;dflt&quot;, allow_from_autoenv=False)
+def cli2(num):
+    click.echo(num)
+
+with r.isolation(env={&quot;TOOL_NUM&quot;: &quot;envnum&quot;}):
+    res = r.invoke(cli2, [], auto_envvar_prefix=&quot;TOOL&quot;, prog_name=&quot;tool&quot;)
+assert res.output == &quot;dflt\n&quot;, res.output
+print(&quot;ok&quot;)</pre>
+</details>
+<details><summary>计数选项 · 父版 · 第 1 轮（2 次）</summary><p>运行 <code>11e98a49c5629eb0f7a390f9fc222366</code></p>
+<p>第 8 步，行动前未观察到 disabled, enabled。原执行码 1，上游执行码 1，关闭回归执行码 1。严格检出 否，断言行 15。</p><pre>import click
+from click.testing import CliRunner
+
+@click.command()
+@click.option(&quot;-v&quot;, count=True, help=&quot;Verbosity&quot;)
+@click.option(&quot;--bounds&quot;, type=click.IntRange(1, 3), default=2, help=&quot;Bounds&quot;)
+def cli(v, bounds):
+    click.echo(f&quot;{v} {bounds}&quot;)
+
+r = CliRunner()
+out = r.invoke(cli, [&quot;--help&quot;]).output
+print(out)
+assert &quot;[0&lt;=x]&quot; not in out, &quot;implicit range leaked&quot;
+assert &quot;Verbosity&quot; in out
+assert &quot;1&lt;=x&lt;=3&quot; in out, &quot;explicit range lost&quot;
+assert &quot;default: 2&quot; in out, &quot;default annotation lost&quot;
+</pre>
+<p>第 13 步，行动前未观察到 disabled, enabled。原执行码 0，上游执行码 0，关闭回归执行码 1。严格检出 是，断言行 16。</p><pre>import click
+from click.testing import CliRunner
+
+@click.command()
+@click.option(&quot;-v&quot;, count=True, help=&quot;Verbosity&quot;, show_default=True)
+@click.option(&quot;--bounds&quot;, type=click.IntRange(1, 3), default=2, help=&quot;Bounds&quot;, show_default=True)
+def cli(v, bounds):
+    click.echo(f&quot;{v} {bounds}&quot;)
+
+r = CliRunner()
+out = r.invoke(cli, [&quot;--help&quot;]).output
+print(out)
+assert &quot;Verbosity&quot; in out
+assert &quot;x&gt;=0&quot; not in out, &quot;implicit range leaked&quot;
+assert &quot;default: 0&quot; in out, &quot;count default annotation lost&quot;
+assert &quot;1&lt;=x&lt;=3&quot; in out, &quot;explicit range lost&quot;
+assert &quot;default: 2&quot; in out, &quot;default annotation lost&quot;
+assert &quot;Verbosity  [default: 0]&quot; in out, &quot;separator/spacing wrong&quot;
+res = r.invoke(cli, [&quot;-vvv&quot;])
+assert res.output.strip() == &quot;3 2&quot;
+</pre>
+</details>
+<details><summary>计数选项 · 子版 · 第 1 轮（4 次）</summary><p>运行 <code>7729cbe07a4be4eb669ff8fdf0f49b64</code></p>
+<p>第 9 步，行动前未观察到 disabled, enabled。原执行码 1，上游执行码 1，关闭回归执行码 1。严格检出 否，断言行 13。</p><pre>import click
+from click.testing import CliRunner
+
+@click.command()
+@click.option(&quot;-v&quot;, &quot;--verbose&quot;, count=True, help=&quot;Verbosity level.&quot;)
+@click.option(&quot;--limit&quot;, type=click.IntRange(min=0, max=10), help=&quot;Limit.&quot;)
+def cli(verbose, limit):
+    click.echo(f&quot;v={verbose} l={limit}&quot;)
+
+r = CliRunner().invoke(cli, [&quot;--help&quot;])
+print(r.output)
+assert &quot;x&gt;=0&quot; not in r.output, &quot;implicit range leaked for count option&quot;
+assert &quot;[default: 0]&quot; in r.output, &quot;default annotation lost&quot;
+assert &quot;0&lt;=x&lt;=10&quot; in r.output, &quot;explicit range lost&quot;
+assert &quot;Verbosity level.&quot; in r.output
+r = CliRunner().invoke(cli, [&quot;-vvv&quot;, &quot;--limit&quot;, &quot;5&quot;])
+assert r.output.strip() == &quot;v=3 l=5&quot;, r.output
+r = CliRunner().invoke(cli, [&quot;--limit&quot;, &quot;-1&quot;], standalone_mode=False)
+assert isinstance(r.exception, click.exceptions.UsageError) or r.exit_code != 0
+print(&quot;OK&quot;)
+</pre>
+<p>第 13 步，行动前未观察到 无。原执行码 1，上游执行码 1，关闭回归执行码 1。严格检出 否，断言行 16。</p><pre>import click
+from click.testing import CliRunner
+
+@click.command()
+@click.option(&quot;-v&quot;, &quot;--verbose&quot;, count=True, help=&quot;Verbosity level.&quot;)
+@click.option(&quot;--limit&quot;, type=click.IntRange(min=0, max=10), help=&quot;Limit.&quot;)
+@click.option(&quot;--name&quot;, default=&quot;x&quot;, help=&quot;Name.&quot;)
+def cli(verbose, limit, name):
+    click.echo(f&quot;v={verbose} l={limit} n={name}&quot;)
+
+r = CliRunner().invoke(cli, [&quot;--help&quot;])
+print(r.output)
+# non-count state: no implicit range for count option
+assert &quot;x&gt;=0&quot; not in r.output.split(&quot;Limit.&quot;)[0], &quot;implicit range leaked for count option&quot;
+# explicit range still annotated with preserved spacing
+assert &quot;Limit.  [0&lt;=x&lt;=10]&quot; in r.output
+# default annotation preserved for other options
+assert &quot;Name.  [default: x]&quot; in r.output
+assert &quot;Verbosity level.&quot; in r.output
+# counting state still works
+r = CliRunner().invoke(cli, [&quot;-vvv&quot;, &quot;--limit&quot;, &quot;5&quot;])
+assert r.output.strip() == &quot;v=3 l=5 n=x&quot;, r.output
+# explicit range bound still enforced
+r = CliRunner().invoke(cli, [&quot;--limit&quot;, &quot;-1&quot;])
+assert r.exit_code != 0
+print(&quot;OK&quot;)
+</pre>
+<p>第 14 步，行动前未观察到 无。原执行码 1，上游执行码 1，关闭回归执行码 1。严格检出 否，断言行 14。</p><pre>import click
+from click.testing import CliRunner
+
+@click.command(context_settings={&quot;show_default&quot;: True})
+@click.option(&quot;-v&quot;, &quot;--verbose&quot;, count=True, help=&quot;Verbosity level.&quot;)
+@click.option(&quot;--limit&quot;, type=click.IntRange(min=0, max=10), help=&quot;Limit.&quot;)
+def cli(verbose, limit):
+    click.echo(f&quot;v={verbose} l={limit}&quot;)
+
+r = CliRunner().invoke(cli, [&quot;--help&quot;])
+print(r.output)
+assert &quot;x&gt;=0&quot; not in r.output.split(&quot;Limit.&quot;)[0], &quot;implicit range leaked for count option&quot;
+assert &quot;Verbosity level.  [default: 0]&quot; in r.output, &quot;default annotation lost&quot;
+assert &quot;Limit.  [default: None; 0&lt;=x&lt;=10]&quot; in r.output, &quot;explicit range lost&quot;
+r = CliRunner().invoke(cli, [&quot;-vvv&quot;, &quot;--limit&quot;, &quot;5&quot;])
+assert r.output.strip() == &quot;v=3 l=5&quot;, r.output
+r = CliRunner().invoke(cli, [&quot;--limit&quot;, &quot;-1&quot;])
+assert r.exit_code != 0
+print(&quot;OK&quot;)
+</pre>
+<p>第 15 步，行动前未观察到 无。原执行码 0，上游执行码 0，关闭回归执行码 1。严格检出 是，断言行 16。</p><pre>import click
+from click.testing import CliRunner
+
+@click.command(context_settings={&quot;show_default&quot;: True})
+@click.option(&quot;-v&quot;, &quot;--verbose&quot;, count=True, help=&quot;Verbosity level.&quot;)
+@click.option(&quot;--limit&quot;, type=click.IntRange(min=0, max=10), help=&quot;Limit.&quot;)
+def cli(verbose, limit):
+    click.echo(f&quot;v={verbose} l={limit}&quot;)
+
+r = CliRunner().invoke(cli, [&quot;--help&quot;])
+print(r.output)
+# counting flag (enabled state): no implicit &quot;x&gt;=0&quot; range suffix, default annotation kept with spacing
+assert &quot;Verbosity level.  [default: 0]&quot; in r.output, &quot;count default annotation lost&quot;
+assert &quot;x&gt;=0&quot; not in r.output.split(&quot;Limit.&quot;)[0], &quot;implicit range leaked for count option&quot;
+# non-count option with explicit bounds: informative range preserved
+assert &quot;Limit.  [0&lt;=x&lt;=10]&quot; in r.output, &quot;explicit range lost&quot;
+# disabled switch state: counting behavior itself
+r = CliRunner().invoke(cli, [&quot;-vvv&quot;, &quot;--limit&quot;, &quot;5&quot;])
+assert r.output.strip() == &quot;v=3 l=5&quot;, r.output
+r = CliRunner().invoke(cli, [&quot;--limit&quot;, &quot;-1&quot;])
+assert r.exit_code != 0
+# non-count numeric option without count still parses normally
+@click.command()
+@click.option(&quot;--n&quot;, type=int)
+def c2(n):
+    click.echo(f&quot;n={n}&quot;)
+r2 = CliRunner().invoke(c2, [&quot;--n&quot;, &quot;7&quot;])
+assert r2.output.strip() == &quot;n=7&quot;, r2.output
+print(&quot;OK&quot;)
+</pre>
+</details>
+<details><summary>Click #557 · 父版 · 第 1 轮（3 次）</summary><p>运行 <code>129986301f1cbdebe9d6aee0e9496c29</code></p>
+<p>第 3 步，行动前未观察到 disabled, enabled。原执行码 0，上游执行码 0，关闭回归执行码 0。严格检出 否，断言行 —。</p><pre>import click, inspect
+print(inspect.getsource(click.exceptions.UsageError))
+print(inspect.getsource(click.exceptions.Abort))</pre>
+<p>第 12 步，行动前未观察到 disabled, enabled。原执行码 1，上游执行码 1，关闭回归执行码 1。严格检出 否，断言行 12。</p><pre>import click
+from click.testing import CliRunner
+
+@click.command(add_help_option=False)
+@click.argument(&quot;name&quot;)
+def nohelp(name):
+    pass
+
+r = CliRunner().invoke(nohelp, [])
+print(repr(r.output))
+lines = r.output.splitlines()
+assert lines[1] == &quot;Error: Missing argument \&quot;NAME\&quot;.&quot;, lines
+
+@click.command()
+@click.argument(&quot;name&quot;)
+def withhelp(name):
+    pass
+r2 = CliRunner().invoke(withhelp, [])
+print(repr(r2.output))
+assert &#x27;Try &quot;withhelp --help&quot; for help.&#x27; in r2.output
+print(&quot;ok&quot;)
+</pre>
+<p>第 13 步，行动前未观察到 enabled。原执行码 1，上游执行码 0，关闭回归执行码 1。严格检出 否，断言行 14。</p><pre>import click
+from click.testing import CliRunner
+
+@click.command(add_help_option=False)
+@click.argument(&quot;name&quot;)
+def nohelp(name):
+    pass
+
+r = CliRunner().invoke(nohelp, [])
+print(repr(r.output))
+lines = r.output.splitlines()
+# help disabled: usage, blank, error (no hint line)
+assert lines[0] == &quot;Usage: nohelp [OPTIONS] NAME&quot;, lines
+assert lines[1:3] == [&quot;&quot;, lines[2]] and lines[2].startswith(&quot;Error: &quot;), lines
+
+@click.command()
+@click.argument(&quot;name&quot;)
+def withhelp(name):
+    pass
+r2 = CliRunner().invoke(withhelp, [])
+print(repr(r2.output))
+lines2 = r2.output.splitlines()
+assert lines2[1:3] == [&#x27;Try &quot;withhelp --help&quot; for help.&#x27;, &quot;&quot;], lines2
+assert lines2[3].startswith(&quot;Error: &quot;), lines2
+assert &quot;Try&quot; not in r.output
+print(&quot;ok&quot;)
+</pre>
+</details>
+<details><summary>Click #557 · 子版 · 第 1 轮（3 次）</summary><p>运行 <code>53cc1d895f397fa44322c4b243c94159</code></p>
+<p>第 5 步，行动前未观察到 disabled, enabled。原执行码 1，上游执行码 0，关闭回归执行码 1。严格检出 否，断言行 22。</p><pre>import click
+from click.testing import CliRunner
+
+@click.command()
+@click.argument(&quot;name&quot;)
+def inspect(name):
+    pass
+
+@click.command(add_help_option=False)
+@click.argument(&quot;name&quot;)
+def nohelp(name):
+    pass
+
+r = CliRunner().invoke(inspect, [])
+lines = r.output.splitlines()
+assert lines[1] == &#x27;Try &quot;inspect --help&quot; for help.&#x27;, lines
+assert lines[2] == &quot;&quot;, lines
+assert lines[3].startswith(&quot;Error: &quot;), lines
+
+r2 = CliRunner().invoke(nohelp, [])
+lines2 = r2.output.splitlines()
+assert lines2[1] == &quot;&quot;, lines2
+assert lines2[2].startswith(&quot;Error: &quot;), lines2
+assert not any(&quot;--help&quot; in l for l in lines2), lines2
+print(&quot;ok&quot;)
+</pre>
+<p>第 7 步，行动前未观察到 disabled, enabled。原执行码 1，上游执行码 0，关闭回归执行码 1。严格检出 否，断言行 24。</p><pre>import click
+from click.testing import CliRunner
+
+@click.command()
+@click.argument(&quot;name&quot;)
+def inspect(name):
+    pass
+
+@click.command(add_help_option=False)
+@click.argument(&quot;name&quot;)
+def nohelp(name):
+    pass
+
+r = CliRunner().invoke(inspect, [])
+lines = r.output.splitlines()
+assert r.exit_code == 2
+assert lines[1] == &#x27;Try &quot;inspect --help&quot; for help.&#x27;, lines
+assert lines[2] == &quot;&quot;, lines
+assert lines[3].startswith(&quot;Error: &quot;), lines
+
+r2 = CliRunner().invoke(nohelp, [])
+lines2 = r2.output.splitlines()
+assert r2.exit_code == 2
+assert lines2[1] == &quot;&quot;, lines2
+assert lines2[2].startswith(&quot;Error: &quot;), lines2
+assert not any(&quot;--help&quot; in l for l in lines2), lines2
+print(&quot;ok&quot;)
+</pre>
+<p>第 9 步，行动前未观察到 disabled, enabled。原执行码 0，上游执行码 0，关闭回归执行码 1。严格检出 是，断言行 24。</p><pre>import click
+from click.testing import CliRunner
+
+@click.command()
+@click.argument(&quot;name&quot;)
+def inspect(name):
+    pass
+
+@click.command(add_help_option=False)
+@click.argument(&quot;name&quot;)
+def nohelp(name):
+    pass
+
+r = CliRunner().invoke(inspect, [])
+lines = r.output.splitlines()
+assert r.exit_code == 2
+assert lines[1] == &#x27;Try &quot;inspect --help&quot; for help.&#x27;, lines
+assert lines[2] == &quot;&quot;, lines
+assert lines[3].startswith(&quot;Error: &quot;), lines
+
+r2 = CliRunner().invoke(nohelp, [])
+lines2 = r2.output.splitlines()
+assert r2.exit_code == 2
+assert lines2[1] == &quot;&quot;, lines2
+assert lines2[2].startswith(&quot;Error: &quot;), lines2
+assert not any(&quot;--help&quot; in l for l in lines2), lines2
+
+@click.group()
+@click.option(&quot;-x&quot;, &quot;cls&quot;, flag_value=&quot;x&quot;, default=True)
+def cli(cls):
+    pass
+
+@cli.command()
+@click.argument(&quot;name&quot;)
+def sub(name):
+    pass
+
+r3 = CliRunner().invoke(cli, [&quot;sub&quot;])
+lines3 = r3.output.splitlines()
+assert lines3[1] == &#x27;Try &quot;cli sub --help&quot; for help.&#x27;, lines3
+print(&quot;ok&quot;)
+</pre>
+</details>
+<details><summary>计数选项 · 父版 · 第 2 轮（1 次）</summary><p>运行 <code>48f6966138ca2d68ddd460be3744d070</code></p>
+<p>第 15 步，行动前未观察到 disabled。原执行码 1，上游执行码 1，关闭回归执行码 1。严格检出 否，断言行 14。</p><pre>import click
+from click.testing import CliRunner
+
+@click.command()
+@click.option(&quot;-v&quot;, &quot;--verbose&quot;, count=True, help=&quot;Verbosity level.&quot;)
+@click.option(&quot;-n&quot;, &quot;--num&quot;, type=click.IntRange(min=1, max=5), help=&quot;Number.&quot;)
+def cli(verbose, num):
+    click.echo(f&quot;v={verbose} n={num}&quot;)
+
+res = CliRunner().invoke(cli, [&quot;--help&quot;])
+out = res.output
+assert res.exit_code == 0, out
+assert &quot;[x&gt;=0]&quot; not in out, out
+assert &quot;[default: 0]&quot; in out, out
+assert &quot;Verbosity level.&quot; in out, out
+assert &quot;[1&lt;=x&lt;=5]&quot; in out, out
+
+# value behavior differs if the implicit range were ignored/removed
+res2 = CliRunner().invoke(cli, [&quot;-vvv&quot;, &quot;-n&quot;, &quot;3&quot;])
+assert res2.exit_code == 0, res2.output
+assert &quot;v=3 n=3&quot; in res2.output, res2.output
+res3 = CliRunner().invoke(cli, [&quot;-vvv&quot;, &quot;-n&quot;, &quot;9&quot;])
+assert res3.exit_code != 0
+print(&quot;ok&quot;)
+</pre>
+</details>
+<details><summary>计数选项 · 子版 · 第 2 轮（2 次）</summary><p>运行 <code>51ae9b5a9758076b9a910868d76d4d4c</code></p>
+<p>第 13 步，行动前未观察到 disabled, enabled。原执行码 0，上游执行码 0，关闭回归执行码 0。严格检出 否，断言行 —。</p><pre>src = open(&#x27;/workspace/src/click/core.py&#x27;).read().splitlines()
+for i in range(2520, 2531):
+    print(i+1, repr(src[i]))
+</pre>
+<p>第 15 步，行动前未观察到 disabled, enabled。原执行码 1，上游执行码 1，关闭回归执行码 1。严格检出 否，断言行 15。</p><pre>import click
+from click.testing import CliRunner
+
+@click.command()
+@click.option(&quot;-v&quot;, &quot;--verbose&quot;, count=True, help=&quot;Verbosity.&quot;)
+@click.option(&quot;-n&quot;, &quot;--num&quot;, type=click.IntRange(1, 5), help=&quot;Number.&quot;)
+def cli(verbose, num):
+    click.echo(f&quot;{verbose} {num}&quot;)
+
+r = CliRunner().invoke(cli, [&quot;--help&quot;])
+out = r.output
+assert r.exit_code == 0, out
+assert &quot;[0&lt;=x]&quot; not in out, out
+assert &quot;Verbosity.&quot; in out, out
+assert &quot;1&lt;=x&lt;=5&quot; in out, out
+assert &quot;default: 0&quot; in out, out
+# counting still functions
+r2 = CliRunner().invoke(cli, [&quot;-vvv&quot;, &quot;-n&quot;, &quot;3&quot;])
+assert r2.exit_code == 0 and r2.output.strip() == &quot;3 3&quot;, r2.output
+print(out)
+</pre>
+</details>
+<details><summary>Click #557 · 父版 · 第 2 轮（2 次）</summary><p>运行 <code>2be26f3c4ba810847296886f77859465</code></p>
+<p>第 5 步，行动前未观察到 disabled, enabled。原执行码 1，上游执行码 1，关闭回归执行码 1。严格检出 否，断言行 12。</p><pre>import click
+from click.testing import CliRunner
+
+@click.command()
+@click.argument(&quot;x&quot;)
+def cli(x):
+    pass
+
+r = CliRunner().invoke(cli, [])
+out = r.output
+print(repr(out))
+assert &quot;Try &#x27;cli --help&#x27; for help.&quot; in out, out
+# check separator: blank line between hint and Error
+lines = out.splitlines()
+i = [n for n,l in enumerate(lines) if l.startswith(&quot;Error:&quot;)][0]
+assert lines[i-1] == &quot;&quot;, lines
+
+# help disabled
+@click.command(add_help_option=False)
+@click.argument(&quot;x&quot;)
+def cli2(x):
+    pass
+
+r2 = CliRunner().invoke(cli2, [])
+print(repr(r2.output))
+assert &quot;for help&quot; not in r2.output, r2.output
+assert r2.output.splitlines()[-2] == &quot;&quot;, r2.output
+print(&quot;OK&quot;)
+</pre>
+<p>第 6 步，行动前未观察到 disabled。原执行码 1，上游执行码 1，关闭回归执行码 1。严格检出 否，断言行 12。</p><pre>import click
+from click.testing import CliRunner
+
+@click.command()
+@click.argument(&quot;x&quot;)
+def cli(x):
+    pass
+
+r = CliRunner().invoke(cli, [])
+out = r.output
+print(repr(out))
+assert &quot;Try &#x27;cli --help&#x27; for help.&quot; in out, out
+lines = out.splitlines()
+i = [n for n,l in enumerate(lines) if l.startswith(&quot;Error:&quot;)][0]
+assert lines[i-1] == &quot;&quot;, lines
+
+@click.command(add_help_option=False)
+@click.argument(&quot;x&quot;)
+def cli2(x):
+    pass
+
+r2 = CliRunner().invoke(cli2, [])
+print(repr(r2.output))
+assert &quot;for help&quot; not in r2.output, r2.output
+assert &quot;Usage: cli2&quot; in r2.output
+assert &quot;Error: Missing argument&quot; in r2.output
+j = [n for n,l in enumerate(r2.output.splitlines()) if l.startswith(&quot;Error:&quot;)][0]
+assert r2.output.splitlines()[j-1] == &quot;&quot;
+print(&quot;OK&quot;)
+</pre>
+</details>
+<details><summary>Click #557 · 子版 · 第 2 轮（3 次）</summary><p>运行 <code>d1c27bacbc38f2f83070ec7ead91c1d8</code></p>
+<p>第 13 步，行动前未观察到 disabled, enabled。原执行码 1，上游执行码 0，关闭回归执行码 1。严格检出 否，断言行 24。</p><pre>import click
+from click.testing import CliRunner
+
+r = CliRunner()
+
+@click.command()
+@click.argument(&quot;name&quot;)
+def inspect(name):
+    pass
+
+res = r.invoke(inspect, [])
+lines = res.output.splitlines()
+assert lines[1:3] == [&#x27;Try &quot;inspect --help&quot; for help.&#x27;, &quot;&quot;], lines
+assert lines[3].startswith(&quot;Error: &quot;)
+
+# disabled help option state: no hint line, blank separator preserved
+@click.command(add_help_option=False)
+@click.argument(&quot;name&quot;)
+def nohelp(name):
+    pass
+
+res2 = r.invoke(nohelp, [])
+l2 = res2.output.splitlines()
+assert l2[1] == &quot;&quot;, l2
+assert l2[2].startswith(&quot;Error: &quot;), l2
+assert not any(&quot;Try&quot; in x for x in l2), l2
+assert res2.exit_code == 2
+print(&quot;OK&quot;)
+</pre>
+<p>第 14 步，行动前未观察到 disabled。原执行码 1，上游执行码 1，关闭回归执行码 1。严格检出 否，断言行 —。</p><pre>import click\nfrom click.testing import CliRunner\n\n@click.command()\n@click.argument(&quot;name&quot;)\ndef inspect(name):\n    pass\n\nres = CliRunner().invoke(inspect, [])\nprint(repr(res.output))\n</pre>
+<p>第 15 步，行动前未观察到 disabled。原执行码 1，上游执行码 0，关闭回归执行码 1。严格检出 否，断言行 23。</p><pre>import click
+from click.testing import CliRunner
+
+@click.command()
+@click.argument(&quot;name&quot;)
+def inspect(name):
+    pass
+
+res = CliRunner().invoke(inspect, [])
+print(repr(res.output))
+lines = res.output.splitlines()
+assert lines[1:3] == [&#x27;Try &quot;inspect --help&quot; for help.&#x27;, &quot;&quot;], lines
+assert lines[3].startswith(&quot;Error: &quot;)
+
+@click.command(add_help_option=False)
+@click.argument(&quot;name&quot;)
+def nohelp(name):
+    pass
+
+res2 = CliRunner().invoke(nohelp, [])
+print(repr(res2.output))
+l2 = res2.output.splitlines()
+assert l2[1] == &quot;&quot;, l2
+assert l2[2].startswith(&quot;Error: &quot;), l2
+assert not any(&quot;Try&quot; in x for x in l2), l2
+assert res2.exit_code == 2
+print(&quot;OK&quot;)
+</pre>
+</details>
+<p><small>模型 glm-5.3 · 协议摘要 4df25f6561503ccf96d5bc155076475ef918f1ccbca4717fab480bdc36808941</small></p></main></html>

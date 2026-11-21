@@ -1,0 +1,759 @@
+{
+  "payload_hash": "e21e21ecc09f6c175991e85381813c6fe734de00d0890280a8de01ec199c2e05",
+  "payload": {
+    "study_hash": "a20ff802af05531114c4a147f539b6d524f1de6747bfbce82019a562c1c8a2f3",
+    "model": "glm-5.3",
+    "image": "sha256:a7eec604ebe32971d0b509d5157c8e814dc875a0f68aa541b3fd90ab391ef742",
+    "task": "pallets-click-32ae2acd34",
+    "task_hash": "517f726466fdc7accbd2b904e7849f2bf39dc8dc0d3ee73912712786e0925fb3",
+    "upstream": "https://github.com/pallets/click/commit/32ae2acd3474a57d2450ea849545b2e1258bf76a",
+    "base_commit": "bee33141650ce7c91551f5fac9ebfb0c8fca473e",
+    "fix_commit": "32ae2acd3474a57d2450ea849545b2e1258bf76a",
+    "original_hash": "d31f7e9158ef6a3474656b16403de055286d78b2c462786bc8ccf00da940be2a",
+    "reference_hash": "1921f36413d9157666ec3a51521d65d2503674b1739dfebdd47f2cc7f7bf00ff",
+    "edits": {
+      "src/click/types.py": [
+        {
+          "at": 410,
+          "old": [
+            "        str_choices = map(str, self.choices)\n"
+          ],
+          "new": [
+            "        str_choices = self._normalized_mapping(ctx=ctx).values()\n"
+          ]
+        },
+        {
+          "at": 415,
+          "old": [
+            "            incomplete = incomplete.lower()\n",
+            "            matched = (c for c in str_choices if c.lower().startswith(incomplete))\n"
+          ],
+          "new": [
+            "            incomplete = incomplete.casefold()\n",
+            "            matched = (c for c in str_choices if c.casefold().startswith(incomplete))\n"
+          ]
+        }
+      ]
+    },
+    "phase": "learning_replay",
+    "skill": "9dd9edc98d84811d0ed4f3feb82060be8ebef518a34f7fc35a3b689e24aa38d3",
+    "parent": "4a88b651b305e5e5fa1563d7e62453c232de18e61605462411a8be3c933dfdf9",
+    "child": "9dd9edc98d84811d0ed4f3feb82060be8ebef518a34f7fc35a3b689e24aa38d3",
+    "check": {
+      "run": "9f6435531adc583e70284544dffb2f3a",
+      "seq": 37,
+      "tool": "cli_check",
+      "source": "import enum\nimport click\nfrom click.testing import CliRunner\n\nMetal = enum.Enum(\"Metal\", [\"Ag\", \"Au\", \"Cu\"])\n\ndef run(case_sensitive, incomplete):\n    cmd = click.Command(\"tool\", params=[click.Option([\"-a\"], type=click.Choice(Metal, case_sensitive=case_sensitive))])\n    return CliRunner().invoke(cmd, env={\"_TOOL_COMPLETE\": \"bash_complete\",\n        \"COMP_WORDS\": f\"tool -a {incomplete}\", \"COMP_CWORD\": \"2\"})\n\n# case-sensitive: enum member names, normalized spelling\nassert run(True, \"A\").output == \"plain,Ag\\nplain,Au\\n\", run(True, \"A\").output\nassert run(True, \"Ag\").output == \"plain,Ag\\n\", run(True, \"Ag\").output\nassert run(True, \"a\").output == \"\", run(True, \"a\").output\n# case-insensitive: normalized lowercase names, case-insensitive match\nassert run(False, \"A\").output == \"plain,ag\\nplain,au\\n\", run(False, \"A\").output\nassert run(False, \"aG\").output == \"plain,ag\\n\", run(False, \"aG\").output\nassert run(False, \"c\").output == \"plain,cu\\n\", run(False, \"c\").output\n# str choices still work in both states\ndef run2(cs, incomplete):\n    cmd = click.Command(\"t\", params=[click.Option([\"-x\"], type=click.Choice([\"Foo\", \"Bar\"], case_sensitive=cs))])\n    return CliRunner().invoke(cmd, env={\"_TOOL_COMPLETE\": \"bash_complete\",\n        \"COMP_WORDS\": f\"t -x {incomplete}\", \"COMP_CWORD\": \"2\"})\nassert run2(False, \"f\").output == \"plain,foo\\n\", run2(False, \"f\").output\nassert run2(False, \"B\").output == \"plain,bar\\n\", run2(False, \"B\").output\nassert run2(True, \"F\").output == \"plain,Foo\\n\", run2(True, \"F\").output\nprint(\"ok\")\n",
+      "source_hash": "fc20a9c9212cf10e2029a8f0395570573e20b9d09fa7d36ad4a75ba7af66c409",
+      "patch": "84c65c348f0620c74e347b58f480d3c9215a101e69534506795570cb394c78fb",
+      "live_exit": 1,
+      "live_output_hash": "9acfc8694a0a242f0725ed3ee4bf4dde2a867cce3f6e5f3d8239c8488ae7257e",
+      "live_output": "Traceback (most recent call last):\n  File \"<string>\", line 15, in <module>\nAssertionError: \n\n",
+      "original_action": {
+        "calls": [
+          {
+            "exit": 0,
+            "output_hash": "27ec85eb76ae26b2d1abbc97721ec18af1e69cf852da218ebf3c7b7ae3c81eaf",
+            "size": 18
+          },
+          {
+            "exit": 0,
+            "output_hash": "b6c484d1f2ae8b25b0c1ccdd637a6992885c2c969c8abe98fa6df93f31f7f501",
+            "size": 9
+          },
+          {
+            "exit": 0,
+            "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+            "size": 1
+          },
+          {
+            "exit": 0,
+            "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+            "size": 1
+          }
+        ],
+        "termination": "authored_assertion",
+        "line": 15,
+        "exception": "AssertionError",
+        "exit": 1,
+        "timeout": false,
+        "image": "sha256:a7eec604ebe32971d0b509d5157c8e814dc875a0f68aa541b3fd90ab391ef742"
+      },
+      "reference": {
+        "calls": [
+          {
+            "exit": 0,
+            "output_hash": "27ec85eb76ae26b2d1abbc97721ec18af1e69cf852da218ebf3c7b7ae3c81eaf",
+            "size": 18
+          },
+          {
+            "exit": 0,
+            "output_hash": "b6c484d1f2ae8b25b0c1ccdd637a6992885c2c969c8abe98fa6df93f31f7f501",
+            "size": 9
+          },
+          {
+            "exit": 0,
+            "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+            "size": 1
+          },
+          {
+            "exit": 0,
+            "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+            "size": 1
+          }
+        ],
+        "termination": "authored_assertion",
+        "line": 15,
+        "exception": "AssertionError",
+        "exit": 1,
+        "timeout": false,
+        "image": "sha256:a7eec604ebe32971d0b509d5157c8e814dc875a0f68aa541b3fd90ab391ef742"
+      },
+      "off_mutant": {
+        "calls": [
+          {
+            "exit": 0,
+            "output_hash": "27ec85eb76ae26b2d1abbc97721ec18af1e69cf852da218ebf3c7b7ae3c81eaf",
+            "size": 18
+          },
+          {
+            "exit": 0,
+            "output_hash": "b6c484d1f2ae8b25b0c1ccdd637a6992885c2c969c8abe98fa6df93f31f7f501",
+            "size": 9
+          },
+          {
+            "exit": 0,
+            "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+            "size": 1
+          },
+          {
+            "exit": 0,
+            "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+            "size": 1
+          }
+        ],
+        "termination": "authored_assertion",
+        "line": 15,
+        "exception": "AssertionError",
+        "exit": 1,
+        "timeout": false,
+        "image": "sha256:a7eec604ebe32971d0b509d5157c8e814dc875a0f68aa541b3fd90ab391ef742"
+      },
+      "verdict": "exercises_cli_only"
+    },
+    "argv": [
+      "env",
+      "PYTHONPATH=/workspace/src:/workspace",
+      "python",
+      "-c",
+      "import enum\nimport click\nfrom click.testing import CliRunner\n\nMetal = enum.Enum(\"Metal\", [\"Ag\", \"Au\", \"Cu\"])\n\ndef run(case_sensitive, incomplete):\n    cmd = click.Command(\"tool\", params=[click.Option([\"-a\"], type=click.Choice(Metal, case_sensitive=case_sensitive))])\n    return CliRunner().invoke(cmd, env={\"_TOOL_COMPLETE\": \"bash_complete\",\n        \"COMP_WORDS\": f\"tool -a {incomplete}\", \"COMP_CWORD\": \"2\"})\n\n# case-sensitive: enum member names, normalized spelling\nassert run(True, \"A\").output == \"plain,Ag\\nplain,Au\\n\", run(True, \"A\").output\nassert run(True, \"Ag\").output == \"plain,Ag\\n\", run(True, \"Ag\").output\nassert run(True, \"a\").output == \"\", run(True, \"a\").output\n# case-insensitive: normalized lowercase names, case-insensitive match\nassert run(False, \"A\").output == \"plain,ag\\nplain,au\\n\", run(False, \"A\").output\nassert run(False, \"aG\").output == \"plain,ag\\n\", run(False, \"aG\").output\nassert run(False, \"c\").output == \"plain,cu\\n\", run(False, \"c\").output\n# str choices still work in both states\ndef run2(cs, incomplete):\n    cmd = click.Command(\"t\", params=[click.Option([\"-x\"], type=click.Choice([\"Foo\", \"Bar\"], case_sensitive=cs))])\n    return CliRunner().invoke(cmd, env={\"_TOOL_COMPLETE\": \"bash_complete\",\n        \"COMP_WORDS\": f\"t -x {incomplete}\", \"COMP_CWORD\": \"2\"})\nassert run2(False, \"f\").output == \"plain,foo\\n\", run2(False, \"f\").output\nassert run2(False, \"B\").output == \"plain,bar\\n\", run2(False, \"B\").output\nassert run2(True, \"F\").output == \"plain,Foo\\n\", run2(True, \"F\").output\nprint(\"ok\")\n"
+    ],
+    "reach": null,
+    "overall_repair_passed": true,
+    "directed_check_repair": {
+      "id": "2e9091752ee37c604423037986783bec",
+      "attempt": 3,
+      "source": "import enum\nimport click\nfrom click.testing import CliRunner\n\nMetal = enum.Enum(\"Metal\", [\"Ag\", \"Au\", \"Cu\"])\n\ndef run(case_sensitive, incomplete):\n    cmd = click.Command(\"tool\", params=[click.Option([\"-a\"], type=click.Choice(Metal, case_sensitive=case_sensitive))])\n    return CliRunner().invoke(cmd, env={\"_TOOL_COMPLETE\": \"bash_complete\",\n        \"COMP_WORDS\": f\"tool -a {incomplete}\", \"COMP_CWORD\": \"2\"})\n\n# Required behavior absent from the public example: an incomplete token that\n# matches no choice must yield no completion records (only the record-ending\n# newline), and must not include unrelated choices. Each case is checked\n# independently so one failure cannot mask the others.\nfailures = []\nfor cs, inc in [(True, \"a\"), (True, \"aG\"), (True, \"c\"), (True, \"z\")]:\n    r = run(cs, inc)\n    got = r.output\n    lines = [l for l in got.splitlines() if l.strip()]\n    if r.exit_code != 0:\n        failures.append(f\"exit {r.exit_code} for cs={cs} inc={inc!r}: {got!r}\")\n    elif lines:\n        failures.append(f\"expected no completion records for cs={cs} inc={inc!r}, got {got!r}\")\n\nassert not failures, \"; \".join(failures)\nprint(\"ok\")\n",
+      "output": "ok\n",
+      "exit": 0,
+      "timeout": false,
+      "source_hash": "e0352f0f66f0d5970b5150219f03f1271a1d910105aa1ed1fa88982703f7aea1",
+      "original_action": {
+        "calls": [
+          {
+            "exit": 0,
+            "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+            "size": 1
+          },
+          {
+            "exit": 0,
+            "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+            "size": 1
+          },
+          {
+            "exit": 0,
+            "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+            "size": 1
+          },
+          {
+            "exit": 0,
+            "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+            "size": 1
+          }
+        ],
+        "termination": "ok",
+        "line": null,
+        "exception": null,
+        "exit": 0,
+        "timeout": false,
+        "image": "sha256:a7eec604ebe32971d0b509d5157c8e814dc875a0f68aa541b3fd90ab391ef742"
+      },
+      "reference": {
+        "calls": [
+          {
+            "exit": 0,
+            "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+            "size": 1
+          },
+          {
+            "exit": 0,
+            "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+            "size": 1
+          },
+          {
+            "exit": 0,
+            "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+            "size": 1
+          },
+          {
+            "exit": 0,
+            "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+            "size": 1
+          }
+        ],
+        "termination": "ok",
+        "line": null,
+        "exception": null,
+        "exit": 0,
+        "timeout": false,
+        "image": "sha256:a7eec604ebe32971d0b509d5157c8e814dc875a0f68aa541b3fd90ab391ef742"
+      },
+      "off_mutant": {
+        "calls": [
+          {
+            "exit": 0,
+            "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+            "size": 1
+          },
+          {
+            "exit": 0,
+            "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+            "size": 1
+          },
+          {
+            "exit": 0,
+            "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+            "size": 1
+          },
+          {
+            "exit": 0,
+            "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+            "size": 1
+          }
+        ],
+        "termination": "ok",
+        "line": null,
+        "exception": null,
+        "exit": 0,
+        "timeout": false,
+        "image": "sha256:a7eec604ebe32971d0b509d5157c8e814dc875a0f68aa541b3fd90ab391ef742"
+      },
+      "original_calls": [
+        {
+          "input": {
+            "stack": [
+              18,
+              9
+            ],
+            "command": "tool",
+            "add_help": true,
+            "options": [
+              [
+                "a",
+                false,
+                true
+              ]
+            ],
+            "args": [],
+            "kwargs": {
+              "env": {
+                "_TOOL_COMPLETE": "bash_complete",
+                "COMP_WORDS": "tool -a a",
+                "COMP_CWORD": "2"
+              }
+            }
+          },
+          "exit": 0,
+          "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "size": 1
+        },
+        {
+          "input": {
+            "stack": [
+              18,
+              9
+            ],
+            "command": "tool",
+            "add_help": true,
+            "options": [
+              [
+                "a",
+                false,
+                true
+              ]
+            ],
+            "args": [],
+            "kwargs": {
+              "env": {
+                "_TOOL_COMPLETE": "bash_complete",
+                "COMP_WORDS": "tool -a aG",
+                "COMP_CWORD": "2"
+              }
+            }
+          },
+          "exit": 0,
+          "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "size": 1
+        },
+        {
+          "input": {
+            "stack": [
+              18,
+              9
+            ],
+            "command": "tool",
+            "add_help": true,
+            "options": [
+              [
+                "a",
+                false,
+                true
+              ]
+            ],
+            "args": [],
+            "kwargs": {
+              "env": {
+                "_TOOL_COMPLETE": "bash_complete",
+                "COMP_WORDS": "tool -a c",
+                "COMP_CWORD": "2"
+              }
+            }
+          },
+          "exit": 0,
+          "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "size": 1
+        },
+        {
+          "input": {
+            "stack": [
+              18,
+              9
+            ],
+            "command": "tool",
+            "add_help": true,
+            "options": [
+              [
+                "a",
+                false,
+                true
+              ]
+            ],
+            "args": [],
+            "kwargs": {
+              "env": {
+                "_TOOL_COMPLETE": "bash_complete",
+                "COMP_WORDS": "tool -a z",
+                "COMP_CWORD": "2"
+              }
+            }
+          },
+          "exit": 0,
+          "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "size": 1
+        }
+      ],
+      "reference_calls": [
+        {
+          "input": {
+            "stack": [
+              18,
+              9
+            ],
+            "command": "tool",
+            "add_help": true,
+            "options": [
+              [
+                "a",
+                false,
+                true
+              ]
+            ],
+            "args": [],
+            "kwargs": {
+              "env": {
+                "_TOOL_COMPLETE": "bash_complete",
+                "COMP_WORDS": "tool -a a",
+                "COMP_CWORD": "2"
+              }
+            }
+          },
+          "exit": 0,
+          "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "size": 1
+        },
+        {
+          "input": {
+            "stack": [
+              18,
+              9
+            ],
+            "command": "tool",
+            "add_help": true,
+            "options": [
+              [
+                "a",
+                false,
+                true
+              ]
+            ],
+            "args": [],
+            "kwargs": {
+              "env": {
+                "_TOOL_COMPLETE": "bash_complete",
+                "COMP_WORDS": "tool -a aG",
+                "COMP_CWORD": "2"
+              }
+            }
+          },
+          "exit": 0,
+          "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "size": 1
+        },
+        {
+          "input": {
+            "stack": [
+              18,
+              9
+            ],
+            "command": "tool",
+            "add_help": true,
+            "options": [
+              [
+                "a",
+                false,
+                true
+              ]
+            ],
+            "args": [],
+            "kwargs": {
+              "env": {
+                "_TOOL_COMPLETE": "bash_complete",
+                "COMP_WORDS": "tool -a c",
+                "COMP_CWORD": "2"
+              }
+            }
+          },
+          "exit": 0,
+          "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "size": 1
+        },
+        {
+          "input": {
+            "stack": [
+              18,
+              9
+            ],
+            "command": "tool",
+            "add_help": true,
+            "options": [
+              [
+                "a",
+                false,
+                true
+              ]
+            ],
+            "args": [],
+            "kwargs": {
+              "env": {
+                "_TOOL_COMPLETE": "bash_complete",
+                "COMP_WORDS": "tool -a z",
+                "COMP_CWORD": "2"
+              }
+            }
+          },
+          "exit": 0,
+          "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "size": 1
+        }
+      ],
+      "mutant_calls": [
+        {
+          "input": {
+            "stack": [
+              18,
+              9
+            ],
+            "command": "tool",
+            "add_help": true,
+            "options": [
+              [
+                "a",
+                false,
+                true
+              ]
+            ],
+            "args": [],
+            "kwargs": {
+              "env": {
+                "_TOOL_COMPLETE": "bash_complete",
+                "COMP_WORDS": "tool -a a",
+                "COMP_CWORD": "2"
+              }
+            }
+          },
+          "exit": 0,
+          "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "size": 1
+        },
+        {
+          "input": {
+            "stack": [
+              18,
+              9
+            ],
+            "command": "tool",
+            "add_help": true,
+            "options": [
+              [
+                "a",
+                false,
+                true
+              ]
+            ],
+            "args": [],
+            "kwargs": {
+              "env": {
+                "_TOOL_COMPLETE": "bash_complete",
+                "COMP_WORDS": "tool -a aG",
+                "COMP_CWORD": "2"
+              }
+            }
+          },
+          "exit": 0,
+          "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "size": 1
+        },
+        {
+          "input": {
+            "stack": [
+              18,
+              9
+            ],
+            "command": "tool",
+            "add_help": true,
+            "options": [
+              [
+                "a",
+                false,
+                true
+              ]
+            ],
+            "args": [],
+            "kwargs": {
+              "env": {
+                "_TOOL_COMPLETE": "bash_complete",
+                "COMP_WORDS": "tool -a c",
+                "COMP_CWORD": "2"
+              }
+            }
+          },
+          "exit": 0,
+          "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "size": 1
+        },
+        {
+          "input": {
+            "stack": [
+              18,
+              9
+            ],
+            "command": "tool",
+            "add_help": true,
+            "options": [
+              [
+                "a",
+                false,
+                true
+              ]
+            ],
+            "args": [],
+            "kwargs": {
+              "env": {
+                "_TOOL_COMPLETE": "bash_complete",
+                "COMP_WORDS": "tool -a z",
+                "COMP_CWORD": "2"
+              }
+            }
+          },
+          "exit": 0,
+          "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "size": 1
+        }
+      ],
+      "matched_call_indices": [],
+      "raw_execution_matches": true,
+      "caught_disabled": false
+    },
+    "coverage_feedback_retry": {
+      "id": "62eac446d8c74523bf2af7c5139280d4",
+      "role": "child",
+      "task": "pallets-click-32ae2acd34",
+      "run": "9f6435531adc583e70284544dffb2f3a",
+      "patch": "84c65c348f0620c74e347b58f480d3c9215a101e69534506795570cb394c78fb",
+      "source": "import enum\nimport click\nfrom click.testing import CliRunner\n\nMetal = enum.Enum(\"Metal\", [\"Ag\", \"Au\", \"Cu\"])\n\ncmd = click.Command(\"tool\", params=[click.Option([\"-a\"], type=click.Choice(Metal, case_sensitive=False))])\nr = CliRunner().invoke(cmd, env={\"_TOOL_COMPLETE\": \"bash_complete\",\n                                 \"COMP_WORDS\": \"tool -a A\", \"COMP_CWORD\": \"2\"})\n\n# Documented behavior for the missing state (case_sensitive=False):\n# match without regard to case and return normalized lowercase names.\nassert r.exit_code == 0, f\"exit {r.exit_code}: {r.output!r}\"\nassert r.output == \"plain,ag\\nplain,au\\n\", f\"unexpected records: {r.output!r}\"\nprint(\"ok\")\n",
+      "source_hash": "1d2ca534b1b72ecc8c4d57d364dc08d452f463204160bc4378194925fcfcc256",
+      "feedback": {
+        "public_case_sensitive": true,
+        "executed_case_sensitive": [
+          true
+        ],
+        "missing_case_sensitive": false,
+        "instruction": "The recorded CLI calls repeated the state already present in the public example. Write one independent script that invokes only the missing case_sensitive value through Bash completion and asserts its actual records against the documented behavior. You have one script. No test body or expected output is supplied for the missing state."
+      },
+      "caught_disabled": true,
+      "exit": 0,
+      "output": "ok\n",
+      "timeout": false,
+      "original_action": {
+        "calls": [
+          {
+            "exit": 0,
+            "output_hash": "7ae475488271e1595e8013b8fca8a65a0dad4562c3075acd5a3e9b9a749fe664",
+            "size": 18
+          }
+        ],
+        "termination": "ok",
+        "line": null,
+        "exception": null,
+        "exit": 0,
+        "timeout": false,
+        "image": "sha256:a7eec604ebe32971d0b509d5157c8e814dc875a0f68aa541b3fd90ab391ef742"
+      },
+      "reference": {
+        "calls": [
+          {
+            "exit": 0,
+            "output_hash": "7ae475488271e1595e8013b8fca8a65a0dad4562c3075acd5a3e9b9a749fe664",
+            "size": 18
+          }
+        ],
+        "termination": "ok",
+        "line": null,
+        "exception": null,
+        "exit": 0,
+        "timeout": false,
+        "image": "sha256:a7eec604ebe32971d0b509d5157c8e814dc875a0f68aa541b3fd90ab391ef742"
+      },
+      "off_mutant": {
+        "calls": [
+          {
+            "exit": 0,
+            "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+            "size": 1
+          }
+        ],
+        "termination": "authored_assertion",
+        "line": 14,
+        "exception": "AssertionError",
+        "exit": 1,
+        "timeout": false,
+        "image": "sha256:a7eec604ebe32971d0b509d5157c8e814dc875a0f68aa541b3fd90ab391ef742"
+      },
+      "original_calls": [
+        {
+          "input": {
+            "stack": [
+              8
+            ],
+            "command": "tool",
+            "add_help": true,
+            "options": [
+              [
+                "a",
+                false,
+                false
+              ]
+            ],
+            "args": [],
+            "kwargs": {
+              "env": {
+                "_TOOL_COMPLETE": "bash_complete",
+                "COMP_WORDS": "tool -a A",
+                "COMP_CWORD": "2"
+              }
+            }
+          },
+          "exit": 0,
+          "output_hash": "7ae475488271e1595e8013b8fca8a65a0dad4562c3075acd5a3e9b9a749fe664",
+          "size": 18
+        }
+      ],
+      "reference_calls": [
+        {
+          "input": {
+            "stack": [
+              8
+            ],
+            "command": "tool",
+            "add_help": true,
+            "options": [
+              [
+                "a",
+                false,
+                false
+              ]
+            ],
+            "args": [],
+            "kwargs": {
+              "env": {
+                "_TOOL_COMPLETE": "bash_complete",
+                "COMP_WORDS": "tool -a A",
+                "COMP_CWORD": "2"
+              }
+            }
+          },
+          "exit": 0,
+          "output_hash": "7ae475488271e1595e8013b8fca8a65a0dad4562c3075acd5a3e9b9a749fe664",
+          "size": 18
+        }
+      ],
+      "mutant_calls": [
+        {
+          "input": {
+            "stack": [
+              8
+            ],
+            "command": "tool",
+            "add_help": true,
+            "options": [
+              [
+                "a",
+                false,
+                false
+              ]
+            ],
+            "args": [],
+            "kwargs": {
+              "env": {
+                "_TOOL_COMPLETE": "bash_complete",
+                "COMP_WORDS": "tool -a A",
+                "COMP_CWORD": "2"
+              }
+            }
+          },
+          "exit": 0,
+          "output_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "size": 1
+        }
+      ],
+      "matched_call_indices": [
+        0
+      ],
+      "raw_execution_matches": true,
+      "measured_modes": [
+        false
+      ],
+      "isolated_new_state": true
+    }
+  }
+}

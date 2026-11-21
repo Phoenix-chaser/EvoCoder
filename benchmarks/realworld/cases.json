@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "claim": "Hand-selected PR reconstructions with repository-disjoint splits. No contamination-free or official benchmark claim.",
+  "cases": [
+    {
+      "id": "dotenv-empty-cache", "repository": "theskumar/python-dotenv", "split": "learn", "pull_request": 638,
+      "base_commit": "bca6644d9aedbe287b792b756b3ae3d650cd0d3a", "fixed_commit": "3f0e3e0b461cf7127e2753efbdf896bdff31db2e", "package": "dotenv",
+      "issue": "Repeated calls to DotEnv.dict() reparse an empty .env file. A successfully parsed empty mapping should be cached just like a nonempty mapping, while a newly constructed object must still parse on its first call. Preserve existing parsing and interpolation behavior. The public reproducer demonstrates the repeated parse.",
+      "public_tests": ["tests/test_main.py"], "regression_tests": ["tests/test_main.py"],
+      "regression_filter": "empty_dotenv_dict_is_cached", "reproducer": "repro/dotenv-empty.py"
+    },
+    {
+      "id": "dotenv-backslash-roundtrip", "repository": "theskumar/python-dotenv", "split": "learn", "pull_request": 680,
+      "base_commit": "751f8c148222e58aa173c83c4e5e6cfccb2cc124", "fixed_commit": "f7b18d9c72d1abcc2ad4023424b84f5bee30d266", "package": "dotenv",
+      "issue": "Values containing backslashes do not reliably survive a set_key/get_key round trip, especially a trailing backslash or a backslash next to a quote. A malformed quoted value can consume the following binding. Preserve the exact value and neighboring bindings, keep both quote styles parseable, and retain existing quote_mode behavior. Do not change tests to redefine the expected behavior.",
+      "public_tests": ["tests/test_main.py", "tests/test_parser.py"], "regression_tests": ["tests/test_main.py", "tests/test_parser.py"],
+      "regression_filter": "set_key or parse_stream", "reproducer": "repro/dotenv-backslash.py"
+    },
+    {
+      "id": "click-optional-choice", "repository": "pallets/click", "split": "dev", "pull_request": 3578,
+      "base_commit": "d9ff13369ac78d9acff693faa79f26badd566ab3", "fixed_commit": "09195f6a92972c4e1bbb5493686456e6ba624520", "package": "click",
+      "issue": "Optional Choice arguments render with doubled brackets in the usage synopsis, for example [[foo|bar|baz]]. A Choice with required=False or nargs=-1 should have one optional bracket pair, preserving the variadic suffix. The same behavior should hold for optional DateTime arguments. Preserve required arguments, explicit metavars and existing help behavior.",
+      "public_tests": ["tests/test_basic.py"], "regression_tests": ["tests/test_basic.py"],
+      "regression_filter": "argument_optional_metavar", "reproducer": "repro/click-choice.py"
+    },
+    {
+      "id": "click-envvar-hints", "repository": "pallets/click", "split": "dev", "pull_request": 3884,
+      "base_commit": "bb695aaecdef95832d167fc1d508921745aa824e", "fixed_commit": "8c73ff134480f436faa0d041bd19aaf949aac22c", "package": "click",
+      "issue": "With show_envvar=True, error hints display a sequence envvar using the repr of the entire sequence instead of individual quoted variable names. Empty envvar strings and sequences also leave empty annotations in help or errors. Render each nonempty variable name clearly, handle tuples and lists, and make empty values behave like no explicit envvar including auto_envvar_prefix fallback. Preserve ordinary string envvars.",
+      "public_tests": ["tests/test_options.py"], "regression_tests": ["tests/test_options.py"],
+      "regression_filter": "show_envvar_empty or missing_envvar_sequence", "reproducer": "repro/click-envvar.py"
+    },
+    {
+      "id": "packaging-spaced-arbitrary", "repository": "pypa/packaging", "split": "test", "pull_request": 1531,
+      "base_commit": "a00861f4cb12f5705a95e277862cdcd7387abfde", "fixed_commit": "5a7d3386d2777180a381eb947f21293124ce8df5", "package": "packaging",
+      "issue": "Requirement parsing rejects valid arbitrary-equality versions followed by another specifier containing whitespace, such as example===custom,>= 1. Support whitespace around the subsequent operator/version, optional enclosing parentheses, and a trailing environment marker. Preserve ordinary arbitrary-equality and normal requirement parsing, and retain useful errors for invalid inputs.",
+      "public_tests": ["tests/test_requirements.py"], "regression_tests": ["tests/test_requirements.py"],
+      "regression_filter": "nonempty_arbitrary_version", "reproducer": "repro/packaging-requirement.py"
+    },
+    {
+      "id": "packaging-set-marker", "repository": "pypa/packaging", "split": "test", "pull_request": 1507,
+      "base_commit": "80fe325abd60f27b7879efe7caef115ca65a76d7", "fixed_commit": "bddb69038b25b974bdf27d06d500dc05b1f8f97e", "package": "packaging",
+      "issue": "Set-valued environment markers extras and dependency_groups accept strings and accidentally perform substring matching: 'doc' in extras matches an environment value of 'docs'. Reject string values with UndefinedComparison and a message identifying the marker as requiring a set. Continue supporting sets/frozensets and name normalization, and preserve the singular extra marker behavior.",
+      "public_tests": ["tests/test_markers.py"], "regression_tests": ["tests/test_markers.py"],
+      "regression_filter": "set_valued_marker_rejects_string or extras_and_dependency_groups", "reproducer": "repro/packaging-marker.py"
+    }
+  ]
+}

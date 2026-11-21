@@ -1,0 +1,58 @@
+{
+  "example": {
+    "protocol": "4df25f6561503ccf96d5bc155076475ef918f1ccbca4717fab480bdc36808941",
+    "model": "glm-5.3",
+    "image": "sha256:a7eec604ebe32971d0b509d5157c8e814dc875a0f68aa541b3fd90ab391ef742",
+    "run": "86a7763dc5629026a9240f7ab6e8f33d",
+    "task": "pallets-click-c1b34978f1",
+    "role": "父版",
+    "route": "skip",
+    "step": 6,
+    "budget": 16,
+    "feedback_before": {
+      "feature": "case-insensitive Choice matching (enabled means case_sensitive=False)",
+      "not_yet_observed": [
+        "disabled"
+      ],
+      "observed_in_own_checks": [
+        "enabled"
+      ],
+      "observed_in_public_test": [],
+      "patch": "109df306289a68a37406ec790af442cbd5b51718ea125520643819cc3cfdeadf"
+    },
+    "source": "import click\nfrom click.testing import CliRunner\n\n@click.command()\n@click.option('-c', '--choice', type=click.Choice(['Apple', 'Banana']))\ndef cli(choice):\n    click.echo('got:%s' % choice)\n\nr = CliRunner()\nres = r.invoke(cli, ['-c', 'APPLE'])\nassert res.exit_code != 0, res.output\nassert 'Invalid value' in res.output or 'invalid choice' in res.output, res.output\nres2 = r.invoke(cli, ['-c', 'Apple'])\nassert res2.exit_code == 0, res2.output\nassert res2.output.strip() == 'got:Apple', res2.output\nprint('ok')\n",
+    "argv": [
+      "env",
+      "PYTHONPATH=/workspace/src:/workspace",
+      "python",
+      "-c",
+      "import click\nfrom click.testing import CliRunner\n\n@click.command()\n@click.option('-c', '--choice', type=click.Choice(['Apple', 'Banana']))\ndef cli(choice):\n    click.echo('got:%s' % choice)\n\nr = CliRunner()\nres = r.invoke(cli, ['-c', 'APPLE'])\nassert res.exit_code != 0, res.output\nassert 'Invalid value' in res.output or 'invalid choice' in res.output, res.output\nres2 = r.invoke(cli, ['-c', 'Apple'])\nassert res2.exit_code == 0, res2.output\nassert res2.output.strip() == 'got:Apple', res2.output\nprint('ok')\n"
+    ],
+    "task_hash": "10a5723ed0ce7338eb9ec0b64f781f8424a2e4a1d74bf375137d1841d0caad38",
+    "reference_hash": "f5b634612d7bc67bed57bc06e64f05fe0d9384b81192f3c316fffb2fbadfbdf2",
+    "mutant_hash": "901612a4a77b47088ff3749ff23585f6f1024f4940ef0ff11477e318e44320f7",
+    "patch_hash": "109df306289a68a37406ec790af442cbd5b51718ea125520643819cc3cfdeadf",
+    "edits": {
+      "click/types.py": [
+        {
+          "at": 176,
+          "old": [
+            "            return normed_value\n"
+          ],
+          "new": [
+            "            return self.choices[normed_choices.index(normed_value)]\n"
+          ]
+        }
+      ]
+    },
+    "output_hash": "a72d46889a3f49fa3feb196386388f2d9a2d4f2e0ef7bad091bf12ff886504b5",
+    "exit": 0,
+    "argv_hash": "a9a4f4e1fd741bfab0b0b6d61dd6b4cc012d6db4319ee6881a7b3c2eb58a78f5",
+    "source_hash": "2c112f4e66bc1d1c5ab5293b1c0f3622a566c5a04d0c7ca75ef04564526bf73f",
+    "assertion_line": 11,
+    "off_call_indices": [
+      0
+    ]
+  },
+  "hash": "bdb3b033a1375fe312e6d1b719f8359476077724ccfe80022aecf8543eaf4db3"
+}
