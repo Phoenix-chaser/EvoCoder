@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "study": "optional-configuration-control-v1",
+  "manifest": "4229110faf2344063bf4b8c5cf56c25827f49f022db78cf29420f83f51bbf3e2",
+  "calibration": "4b2908d003a23f96db8cb03272419dc0eb95597d1c634622bbef145c87c2b66a",
+  "source": "885ad8c3fdee71bcb2410148079da5c5f1474f2a7687f9b6f1a2b42ffbf77913",
+  "driver": "e043a3b26121e7dfcac8611773d5ae70561156d262aed822e7e6c3d98b326a34",
+  "settings_hash": "94273fc55c3e3e3fd18be405728eec795db77bcafc40149fc84a97881a608804",
+  "model": "glm-5.3",
+  "image": "sha256:a7eec604ebe32971d0b509d5157c8e814dc875a0f68aa541b3fd90ab391ef742",
+  "learning_seed": [
+    "dispatch-01",
+    "export-02",
+    "dispatch-03",
+    "export-04"
+  ],
+  "learning_trials": [
+    "dispatch-02",
+    "dispatch-04",
+    "dispatch-05",
+    "export-01",
+    "export-03",
+    "export-05"
+  ],
+  "candidate_policy": "one learned root; at most one child from up to four actually applied qualifying later failures",
+  "uptake_report": "01e04cb1931c4de8f1a3e1ec64a500edd5f4429c0b5378306bc3ce55b4ee8b03",
+  "anchors": [
+    "gateway-01",
+    "audit-02"
+  ],
+  "anchor_repeats": 2,
+  "screen": "every dev case once; stop only when the existing two-repeat gate is mathematically unreachable",
+  "release": "standard full-library gate, all ten dev cases twice and all cited learning support once",
+  "oracle": "f43bd195b176f3c5b22b0eb329c2e1256ce9482085fac2649bfbfc8e9ffff349",
+  "oracle_policy": "on a negative screen, fixed evaluator-only procedure once per anchor",
+  "holdout": "only after publication; one paired trial on each of 30 untouched tasks; no learning or version changes",
+  "family_order": [
+    "scalar",
+    "layers",
+    "batch"
+  ],
+  "curve": "equal-weight cumulative family means of paired repair differences; also report each family",
+  "max_steps": 16,
+  "solver_slots_per_arm": 15,
+  "workers": 2,
+  "model_task_input": "normal allowlisted task view; grader, reference, oracle and split are withheld"
+}

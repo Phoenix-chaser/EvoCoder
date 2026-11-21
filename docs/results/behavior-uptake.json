@@ -1,0 +1,663 @@
+{
+  "definition": "TV on solver ACTION tool names, normalized within run; strict excess over matched fixed-skip pair",
+  "matrix": {
+    "protocol": "86a5ad1150e1d28737e2455fbd85dc73d754d985360c3721202960302433885b",
+    "pairs": [
+      {
+        "task_id": "pallets-click-3d029e03eb",
+        "repeat": 0,
+        "policy": "normal",
+        "baseline": {
+          "run": "04fdde4039b64d70af3a87c8b1dd2c79",
+          "route": "apply",
+          "applied": true,
+          "passed": false,
+          "counts": {
+            "command": 2,
+            "edit": 4,
+            "read": 2,
+            "search": 5,
+            "test": 2
+          },
+          "steps": 15,
+          "rejected": 0
+        },
+        "candidate": {
+          "run": "f19a1859da224697ab3b86c2600ab66a",
+          "route": "apply",
+          "applied": true,
+          "passed": true,
+          "counts": {
+            "edit": 4,
+            "finish": 1,
+            "read": 4,
+            "search": 2,
+            "test": 1
+          },
+          "steps": 12,
+          "rejected": 0
+        },
+        "tv": 0.35
+      },
+      {
+        "task_id": "pallets-click-42e2821ba3",
+        "repeat": 0,
+        "policy": "fixed_apply",
+        "baseline": {
+          "run": "24329f527ba14fb1988fd06aaf28c7aa",
+          "route": "apply",
+          "applied": true,
+          "passed": false,
+          "counts": {
+            "command": 1,
+            "edit": 2,
+            "finish": 1,
+            "read": 1,
+            "search": 2,
+            "test": 3
+          },
+          "steps": 10,
+          "rejected": 0
+        },
+        "candidate": {
+          "run": "a6412b35a6534042bc816b290de11ac0",
+          "route": "apply",
+          "applied": true,
+          "passed": false,
+          "counts": {
+            "edit": 2,
+            "finish": 1,
+            "read": 2,
+            "search": 2,
+            "test": 2
+          },
+          "steps": 9,
+          "rejected": 0
+        },
+        "tv": 0.17777777777777778
+      },
+      {
+        "task_id": "pallets-click-3d029e03eb",
+        "repeat": 0,
+        "policy": "fixed_apply",
+        "baseline": {
+          "run": "986c875023dd488997e2efd632cff4fe",
+          "route": "apply",
+          "applied": true,
+          "passed": true,
+          "counts": {
+            "edit": 2,
+            "finish": 1,
+            "read": 2,
+            "search": 1,
+            "test": 1
+          },
+          "steps": 7,
+          "rejected": 0
+        },
+        "candidate": {
+          "run": "ced2281dc9fd4408ab926be8f1e16a80",
+          "route": "apply",
+          "applied": true,
+          "passed": true,
+          "counts": {
+            "command": 1,
+            "edit": 1,
+            "finish": 1,
+            "read": 3,
+            "search": 4,
+            "test": 3
+          },
+          "steps": 13,
+          "rejected": 0
+        },
+        "tv": 0.32967032967032966
+      },
+      {
+        "task_id": "pallets-click-42e2821ba3",
+        "repeat": 0,
+        "policy": "fixed_skip",
+        "baseline": {
+          "run": "461ba72329e945149e7103f8499d5d08",
+          "route": "skip",
+          "applied": false,
+          "passed": false,
+          "counts": {
+            "edit": 4,
+            "finish": 1,
+            "read": 2,
+            "search": 3,
+            "test": 3
+          },
+          "steps": 13,
+          "rejected": 1
+        },
+        "candidate": {
+          "run": "ae8b21429c3946c9afff03cea703f3e4",
+          "route": "skip",
+          "applied": false,
+          "passed": false,
+          "counts": {
+            "edit": 5,
+            "read": 3,
+            "search": 6,
+            "test": 1
+          },
+          "steps": 15,
+          "rejected": 0
+        },
+        "tv": 0.24102564102564103
+      },
+      {
+        "task_id": "pallets-click-3d029e03eb",
+        "repeat": 0,
+        "policy": "fixed_skip",
+        "baseline": {
+          "run": "0d5e5aab0d014f68a7be3ee595df2e8d",
+          "route": "skip",
+          "applied": false,
+          "passed": true,
+          "counts": {
+            "edit": 2,
+            "finish": 1,
+            "read": 3,
+            "search": 3,
+            "test": 1
+          },
+          "steps": 10,
+          "rejected": 0
+        },
+        "candidate": {
+          "run": "46e05357dbbf4366894933d739ee895a",
+          "route": "skip",
+          "applied": false,
+          "passed": true,
+          "counts": {
+            "edit": 1,
+            "finish": 1,
+            "read": 3,
+            "search": 2,
+            "test": 1
+          },
+          "steps": 8,
+          "rejected": 0
+        },
+        "tv": 0.125
+      },
+      {
+        "task_id": "pallets-click-42e2821ba3",
+        "repeat": 0,
+        "policy": "normal",
+        "baseline": {
+          "run": "02ee8c2cb56641a68f0648bb0985ccf8",
+          "route": "apply",
+          "applied": true,
+          "passed": false,
+          "counts": {
+            "edit": 6,
+            "read": 2,
+            "search": 6
+          },
+          "steps": 14,
+          "rejected": 1
+        },
+        "candidate": {
+          "run": "47ecd2fc822847d3886e7646e4408cf9",
+          "route": "apply",
+          "applied": true,
+          "passed": false,
+          "counts": {
+            "edit": 3,
+            "finish": 1,
+            "read": 1,
+            "search": 2,
+            "test": 3
+          },
+          "steps": 10,
+          "rejected": 0
+        },
+        "tv": 0.4
+      },
+      {
+        "task_id": "pallets-click-3d029e03eb",
+        "repeat": 1,
+        "policy": "fixed_apply",
+        "baseline": {
+          "run": "f0232e27e4234d10bd899421a7c3d264",
+          "route": "apply",
+          "applied": true,
+          "passed": true,
+          "counts": {
+            "edit": 2,
+            "finish": 1,
+            "read": 3,
+            "search": 3,
+            "test": 1
+          },
+          "steps": 10,
+          "rejected": 0
+        },
+        "candidate": {
+          "run": "3adb416306f246f180b337e1320df910",
+          "route": "apply",
+          "applied": true,
+          "passed": true,
+          "counts": {
+            "edit": 1,
+            "finish": 1,
+            "read": 3,
+            "search": 1,
+            "test": 1
+          },
+          "steps": 7,
+          "rejected": 1
+        },
+        "tv": 0.21428571428571427
+      },
+      {
+        "task_id": "pallets-click-42e2821ba3",
+        "repeat": 1,
+        "policy": "fixed_skip",
+        "baseline": {
+          "run": "987bb9783c3a435a9f1a70bf4d43a27b",
+          "route": "skip",
+          "applied": false,
+          "passed": false,
+          "counts": {
+            "edit": 2,
+            "finish": 1,
+            "read": 2,
+            "search": 1,
+            "test": 2
+          },
+          "steps": 8,
+          "rejected": 0
+        },
+        "candidate": {
+          "run": "8bd7e6da1a0f44d28041933885c9c249",
+          "route": "skip",
+          "applied": false,
+          "passed": false,
+          "counts": {
+            "edit": 5,
+            "finish": 1,
+            "read": 4,
+            "search": 2,
+            "test": 2
+          },
+          "steps": 14,
+          "rejected": 1
+        },
+        "tv": 0.16071428571428573
+      },
+      {
+        "task_id": "pallets-click-3d029e03eb",
+        "repeat": 1,
+        "policy": "fixed_skip",
+        "baseline": {
+          "run": "12ab9c59356d4a37b1ece8d41cc1d2d3",
+          "route": "skip",
+          "applied": false,
+          "passed": true,
+          "counts": {
+            "edit": 1,
+            "finish": 1,
+            "read": 6,
+            "search": 6,
+            "test": 1
+          },
+          "steps": 15,
+          "rejected": 0
+        },
+        "candidate": {
+          "run": "2099e7d3909e4b7ebd71c567915c3890",
+          "route": "skip",
+          "applied": false,
+          "passed": false,
+          "counts": {
+            "edit": 1,
+            "finish": 1,
+            "read": 4,
+            "search": 8
+          },
+          "steps": 14,
+          "rejected": 1
+        },
+        "tv": 0.18095238095238095
+      },
+      {
+        "task_id": "pallets-click-42e2821ba3",
+        "repeat": 1,
+        "policy": "normal",
+        "baseline": {
+          "run": "98b0046f75704bdb890dc7c43e7de802",
+          "route": "apply",
+          "applied": true,
+          "passed": true,
+          "counts": {
+            "command": 4,
+            "edit": 3,
+            "finish": 1,
+            "read": 4,
+            "search": 1
+          },
+          "steps": 13,
+          "rejected": 0
+        },
+        "candidate": {
+          "run": "0eff48141ef046ccb0a16486d0334df8",
+          "route": "apply",
+          "applied": true,
+          "passed": false,
+          "counts": {
+            "edit": 1,
+            "finish": 1,
+            "read": 2,
+            "search": 2,
+            "test": 1
+          },
+          "steps": 7,
+          "rejected": 0
+        },
+        "tv": 0.4175824175824176
+      },
+      {
+        "task_id": "pallets-click-3d029e03eb",
+        "repeat": 1,
+        "policy": "normal",
+        "baseline": {
+          "run": "ec4b494895a04ceb8cb4106fc2e37f0a",
+          "route": "skip",
+          "applied": false,
+          "passed": true,
+          "counts": {
+            "edit": 1,
+            "finish": 1,
+            "read": 2,
+            "search": 1,
+            "test": 1
+          },
+          "steps": 6,
+          "rejected": 0
+        },
+        "candidate": {
+          "run": "d2cffe7d550f4424a02188c4d2de53ee",
+          "route": "skip",
+          "applied": false,
+          "passed": true,
+          "counts": {
+            "command": 2,
+            "edit": 2,
+            "finish": 1,
+            "read": 4,
+            "search": 3,
+            "test": 1
+          },
+          "steps": 13,
+          "rejected": 0
+        },
+        "tv": 0.21794871794871795
+      },
+      {
+        "task_id": "pallets-click-42e2821ba3",
+        "repeat": 1,
+        "policy": "fixed_apply",
+        "baseline": {
+          "run": "10ac77eea8994e6dbee94dd7556c3b91",
+          "route": "apply",
+          "applied": true,
+          "passed": false,
+          "counts": {
+            "command": 3,
+            "edit": 7,
+            "finish": 1,
+            "read": 2,
+            "search": 1
+          },
+          "steps": 14,
+          "rejected": 1
+        },
+        "candidate": {
+          "run": "a8d7dc8d65574710aa787c85c6567e27",
+          "route": "apply",
+          "applied": true,
+          "passed": false,
+          "counts": {
+            "edit": 3,
+            "finish": 1,
+            "read": 4,
+            "search": 3,
+            "test": 2
+          },
+          "steps": 13,
+          "rejected": 1
+        },
+        "tv": 0.4835164835164835
+      }
+    ]
+  },
+  "matrix_by_policy": {
+    "normal": {
+      "pairs": 4,
+      "mean_tv": 0.3463827838827839,
+      "both_applied": 3,
+      "baseline_repairs": 2,
+      "candidate_repairs": 2
+    },
+    "fixed_apply": {
+      "pairs": 4,
+      "mean_tv": 0.3013125763125763,
+      "both_applied": 4,
+      "baseline_repairs": 2,
+      "candidate_repairs": 2
+    },
+    "fixed_skip": {
+      "pairs": 4,
+      "mean_tv": 0.17692307692307693,
+      "both_applied": 0,
+      "baseline_repairs": 2,
+      "candidate_repairs": 1
+    }
+  },
+  "matched_controls": [
+    {
+      "task": "pallets-click-3d029e03eb",
+      "repeat": 0,
+      "excess_tv": 0.20467032967032966,
+      "above_control": true
+    },
+    {
+      "task": "pallets-click-3d029e03eb",
+      "repeat": 1,
+      "excess_tv": 0.03333333333333333,
+      "above_control": true
+    },
+    {
+      "task": "pallets-click-42e2821ba3",
+      "repeat": 0,
+      "excess_tv": -0.06324786324786325,
+      "above_control": false
+    },
+    {
+      "task": "pallets-click-42e2821ba3",
+      "repeat": 1,
+      "excess_tv": 0.3228021978021978,
+      "above_control": true
+    }
+  ],
+  "uptake_numerator": 3,
+  "uptake_denominator": 4,
+  "mean_excess_tv": 0.12438949938949939,
+  "switch": {
+    "protocol": "4df25f6561503ccf96d5bc155076475ef918f1ccbca4717fab480bdc36808941",
+    "pairs": [
+      {
+        "task_id": "pallets-click-3d029e03eb",
+        "repeat": 0,
+        "policy": "normal",
+        "baseline": {
+          "run": "11e98a49c5629eb0f7a390f9fc222366",
+          "route": "apply",
+          "applied": true,
+          "passed": true,
+          "counts": {
+            "cli_check": 2,
+            "edit": 3,
+            "finish": 1,
+            "read": 3,
+            "search": 4,
+            "test": 1
+          },
+          "steps": 14,
+          "rejected": 0,
+          "detected_on_submission": true
+        },
+        "candidate": {
+          "run": "7729cbe07a4be4eb669ff8fdf0f49b64",
+          "route": "apply",
+          "applied": true,
+          "passed": true,
+          "counts": {
+            "cli_check": 4,
+            "edit": 1,
+            "finish": 1,
+            "read": 3,
+            "search": 5,
+            "test": 1
+          },
+          "steps": 15,
+          "rejected": 0,
+          "detected_on_submission": true
+        },
+        "tv": 0.17142857142857143
+      },
+      {
+        "task_id": "pallets-click-42e2821ba3",
+        "repeat": 0,
+        "policy": "normal",
+        "baseline": {
+          "run": "129986301f1cbdebe9d6aee0e9496c29",
+          "route": "apply",
+          "applied": true,
+          "passed": true,
+          "counts": {
+            "cli_check": 2,
+            "command": 1,
+            "edit": 3,
+            "finish": 1,
+            "read": 4,
+            "search": 2,
+            "test": 1
+          },
+          "steps": 14,
+          "rejected": 1,
+          "detected_on_submission": false
+        },
+        "candidate": {
+          "run": "53cc1d895f397fa44322c4b243c94159",
+          "route": "apply",
+          "applied": true,
+          "passed": true,
+          "counts": {
+            "cli_check": 3,
+            "edit": 2,
+            "finish": 1,
+            "read": 2,
+            "search": 1,
+            "test": 1
+          },
+          "steps": 10,
+          "rejected": 0,
+          "detected_on_submission": true
+        },
+        "tv": 0.21428571428571427
+      },
+      {
+        "task_id": "pallets-click-3d029e03eb",
+        "repeat": 1,
+        "policy": "normal",
+        "baseline": {
+          "run": "48f6966138ca2d68ddd460be3744d070",
+          "route": "apply",
+          "applied": true,
+          "passed": true,
+          "counts": {
+            "cli_check": 1,
+            "edit": 2,
+            "finish": 1,
+            "read": 3,
+            "search": 6,
+            "test": 1
+          },
+          "steps": 14,
+          "rejected": 1,
+          "detected_on_submission": false
+        },
+        "candidate": {
+          "run": "51ae9b5a9758076b9a910868d76d4d4c",
+          "route": "apply",
+          "applied": true,
+          "passed": true,
+          "counts": {
+            "cli_check": 2,
+            "edit": 4,
+            "finish": 1,
+            "read": 2,
+            "search": 6
+          },
+          "steps": 15,
+          "rejected": 0,
+          "detected_on_submission": false
+        },
+        "tv": 0.18571428571428572
+      },
+      {
+        "task_id": "pallets-click-42e2821ba3",
+        "repeat": 1,
+        "policy": "normal",
+        "baseline": {
+          "run": "2be26f3c4ba810847296886f77859465",
+          "route": "apply",
+          "applied": true,
+          "passed": false,
+          "counts": {
+            "cli_check": 2,
+            "edit": 3,
+            "finish": 1,
+            "read": 4,
+            "search": 4
+          },
+          "steps": 14,
+          "rejected": 1,
+          "detected_on_submission": false
+        },
+        "candidate": {
+          "run": "d1c27bacbc38f2f83070ec7ead91c1d8",
+          "route": "apply",
+          "applied": true,
+          "passed": false,
+          "counts": {
+            "cli_check": 3,
+            "edit": 4,
+            "read": 5,
+            "search": 3
+          },
+          "steps": 15,
+          "rejected": 0,
+          "detected_on_submission": false
+        },
+        "tv": 0.15714285714285714
+      }
+    ]
+  },
+  "switch_summary": {
+    "pairs": 4,
+    "mean_tv": 0.18214285714285713,
+    "both_applied": 4,
+    "baseline_repairs": 3,
+    "candidate_repairs": 3,
+    "baseline_detections": 1,
+    "candidate_detections": 2
+  },
+  "new_model_calls": 0
+}
