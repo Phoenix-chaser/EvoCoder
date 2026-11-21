@@ -103,6 +103,12 @@ def check_witness(d, p, first, seen):
     task, ref = next((t, f) for t, f in cases() if t.id == matched["task"])
     attempts = d["witness_attempts"]
     require(1 <= len(attempts) <= 3, "missing check drafts")
+    require(
+        set(d["witness_requests"]) == {a["run"] for a in attempts}
+        and len(set(d["witness_requests"].values())) == 1
+        and all(len(h) == 64 for h in d["witness_requests"].values()),
+        "subsequent checks received different inputs",
+    )
     previous = 0
     accepted = []
     for i, a in enumerate(attempts):
@@ -195,6 +201,7 @@ def verify(d, p):
     (root,) = [s["content"] for s in history["skills"] if s["id"] == LEARNED]
     require(digest(root) == LEARNED, "unbound original skill")
     bills, seen = d["billing"], set()
+    normal_routes = set()
     proposal = d.get("proposal")
     child = proposal and proposal["child"]
     cal = {r["id"]: set(r["fixed"]) for r in p["calibration"]}
@@ -228,9 +235,18 @@ def verify(d, p):
         elif arm == "bare":
             require(a["route"] == "none" and a["applied"] is None, "invalid unassisted control")
         else:
+            normal_routes.add(rid)
             require(
                 a["applied"] in {None, key} and (a["route"] == "apply") == (a["applied"] == key),
                 "normal routing mismatch",
+            )
+            note = d["route_notes"][rid]
+            require(
+                note["decision"] == a["route"]
+                and note["requested"] == [key]
+                and isinstance(note["reason"], str)
+                and len(note["reason"]) <= 2000,
+                "unbound router explanation",
             )
         if a["patch"]:
             require(
@@ -304,6 +320,14 @@ def verify(d, p):
     learned = {r[a]["run"]: (r["task"], r[a]) for r in rows for a in r["order"]}
     if proposal:
         ids = proposal["attempts"]
+        audits = d["proposal_audit"]
+        require(
+            [a["run"] for a in audits] == ids
+            and len({a["request"] for a in audits}) == 1
+            and all(len(a["request"]) == 64 for a in audits)
+            and [i for i, a in enumerate(audits) if a["accepted"]] == ([len(ids) - 1] if child else []),
+            "proposal changed input or bypassed rejection",
+        )
         require(
             1 <= len(set(ids)) == len(ids) <= 2
             and seen.isdisjoint(ids)
@@ -314,6 +338,11 @@ def verify(d, p):
     if child:
         lineage = d["revision"]
         content = Skill.model_validate(lineage["content"])
+        require(
+            lineage["proposal_request"] == d["proposal_audit"][-1]["request"]
+            and not d["proposal_audit"][-1]["outside_evidence_pool"],
+            "unbound admitted proposal",
+        )
         require(
             content.hash == child
             and content.parent == LEARNED
@@ -455,6 +484,7 @@ def verify(d, p):
             accumulated.extend(rows)
             points.append(curve_point(accumulated, family, rows))
     require(d["curve"] == points, "unobserved curve")
+    require(set(d["route_notes"]) == normal_routes, "missing or unexpected normal routing explanation")
     seen.update(r["failed_run"] for r in d["transport"])
     require(
         set(bills) == seen
@@ -565,6 +595,7 @@ def export(root, p):
     if "matched" in p:
         for k in ("witness", "witness_attempts", "routing_trials"):
             out[k] = raw[k]
+        out["witness_requests"] = {}
         for a in raw["witness_attempts"]:
             events = s.events(a["run"])
             calls = [e["payload"] for e in events if e["kind"] == "MODEL_RESPONSE"]
@@ -577,6 +608,8 @@ def export(root, p):
                 ),
                 "witness not authored by live model",
             )
+            require(len(calls) == 1, "unexpected extra call while drafting one check")
+            out["witness_requests"][a["run"]] = calls[0]["request_body_hash"]
             if "program" in a:
                 (draft,) = [e["payload"] for e in events if e["kind"] == "CHECK_DRAFT"]
                 require(
@@ -593,6 +626,30 @@ def export(root, p):
     out["billing"] = bills
     if proposal:
         out["proposal"] = proposal
+        ev = s.get_artifact(proposal["evidence"])
+        out["proposal_audit"] = []
+        for rid in proposal["attempts"]:
+            events = s.events(rid)
+            model_replies = [e["payload"] for e in events if e["kind"] == "MODEL_RESPONSE"]
+            require(
+                events[0]["kind"] == "PROPOSAL_START"
+                and events[0]["payload"]["evidence_hash"] == proposal["evidence"]
+                and events[0]["payload"]["projection_hash"] == digest(Evolution.project(ev))
+                and events[-1]["kind"] in {"PROPOSED", "PROPOSAL_ERROR"}
+                and len(model_replies) == 1
+                and model_replies[0]["provider_model"].lower() == p["model"].lower(),
+                "incorrect proposal inputs, model or terminal state",
+            )
+            output = [e["payload"] for e in events if e["kind"] == "PROPOSAL_OUTPUT"]
+            cited = s.get_artifact(output[0]["artifact"])["evidence_refs"] if output else []
+            out["proposal_audit"].append(
+                {
+                    "run": rid,
+                    "request": model_replies[0]["request_body_hash"],
+                    "accepted": events[-1]["kind"] == "PROPOSED",
+                    "outside_evidence_pool": bool(set(cited) - set(raw["evidence_runs"])),
+                }
+            )
         if proposal["child"]:
             child = proposal["child"]
             att = s.get_artifact(proposal["receipt"])
@@ -662,6 +719,7 @@ def export(root, p):
     )
     cfg = Settings(_env_file=None, mode="mock", image=p["image"])
     to_probe = {}
+    out["route_notes"] = {}
     for phase in ("learn", "dev", "routing_trials"):
         for row in raw.get(phase, []):
             for arm in ["child"] if phase == "routing_trials" else row["order"]:
@@ -672,6 +730,14 @@ def export(root, p):
                 run, events = st.run(rid), st.events(rid)
                 f = run["result"]
                 (route,) = [e["payload"] for e in events if e["kind"] == "SKILL_ROUTE"]
+                if arm in ("parent", "child"):
+                    out["route_notes"][rid] = {
+                        "decision": route["decision"],
+                        "requested": route["requested_skill_ids"],
+                        "condition_indices": route.get("condition_indices", []),
+                        "exclusion_indices": route.get("exclusion_indices", []),
+                        "reason": route.get("reason", ""),
+                    }
                 replies = [e["payload"] for e in events if e["kind"] == "MODEL_RESPONSE"]
                 first = next(c for c in replies if c["expected_function"] == "submit_action")
                 require(
@@ -701,9 +767,10 @@ def export(root, p):
                     "trial differs from archived execution",
                 )
                 if phase == "learn":
-                    feedback = Evolution(cfg, st, feedback_policy="learn_outcome").revision_feedback(
-                        run, events
-                    )
+                    # Replaying feedback only reads events; the archive has no live model or billing session.
+                    feedback = Evolution(
+                        cfg, st, model=object(), feedback_policy="learn_outcome"
+                    ).revision_feedback(run, events)
                     require(feedback == a["feedback"], "learning feedback disagrees with executed actions")
                 if a["patch"]:
                     token = (t.id, a["patch"])

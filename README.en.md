@@ -4,7 +4,7 @@
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
   <a href="pyproject.toml"><img alt="Python 3.12" src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&amp;logoColor=white"></a>
   <a href="https://github.com/Phoenix-chaser/EvoCoder/actions/workflows/checks.yml"><img alt="View GitHub Actions CI" src="https://img.shields.io/badge/CI-GitHub%20Actions-35495E?logo=githubactions&amp;logoColor=white"></a>
-  <a href="docs/results/overview.json"><img alt="300 tests passed" src="https://img.shields.io/badge/tests-300%20passed-08796E?logo=pytest&amp;logoColor=white"></a>
+  <a href="docs/results/overview.json"><img alt="308 tests passed" src="https://img.shields.io/badge/tests-308%20passed-08796E?logo=pytest&amp;logoColor=white"></a>
   <a href="src/evocoder/sandbox.py"><img alt="Docker sandbox" src="https://img.shields.io/badge/sandbox-Docker-206B9C?logo=docker&amp;logoColor=white"></a>
   <a href="Makefile"><img alt="CPU-only offline demo" src="https://img.shields.io/badge/demo-CPU%20only-586876"></a>
 </p>
@@ -14,6 +14,18 @@ EvoCoder tests whether **a coding agent can learn a method from past repairs tha
 [Where does self-evolution show up?](#where-does-self-evolution-show-up) · [Earlier experiments](#earlier-experiments) · [Quick start](#quick-start) · [Bring your own tasks](#bring-your-own-tasks)
 
 ## Where does self-evolution show up?
+
+### How did a real failed repair change the skill's scope?
+
+GLM-5.3 applied the same parent skill twice to the same learning task. Both submitted patches passed the supplied public test. One discarded the caller's borrowed lease when redelivering a deferred notification. GLM wrote a new assertion that checked whether redelivery re-entered the original lease and whether the service opened an extra one. The assertion failed on the incomplete repair and passed on the other submitted patch and the independent reference. The public bundle includes both learning patches and the executable check. [Check, patches and outcomes](docs/results/object-witness.json)
+
+With execution traces and test receipts, GLM produced a child that added a check for other entry points but excluded resource managers. Given the matched repairs, the new check's observed outcomes and other learning examples, GLM generated a second child from the same parent. Its applicability explicitly covers caller-supplied clocks, journals and resource managers. Its steps follow the same object through retries and acquire a default only when needed. Each child faced concurrent unassisted, parent and manual controls. [Study design and results (中文)](docs/object-revision-study.md)
+
+**Forced application of the second child repaired all six object trials, 3/3 in each repeat. Its concurrent forced parent repaired 3/6 and the manual reference repaired 5/6.** Under normal routing the child was used in 4/6 trials and repaired 5/6. The parent was used in 0/6 and repaired 4/6. The child repaired the label callback in both repeats where the parent failed. On exception objects the router withheld the child twice, with a regression in repeat two. **One** object source delivered repeated gains against the **two** required for release. [Routes, forced interventions and release decision](docs/results/object-witness.json)
+
+![Concurrent repair counts across three object tasks and two repeats. With forced application the first child and parent repaired 3/6 each. In the second study the child repaired 6/6 and the parent 3/6.](docs/images/object-revision-en.png)
+
+On the original configuration tasks, the concurrent parent was used in 8/8 trials and repaired 6/8. The second child was used in 0/8 and repaired 3/8. The release decision retained both the callback gains and the configuration regressions. Both children stayed unpublished and all 30 holdout tasks remained sealed. Repair gain versus task-family diversity remains unmeasured. [Release and holdout records (中文)](docs/object-revision-study.md)
 
 ### What did the learned skill fix on new configuration tasks?
 

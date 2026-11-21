@@ -4,7 +4,7 @@
   <a href="LICENSE"><img alt="MIT 许可证" src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
   <a href="pyproject.toml"><img alt="Python 3.12" src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&amp;logoColor=white"></a>
   <a href="https://github.com/Phoenix-chaser/EvoCoder/actions/workflows/checks.yml"><img alt="查看 GitHub Actions CI" src="https://img.shields.io/badge/CI-GitHub%20Actions-35495E?logo=githubactions&amp;logoColor=white"></a>
-  <a href="docs/results/overview.json"><img alt="300 项测试通过" src="https://img.shields.io/badge/tests-300%20passed-08796E?logo=pytest&amp;logoColor=white"></a>
+  <a href="docs/results/overview.json"><img alt="308 项测试通过" src="https://img.shields.io/badge/tests-308%20passed-08796E?logo=pytest&amp;logoColor=white"></a>
   <a href="src/evocoder/sandbox.py"><img alt="Docker 沙箱" src="https://img.shields.io/badge/sandbox-Docker-206B9C?logo=docker&amp;logoColor=white"></a>
   <a href="Makefile"><img alt="离线演示只需 CPU" src="https://img.shields.io/badge/demo-CPU%20only-586876"></a>
 </p>
@@ -14,6 +14,18 @@ EvoCoder 检验 **Coding Agent 能否从过去的修复中学到对下一道题�
 [自进化效果在哪里](#自进化效果在哪里) · [其他实验结果](#其他实验结果) · [快速运行](#快速运行) · [接入自己的任务](#接入自己的任务)
 
 ## 自进化效果在哪里
+
+### 一次真实漏修如何改变了技能的适用范围？
+
+同一个 GLM-5.3、同一个父技能，两次修复同一道学习题，交出了两个都能通过公开测试的补丁。其中一个在延迟重投通知时丢掉了调用方借出的租约对象。GLM 自己编写了一条新断言，检查重投是否再次进入原租约，以及服务是否额外打开了新租约。独立执行的结果是漏修补丁断言失败，另一个实际补丁和参考修复均通过。这段程序和两个学习补丁可以在本地重放。[断言、补丁与执行记录](docs/results/object-witness.json)
+
+只给公开轨迹和测试收据时，GLM 修订出的第一个子版增加了检查其他入口的步骤，却把资源对象排除在外。再给同题的成功与失败补丁、新断言的执行结果和其他学习案例后，GLM 从原父版生成了另一个子版，主动把时钟、日志和资源管理器写进适用条件，并要求在重试等入口保留原对象、按需获取默认资源。两份子版的实际修复表现均用同轮无技能、父版和人工参照重新测量。[实验设计与逐题结果](docs/object-revision-study.md)
+
+**在三道对象题各跑两轮，强制注入第二个子版修好 6/6，两轮各 3/3。同轮强制父版修好 3/6，人工参照 5/6。** 正常路由下，子版被选中 4/6 次，修好 5/6。父版被选中 0/6 次，修好 4/6。标签回调题连续两轮由父版失败变为子版通过。异常对象题上，子版两轮均未实际注入，第二轮退化。获得重复改善的对象来源为 **1 个**，发布要求至少 **2 个**。[正常路由、强制注入和发布判定](docs/results/object-witness.json)
+
+![同轮对象题修复数。首个子版与父版强制注入均为 3/6。加入模型所写断言后，第二个子版强制使用为 6/6，同轮父版为 3/6。](docs/images/object-revision-zh.png)
+
+在原配置题上，同轮父版被选用 8/8 次、修好 6/8，新子版被选用 0/8 次、修好 3/8。对象回调的收益和配置入口的退化同时保留在发布判定中。两个子版均未发布，原有 30 道留出题保持封存，收益随任务族多样性的曲线仍待测量。[正式门禁与留出记录](docs/object-revision-study.md)
 
 ### 学得的技能在新配置题上多修好了什么？
 

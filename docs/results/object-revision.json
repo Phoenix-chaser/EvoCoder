@@ -1,0 +1,3933 @@
+{
+  "protocol": "531b51245fd81a1f90b3fad01d883b9ed27f78ff7afd595a66964d077500cf0e",
+  "phase": "gate_rejected",
+  "published": false,
+  "evidence_runs": [
+    "e3c2b8cb27a1c7075e1e15d46eda8189",
+    "58d6e5d33c112b3a884ef37109d063de",
+    "1bbd0ade38d31cc00b0306700f022df1"
+  ],
+  "dev": [
+    {
+      "task": "object-index-error",
+      "repeat": 0,
+      "order": [
+        "bare",
+        "parent",
+        "child",
+        "fixed_parent",
+        "fixed_child",
+        "manual"
+      ],
+      "bare": {
+        "run": "0bea74318707a9cbfcfef29d74eec578",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "none",
+        "applied": null,
+        "patch": "058e2c961caabff1415f7cf983259acaeeb1ab2c8d674761ebd01761958ee338",
+        "steps": 9,
+        "calls": 10,
+        "first_solver_request": "42221d21e96b341189b781b256b4cb0355fc9049ccfffa16398b624c252c395d",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_selection": true,
+          "missing_key": true
+        }
+      },
+      "parent": {
+        "run": "a42141c5af64cdf24cdb5095bdc0e68e",
+        "state": "FAILED",
+        "passed": false,
+        "route": "skip",
+        "applied": null,
+        "patch": "e94da00609a4f6a6bcf15f8148460de15b92c05fceda8f332a02557ccc04cba3",
+        "steps": 5,
+        "calls": 8,
+        "first_solver_request": "42221d21e96b341189b781b256b4cb0355fc9049ccfffa16398b624c252c395d",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_selection": false,
+          "missing_key": false
+        }
+      },
+      "child": {
+        "run": "3a0155fab18463dfb3389fe06d706f2c",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "skip",
+        "applied": null,
+        "patch": "058e2c961caabff1415f7cf983259acaeeb1ab2c8d674761ebd01761958ee338",
+        "steps": 7,
+        "calls": 8,
+        "first_solver_request": "42221d21e96b341189b781b256b4cb0355fc9049ccfffa16398b624c252c395d",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_selection": true,
+          "missing_key": true
+        }
+      },
+      "fixed_parent": {
+        "run": "281d06fe021283f3e858dfb204020bed",
+        "state": "FAILED",
+        "passed": false,
+        "route": "forced",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "patch": "dae40450ba471fdb747c04b4d677c8cdd888b0d3f9900ee2952a1ee64dcc6ead",
+        "steps": 6,
+        "calls": 6,
+        "first_solver_request": "58752ad78bfb18c2fcd722305ae47f8208d89007b2e430a07c3de041a8987827",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_selection": false,
+          "missing_key": true
+        }
+      },
+      "fixed_child": {
+        "run": "6e40c840beec37e27470d5c301cc41f7",
+        "state": "FAILED",
+        "passed": false,
+        "route": "forced",
+        "applied": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "patch": "b31cdb4463d97100e94974916df9b992ec0c0ebf5f17c22dd299f8fca0546632",
+        "steps": 7,
+        "calls": 7,
+        "first_solver_request": "259d47da25493659a895e804cea93cc610b35d2da789502b1d865c2bbac7af04",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_selection": false,
+          "missing_key": true
+        }
+      },
+      "manual": {
+        "run": "b45970034c8aaba01478047aad8cdd77",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "forced",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "patch": "058e2c961caabff1415f7cf983259acaeeb1ab2c8d674761ebd01761958ee338",
+        "steps": 10,
+        "calls": 11,
+        "first_solver_request": "4ce905d8de2fa34861a74734e3d3c9ea4b57859f3bc7afc37bce226621632ec1",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_selection": true,
+          "missing_key": true
+        }
+      }
+    },
+    {
+      "task": "object-label-policy",
+      "repeat": 0,
+      "order": [
+        "parent",
+        "child",
+        "fixed_parent",
+        "fixed_child",
+        "manual",
+        "bare"
+      ],
+      "parent": {
+        "run": "68b5d2e897aca29f49ba1699a7881ed1",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "uncertain",
+        "applied": null,
+        "patch": "d4658a39f8078b6d738e508747dead87383053ceede2d09ba46c0ca391b80c68",
+        "steps": 8,
+        "calls": 9,
+        "first_solver_request": "0745d8fd1b86a91ac138d6d1ca696cd8dfd6ffa9aa87e6438603a1f956fd223c",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_batch": true,
+          "nonempty_batch": true
+        }
+      },
+      "child": {
+        "run": "be367a4dac75acc0645026ee57d07f92",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "apply",
+        "applied": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "patch": "3df2201b529b6a2bee4386c80f8b8281fa3dbbb0b6220e48f44d63a68ea5aa8d",
+        "steps": 11,
+        "calls": 13,
+        "first_solver_request": "1d5322078bb396aeea76ca3ca4a8c3f0248399cae6bc3b942a87582da2635300",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_batch": true,
+          "nonempty_batch": true
+        }
+      },
+      "fixed_parent": {
+        "run": "cd143b0800314d747664e59c541b1ef9",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "forced",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "patch": "9f1c78f70f4de7710b5e57bb2a8179fe2d7920b2f128d3cead2758bf80eadb37",
+        "steps": 11,
+        "calls": 12,
+        "first_solver_request": "dc3ab4c75039e647fa495b74c277115ec3e28928b6766d0355c8950703b590ba",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_batch": true,
+          "nonempty_batch": true
+        }
+      },
+      "fixed_child": {
+        "run": "eb4526767d14078ccbf5d1dd3b3207e5",
+        "state": "FAILED",
+        "passed": false,
+        "route": "forced",
+        "applied": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "patch": "2c7e9e701b3e0acbe2dd28992474fe2e7a5cf4fafd916267deb4e64cba2482ce",
+        "steps": 9,
+        "calls": 9,
+        "first_solver_request": "1d5322078bb396aeea76ca3ca4a8c3f0248399cae6bc3b942a87582da2635300",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_batch": false,
+          "nonempty_batch": true
+        }
+      },
+      "manual": {
+        "run": "f3ae485f10ff94a315c41124bfbba812",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "forced",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "patch": "4810adc511dec8e12d7369ee452b82a03c83fd136a0c4dc889a37cad1b1bacc1",
+        "steps": 9,
+        "calls": 10,
+        "first_solver_request": "a4bbe176323200fac369956ee835603ae5e5efc964fe6134ae2122893d5e2476",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_batch": true,
+          "nonempty_batch": true
+        }
+      },
+      "bare": {
+        "run": "a05163fc7ee85a68cf86f2db918f3d81",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "none",
+        "applied": null,
+        "patch": "9f1c78f70f4de7710b5e57bb2a8179fe2d7920b2f128d3cead2758bf80eadb37",
+        "steps": 10,
+        "calls": 10,
+        "first_solver_request": "0745d8fd1b86a91ac138d6d1ca696cd8dfd6ffa9aa87e6438603a1f956fd223c",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_batch": true,
+          "nonempty_batch": true
+        }
+      }
+    },
+    {
+      "task": "object-result-sink",
+      "repeat": 0,
+      "order": [
+        "child",
+        "fixed_parent",
+        "fixed_child",
+        "manual",
+        "bare",
+        "parent"
+      ],
+      "child": {
+        "run": "45f32ba343b4e793f401af6ba44c27dc",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "skip",
+        "applied": null,
+        "patch": "852e8dd37ded499f7d4ea3cd1c027acb1b5be2b0d61f688c6e34525425c24243",
+        "steps": 6,
+        "calls": 7,
+        "first_solver_request": "92157fc81f14befd105c6fe163659ddc00bc727eb4111fa2f05fe3e82feefe81",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_destination": true,
+          "empty_finalization": true
+        }
+      },
+      "fixed_parent": {
+        "run": "a406ead79094857684bacf83b90ca7ab",
+        "state": "FAILED",
+        "passed": false,
+        "route": "forced",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "patch": "994dfb5dfe1fa3b2f1a1e09deb1be991fa6978b0392c489e782fba59bba276a7",
+        "steps": 7,
+        "calls": 8,
+        "first_solver_request": "9a41517f9b2bb5c922db8f1b5ff58b58b303c95c1f07b90a47a29db577f2b0fa",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_destination": false,
+          "empty_finalization": false
+        }
+      },
+      "fixed_child": {
+        "run": "2c65883cbcdb7c339c30f3d9b46de096",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "forced",
+        "applied": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "patch": "009eac478c5116d101d28839adde412be20e971fb0f607b0e9d4bfc44998ad04",
+        "steps": 8,
+        "calls": 9,
+        "first_solver_request": "c4b65585bd6c15e00c494cae0fd66fe9c056d492e807930ed12cfa3edffd4f88",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_destination": true,
+          "empty_finalization": true
+        }
+      },
+      "manual": {
+        "run": "538610193b9f6e73329e633a5a7b0056",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "forced",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "patch": "852e8dd37ded499f7d4ea3cd1c027acb1b5be2b0d61f688c6e34525425c24243",
+        "steps": 8,
+        "calls": 8,
+        "first_solver_request": "e5f126bfd14de7c3f46f2e3fdcd498a98efdc076a2cd6ef97327309ce8a51adc",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_destination": true,
+          "empty_finalization": true
+        }
+      },
+      "bare": {
+        "run": "d3cb7414285c59c0d29666008ec28fba",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "none",
+        "applied": null,
+        "patch": "eca8de987dffa078e092e3c0daaffdd3f94e5d2cd624e8a638aadcbfec1f0da3",
+        "steps": 10,
+        "calls": 10,
+        "first_solver_request": "92157fc81f14befd105c6fe163659ddc00bc727eb4111fa2f05fe3e82feefe81",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_destination": true,
+          "empty_finalization": true
+        }
+      },
+      "parent": {
+        "run": "0a283fe7f79f40e615e24830c506fed7",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "skip",
+        "applied": null,
+        "patch": "852e8dd37ded499f7d4ea3cd1c027acb1b5be2b0d61f688c6e34525425c24243",
+        "steps": 12,
+        "calls": 13,
+        "first_solver_request": "92157fc81f14befd105c6fe163659ddc00bc727eb4111fa2f05fe3e82feefe81",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_destination": true,
+          "empty_finalization": true
+        }
+      }
+    },
+    {
+      "task": "transfer-meter-view",
+      "repeat": 0,
+      "order": [
+        "bare",
+        "parent",
+        "child"
+      ],
+      "bare": {
+        "run": "59319884312cec3d3e734f74ebac45d9",
+        "state": "FAILED",
+        "passed": false,
+        "route": "none",
+        "applied": null,
+        "patch": "e60d86b40a2511bb8d083102b2483f061ec433c1da962937133e9ee4bacd174d",
+        "steps": 6,
+        "calls": 6,
+        "first_solver_request": "4d68948caaec9ec3b19919e8512a37052d903df69d7b7531e03e4e067f48cf0f",
+        "probes": {
+          "public": true,
+          "bookmark_zero": false,
+          "controls": true,
+          "direct_zero": false
+        }
+      },
+      "parent": {
+        "run": "a87de96f9ae95f49fd5e72db736dda2d",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "apply",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "patch": "33846b1c6e33da36c0847abc34a50ca45a7141e4f2924f7d40b8bccd1e85c479",
+        "steps": 7,
+        "calls": 8,
+        "first_solver_request": "ef7218364cf674d103649dc638f75bc7be6e955a05aac93bb617ebd583815e88",
+        "probes": {
+          "public": true,
+          "bookmark_zero": true,
+          "controls": true,
+          "direct_zero": true
+        }
+      },
+      "child": {
+        "run": "68abbdf02cf912a8f7c748ab7d43c62f",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "apply",
+        "applied": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "patch": "9c2206fc46ae2854a3c660e21f69b832a881c050fc0052565fdaf415c555f8cf",
+        "steps": 8,
+        "calls": 9,
+        "first_solver_request": "dee77f97c8a9bc1078bd4cbf6a11203969f63e116211b67962fa007017011a4e",
+        "probes": {
+          "public": true,
+          "bookmark_zero": true,
+          "controls": true,
+          "direct_zero": true
+        }
+      }
+    },
+    {
+      "task": "transfer-column-caption",
+      "repeat": 0,
+      "order": [
+        "parent",
+        "child",
+        "bare"
+      ],
+      "parent": {
+        "run": "fe971daf52644de9dfaf24a362e88066",
+        "state": "FAILED",
+        "passed": false,
+        "route": "apply",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "patch": "dc104ff63d6025fe91f846b9895f59554f7304923404db3c6556a15c4da9dc39",
+        "steps": 8,
+        "calls": 9,
+        "first_solver_request": "5a49b11dd2040b48d7822937298753026794b36d69247f441fa96e9ce228e553",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "inline_blank": true,
+          "restored_blank": false
+        }
+      },
+      "child": {
+        "run": "ce65b65e9d1b18ef0802ffd366b466cf",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "apply",
+        "applied": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "patch": "7fe86e71b368f2180939680a35b73168260cecc18d2e648cb6df5aec9375d11b",
+        "steps": 14,
+        "calls": 15,
+        "first_solver_request": "5d4a3724d8e6f064439368e86524d69f21bd06e779ce12e264ec3e4415abe18a",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "inline_blank": true,
+          "restored_blank": true
+        }
+      },
+      "bare": {
+        "run": "dc46c0e3a9aab37de16e870963a320fd",
+        "state": "FAILED",
+        "passed": false,
+        "route": "none",
+        "applied": null,
+        "patch": "df177a9350b653a3a8deb5bacfcfb16ba3f76e5e1552af812bb2e1981d4cbd34",
+        "steps": 8,
+        "calls": 8,
+        "first_solver_request": "ae2adb9da07e37d97701d44dd0071fbab5f50bfc951880153b0b9654ef52e266",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "inline_blank": false,
+          "restored_blank": false
+        }
+      }
+    },
+    {
+      "task": "transfer-print-ticket",
+      "repeat": 0,
+      "order": [
+        "child",
+        "bare",
+        "parent"
+      ],
+      "child": {
+        "run": "f17d33fb2cbf4905363e1a553752aced",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "apply",
+        "applied": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "patch": "f8ac203272bbe676df572577718b7295a1f96b3f53cccb3340af54ea639906ee",
+        "steps": 11,
+        "calls": 12,
+        "first_solver_request": "2272aa0ef72a2cf712ce33029a8fa523f6718ffa49176b085f2d1e9cd2ba9368",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "local_simplex": true,
+          "queued_simplex": true
+        }
+      },
+      "bare": {
+        "run": "90ad45b7ca840f3f50ac1b3f66048270",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "none",
+        "applied": null,
+        "patch": "4825714bf995ab120086ac9a0cda39828f4065772903811a703c1629033e5116",
+        "steps": 12,
+        "calls": 12,
+        "first_solver_request": "b8fcba174224db6302f901b6f84b7723645269c42fbbbb578c49714561efd20f",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "local_simplex": true,
+          "queued_simplex": true
+        }
+      },
+      "parent": {
+        "run": "2ddffd0b601c9b0780b074a94525f23b",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "apply",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "patch": "646ba3c2433720851ecae995924fd71a9f9b897b3d8cfd6e1b2f25773d2f1403",
+        "steps": 7,
+        "calls": 9,
+        "first_solver_request": "87828a380a63cf727a0d148c2d7894da3a0e4934a6b3c58922226305082fe1da",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "local_simplex": true,
+          "queued_simplex": true
+        }
+      }
+    },
+    {
+      "task": "transfer-palette-book",
+      "repeat": 0,
+      "order": [
+        "bare",
+        "parent",
+        "child"
+      ],
+      "bare": {
+        "run": "b865e1c549f7446c667f269cc134226c",
+        "state": "FAILED",
+        "passed": false,
+        "route": "none",
+        "applied": null,
+        "patch": "c5a163d4c8635f7511a6e8576ed0cda213d40f7e1c0c2c4f9d72f274c2efda07",
+        "steps": 7,
+        "calls": 7,
+        "first_solver_request": "875b87f1e97bd3447e3a34f36aa250ceb5e18b55e3e4bbe45b6f3bc4f3e63872",
+        "probes": {
+          "public": true,
+          "book_empty": false,
+          "controls": true,
+          "single_empty": false
+        }
+      },
+      "parent": {
+        "run": "670408e705d97a70f712b4fe2404a4b8",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "apply",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "patch": "5755c648f5295976193fa12c1b36197269adec117ae10fcd3dfe9f9ad2e872bd",
+        "steps": 7,
+        "calls": 8,
+        "first_solver_request": "2a49908593c034b6efdf28c2970cc80ad3b614dbf4626b6b300d70f3d2ca1043",
+        "probes": {
+          "public": true,
+          "book_empty": true,
+          "controls": true,
+          "single_empty": true
+        }
+      },
+      "child": {
+        "run": "9b9c674b78bdf1bc6e496d85e1531321",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "apply",
+        "applied": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "patch": "ccf94dfd64e65c446e598cde0b6aefec406bc3ec7dd5f03cf5e61294c0cf338e",
+        "steps": 8,
+        "calls": 10,
+        "first_solver_request": "fca4a563e26e781bef440298561fe808d8405d179969c9c0f8077a511a608f1e",
+        "probes": {
+          "public": true,
+          "book_empty": true,
+          "controls": true,
+          "single_empty": true
+        }
+      }
+    },
+    {
+      "task": "object-index-error",
+      "repeat": 1,
+      "order": [
+        "manual",
+        "fixed_child",
+        "fixed_parent",
+        "child",
+        "parent",
+        "bare"
+      ],
+      "manual": {
+        "run": "769d8cad4c9fb11a68e3c519265771cd",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "forced",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "patch": "ce363bd3e8efa52c4456a6b5c372d17c9d826a21051219c635250f40ad018f25",
+        "steps": 8,
+        "calls": 10,
+        "first_solver_request": "4ce905d8de2fa34861a74734e3d3c9ea4b57859f3bc7afc37bce226621632ec1",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_selection": true,
+          "missing_key": true
+        }
+      },
+      "fixed_child": {
+        "run": "83ec6a0ed6ab555308ae1600e811b06a",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "forced",
+        "applied": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "patch": "058e2c961caabff1415f7cf983259acaeeb1ab2c8d674761ebd01761958ee338",
+        "steps": 13,
+        "calls": 15,
+        "first_solver_request": "259d47da25493659a895e804cea93cc610b35d2da789502b1d865c2bbac7af04",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_selection": true,
+          "missing_key": true
+        }
+      },
+      "fixed_parent": {
+        "run": "143dc904d4f0acd4ba5bc62e046559b7",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "forced",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "patch": "eeecff398892321c88731cf144c0180865d388538983a10e5b658e289425e56e",
+        "steps": 6,
+        "calls": 7,
+        "first_solver_request": "58752ad78bfb18c2fcd722305ae47f8208d89007b2e430a07c3de041a8987827",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_selection": true,
+          "missing_key": true
+        }
+      },
+      "child": {
+        "run": "07f059f612a8f65b902c10180f7b51e3",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "skip",
+        "applied": null,
+        "patch": "eeedf64a876e4fcba604f5ac1156b0c584809af055b419a2a0385731b317ca70",
+        "steps": 10,
+        "calls": 12,
+        "first_solver_request": "42221d21e96b341189b781b256b4cb0355fc9049ccfffa16398b624c252c395d",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_selection": true,
+          "missing_key": true
+        }
+      },
+      "parent": {
+        "run": "253fe4495ee4ba818b79fe70537f3654",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "skip",
+        "applied": null,
+        "patch": "058e2c961caabff1415f7cf983259acaeeb1ab2c8d674761ebd01761958ee338",
+        "steps": 7,
+        "calls": 8,
+        "first_solver_request": "42221d21e96b341189b781b256b4cb0355fc9049ccfffa16398b624c252c395d",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_selection": true,
+          "missing_key": true
+        }
+      },
+      "bare": {
+        "run": "f0705971cf1d3a25758d0beb4fef6a40",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "none",
+        "applied": null,
+        "patch": "422a3a6b6c2dc80be6e74b65e66486ba104efa58919afad709482c7afbd80f1a",
+        "steps": 6,
+        "calls": 7,
+        "first_solver_request": "42221d21e96b341189b781b256b4cb0355fc9049ccfffa16398b624c252c395d",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_selection": true,
+          "missing_key": true
+        }
+      }
+    },
+    {
+      "task": "object-label-policy",
+      "repeat": 1,
+      "order": [
+        "bare",
+        "manual",
+        "fixed_child",
+        "fixed_parent",
+        "child",
+        "parent"
+      ],
+      "bare": {
+        "run": "49cf5dfaef1e46d220e52f897888c574",
+        "state": "FAILED",
+        "passed": false,
+        "route": "none",
+        "applied": null,
+        "patch": "06130ca905bf6e054e53ff51b2383df7054d8600d04d6dc991b01b472fd9dc8b",
+        "steps": 9,
+        "calls": 9,
+        "first_solver_request": "0745d8fd1b86a91ac138d6d1ca696cd8dfd6ffa9aa87e6438603a1f956fd223c",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_batch": false,
+          "nonempty_batch": false
+        }
+      },
+      "manual": {
+        "run": "8e9a38414ea37f17be4b155c629ee67a",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "forced",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "patch": "48e28478ef9d9bf79fa572d0eb78697e1def1753dbd04803148220ab469d233c",
+        "steps": 11,
+        "calls": 11,
+        "first_solver_request": "a4bbe176323200fac369956ee835603ae5e5efc964fe6134ae2122893d5e2476",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_batch": true,
+          "nonempty_batch": true
+        }
+      },
+      "fixed_child": {
+        "run": "048a6e4164999a49a35c9cdf6a338013",
+        "state": "FAILED",
+        "passed": false,
+        "route": "forced",
+        "applied": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "patch": "2819fae031c98620494d36592aabca3a52882836629f079c5cb331933a389f0d",
+        "steps": 12,
+        "calls": 12,
+        "first_solver_request": "1d5322078bb396aeea76ca3ca4a8c3f0248399cae6bc3b942a87582da2635300",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_batch": false,
+          "nonempty_batch": false
+        }
+      },
+      "fixed_parent": {
+        "run": "bd64e706145de12c6617481c8821c820",
+        "state": "FAILED",
+        "passed": false,
+        "route": "forced",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "patch": "2e2f8cbf2fe0baded6a329a58d3d45681adb24dfd0f6d57790ba92e584735c99",
+        "steps": 7,
+        "calls": 7,
+        "first_solver_request": "dc3ab4c75039e647fa495b74c277115ec3e28928b6766d0355c8950703b590ba",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_batch": false,
+          "nonempty_batch": false
+        }
+      },
+      "child": {
+        "run": "30e06bbadbc989df6d8aceb2d5e7ad40",
+        "state": "FAILED",
+        "passed": false,
+        "route": "skip",
+        "applied": null,
+        "patch": "b554822d7a2671ebdfad8a59051f311e0da48d8ce0d017a41b51cb58f282e8a1",
+        "steps": 6,
+        "calls": 8,
+        "first_solver_request": "0745d8fd1b86a91ac138d6d1ca696cd8dfd6ffa9aa87e6438603a1f956fd223c",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_batch": false,
+          "nonempty_batch": true
+        }
+      },
+      "parent": {
+        "run": "e9dac79c9758b79f278d37e1bf1ed471",
+        "state": "FAILED",
+        "passed": false,
+        "route": "skip",
+        "applied": null,
+        "patch": "2e2f8cbf2fe0baded6a329a58d3d45681adb24dfd0f6d57790ba92e584735c99",
+        "steps": 11,
+        "calls": 12,
+        "first_solver_request": "0745d8fd1b86a91ac138d6d1ca696cd8dfd6ffa9aa87e6438603a1f956fd223c",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_batch": false,
+          "nonempty_batch": false
+        }
+      }
+    },
+    {
+      "task": "object-result-sink",
+      "repeat": 1,
+      "order": [
+        "parent",
+        "bare",
+        "manual",
+        "fixed_child",
+        "fixed_parent",
+        "child"
+      ],
+      "parent": {
+        "run": "3c087f163a0aed03b8b1f60fdf63b412",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "skip",
+        "applied": null,
+        "patch": "51eb8be900faf431dd4aab4e9caaac1c178926ca2578dc20cdc42ac122bf4453",
+        "steps": 5,
+        "calls": 6,
+        "first_solver_request": "92157fc81f14befd105c6fe163659ddc00bc727eb4111fa2f05fe3e82feefe81",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_destination": true,
+          "empty_finalization": true
+        }
+      },
+      "bare": {
+        "run": "36031310abf35a4e7f3f9b81166387a2",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "none",
+        "applied": null,
+        "patch": "852e8dd37ded499f7d4ea3cd1c027acb1b5be2b0d61f688c6e34525425c24243",
+        "steps": 8,
+        "calls": 8,
+        "first_solver_request": "92157fc81f14befd105c6fe163659ddc00bc727eb4111fa2f05fe3e82feefe81",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_destination": true,
+          "empty_finalization": true
+        }
+      },
+      "manual": {
+        "run": "37fba99a08f987e3b1ca818b831ee8b2",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "forced",
+        "applied": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+        "patch": "852e8dd37ded499f7d4ea3cd1c027acb1b5be2b0d61f688c6e34525425c24243",
+        "steps": 7,
+        "calls": 7,
+        "first_solver_request": "e5f126bfd14de7c3f46f2e3fdcd498a98efdc076a2cd6ef97327309ce8a51adc",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_destination": true,
+          "empty_finalization": true
+        }
+      },
+      "fixed_child": {
+        "run": "37823411767bdbbd2183714ff2b2b7ed",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "forced",
+        "applied": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "patch": "62e6b23d2c6786424a5f19968c85dfcc154ff7f864a2f241e2b2dd6db0f5e30b",
+        "steps": 13,
+        "calls": 13,
+        "first_solver_request": "c4b65585bd6c15e00c494cae0fd66fe9c056d492e807930ed12cfa3edffd4f88",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_destination": true,
+          "empty_finalization": true
+        }
+      },
+      "fixed_parent": {
+        "run": "e7e68f8a8936eb29989a9218194b5c2d",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "forced",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "patch": "21c481865f7332683fbe387bdfca3649fac5fe598f6224fae9f549767459181e",
+        "steps": 5,
+        "calls": 7,
+        "first_solver_request": "9a41517f9b2bb5c922db8f1b5ff58b58b303c95c1f07b90a47a29db577f2b0fa",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_destination": true,
+          "empty_finalization": true
+        }
+      },
+      "child": {
+        "run": "2476f02413fcb385f0dd0b9c08574be3",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "skip",
+        "applied": null,
+        "patch": "852e8dd37ded499f7d4ea3cd1c027acb1b5be2b0d61f688c6e34525425c24243",
+        "steps": 7,
+        "calls": 8,
+        "first_solver_request": "92157fc81f14befd105c6fe163659ddc00bc727eb4111fa2f05fe3e82feefe81",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "empty_destination": true,
+          "empty_finalization": true
+        }
+      }
+    },
+    {
+      "task": "transfer-meter-view",
+      "repeat": 1,
+      "order": [
+        "child",
+        "parent",
+        "bare"
+      ],
+      "child": {
+        "run": "36dd134deadcce889d31cbce3e3da492",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "apply",
+        "applied": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "patch": "338476e5bf22a272e6b1647361fb949e0c931683a24601c8b53c082145c4fdcf",
+        "steps": 8,
+        "calls": 9,
+        "first_solver_request": "dee77f97c8a9bc1078bd4cbf6a11203969f63e116211b67962fa007017011a4e",
+        "probes": {
+          "public": true,
+          "bookmark_zero": true,
+          "controls": true,
+          "direct_zero": true
+        }
+      },
+      "parent": {
+        "run": "fe23bc5a82a06163995550d0794ddb92",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "apply",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "patch": "3316182d3ffbe940d5ce16c7fed6d8c929cc89198ea73ddab882f37f2d05d91b",
+        "steps": 7,
+        "calls": 8,
+        "first_solver_request": "ef7218364cf674d103649dc638f75bc7be6e955a05aac93bb617ebd583815e88",
+        "probes": {
+          "public": true,
+          "bookmark_zero": true,
+          "controls": true,
+          "direct_zero": true
+        }
+      },
+      "bare": {
+        "run": "8e8009b5e281677b166ee9a0c95bd6fa",
+        "state": "FAILED",
+        "passed": false,
+        "route": "none",
+        "applied": null,
+        "patch": "e60d86b40a2511bb8d083102b2483f061ec433c1da962937133e9ee4bacd174d",
+        "steps": 7,
+        "calls": 7,
+        "first_solver_request": "4d68948caaec9ec3b19919e8512a37052d903df69d7b7531e03e4e067f48cf0f",
+        "probes": {
+          "public": true,
+          "bookmark_zero": false,
+          "controls": true,
+          "direct_zero": false
+        }
+      }
+    },
+    {
+      "task": "transfer-column-caption",
+      "repeat": 1,
+      "order": [
+        "bare",
+        "child",
+        "parent"
+      ],
+      "bare": {
+        "run": "3c0498a4b50215b36edb09aab4442138",
+        "state": "FAILED",
+        "passed": false,
+        "route": "none",
+        "applied": null,
+        "patch": "66dbbf73a52f2d324abf1ae057153cbdbe0289126ce8673e24778b44dff8764b",
+        "steps": 8,
+        "calls": 8,
+        "first_solver_request": "ae2adb9da07e37d97701d44dd0071fbab5f50bfc951880153b0b9654ef52e266",
+        "probes": {
+          "public": true,
+          "controls": false,
+          "inline_blank": false,
+          "restored_blank": false
+        }
+      },
+      "child": {
+        "run": "92074250133519dea14fbf8cb303d95e",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "apply",
+        "applied": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "patch": "d5161a762c4d540e4acd01aaba1bedf87bc2b4a0c8729f2ffc354c58f67df80f",
+        "steps": 9,
+        "calls": 10,
+        "first_solver_request": "5d4a3724d8e6f064439368e86524d69f21bd06e779ce12e264ec3e4415abe18a",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "inline_blank": true,
+          "restored_blank": true
+        }
+      },
+      "parent": {
+        "run": "e8aa3c254e4f8ccff2bf6219387188a5",
+        "state": "FAILED",
+        "passed": false,
+        "route": "apply",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "patch": "dc104ff63d6025fe91f846b9895f59554f7304923404db3c6556a15c4da9dc39",
+        "steps": 10,
+        "calls": 11,
+        "first_solver_request": "5a49b11dd2040b48d7822937298753026794b36d69247f441fa96e9ce228e553",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "inline_blank": true,
+          "restored_blank": false
+        }
+      }
+    },
+    {
+      "task": "transfer-print-ticket",
+      "repeat": 1,
+      "order": [
+        "parent",
+        "bare",
+        "child"
+      ],
+      "parent": {
+        "run": "22af44696125d1d2fe3a2ace0192af88",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "apply",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "patch": "1fa28b571e33606b748d9aefa97f960911dc0eebdadbdf7de3c7e4e7a859d682",
+        "steps": 6,
+        "calls": 7,
+        "first_solver_request": "87828a380a63cf727a0d148c2d7894da3a0e4934a6b3c58922226305082fe1da",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "local_simplex": true,
+          "queued_simplex": true
+        }
+      },
+      "bare": {
+        "run": "903348753ab526f1a7ffc675478d947c",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "none",
+        "applied": null,
+        "patch": "9536dcd4ba32505b6b074dd679bec2fb5d053e560034ab746a34a777ec9120f4",
+        "steps": 9,
+        "calls": 9,
+        "first_solver_request": "b8fcba174224db6302f901b6f84b7723645269c42fbbbb578c49714561efd20f",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "local_simplex": true,
+          "queued_simplex": true
+        }
+      },
+      "child": {
+        "run": "333401c5c29b0142f6fea9020e5dc890",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "apply",
+        "applied": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "patch": "4d117a4bd99d5c83aad1cb6f35148fc1e6660bda77230151325866628e6ea548",
+        "steps": 15,
+        "calls": 16,
+        "first_solver_request": "2272aa0ef72a2cf712ce33029a8fa523f6718ffa49176b085f2d1e9cd2ba9368",
+        "probes": {
+          "public": true,
+          "controls": true,
+          "local_simplex": true,
+          "queued_simplex": true
+        }
+      }
+    },
+    {
+      "task": "transfer-palette-book",
+      "repeat": 1,
+      "order": [
+        "child",
+        "parent",
+        "bare"
+      ],
+      "child": {
+        "run": "73867580d842a3194945ba72b019a179",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "apply",
+        "applied": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "patch": "d7625894b3e89dd95b3af846d61ed579f19724981237f42b9cf3785ec4f5db50",
+        "steps": 8,
+        "calls": 9,
+        "first_solver_request": "fca4a563e26e781bef440298561fe808d8405d179969c9c0f8077a511a608f1e",
+        "probes": {
+          "public": true,
+          "book_empty": true,
+          "controls": true,
+          "single_empty": true
+        }
+      },
+      "parent": {
+        "run": "de539100db60323f308421abce0843b9",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "apply",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "patch": "6cefe508e139cdfed4e137fd26de72c91e2c070dcb4bd7443665838bb6a428eb",
+        "steps": 8,
+        "calls": 10,
+        "first_solver_request": "2a49908593c034b6efdf28c2970cc80ad3b614dbf4626b6b300d70f3d2ca1043",
+        "probes": {
+          "public": true,
+          "book_empty": true,
+          "controls": true,
+          "single_empty": true
+        }
+      },
+      "bare": {
+        "run": "a60fd61ec619361d3c69ec4d2aba86da",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "none",
+        "applied": null,
+        "patch": "9985289dd282f31ac4d74195bd455d4ef02c055b57487355617ecec49964bc7d",
+        "steps": 12,
+        "calls": 12,
+        "first_solver_request": "875b87f1e97bd3447e3a34f36aa250ceb5e18b55e3e4bbe45b6f3bc4f3e63872",
+        "probes": {
+          "public": true,
+          "book_empty": true,
+          "controls": true,
+          "single_empty": true
+        }
+      }
+    }
+  ],
+  "holdout_exposures": 0,
+  "curve": [],
+  "costs": {
+    "cost_credits": 859.26488,
+    "reserved_credits": 0.0,
+    "calls": 877
+  },
+  "transport": [],
+  "learn": [
+    {
+      "task": "learn-tile-compositor",
+      "repeat": 0,
+      "order": [
+        "parent",
+        "fixed_parent"
+      ],
+      "parent": {
+        "run": "6b2c98d482092768200e90b78d748fec",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "skip",
+        "applied": null,
+        "patch": "ae66f806aceeb7f74c6a57e6c64c37bab694291da3bb607541c49aecc101f98d",
+        "steps": 7,
+        "calls": 8,
+        "first_solver_request": "ea314ac85b630bbb8fa71ee509378a4ae3f63fb0e7d98c9375599d7f675308d5",
+        "feedback": {
+          "post_edit_public_failure_sequences": [
+            17
+          ],
+          "rejected_actions": 0,
+          "step_budget_exhausted": false,
+          "command_budget_exhausted": false,
+          "write_count": 2,
+          "public_success_count_after_edit": 2,
+          "writes_after_last_public_success": 0,
+          "learn_submission_failed_independent_check": false
+        },
+        "eligible": false,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "initially_empty_brush": true,
+          "padding_first": true
+        }
+      },
+      "fixed_parent": {
+        "run": "1bbd0ade38d31cc00b0306700f022df1",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "forced",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "patch": "db82219c273433892e2ccd3effb8ad23582a0fb2e3c1a2501dfd5a72d0a4d7fd",
+        "steps": 5,
+        "calls": 5,
+        "first_solver_request": "f1339bb4fa81e278c0dcfbbe870c738c93b1554b8c73f4a08c8328e29154a333",
+        "feedback": {
+          "post_edit_public_failure_sequences": [],
+          "rejected_actions": 0,
+          "step_budget_exhausted": false,
+          "command_budget_exhausted": false,
+          "write_count": 1,
+          "public_success_count_after_edit": 2,
+          "writes_after_last_public_success": 0,
+          "learn_submission_failed_independent_check": false
+        },
+        "eligible": false,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "initially_empty_brush": true,
+          "padding_first": true
+        }
+      }
+    },
+    {
+      "task": "learn-scheduler-watch",
+      "repeat": 0,
+      "order": [
+        "fixed_parent",
+        "parent"
+      ],
+      "fixed_parent": {
+        "run": "309d97926563d825e3da1f1db8586e88",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "forced",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "patch": "5e9031033872f2ca4fc048f22c27f54d57eb5d8e5d76c025750a67f896594f76",
+        "steps": 8,
+        "calls": 8,
+        "first_solver_request": "10ef69a67ec824465064bfb4c123a6dd74529301f562b249e90f790bb6f3be72",
+        "feedback": {
+          "post_edit_public_failure_sequences": [],
+          "rejected_actions": 0,
+          "step_budget_exhausted": false,
+          "command_budget_exhausted": false,
+          "write_count": 3,
+          "public_success_count_after_edit": 2,
+          "writes_after_last_public_success": 0,
+          "learn_submission_failed_independent_check": false
+        },
+        "eligible": false,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "start_replay": true,
+          "wake_replay": true
+        }
+      },
+      "parent": {
+        "run": "32a38e6d0909f4ea1229554968875fc7",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "skip_invalid",
+        "applied": null,
+        "patch": "0e5544ff783c38a5e214f24a85a42f68f8366c30badc147cf2528932c1602951",
+        "steps": 9,
+        "calls": 10,
+        "first_solver_request": "e7adfe5b8447f599608f6d775f0475fc3cb35caf92cfc5b0d832b1609b1ac69e",
+        "feedback": {
+          "post_edit_public_failure_sequences": [],
+          "rejected_actions": 0,
+          "step_budget_exhausted": false,
+          "command_budget_exhausted": false,
+          "write_count": 2,
+          "public_success_count_after_edit": 2,
+          "writes_after_last_public_success": 0,
+          "learn_submission_failed_independent_check": false
+        },
+        "eligible": false,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "start_replay": true,
+          "wake_replay": true
+        }
+      }
+    },
+    {
+      "task": "learn-undo-journal",
+      "repeat": 0,
+      "order": [
+        "parent",
+        "fixed_parent"
+      ],
+      "parent": {
+        "run": "9c781b80c324b9753b43bc768fa0432b",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "skip",
+        "applied": null,
+        "patch": "27734a690f492c1617cf810d6bc0d7010624826106ca9fbaa8153f13892c105c",
+        "steps": 9,
+        "calls": 10,
+        "first_solver_request": "d54344ce1b7175d1c7a4ee3945a2bafb6f30ea16568f13e14ea798577bfe7e25",
+        "feedback": {
+          "post_edit_public_failure_sequences": [
+            17
+          ],
+          "rejected_actions": 0,
+          "step_budget_exhausted": false,
+          "command_budget_exhausted": false,
+          "write_count": 2,
+          "public_success_count_after_edit": 3,
+          "writes_after_last_public_success": 0,
+          "learn_submission_failed_independent_check": false
+        },
+        "eligible": false,
+        "probes": {
+          "public": true,
+          "abort_empty_origin": true,
+          "controls": true,
+          "nested_before_record": true
+        }
+      },
+      "fixed_parent": {
+        "run": "929a9afe8c0f320a8aaa16698ecb07e5",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "forced",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "patch": "27734a690f492c1617cf810d6bc0d7010624826106ca9fbaa8153f13892c105c",
+        "steps": 11,
+        "calls": 11,
+        "first_solver_request": "758a40b791ba9f5cd35f4b9927dcd0872cef86b3117a620086d1ea4ac3987ba6",
+        "feedback": {
+          "post_edit_public_failure_sequences": [
+            24
+          ],
+          "rejected_actions": 0,
+          "step_budget_exhausted": false,
+          "command_budget_exhausted": false,
+          "write_count": 3,
+          "public_success_count_after_edit": 2,
+          "writes_after_last_public_success": 0,
+          "learn_submission_failed_independent_check": false
+        },
+        "eligible": false,
+        "probes": {
+          "public": true,
+          "abort_empty_origin": true,
+          "controls": true,
+          "nested_before_record": true
+        }
+      }
+    },
+    {
+      "task": "learn-stream-framing",
+      "repeat": 0,
+      "order": [
+        "fixed_parent",
+        "parent"
+      ],
+      "fixed_parent": {
+        "run": "a1ef2501d03cc2b58751dfb5363ece41",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "forced",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "patch": "18da6fee15b617daf221841578f84420870627703c5f69d00e72991560d5c341",
+        "steps": 6,
+        "calls": 6,
+        "first_solver_request": "cd0fdcd81ce49d375d20e3f7fffa626894a04cfb54952f40a03098eba3607623",
+        "feedback": {
+          "post_edit_public_failure_sequences": [],
+          "rejected_actions": 0,
+          "step_budget_exhausted": false,
+          "command_budget_exhausted": false,
+          "write_count": 2,
+          "public_success_count_after_edit": 2,
+          "writes_after_last_public_success": 0,
+          "learn_submission_failed_independent_check": false
+        },
+        "eligible": false,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "drain_after_data": true,
+          "drain_idle": true
+        }
+      },
+      "parent": {
+        "run": "fed2435e5a5e2d312ab3a67a0462ff3c",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "skip",
+        "applied": null,
+        "patch": "d977017ad7724e7d7042a863d167e928279c783f7c4fdcdbf4c2112314de6793",
+        "steps": 9,
+        "calls": 10,
+        "first_solver_request": "dc13a000c439ed99a7d1efb6ed50915b5aae5b7fe4f75f0804c60fff109541cf",
+        "feedback": {
+          "post_edit_public_failure_sequences": [],
+          "rejected_actions": 0,
+          "step_budget_exhausted": false,
+          "command_budget_exhausted": false,
+          "write_count": 2,
+          "public_success_count_after_edit": 2,
+          "writes_after_last_public_success": 0,
+          "learn_submission_failed_independent_check": false
+        },
+        "eligible": false,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "drain_after_data": true,
+          "drain_idle": true
+        }
+      }
+    },
+    {
+      "task": "learn-incremental-walk",
+      "repeat": 0,
+      "order": [
+        "parent",
+        "fixed_parent"
+      ],
+      "parent": {
+        "run": "3341f6440b7e1aefd61c2ebdf103993b",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "skip",
+        "applied": null,
+        "patch": "e341201cb20ff89db9a2d3d933bbe8457ada8794a25c6799b6403155a5393191",
+        "steps": 9,
+        "calls": 10,
+        "first_solver_request": "10f9a7d90e465499692986d8a93b4d54bb78b2f9a694828372fb6a81eac3bef9",
+        "feedback": {
+          "post_edit_public_failure_sequences": [],
+          "rejected_actions": 0,
+          "step_budget_exhausted": false,
+          "command_budget_exhausted": false,
+          "write_count": 2,
+          "public_success_count_after_edit": 3,
+          "writes_after_last_public_success": 0,
+          "learn_submission_failed_independent_check": false
+        },
+        "eligible": false,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "shared_empty_forest": true,
+          "truth_independent": true
+        }
+      },
+      "fixed_parent": {
+        "run": "bfeb8bd9301f0a89517fb4acc8b34d34",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "forced",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "patch": "80872673b07b225d8a9ac5b9d3b3292e5589b0716a2fd5014e5a5188a5b21fdd",
+        "steps": 9,
+        "calls": 10,
+        "first_solver_request": "3cf91ccc5046cade3ad6d085b6a0b0e2061944f0255c0624d90d50218e828f02",
+        "feedback": {
+          "post_edit_public_failure_sequences": [],
+          "rejected_actions": 1,
+          "step_budget_exhausted": false,
+          "command_budget_exhausted": false,
+          "write_count": 2,
+          "public_success_count_after_edit": 2,
+          "writes_after_last_public_success": 0,
+          "learn_submission_failed_independent_check": false
+        },
+        "eligible": false,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "shared_empty_forest": true,
+          "truth_independent": true
+        }
+      }
+    },
+    {
+      "task": "learn-subscription-lease",
+      "repeat": 0,
+      "order": [
+        "fixed_parent",
+        "parent"
+      ],
+      "fixed_parent": {
+        "run": "48258daf17d7bbe27c94230a2ae33ed1",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "forced",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "patch": "5e58b0e3399d26a307127cd9195d540253e213f637360fe4959cb347ed0e0ed5",
+        "steps": 10,
+        "calls": 10,
+        "first_solver_request": "adb8a1b6dbcf06dec7cb59967af05209879c87df04bcc49e6b346499c4c41c4a",
+        "feedback": {
+          "post_edit_public_failure_sequences": [],
+          "rejected_actions": 0,
+          "step_budget_exhausted": false,
+          "command_budget_exhausted": false,
+          "write_count": 3,
+          "public_success_count_after_edit": 2,
+          "writes_after_last_public_success": 0,
+          "learn_submission_failed_independent_check": false
+        },
+        "eligible": false,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "deferred_borrow": true,
+          "direct_borrow": true
+        }
+      },
+      "parent": {
+        "run": "58d6e5d33c112b3a884ef37109d063de",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "skip",
+        "applied": null,
+        "patch": "c24263e7e82dbabe7f447514b71d9d8356154783c01a2c2719c4ab5bb9a008ca",
+        "steps": 10,
+        "calls": 12,
+        "first_solver_request": "473f6374e606273a4bd18709d5f61babf2086f6999643263bab622ff7d25b555",
+        "feedback": {
+          "post_edit_public_failure_sequences": [],
+          "rejected_actions": 1,
+          "step_budget_exhausted": false,
+          "command_budget_exhausted": false,
+          "write_count": 3,
+          "public_success_count_after_edit": 3,
+          "writes_after_last_public_success": 0,
+          "learn_submission_failed_independent_check": false
+        },
+        "eligible": false,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "deferred_borrow": true,
+          "direct_borrow": true
+        }
+      }
+    },
+    {
+      "task": "learn-tile-compositor",
+      "repeat": 1,
+      "order": [
+        "fixed_parent"
+      ],
+      "fixed_parent": {
+        "run": "9235bc8df01cc3d8181cc03b798e83c5",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "forced",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "patch": "0c5b5b1afd6571827dc6ca04baa75cf4ff9791983d4989f55e0d00a7b895b4ff",
+        "steps": 8,
+        "calls": 8,
+        "first_solver_request": "f1339bb4fa81e278c0dcfbbe870c738c93b1554b8c73f4a08c8328e29154a333",
+        "feedback": {
+          "post_edit_public_failure_sequences": [],
+          "rejected_actions": 0,
+          "step_budget_exhausted": false,
+          "command_budget_exhausted": false,
+          "write_count": 3,
+          "public_success_count_after_edit": 3,
+          "writes_after_last_public_success": 0,
+          "learn_submission_failed_independent_check": false
+        },
+        "eligible": false,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "initially_empty_brush": true,
+          "padding_first": true
+        }
+      }
+    },
+    {
+      "task": "learn-scheduler-watch",
+      "repeat": 1,
+      "order": [
+        "fixed_parent"
+      ],
+      "fixed_parent": {
+        "run": "5fc6e555351bbc6b4ae2355685ca663e",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "forced",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "patch": "71bd1fa8744695404e61b03cb19654d33f7d8152ef5883275f774a7d90364838",
+        "steps": 9,
+        "calls": 10,
+        "first_solver_request": "10ef69a67ec824465064bfb4c123a6dd74529301f562b249e90f790bb6f3be72",
+        "feedback": {
+          "post_edit_public_failure_sequences": [],
+          "rejected_actions": 1,
+          "step_budget_exhausted": false,
+          "command_budget_exhausted": false,
+          "write_count": 3,
+          "public_success_count_after_edit": 2,
+          "writes_after_last_public_success": 0,
+          "learn_submission_failed_independent_check": false
+        },
+        "eligible": false,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "start_replay": true,
+          "wake_replay": true
+        }
+      }
+    },
+    {
+      "task": "learn-undo-journal",
+      "repeat": 1,
+      "order": [
+        "fixed_parent"
+      ],
+      "fixed_parent": {
+        "run": "2fae57442c2a286a8aac04e99b79b97a",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "forced",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "patch": "27734a690f492c1617cf810d6bc0d7010624826106ca9fbaa8153f13892c105c",
+        "steps": 9,
+        "calls": 9,
+        "first_solver_request": "758a40b791ba9f5cd35f4b9927dcd0872cef86b3117a620086d1ea4ac3987ba6",
+        "feedback": {
+          "post_edit_public_failure_sequences": [],
+          "rejected_actions": 0,
+          "step_budget_exhausted": false,
+          "command_budget_exhausted": false,
+          "write_count": 2,
+          "public_success_count_after_edit": 2,
+          "writes_after_last_public_success": 0,
+          "learn_submission_failed_independent_check": false
+        },
+        "eligible": false,
+        "probes": {
+          "public": true,
+          "abort_empty_origin": true,
+          "controls": true,
+          "nested_before_record": true
+        }
+      }
+    },
+    {
+      "task": "learn-stream-framing",
+      "repeat": 1,
+      "order": [
+        "fixed_parent"
+      ],
+      "fixed_parent": {
+        "run": "4e516a5c69862c04b911040162c390b0",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "forced",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "patch": "d977017ad7724e7d7042a863d167e928279c783f7c4fdcdbf4c2112314de6793",
+        "steps": 8,
+        "calls": 8,
+        "first_solver_request": "cd0fdcd81ce49d375d20e3f7fffa626894a04cfb54952f40a03098eba3607623",
+        "feedback": {
+          "post_edit_public_failure_sequences": [
+            15
+          ],
+          "rejected_actions": 0,
+          "step_budget_exhausted": false,
+          "command_budget_exhausted": false,
+          "write_count": 2,
+          "public_success_count_after_edit": 2,
+          "writes_after_last_public_success": 0,
+          "learn_submission_failed_independent_check": false
+        },
+        "eligible": false,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "drain_after_data": true,
+          "drain_idle": true
+        }
+      }
+    },
+    {
+      "task": "learn-incremental-walk",
+      "repeat": 1,
+      "order": [
+        "fixed_parent"
+      ],
+      "fixed_parent": {
+        "run": "8f7559efdd91590c7547e36e4b0c5f10",
+        "state": "COMPLETE",
+        "passed": true,
+        "route": "forced",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "patch": "74a57202df4af429e10a26c5152c985f9206b5eb763dce91d9f4f1c614beb09b",
+        "steps": 10,
+        "calls": 12,
+        "first_solver_request": "3cf91ccc5046cade3ad6d085b6a0b0e2061944f0255c0624d90d50218e828f02",
+        "feedback": {
+          "post_edit_public_failure_sequences": [],
+          "rejected_actions": 2,
+          "step_budget_exhausted": false,
+          "command_budget_exhausted": false,
+          "write_count": 2,
+          "public_success_count_after_edit": 2,
+          "writes_after_last_public_success": 0,
+          "learn_submission_failed_independent_check": false
+        },
+        "eligible": false,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "shared_empty_forest": true,
+          "truth_independent": true
+        }
+      }
+    },
+    {
+      "task": "learn-subscription-lease",
+      "repeat": 1,
+      "order": [
+        "fixed_parent"
+      ],
+      "fixed_parent": {
+        "run": "e3c2b8cb27a1c7075e1e15d46eda8189",
+        "state": "FAILED",
+        "passed": false,
+        "route": "forced",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "patch": "7024824f0430c4946f0bf951c3b83e64e0436b8fe5354843e31ef64bacf40168",
+        "steps": 10,
+        "calls": 11,
+        "first_solver_request": "adb8a1b6dbcf06dec7cb59967af05209879c87df04bcc49e6b346499c4c41c4a",
+        "feedback": {
+          "post_edit_public_failure_sequences": [],
+          "rejected_actions": 1,
+          "step_budget_exhausted": false,
+          "command_budget_exhausted": false,
+          "write_count": 1,
+          "public_success_count_after_edit": 2,
+          "writes_after_last_public_success": 0,
+          "learn_submission_failed_independent_check": true
+        },
+        "eligible": true,
+        "probes": {
+          "public": true,
+          "controls": true,
+          "deferred_borrow": false,
+          "direct_borrow": true
+        }
+      }
+    }
+  ],
+  "holdout": [],
+  "billing": {
+    "9c781b80c324b9753b43bc768fa0432b": {
+      "first": 1,
+      "last": 26,
+      "calls": 10,
+      "charged_nanos": 5912350000,
+      "reserved_nanos": 0
+    },
+    "309d97926563d825e3da1f1db8586e88": {
+      "first": 2,
+      "last": 18,
+      "calls": 8,
+      "charged_nanos": 9314560000,
+      "reserved_nanos": 0
+    },
+    "6b2c98d482092768200e90b78d748fec": {
+      "first": 3,
+      "last": 27,
+      "calls": 8,
+      "charged_nanos": 6240970000,
+      "reserved_nanos": 0
+    },
+    "32a38e6d0909f4ea1229554968875fc7": {
+      "first": 22,
+      "last": 55,
+      "calls": 10,
+      "charged_nanos": 7119020000,
+      "reserved_nanos": 0
+    },
+    "929a9afe8c0f320a8aaa16698ecb07e5": {
+      "first": 29,
+      "last": 57,
+      "calls": 11,
+      "charged_nanos": 12271520000,
+      "reserved_nanos": 0
+    },
+    "1bbd0ade38d31cc00b0306700f022df1": {
+      "first": 30,
+      "last": 42,
+      "calls": 5,
+      "charged_nanos": 4949940000,
+      "reserved_nanos": 0
+    },
+    "a1ef2501d03cc2b58751dfb5363ece41": {
+      "first": 44,
+      "last": 59,
+      "calls": 6,
+      "charged_nanos": 7033030000,
+      "reserved_nanos": 0
+    },
+    "3341f6440b7e1aefd61c2ebdf103993b": {
+      "first": 58,
+      "last": 83,
+      "calls": 10,
+      "charged_nanos": 5994550000,
+      "reserved_nanos": 0
+    },
+    "48258daf17d7bbe27c94230a2ae33ed1": {
+      "first": 60,
+      "last": 85,
+      "calls": 10,
+      "charged_nanos": 12294160000,
+      "reserved_nanos": 0
+    },
+    "fed2435e5a5e2d312ab3a67a0462ff3c": {
+      "first": 64,
+      "last": 91,
+      "calls": 10,
+      "charged_nanos": 6566710000,
+      "reserved_nanos": 0
+    },
+    "bfeb8bd9301f0a89517fb4acc8b34d34": {
+      "first": 87,
+      "last": 111,
+      "calls": 10,
+      "charged_nanos": 10628060000,
+      "reserved_nanos": 0
+    },
+    "58d6e5d33c112b3a884ef37109d063de": {
+      "first": 89,
+      "last": 120,
+      "calls": 12,
+      "charged_nanos": 8394190000,
+      "reserved_nanos": 0
+    },
+    "9235bc8df01cc3d8181cc03b798e83c5": {
+      "first": 96,
+      "last": 117,
+      "calls": 8,
+      "charged_nanos": 8400080000,
+      "reserved_nanos": 0
+    },
+    "5fc6e555351bbc6b4ae2355685ca663e": {
+      "first": 116,
+      "last": 146,
+      "calls": 10,
+      "charged_nanos": 11639120000,
+      "reserved_nanos": 0
+    },
+    "2fae57442c2a286a8aac04e99b79b97a": {
+      "first": 122,
+      "last": 142,
+      "calls": 9,
+      "charged_nanos": 9644730000,
+      "reserved_nanos": 0
+    },
+    "4e516a5c69862c04b911040162c390b0": {
+      "first": 126,
+      "last": 143,
+      "calls": 8,
+      "charged_nanos": 9045130000,
+      "reserved_nanos": 0
+    },
+    "8f7559efdd91590c7547e36e4b0c5f10": {
+      "first": 145,
+      "last": 165,
+      "calls": 12,
+      "charged_nanos": 14301330000,
+      "reserved_nanos": 0
+    },
+    "e3c2b8cb27a1c7075e1e15d46eda8189": {
+      "first": 147,
+      "last": 168,
+      "calls": 11,
+      "charged_nanos": 13712870000,
+      "reserved_nanos": 0
+    },
+    "proposal-513c6ea286bd4964ae6c625bf30f1b36": {
+      "first": 169,
+      "last": 169,
+      "calls": 1,
+      "charged_nanos": 5920240000,
+      "reserved_nanos": 0
+    },
+    "0bea74318707a9cbfcfef29d74eec578": {
+      "first": 170,
+      "last": 193,
+      "calls": 10,
+      "charged_nanos": 6860960000,
+      "reserved_nanos": 0
+    },
+    "45f32ba343b4e793f401af6ba44c27dc": {
+      "first": 171,
+      "last": 189,
+      "calls": 7,
+      "charged_nanos": 4548610000,
+      "reserved_nanos": 0
+    },
+    "68b5d2e897aca29f49ba1699a7881ed1": {
+      "first": 172,
+      "last": 204,
+      "calls": 9,
+      "charged_nanos": 6776050000,
+      "reserved_nanos": 0
+    },
+    "a406ead79094857684bacf83b90ca7ab": {
+      "first": 192,
+      "last": 207,
+      "calls": 8,
+      "charged_nanos": 8569330000,
+      "reserved_nanos": 0
+    },
+    "a42141c5af64cdf24cdb5095bdc0e68e": {
+      "first": 197,
+      "last": 217,
+      "calls": 8,
+      "charged_nanos": 4469930000,
+      "reserved_nanos": 0
+    },
+    "be367a4dac75acc0645026ee57d07f92": {
+      "first": 209,
+      "last": 246,
+      "calls": 13,
+      "charged_nanos": 19216440000,
+      "reserved_nanos": 0
+    },
+    "2c65883cbcdb7c339c30f3d9b46de096": {
+      "first": 211,
+      "last": 234,
+      "calls": 9,
+      "charged_nanos": 13301860000,
+      "reserved_nanos": 0
+    },
+    "3a0155fab18463dfb3389fe06d706f2c": {
+      "first": 221,
+      "last": 238,
+      "calls": 8,
+      "charged_nanos": 5131830000,
+      "reserved_nanos": 0
+    },
+    "538610193b9f6e73329e633a5a7b0056": {
+      "first": 237,
+      "last": 256,
+      "calls": 8,
+      "charged_nanos": 5775640000,
+      "reserved_nanos": 0
+    },
+    "281d06fe021283f3e858dfb204020bed": {
+      "first": 247,
+      "last": 259,
+      "calls": 6,
+      "charged_nanos": 5866310000,
+      "reserved_nanos": 0
+    },
+    "cd143b0800314d747664e59c541b1ef9": {
+      "first": 251,
+      "last": 279,
+      "calls": 12,
+      "charged_nanos": 13605650000,
+      "reserved_nanos": 0
+    },
+    "d3cb7414285c59c0d29666008ec28fba": {
+      "first": 261,
+      "last": 283,
+      "calls": 10,
+      "charged_nanos": 6185290000,
+      "reserved_nanos": 0
+    },
+    "6e40c840beec37e27470d5c301cc41f7": {
+      "first": 263,
+      "last": 285,
+      "calls": 7,
+      "charged_nanos": 10592920000,
+      "reserved_nanos": 0
+    },
+    "eb4526767d14078ccbf5d1dd3b3207e5": {
+      "first": 284,
+      "last": 307,
+      "calls": 9,
+      "charged_nanos": 13247260000,
+      "reserved_nanos": 0
+    },
+    "0a283fe7f79f40e615e24830c506fed7": {
+      "first": 287,
+      "last": 322,
+      "calls": 13,
+      "charged_nanos": 8976880000,
+      "reserved_nanos": 0
+    },
+    "b45970034c8aaba01478047aad8cdd77": {
+      "first": 289,
+      "last": 319,
+      "calls": 11,
+      "charged_nanos": 9322320000,
+      "reserved_nanos": 0
+    },
+    "f3ae485f10ff94a315c41124bfbba812": {
+      "first": 312,
+      "last": 337,
+      "calls": 10,
+      "charged_nanos": 8407560000,
+      "reserved_nanos": 0
+    },
+    "59319884312cec3d3e734f74ebac45d9": {
+      "first": 321,
+      "last": 331,
+      "calls": 6,
+      "charged_nanos": 3268510000,
+      "reserved_nanos": 0
+    },
+    "fe971daf52644de9dfaf24a362e88066": {
+      "first": 327,
+      "last": 355,
+      "calls": 9,
+      "charged_nanos": 9920480000,
+      "reserved_nanos": 0
+    },
+    "a87de96f9ae95f49fd5e72db736dda2d": {
+      "first": 338,
+      "last": 354,
+      "calls": 8,
+      "charged_nanos": 7602540000,
+      "reserved_nanos": 0
+    },
+    "a05163fc7ee85a68cf86f2db918f3d81": {
+      "first": 342,
+      "last": 364,
+      "calls": 10,
+      "charged_nanos": 6737470000,
+      "reserved_nanos": 0
+    },
+    "68abbdf02cf912a8f7c748ab7d43c62f": {
+      "first": 357,
+      "last": 379,
+      "calls": 9,
+      "charged_nanos": 11758380000,
+      "reserved_nanos": 0
+    },
+    "ce65b65e9d1b18ef0802ffd366b466cf": {
+      "first": 362,
+      "last": 412,
+      "calls": 15,
+      "charged_nanos": 25033780000,
+      "reserved_nanos": 0
+    },
+    "f17d33fb2cbf4905363e1a553752aced": {
+      "first": 367,
+      "last": 394,
+      "calls": 12,
+      "charged_nanos": 17692810000,
+      "reserved_nanos": 0
+    },
+    "b865e1c549f7446c667f269cc134226c": {
+      "first": 386,
+      "last": 402,
+      "calls": 7,
+      "charged_nanos": 4377520000,
+      "reserved_nanos": 0
+    },
+    "90ad45b7ca840f3f50ac1b3f66048270": {
+      "first": 397,
+      "last": 430,
+      "calls": 12,
+      "charged_nanos": 10963910000,
+      "reserved_nanos": 0
+    },
+    "670408e705d97a70f712b4fe2404a4b8": {
+      "first": 405,
+      "last": 424,
+      "calls": 8,
+      "charged_nanos": 8531760000,
+      "reserved_nanos": 0
+    },
+    "dc46c0e3a9aab37de16e870963a320fd": {
+      "first": 416,
+      "last": 432,
+      "calls": 8,
+      "charged_nanos": 4653760000,
+      "reserved_nanos": 0
+    },
+    "9b9c674b78bdf1bc6e496d85e1531321": {
+      "first": 431,
+      "last": 455,
+      "calls": 10,
+      "charged_nanos": 13984110000,
+      "reserved_nanos": 0
+    },
+    "2ddffd0b601c9b0780b074a94525f23b": {
+      "first": 434,
+      "last": 457,
+      "calls": 9,
+      "charged_nanos": 9482460000,
+      "reserved_nanos": 0
+    },
+    "769d8cad4c9fb11a68e3c519265771cd": {
+      "first": 437,
+      "last": 465,
+      "calls": 10,
+      "charged_nanos": 9640750000,
+      "reserved_nanos": 0
+    },
+    "49cf5dfaef1e46d220e52f897888c574": {
+      "first": 458,
+      "last": 477,
+      "calls": 9,
+      "charged_nanos": 5184000000,
+      "reserved_nanos": 0
+    },
+    "3c087f163a0aed03b8b1f60fdf63b412": {
+      "first": 461,
+      "last": 479,
+      "calls": 6,
+      "charged_nanos": 4095390000,
+      "reserved_nanos": 0
+    },
+    "83ec6a0ed6ab555308ae1600e811b06a": {
+      "first": 470,
+      "last": 510,
+      "calls": 15,
+      "charged_nanos": 22603850000,
+      "reserved_nanos": 0
+    },
+    "8e9a38414ea37f17be4b155c629ee67a": {
+      "first": 481,
+      "last": 513,
+      "calls": 11,
+      "charged_nanos": 9189980000,
+      "reserved_nanos": 0
+    },
+    "36031310abf35a4e7f3f9b81166387a2": {
+      "first": 483,
+      "last": 501,
+      "calls": 8,
+      "charged_nanos": 4670130000,
+      "reserved_nanos": 0
+    },
+    "37fba99a08f987e3b1ca818b831ee8b2": {
+      "first": 505,
+      "last": 528,
+      "calls": 7,
+      "charged_nanos": 5322540000,
+      "reserved_nanos": 0
+    },
+    "143dc904d4f0acd4ba5bc62e046559b7": {
+      "first": 514,
+      "last": 527,
+      "calls": 7,
+      "charged_nanos": 6506760000,
+      "reserved_nanos": 0
+    },
+    "048a6e4164999a49a35c9cdf6a338013": {
+      "first": 517,
+      "last": 549,
+      "calls": 12,
+      "charged_nanos": 19653200000,
+      "reserved_nanos": 0
+    },
+    "07f059f612a8f65b902c10180f7b51e3": {
+      "first": 530,
+      "last": 557,
+      "calls": 12,
+      "charged_nanos": 8641100000,
+      "reserved_nanos": 0
+    },
+    "37823411767bdbbd2183714ff2b2b7ed": {
+      "first": 531,
+      "last": 567,
+      "calls": 13,
+      "charged_nanos": 22828150000,
+      "reserved_nanos": 0
+    },
+    "bd64e706145de12c6617481c8821c820": {
+      "first": 556,
+      "last": 571,
+      "calls": 7,
+      "charged_nanos": 7258370000,
+      "reserved_nanos": 0
+    },
+    "253fe4495ee4ba818b79fe70537f3654": {
+      "first": 561,
+      "last": 585,
+      "calls": 8,
+      "charged_nanos": 6943680000,
+      "reserved_nanos": 0
+    },
+    "e7e68f8a8936eb29989a9218194b5c2d": {
+      "first": 572,
+      "last": 584,
+      "calls": 7,
+      "charged_nanos": 6302260000,
+      "reserved_nanos": 0
+    },
+    "30e06bbadbc989df6d8aceb2d5e7ad40": {
+      "first": 574,
+      "last": 596,
+      "calls": 8,
+      "charged_nanos": 5251670000,
+      "reserved_nanos": 0
+    },
+    "2476f02413fcb385f0dd0b9c08574be3": {
+      "first": 587,
+      "last": 607,
+      "calls": 8,
+      "charged_nanos": 4529500000,
+      "reserved_nanos": 0
+    },
+    "f0705971cf1d3a25758d0beb4fef6a40": {
+      "first": 589,
+      "last": 604,
+      "calls": 7,
+      "charged_nanos": 4366590000,
+      "reserved_nanos": 0
+    },
+    "e9dac79c9758b79f278d37e1bf1ed471": {
+      "first": 602,
+      "last": 632,
+      "calls": 12,
+      "charged_nanos": 8527840000,
+      "reserved_nanos": 0
+    },
+    "36dd134deadcce889d31cbce3e3da492": {
+      "first": 608,
+      "last": 640,
+      "calls": 9,
+      "charged_nanos": 12338090000,
+      "reserved_nanos": 0
+    },
+    "3c0498a4b50215b36edb09aab4442138": {
+      "first": 611,
+      "last": 627,
+      "calls": 8,
+      "charged_nanos": 4668900000,
+      "reserved_nanos": 0
+    },
+    "92074250133519dea14fbf8cb303d95e": {
+      "first": 631,
+      "last": 656,
+      "calls": 10,
+      "charged_nanos": 14191720000,
+      "reserved_nanos": 0
+    },
+    "22af44696125d1d2fe3a2ace0192af88": {
+      "first": 636,
+      "last": 658,
+      "calls": 7,
+      "charged_nanos": 7914250000,
+      "reserved_nanos": 0
+    },
+    "fe23bc5a82a06163995550d0794ddb92": {
+      "first": 644,
+      "last": 659,
+      "calls": 8,
+      "charged_nanos": 7807320000,
+      "reserved_nanos": 0
+    },
+    "e8aa3c254e4f8ccff2bf6219387188a5": {
+      "first": 660,
+      "last": 688,
+      "calls": 11,
+      "charged_nanos": 12642860000,
+      "reserved_nanos": 0
+    },
+    "903348753ab526f1a7ffc675478d947c": {
+      "first": 661,
+      "last": 686,
+      "calls": 9,
+      "charged_nanos": 6965210000,
+      "reserved_nanos": 0
+    },
+    "8e8009b5e281677b166ee9a0c95bd6fa": {
+      "first": 663,
+      "last": 680,
+      "calls": 7,
+      "charged_nanos": 3857170000,
+      "reserved_nanos": 0
+    },
+    "73867580d842a3194945ba72b019a179": {
+      "first": 684,
+      "last": 699,
+      "calls": 9,
+      "charged_nanos": 12266210000,
+      "reserved_nanos": 0
+    },
+    "333401c5c29b0142f6fea9020e5dc890": {
+      "first": 689,
+      "last": 727,
+      "calls": 16,
+      "charged_nanos": 26847860000,
+      "reserved_nanos": 0
+    },
+    "de539100db60323f308421abce0843b9": {
+      "first": 701,
+      "last": 716,
+      "calls": 10,
+      "charged_nanos": 9378390000,
+      "reserved_nanos": 0
+    },
+    "a60fd61ec619361d3c69ec4d2aba86da": {
+      "first": 717,
+      "last": 733,
+      "calls": 12,
+      "charged_nanos": 10330570000,
+      "reserved_nanos": 0
+    },
+    "f11c1e92eb23b1adf0e5199e7d5d468f": {
+      "first": 734,
+      "last": 753,
+      "calls": 7,
+      "charged_nanos": 8144080000,
+      "reserved_nanos": 0
+    },
+    "bcbd43effd34e8646d79eb7fb5ba153b": {
+      "first": 735,
+      "last": 751,
+      "calls": 7,
+      "charged_nanos": 6422650000,
+      "reserved_nanos": 0
+    },
+    "f39d081590370072fd0a59cc01de2f32": {
+      "first": 736,
+      "last": 749,
+      "calls": 6,
+      "charged_nanos": 6814750000,
+      "reserved_nanos": 0
+    },
+    "f4993dc60c0afdf9e3d1ce834b59b6c3": {
+      "first": 754,
+      "last": 780,
+      "calls": 10,
+      "charged_nanos": 8952150000,
+      "reserved_nanos": 0
+    },
+    "cd099183305d76d383c177f07d3f0cca": {
+      "first": 755,
+      "last": 768,
+      "calls": 6,
+      "charged_nanos": 6873380000,
+      "reserved_nanos": 0
+    },
+    "cfb5fcff4f1e8d8ff6c08eb30aec70bd": {
+      "first": 757,
+      "last": 770,
+      "calls": 5,
+      "charged_nanos": 3962100000,
+      "reserved_nanos": 0
+    },
+    "efd3293fe436fc7509d01a86e63a4503": {
+      "first": 771,
+      "last": 787,
+      "calls": 7,
+      "charged_nanos": 5870640000,
+      "reserved_nanos": 0
+    },
+    "d7622f6892c112a15ee438cea6865f47": {
+      "first": 773,
+      "last": 814,
+      "calls": 16,
+      "charged_nanos": 12889350000,
+      "reserved_nanos": 0
+    },
+    "490b42e6c376422517f2b5a6981ca032": {
+      "first": 784,
+      "last": 800,
+      "calls": 6,
+      "charged_nanos": 4126370000,
+      "reserved_nanos": 0
+    },
+    "58cae5aed7f67634ecb9eb5947143b0e": {
+      "first": 791,
+      "last": 805,
+      "calls": 7,
+      "charged_nanos": 8329810000,
+      "reserved_nanos": 0
+    },
+    "3fc9da9aadd02197c0793acaba130773": {
+      "first": 806,
+      "last": 820,
+      "calls": 8,
+      "charged_nanos": 5490480000,
+      "reserved_nanos": 0
+    },
+    "33c0dd659f0faf9ca235fa10425e9c46": {
+      "first": 816,
+      "last": 832,
+      "calls": 14,
+      "charged_nanos": 9079340000,
+      "reserved_nanos": 0
+    },
+    "bd49cddc010dec0399623521fc693973": {
+      "first": 833,
+      "last": 866,
+      "calls": 11,
+      "charged_nanos": 6539510000,
+      "reserved_nanos": 0
+    },
+    "3b4453d4a751cfcf4ff48608a0b75251": {
+      "first": 834,
+      "last": 843,
+      "calls": 4,
+      "charged_nanos": 2292480000,
+      "reserved_nanos": 0
+    },
+    "8996bac9f0d91846ebcda1f9ac773b2d": {
+      "first": 835,
+      "last": 858,
+      "calls": 9,
+      "charged_nanos": 4571280000,
+      "reserved_nanos": 0
+    },
+    "81e20ffde0016f1b1a5967bcc4ad539e": {
+      "first": 847,
+      "last": 854,
+      "calls": 4,
+      "charged_nanos": 1761820000,
+      "reserved_nanos": 0
+    },
+    "26a405df6e6eed53c38a9a079f9dac9f": {
+      "first": 857,
+      "last": 871,
+      "calls": 7,
+      "charged_nanos": 4193680000,
+      "reserved_nanos": 0
+    },
+    "9c3a27967c22e44f465f40ab797a799e": {
+      "first": 861,
+      "last": 877,
+      "calls": 10,
+      "charged_nanos": 7981810000,
+      "reserved_nanos": 0
+    }
+  },
+  "proposal": {
+    "child": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+    "evidence": "0164f0c291f4743c8b092829a6bf187ecbe4ea116416c8ba49d8476bf15fb8dd",
+    "receipt": "8129dd5329c3114b980374aca6517a7493ec58a5931bb67b90efe6b62fdebccb",
+    "attempts": [
+      "proposal-513c6ea286bd4964ae6c625bf30f1b36"
+    ]
+  },
+  "proposal_audit": [
+    {
+      "run": "proposal-513c6ea286bd4964ae6c625bf30f1b36",
+      "request": "7b3a09087e3df8693c47becbc6099f92a10a92f102603e96df4e3c3e95f856bc",
+      "accepted": true,
+      "outside_evidence_pool": false
+    }
+  ],
+  "revision": {
+    "content": {
+      "applicability": [
+        "Adapter/handler code where a client-supplied optional override can be omitted or null and a documented default/preset should be restored in a single entry point",
+        "Tasks phrased as 'restore documented preset behavior' while keeping client-supplied values and output format compatible",
+        "Small service entry points (e.g., request dict lookups feeding a response dict or plan/manifest) with a DEFAULT-style constant present"
+      ],
+      "change_summary": "Run 1bbd0ade38d31cc00b0306700f022df1: submitted patch (event 18) changed 1 file(s); submitted public test passed (event 19); final grade passed (event 20). Touched tiles.py (Compositor._padding, Compositor.tile).\nRun 58d6e5d33c112b3a884ef37109d063de: submitted patch (event 38) changed 2 file(s); submitted public test passed (event 39); final grade passed (event 40). Touched deliver.py (send), retry.py (redeliver).\nRun e3c2b8cb27a1c7075e1e15d46eda8189: submitted patch (event 35) changed 1 file(s); submitted public test passed (event 36); final grade failed (event 37). Touched deliver.py (send).",
+      "counterexamples": [
+        "Run e3c2b8cb27a1c7075e1e15d46eda8189: fixing only the direct entry point (send) with an is-None check, plus a locally written probe and the public test, both passed — yet final grading failed because the issue also covered re-delivery of a deferred notice. Passing self-authored checks does not prove full coverage.",
+        "Run 58d6e5d33c112b3a884ef37109d063de: the same null-override appearance co-occurred with lease lifecycle requirements (release exactly once); the routing decision to skip this skill there was correct and that episode is not evidence for this pattern.",
+        "Two different-looking fallback forms both passed public tests in earlier runs; tests passing does not certify one form is better, only that the null-to-default semantics hold.",
+        "If omitted and explicit null must map to different values, or the preset lives in nested/serialized structures, this simple fallback does not apply."
+      ],
+      "evidence_refs": [
+        "1bbd0ade38d31cc00b0306700f022df1",
+        "58d6e5d33c112b3a884ef37109d063de",
+        "e3c2b8cb27a1c7075e1e15d46eda8189"
+      ],
+      "exclusions": [
+        "Do not apply when the spec requires distinguishing an omitted key from an explicit null (use sentinel/FIELD-in-request checks instead).",
+        "Do not apply when the expected value is not a literal constant default (e.g., computed per-request or dependent on other fields).",
+        "Do not apply when the override is a context manager / lease / resource handle whose acquisition, re-entry, and release lifecycle must be coordinated across multiple entry points (e.g., borrowed-lease delivery plus re-delivery of a deferred notice); that requires lifecycle-aware repair, not a defaulting fallback (observed in 58d6e5d33c112b3a884ef37109d063de, correctly skipped).",
+        "Do not rewrite output formatting, add fields, or change error handling beyond the defaulting fix.",
+        "Do not default falsy values (0, empty string, False) unless the issue text explicitly says so."
+      ],
+      "name": "restore-default-on-null-override",
+      "parent": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+      "steps": [
+        "Locate the handler that reads the client override and note where the value flows into the response.",
+        "Identify the documented default constant or preset already defined in the code or README; do not invent a new literal.",
+        "Re-read the full issue text and list every behavior it mentions; enumerate ALL entry points and call sites that consume the override, not just the first one you find. A defaulting patch that fixes one entry point while the issue also describes another path (e.g., a retry/re-delivery path) will fail hidden grading even if public tests pass.",
+        "Check how the issue treats omission vs explicit null; if both should yield the default, an 'is None' check covers both, since a missing key typically surfaces as None via dict.get.",
+        "Insert a minimal null fallback (conditional reassignment or conditional expression) at every consumption point identified in step 3, keeping each guard a single null check.",
+        "Preserve all client-supplied non-null values exactly and keep the existing output format unchanged.",
+        "If any non-null override is a resource/manager object (lease, connection, session) rather than a plain value, stop: the problem is resource lifecycle, not defaulting; see exclusions.",
+        "Run the public test command before submitting; also mentally trace each listed issue behavior to a concrete code path you changed."
+      ],
+      "verification": [
+        "Run the public test command and confirm it passes after the edit.",
+        "Trace each case: key omitted, key set to null, key set to a client value — confirm default, default, and client value respectively.",
+        "Cross-check each distinct behavior sentence in the issue against an edited code path; if a sentence maps to unedited code, the fix is incomplete regardless of public test results.",
+        "Confirm no falsy-but-valid client values (0, '', False) are overridden by the default.",
+        "Confirm the response structure and serialization are byte-identical to the pre-patch format for non-null inputs.",
+        "Treat author-written probe scripts that pass as weak evidence only: they test what you predicted, not the full contract (observed in e3c2b8cb27a1c7075e1e15d46eda8189)."
+      ]
+    },
+    "receipt": {
+      "candidate": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+      "catalog": "bdcaba46f3b5221c08de0a8f8ca28105f26f75867a4ea7a8997286dd27a30ded",
+      "changed_fields": {
+        "applicability": {
+          "after": "a1366bd123fcfcc20da37a199a86efb132444fba98c56b1dbed07fe5abbcf19b",
+          "before": "7ff9935500e87dcb661e0c9a541c5d2a8fa78fd291a1772b92eb076358c482b5"
+        },
+        "counterexamples": {
+          "after": "96468f6a79acd503e4f99f22008f08d61d8ef13e062938e203ba1f070ee2a421",
+          "before": "d9c3f701f983a4abbbde0b816e3fbcc856714bad75b9cd3ed3d98670b0a8488f"
+        },
+        "exclusions": {
+          "after": "4949980eba57aba4b931f5732ad7a45c433e011814942a0b643f9fd2dde2f961",
+          "before": "e66cc61cb8a130a4d31d01e994ea30b7b4859ad787245f11515645fab2c9dcda"
+        },
+        "steps": {
+          "after": "e2179aeb02c48b5ee65fd30af53cd6640fdd6ba4e206b707e2220ed7d3bd5dd6",
+          "before": "bf147920745ccd640a0f186936c10b730e087997449ab03b466d80504606b054"
+        },
+        "verification": {
+          "after": "b46437ff5284b91013ef3bad7693e31212bb8c9506303ba124ce7ed2e218002a",
+          "before": "7b75d7caf1a5ed0ce389a93256266342dca1f1681d794bbf0901eec7c264d7f4"
+        }
+      },
+      "evidence_refs": [
+        "1bbd0ade38d31cc00b0306700f022df1",
+        "58d6e5d33c112b3a884ef37109d063de",
+        "e3c2b8cb27a1c7075e1e15d46eda8189"
+      ],
+      "frozen_evidence": "0164f0c291f4743c8b092829a6bf187ecbe4ea116416c8ba49d8476bf15fb8dd",
+      "parent": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+      "proposal_output": "77cc93f6502d05a1c08facfcf96a6f4afa585a671f5c78faf26ac59afae80f98",
+      "schema": 1,
+      "summary_hash": "5ddf7acec3716149165ae800c36799bce9d934875420bcd2318d4054b4f3f226"
+    },
+    "catalog": {
+      "schema": 1,
+      "receipts": {
+        "e3c2b8cb27a1c7075e1e15d46eda8189": {
+          "run_id": "e3c2b8cb27a1c7075e1e15d46eda8189",
+          "task_id": "learn-subscription-lease",
+          "task_hash": "3d9a523cdd3dbf44359145414ed39bd7678abe1c3a29a7135a0ce06b2afdba23",
+          "state": "FAILED",
+          "patch_hash": "7024824f0430c4946f0bf951c3b83e64e0436b8fe5354843e31ef64bacf40168",
+          "patch_seq": 35,
+          "files": [
+            {
+              "path": "deliver.py",
+              "before_hash": "b8dc5213787fb6a044c44f181bc7efb5ffa0d40b05e7f50497fe331db22e6dd1",
+              "after_hash": "119866026bb93a8dd7178e9440dcf30934edec8a9cb264e3cc5da531ebf7ffa7",
+              "symbols": [
+                "send"
+              ]
+            }
+          ],
+          "public_check": {
+            "status": "passed",
+            "seq": 36,
+            "scope": "submitted"
+          },
+          "final_grade": {
+            "status": "failed",
+            "seq": 37
+          }
+        },
+        "58d6e5d33c112b3a884ef37109d063de": {
+          "run_id": "58d6e5d33c112b3a884ef37109d063de",
+          "task_id": "learn-subscription-lease",
+          "task_hash": "3d9a523cdd3dbf44359145414ed39bd7678abe1c3a29a7135a0ce06b2afdba23",
+          "state": "COMPLETE",
+          "patch_hash": "c24263e7e82dbabe7f447514b71d9d8356154783c01a2c2719c4ab5bb9a008ca",
+          "patch_seq": 38,
+          "files": [
+            {
+              "path": "deliver.py",
+              "before_hash": "b8dc5213787fb6a044c44f181bc7efb5ffa0d40b05e7f50497fe331db22e6dd1",
+              "after_hash": "f8162d8b73ed54e6096a8be5530abb6c89d5f68ea0cafb36cef4c5d05bd4a841",
+              "symbols": [
+                "send"
+              ]
+            },
+            {
+              "path": "retry.py",
+              "before_hash": "e4c1ed1fbd44426c29f0c0b755f0fd1684c279cf9ccd78f669ef8d9c9de89971",
+              "after_hash": "c945fc7793e318c979485ba584bd768d1400b0fddb8797a3eb5c3b1bdf6566ee",
+              "symbols": [
+                "redeliver"
+              ]
+            }
+          ],
+          "public_check": {
+            "status": "passed",
+            "seq": 39,
+            "scope": "submitted"
+          },
+          "final_grade": {
+            "status": "passed",
+            "seq": 40
+          }
+        },
+        "1bbd0ade38d31cc00b0306700f022df1": {
+          "run_id": "1bbd0ade38d31cc00b0306700f022df1",
+          "task_id": "learn-tile-compositor",
+          "task_hash": "350d723d09fdccc897f61a097d0f37a9bb414554d8004c421d8d3a61c8c91902",
+          "state": "COMPLETE",
+          "patch_hash": "db82219c273433892e2ccd3effb8ad23582a0fb2e3c1a2501dfd5a72d0a4d7fd",
+          "patch_seq": 18,
+          "files": [
+            {
+              "path": "tiles.py",
+              "before_hash": "71b050e32924c5ff6c6102afc9c6bdf44b49f58dc2aa8b0c1fe5e8b1328e19fa",
+              "after_hash": "0270aa3db862719ee517772c92196309bf19f4d37f3532aa411ccb12ce08b9ef",
+              "symbols": [
+                "Compositor._padding",
+                "Compositor.tile"
+              ]
+            }
+          ],
+          "public_check": {
+            "status": "passed",
+            "seq": 19,
+            "scope": "submitted"
+          },
+          "final_grade": {
+            "status": "passed",
+            "seq": 20
+          }
+        }
+      }
+    },
+    "proposal_request": "7b3a09087e3df8693c47becbc6099f92a10a92f102603e96df4e3c3e95f856bc"
+  },
+  "parent_gate": {
+    "receipt": null,
+    "library_id": null,
+    "baseline": [
+      "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+    ],
+    "candidate": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+    "rows": [
+      {
+        "task_id": "object-index-error",
+        "task_hash": "35240f4d1c6775b8c1a3a2dbedfd1e269dc339585b5af7ab1b603eea3aeacaae",
+        "source_group": "object-contracts/index-error",
+        "split": "dev",
+        "repeat": 0,
+        "baseline_run": "a42141c5af64cdf24cdb5095bdc0e68e",
+        "candidate_run": "3a0155fab18463dfb3389fe06d706f2c",
+        "baseline_pass": false,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": null,
+        "candidate_route": "skip",
+        "skill_behavior": "neither_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "object-label-policy",
+        "task_hash": "cc414d44bb1f8b166fc95307eff01dff99a83c5dd0b779aa381f657cfcb6b23a",
+        "source_group": "object-contracts/label-policy",
+        "split": "dev",
+        "repeat": 0,
+        "baseline_run": "68b5d2e897aca29f49ba1699a7881ed1",
+        "candidate_run": "be367a4dac75acc0645026ee57d07f92",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "object-result-sink",
+        "task_hash": "defbcd6fe51a586814f6d4dc0c5b77043600301b8fbf2988053bd5df59d151bb",
+        "source_group": "object-contracts/result-sink",
+        "split": "dev",
+        "repeat": 0,
+        "baseline_run": "0a283fe7f79f40e615e24830c506fed7",
+        "candidate_run": "45f32ba343b4e793f401af6ba44c27dc",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": null,
+        "candidate_route": "skip",
+        "skill_behavior": "neither_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-meter-view",
+        "task_hash": "3f8bbc20ea70d43e8cb5be2a3aa06567c087ca26ab6068af33cb8474c80882e5",
+        "source_group": "profile-tools/meter-view",
+        "split": "dev",
+        "repeat": 0,
+        "baseline_run": "a87de96f9ae95f49fd5e72db736dda2d",
+        "candidate_run": "68abbdf02cf912a8f7c748ab7d43c62f",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_applied_skill": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-column-caption",
+        "task_hash": "f4ecca08502a18298a58bd87eedea3100446322e87f9264f38e89a63ec262f0d",
+        "source_group": "profile-tools/column-caption",
+        "split": "dev",
+        "repeat": 0,
+        "baseline_run": "fe971daf52644de9dfaf24a362e88066",
+        "candidate_run": "ce65b65e9d1b18ef0802ffd366b466cf",
+        "baseline_pass": false,
+        "candidate_pass": true,
+        "baseline_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_applied_skill": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-print-ticket",
+        "task_hash": "d64bc8475cebc14aac7163cc11c4805e87f65831281eaf700ec62c874f4f633e",
+        "source_group": "profile-tools/print-ticket",
+        "split": "dev",
+        "repeat": 0,
+        "baseline_run": "2ddffd0b601c9b0780b074a94525f23b",
+        "candidate_run": "f17d33fb2cbf4905363e1a553752aced",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_applied_skill": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-palette-book",
+        "task_hash": "6fda1b9499899eaca8d7857c267d707311a7236fd4471905c5f688e33b490ece",
+        "source_group": "profile-tools/palette-book",
+        "split": "dev",
+        "repeat": 0,
+        "baseline_run": "670408e705d97a70f712b4fe2404a4b8",
+        "candidate_run": "9b9c674b78bdf1bc6e496d85e1531321",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_applied_skill": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "object-index-error",
+        "task_hash": "35240f4d1c6775b8c1a3a2dbedfd1e269dc339585b5af7ab1b603eea3aeacaae",
+        "source_group": "object-contracts/index-error",
+        "split": "dev",
+        "repeat": 1,
+        "baseline_run": "253fe4495ee4ba818b79fe70537f3654",
+        "candidate_run": "07f059f612a8f65b902c10180f7b51e3",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": null,
+        "candidate_route": "skip",
+        "skill_behavior": "neither_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "object-label-policy",
+        "task_hash": "cc414d44bb1f8b166fc95307eff01dff99a83c5dd0b779aa381f657cfcb6b23a",
+        "source_group": "object-contracts/label-policy",
+        "split": "dev",
+        "repeat": 1,
+        "baseline_run": "e9dac79c9758b79f278d37e1bf1ed471",
+        "candidate_run": "30e06bbadbc989df6d8aceb2d5e7ad40",
+        "baseline_pass": false,
+        "candidate_pass": false,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": null,
+        "candidate_route": "skip",
+        "skill_behavior": "neither_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "object-result-sink",
+        "task_hash": "defbcd6fe51a586814f6d4dc0c5b77043600301b8fbf2988053bd5df59d151bb",
+        "source_group": "object-contracts/result-sink",
+        "split": "dev",
+        "repeat": 1,
+        "baseline_run": "3c087f163a0aed03b8b1f60fdf63b412",
+        "candidate_run": "2476f02413fcb385f0dd0b9c08574be3",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": null,
+        "candidate_route": "skip",
+        "skill_behavior": "neither_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-meter-view",
+        "task_hash": "3f8bbc20ea70d43e8cb5be2a3aa06567c087ca26ab6068af33cb8474c80882e5",
+        "source_group": "profile-tools/meter-view",
+        "split": "dev",
+        "repeat": 1,
+        "baseline_run": "fe23bc5a82a06163995550d0794ddb92",
+        "candidate_run": "36dd134deadcce889d31cbce3e3da492",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_applied_skill": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-column-caption",
+        "task_hash": "f4ecca08502a18298a58bd87eedea3100446322e87f9264f38e89a63ec262f0d",
+        "source_group": "profile-tools/column-caption",
+        "split": "dev",
+        "repeat": 1,
+        "baseline_run": "e8aa3c254e4f8ccff2bf6219387188a5",
+        "candidate_run": "92074250133519dea14fbf8cb303d95e",
+        "baseline_pass": false,
+        "candidate_pass": true,
+        "baseline_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_applied_skill": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-print-ticket",
+        "task_hash": "d64bc8475cebc14aac7163cc11c4805e87f65831281eaf700ec62c874f4f633e",
+        "source_group": "profile-tools/print-ticket",
+        "split": "dev",
+        "repeat": 1,
+        "baseline_run": "22af44696125d1d2fe3a2ace0192af88",
+        "candidate_run": "333401c5c29b0142f6fea9020e5dc890",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_applied_skill": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-palette-book",
+        "task_hash": "6fda1b9499899eaca8d7857c267d707311a7236fd4471905c5f688e33b490ece",
+        "source_group": "profile-tools/palette-book",
+        "split": "dev",
+        "repeat": 1,
+        "baseline_run": "de539100db60323f308421abce0843b9",
+        "candidate_run": "73867580d842a3194945ba72b019a179",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_applied_skill": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "dispatch-01",
+        "task_hash": "39bb48969988ac4855d903e46d55166e4b980edd2e0d833a2a51bcc6a41db31f",
+        "source_group": "dispatch",
+        "split": "learn",
+        "repeat": 0,
+        "baseline_run": "f4993dc60c0afdf9e3d1ce834b59b6c3",
+        "candidate_run": "f39d081590370072fd0a59cc01de2f32",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_applied_skill": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "dispatch-03",
+        "task_hash": "573a46b47d2d56b44021723f227fd5ee11b7a17687c397471eac418ec280610e",
+        "source_group": "dispatch",
+        "split": "learn",
+        "repeat": 0,
+        "baseline_run": "bcbd43effd34e8646d79eb7fb5ba153b",
+        "candidate_run": "cd099183305d76d383c177f07d3f0cca",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_applied_skill": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "export-02",
+        "task_hash": "7eb59d76d11c7a8da901f5f3529fd3733efb9e863d586d4677c8380c1eab06e7",
+        "source_group": "export",
+        "split": "learn",
+        "repeat": 0,
+        "baseline_run": "cfb5fcff4f1e8d8ff6c08eb30aec70bd",
+        "candidate_run": "f11c1e92eb23b1adf0e5199e7d5d468f",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_applied_skill": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "export-04",
+        "task_hash": "1760a7ec3df793779763c93b58051ed9e70215e157ef10b25d5da83a6a4ccd6f",
+        "source_group": "export",
+        "split": "learn",
+        "repeat": 0,
+        "baseline_run": "efd3293fe436fc7509d01a86e63a4503",
+        "candidate_run": "58cae5aed7f67634ecb9eb5947143b0e",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "candidate_applied_skill": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "learn-subscription-lease",
+        "task_hash": "3d9a523cdd3dbf44359145414ed39bd7678abe1c3a29a7135a0ce06b2afdba23",
+        "source_group": "python-workflows/subscription-lease",
+        "split": "learn",
+        "repeat": 0,
+        "baseline_run": "33c0dd659f0faf9ca235fa10425e9c46",
+        "candidate_run": "d7622f6892c112a15ee438cea6865f47",
+        "baseline_pass": true,
+        "candidate_pass": false,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": null,
+        "candidate_route": "skip",
+        "skill_behavior": "neither_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "learn-tile-compositor",
+        "task_hash": "350d723d09fdccc897f61a097d0f37a9bb414554d8004c421d8d3a61c8c91902",
+        "source_group": "python-workflows/tile-compositor",
+        "split": "learn",
+        "repeat": 0,
+        "baseline_run": "490b42e6c376422517f2b5a6981ca032",
+        "candidate_run": "3fc9da9aadd02197c0793acaba130773",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": null,
+        "candidate_route": "skip",
+        "skill_behavior": "neither_applied",
+        "infrastructure_error": false
+      }
+    ],
+    "decision": {
+      "gate": {
+        "policy": "repeated_wins_with_skill_behavior",
+        "required_improved_groups": 2,
+        "required_dev_repeats": 2,
+        "zero_observed_regressions": true,
+        "passed": false
+      },
+      "improved_groups": [
+        "object-contracts/index-error",
+        "profile-tools/column-caption"
+      ],
+      "repeat_confirmed_improved_groups": [
+        "profile-tools/column-caption"
+      ],
+      "wins_without_skill_change": [
+        {
+          "task_id": "object-index-error",
+          "repeat": 0,
+          "skill_behavior": "neither_applied"
+        }
+      ],
+      "regressions": [
+        "learn-subscription-lease"
+      ],
+      "infrastructure_errors": []
+    }
+  },
+  "library_gate": {
+    "receipt": "e222af924805ffb63a8317ff0caab82ca09b131634345d43433776d614f6f29c",
+    "library_id": "61824848ca7be4a1ade3c2fd6857adc96060e0f82572a5ef39486c8feb02b010",
+    "baseline": [],
+    "candidate": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+    "rows": [
+      {
+        "task_id": "object-index-error",
+        "task_hash": "35240f4d1c6775b8c1a3a2dbedfd1e269dc339585b5af7ab1b603eea3aeacaae",
+        "source_group": "object-contracts/index-error",
+        "split": "dev",
+        "repeat": 0,
+        "baseline_run": "0bea74318707a9cbfcfef29d74eec578",
+        "candidate_run": "3a0155fab18463dfb3389fe06d706f2c",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": null,
+        "candidate_route": "skip",
+        "skill_behavior": "neither_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "object-label-policy",
+        "task_hash": "cc414d44bb1f8b166fc95307eff01dff99a83c5dd0b779aa381f657cfcb6b23a",
+        "source_group": "object-contracts/label-policy",
+        "split": "dev",
+        "repeat": 0,
+        "baseline_run": "a05163fc7ee85a68cf86f2db918f3d81",
+        "candidate_run": "be367a4dac75acc0645026ee57d07f92",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "object-result-sink",
+        "task_hash": "defbcd6fe51a586814f6d4dc0c5b77043600301b8fbf2988053bd5df59d151bb",
+        "source_group": "object-contracts/result-sink",
+        "split": "dev",
+        "repeat": 0,
+        "baseline_run": "d3cb7414285c59c0d29666008ec28fba",
+        "candidate_run": "45f32ba343b4e793f401af6ba44c27dc",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": null,
+        "candidate_route": "skip",
+        "skill_behavior": "neither_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-meter-view",
+        "task_hash": "3f8bbc20ea70d43e8cb5be2a3aa06567c087ca26ab6068af33cb8474c80882e5",
+        "source_group": "profile-tools/meter-view",
+        "split": "dev",
+        "repeat": 0,
+        "baseline_run": "59319884312cec3d3e734f74ebac45d9",
+        "candidate_run": "68abbdf02cf912a8f7c748ab7d43c62f",
+        "baseline_pass": false,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-column-caption",
+        "task_hash": "f4ecca08502a18298a58bd87eedea3100446322e87f9264f38e89a63ec262f0d",
+        "source_group": "profile-tools/column-caption",
+        "split": "dev",
+        "repeat": 0,
+        "baseline_run": "dc46c0e3a9aab37de16e870963a320fd",
+        "candidate_run": "ce65b65e9d1b18ef0802ffd366b466cf",
+        "baseline_pass": false,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-print-ticket",
+        "task_hash": "d64bc8475cebc14aac7163cc11c4805e87f65831281eaf700ec62c874f4f633e",
+        "source_group": "profile-tools/print-ticket",
+        "split": "dev",
+        "repeat": 0,
+        "baseline_run": "90ad45b7ca840f3f50ac1b3f66048270",
+        "candidate_run": "f17d33fb2cbf4905363e1a553752aced",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-palette-book",
+        "task_hash": "6fda1b9499899eaca8d7857c267d707311a7236fd4471905c5f688e33b490ece",
+        "source_group": "profile-tools/palette-book",
+        "split": "dev",
+        "repeat": 0,
+        "baseline_run": "b865e1c549f7446c667f269cc134226c",
+        "candidate_run": "9b9c674b78bdf1bc6e496d85e1531321",
+        "baseline_pass": false,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "object-index-error",
+        "task_hash": "35240f4d1c6775b8c1a3a2dbedfd1e269dc339585b5af7ab1b603eea3aeacaae",
+        "source_group": "object-contracts/index-error",
+        "split": "dev",
+        "repeat": 1,
+        "baseline_run": "f0705971cf1d3a25758d0beb4fef6a40",
+        "candidate_run": "07f059f612a8f65b902c10180f7b51e3",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": null,
+        "candidate_route": "skip",
+        "skill_behavior": "neither_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "object-label-policy",
+        "task_hash": "cc414d44bb1f8b166fc95307eff01dff99a83c5dd0b779aa381f657cfcb6b23a",
+        "source_group": "object-contracts/label-policy",
+        "split": "dev",
+        "repeat": 1,
+        "baseline_run": "49cf5dfaef1e46d220e52f897888c574",
+        "candidate_run": "30e06bbadbc989df6d8aceb2d5e7ad40",
+        "baseline_pass": false,
+        "candidate_pass": false,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": null,
+        "candidate_route": "skip",
+        "skill_behavior": "neither_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "object-result-sink",
+        "task_hash": "defbcd6fe51a586814f6d4dc0c5b77043600301b8fbf2988053bd5df59d151bb",
+        "source_group": "object-contracts/result-sink",
+        "split": "dev",
+        "repeat": 1,
+        "baseline_run": "36031310abf35a4e7f3f9b81166387a2",
+        "candidate_run": "2476f02413fcb385f0dd0b9c08574be3",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": null,
+        "candidate_route": "skip",
+        "skill_behavior": "neither_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-meter-view",
+        "task_hash": "3f8bbc20ea70d43e8cb5be2a3aa06567c087ca26ab6068af33cb8474c80882e5",
+        "source_group": "profile-tools/meter-view",
+        "split": "dev",
+        "repeat": 1,
+        "baseline_run": "8e8009b5e281677b166ee9a0c95bd6fa",
+        "candidate_run": "36dd134deadcce889d31cbce3e3da492",
+        "baseline_pass": false,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-column-caption",
+        "task_hash": "f4ecca08502a18298a58bd87eedea3100446322e87f9264f38e89a63ec262f0d",
+        "source_group": "profile-tools/column-caption",
+        "split": "dev",
+        "repeat": 1,
+        "baseline_run": "3c0498a4b50215b36edb09aab4442138",
+        "candidate_run": "92074250133519dea14fbf8cb303d95e",
+        "baseline_pass": false,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-print-ticket",
+        "task_hash": "d64bc8475cebc14aac7163cc11c4805e87f65831281eaf700ec62c874f4f633e",
+        "source_group": "profile-tools/print-ticket",
+        "split": "dev",
+        "repeat": 1,
+        "baseline_run": "903348753ab526f1a7ffc675478d947c",
+        "candidate_run": "333401c5c29b0142f6fea9020e5dc890",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "transfer-palette-book",
+        "task_hash": "6fda1b9499899eaca8d7857c267d707311a7236fd4471905c5f688e33b490ece",
+        "source_group": "profile-tools/palette-book",
+        "split": "dev",
+        "repeat": 1,
+        "baseline_run": "a60fd61ec619361d3c69ec4d2aba86da",
+        "candidate_run": "73867580d842a3194945ba72b019a179",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "dispatch-01",
+        "task_hash": "39bb48969988ac4855d903e46d55166e4b980edd2e0d833a2a51bcc6a41db31f",
+        "source_group": "dispatch",
+        "split": "learn",
+        "repeat": 0,
+        "baseline_run": "8996bac9f0d91846ebcda1f9ac773b2d",
+        "candidate_run": "f39d081590370072fd0a59cc01de2f32",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "dispatch-03",
+        "task_hash": "573a46b47d2d56b44021723f227fd5ee11b7a17687c397471eac418ec280610e",
+        "source_group": "dispatch",
+        "split": "learn",
+        "repeat": 0,
+        "baseline_run": "bd49cddc010dec0399623521fc693973",
+        "candidate_run": "cd099183305d76d383c177f07d3f0cca",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "export-02",
+        "task_hash": "7eb59d76d11c7a8da901f5f3529fd3733efb9e863d586d4677c8380c1eab06e7",
+        "source_group": "export",
+        "split": "learn",
+        "repeat": 0,
+        "baseline_run": "3b4453d4a751cfcf4ff48608a0b75251",
+        "candidate_run": "f11c1e92eb23b1adf0e5199e7d5d468f",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "export-04",
+        "task_hash": "1760a7ec3df793779763c93b58051ed9e70215e157ef10b25d5da83a6a4ccd6f",
+        "source_group": "export",
+        "split": "learn",
+        "repeat": 0,
+        "baseline_run": "81e20ffde0016f1b1a5967bcc4ad539e",
+        "candidate_run": "58cae5aed7f67634ecb9eb5947143b0e",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41",
+        "candidate_route": "apply",
+        "skill_behavior": "candidate_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "learn-subscription-lease",
+        "task_hash": "3d9a523cdd3dbf44359145414ed39bd7678abe1c3a29a7135a0ce06b2afdba23",
+        "source_group": "python-workflows/subscription-lease",
+        "split": "learn",
+        "repeat": 0,
+        "baseline_run": "26a405df6e6eed53c38a9a079f9dac9f",
+        "candidate_run": "d7622f6892c112a15ee438cea6865f47",
+        "baseline_pass": true,
+        "candidate_pass": false,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": null,
+        "candidate_route": "skip",
+        "skill_behavior": "neither_applied",
+        "infrastructure_error": false
+      },
+      {
+        "task_id": "learn-tile-compositor",
+        "task_hash": "350d723d09fdccc897f61a097d0f37a9bb414554d8004c421d8d3a61c8c91902",
+        "source_group": "python-workflows/tile-compositor",
+        "split": "learn",
+        "repeat": 0,
+        "baseline_run": "9c3a27967c22e44f465f40ab797a799e",
+        "candidate_run": "3fc9da9aadd02197c0793acaba130773",
+        "baseline_pass": true,
+        "candidate_pass": true,
+        "baseline_applied_skill": null,
+        "candidate_applied_skill": null,
+        "candidate_route": "skip",
+        "skill_behavior": "neither_applied",
+        "infrastructure_error": false
+      }
+    ],
+    "decision": {
+      "gate": {
+        "policy": "repeated_wins_with_skill_behavior",
+        "required_improved_groups": 2,
+        "required_dev_repeats": 2,
+        "zero_observed_regressions": true,
+        "passed": false
+      },
+      "improved_groups": [
+        "profile-tools/column-caption",
+        "profile-tools/meter-view",
+        "profile-tools/palette-book"
+      ],
+      "repeat_confirmed_improved_groups": [
+        "profile-tools/column-caption",
+        "profile-tools/meter-view"
+      ],
+      "wins_without_skill_change": [],
+      "regressions": [
+        "learn-subscription-lease"
+      ],
+      "infrastructure_errors": []
+    }
+  },
+  "decision": {
+    "objects_vs_parent": {
+      "gate": {
+        "policy": "repeated_wins_with_skill_behavior",
+        "required_improved_groups": 2,
+        "required_dev_repeats": 2,
+        "zero_observed_regressions": true,
+        "passed": false
+      },
+      "improved_groups": [
+        "object-contracts/index-error"
+      ],
+      "repeat_confirmed_improved_groups": [],
+      "wins_without_skill_change": [
+        {
+          "task_id": "object-index-error",
+          "repeat": 0,
+          "skill_behavior": "neither_applied"
+        }
+      ],
+      "regressions": [],
+      "infrastructure_errors": []
+    },
+    "passed": false
+  },
+  "route_notes": {
+    "6b2c98d482092768200e90b78d748fec": {
+      "decision": "skip",
+      "requested": [
+        "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+      ],
+      "condition_indices": [],
+      "exclusion_indices": [],
+      "reason": "The issue asks to preserve a caller-supplied blending operation and skip the plugin registry when one is provided. The skill only covers restoring a documented constant default when an override is omitted/null; it does not address bypassing registry/plugin lookup or preserving caller-supplied values, so applicability is not established."
+    },
+    "32a38e6d0909f4ea1229554968875fc7": {
+      "decision": "skip_invalid",
+      "requested": [
+        "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+      ],
+      "condition_indices": [],
+      "exclusion_indices": [],
+      "reason": "invalid routing envelope; memory skipped without retry"
+    },
+    "9c781b80c324b9753b43bc768fa0432b": {
+      "decision": "skip",
+      "requested": [
+        "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+      ],
+      "condition_indices": [],
+      "exclusion_indices": [],
+      "reason": "The issue concerns undo groups detaching from a caller's journal and nested/abandoned changes remaining attached. It does not involve optional overrides, documented defaults/presets, or request dict defaulting, so the skill is not applicable."
+    },
+    "fed2435e5a5e2d312ab3a67a0462ff3c": {
+      "decision": "skip",
+      "requested": [
+        "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+      ],
+      "condition_indices": [],
+      "exclusion_indices": [],
+      "reason": "The issue concerns decoder allocation on binary readers and routing continuation reads through the same decoder when unbuffered. It is not about restoring a documented default for an omitted/null client override in a small handler, so the skill's applicability conditions are not met."
+    },
+    "3341f6440b7e1aefd61c2ebdf103993b": {
+      "decision": "skip",
+      "requested": [
+        "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+      ],
+      "condition_indices": [],
+      "exclusion_indices": [],
+      "reason": "The skill addresses restoring a documented default constant when a client-supplied optional override is omitted in adapter/handler code. The issue instead concerns incremental dependency planning state: visited targets being rebuilt and sharing a visit registry across multiple roots and planner invocations. No default value, preset constant, or request/response defaulting is mentioned, so the skill does not materially apply."
+    },
+    "58d6e5d33c112b3a884ef37109d063de": {
+      "decision": "skip",
+      "requested": [
+        "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+      ],
+      "condition_indices": [],
+      "exclusion_indices": [],
+      "reason": "The issue concerns lease lifecycle management (re-entering an original lease and releasing it exactly once during re-delivery of a deferred notification). The skill only applies to restoring literal constant defaults for omitted/null optional overrides in small handler entry points, which is unrelated to this task."
+    },
+    "a42141c5af64cdf24cdb5095bdc0e68e": {
+      "decision": "skip",
+      "requested": [
+        "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+      ],
+      "condition_indices": [],
+      "exclusion_indices": [],
+      "reason": "The issue concerns error policy for missing records and exceptions during key presentation, not restoring a documented default for an optional override. No DEFAULT-style constant or defaulting behavior is established."
+    },
+    "3a0155fab18463dfb3389fe06d706f2c": {
+      "decision": "skip",
+      "requested": [
+        "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41"
+      ],
+      "condition_indices": [],
+      "exclusion_indices": [],
+      "reason": "The issue concerns error handling when a missing record raises a different exception while rendering its key; it does not involve restoring a client-omitted optional override to a documented constant default in a single entry point. No condition of the skill is supported, so the skill is skipped."
+    },
+    "68b5d2e897aca29f49ba1699a7881ed1": {
+      "decision": "uncertain",
+      "requested": [
+        "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+      ],
+      "condition_indices": [],
+      "exclusion_indices": [],
+      "reason": "The issue describes preserving a caller-supplied label policy (for ordinary batches and an empty-batch caption) that is incorrectly being ignored in favor of a missing catalog default. The skill targets restoring a documented literal-constant default when an override is omitted/null; here the opposite defect (client-supplied value not honored) is described, and no literal DEFAULT constant or omitted-key scenario is established in the task text."
+    },
+    "be367a4dac75acc0645026ee57d07f92": {
+      "decision": "apply",
+      "requested": [
+        "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41"
+      ],
+      "condition_indices": [
+        0,
+        1
+      ],
+      "exclusion_indices": [],
+      "reason": "Issue describes a client-supplied optional override (label policy) that is supplied but ignored in favor of a default/missing catalog; skill restores the documented default behavior while preserving caller-supplied values across both code paths, matching the defaulting-fallback entry-point pattern. No exclusions apply: the policy is a caller-supplied value, not a resource lifecycle, and no distinction between omitted vs null is required."
+    },
+    "45f32ba343b4e793f401af6ba44c27dc": {
+      "decision": "skip",
+      "requested": [
+        "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41"
+      ],
+      "condition_indices": [],
+      "exclusion_indices": [],
+      "reason": "The skill covers restoring a documented default when a client-supplied optional override is omitted or null. Here the override is explicitly supplied (an explicit output sink / selected output object) but ignored during allocation; the required fix is to honor the provided object, not to fall back to a default constant. No applicability condition matches, so skip."
+    },
+    "0a283fe7f79f40e615e24830c506fed7": {
+      "decision": "skip",
+      "requested": [
+        "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+      ],
+      "condition_indices": [],
+      "exclusion_indices": [],
+      "reason": "The issue concerns honoring an explicitly provided output sink during report finalization/record emission—preventing allocation of the default destination. The skill is about restoring a documented default when an optional override is omitted/null, which is the inverse behavior, and no documented default constant is established. Applicability is not supported."
+    },
+    "a87de96f9ae95f49fd5e72db736dda2d": {
+      "decision": "apply",
+      "requested": [
+        "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+      ],
+      "condition_indices": [
+        0,
+        1,
+        2
+      ],
+      "exclusion_indices": [],
+      "reason": "The issue is a small view/entry point where an optional value (sampling interval) can be omitted, and a documented default/preset should be restored while keeping client-supplied settings and saved dashboards compatible. This matches the defaulting skill's conditions; no exclusions apply since the default is a documented preset, and there is no requirement to distinguish omitted keys from explicit nulls or to handle falsy values differently."
+    },
+    "68abbdf02cf912a8f7c748ab7d43c62f": {
+      "decision": "apply",
+      "requested": [
+        "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41"
+      ],
+      "condition_indices": [
+        0,
+        1,
+        2
+      ],
+      "exclusion_indices": [],
+      "reason": "The issue asks to restore a documented default preset when an optional sampling interval is omitted, at view usage points, while keeping saved client values/settings compatible — matching the defaulting-fallback skill. No exclusions apply: no omitted-vs-null distinction required, constant preset, no lifecycle coordination."
+    },
+    "fe971daf52644de9dfaf24a362e88066": {
+      "decision": "apply",
+      "requested": [
+        "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+      ],
+      "condition_indices": [
+        0,
+        1
+      ],
+      "exclusion_indices": [],
+      "reason": "The issue describes an optional column heading override that, when unset, should fall back to a documented default caption while preserving custom captions and output format—matching the defaulting/preset-restore skill. No exclusion applies: no need to distinguish omission from null, the default is the documented constant caption, and no formatting changes beyond defaulting are requested."
+    },
+    "ce65b65e9d1b18ef0802ffd366b466cf": {
+      "decision": "apply",
+      "requested": [
+        "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41"
+      ],
+      "condition_indices": [
+        0,
+        2
+      ],
+      "exclusion_indices": [],
+      "reason": "The issue describes an optional/omitted value (unset column heading) falling back to a documented literal default (its documented caption) in a single export path, matching the defaulting-fallback skill. No exclusion triggers: no omission-vs-null distinction is required, the default is a constant documented caption, not a lifecycle resource, and nothing asks to change output format."
+    },
+    "f17d33fb2cbf4905363e1a553752aced": {
+      "decision": "apply",
+      "requested": [
+        "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41"
+      ],
+      "condition_indices": [
+        0,
+        1
+      ],
+      "exclusion_indices": [],
+      "reason": "Issue: client-supplied profile entry can be null/omitted and the documented site duplex preset (a DEFAULT-style constant) should be restored at the entry point while preserving explicit choices. Matches the defaulting-fallback skill: restore preset default in a single entry point, keep client-supplied values intact. No exclusion applies; no need to distinguish null from omitted."
+    },
+    "2ddffd0b601c9b0780b074a94525f23b": {
+      "decision": "apply",
+      "requested": [
+        "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+      ],
+      "condition_indices": [
+        0,
+        1
+      ],
+      "exclusion_indices": [],
+      "reason": "The issue describes a client-supplied optional override (profile entry) that can be null, causing the documented site duplex preset default to be lost; restoring the preset while preserving explicit client choices matches the skill's defaulting conditions, and no exclusion (sentinel distinction, computed default, formatting change) is established by the issue text."
+    },
+    "670408e705d97a70f712b4fe2404a4b8": {
+      "decision": "apply",
+      "requested": [
+        "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+      ],
+      "condition_indices": [
+        0,
+        1
+      ],
+      "exclusion_indices": [],
+      "reason": "The issue matches restoring a documented default/factory preset when a client-supplied optional value (inherited palette) is omitted/null, while preserving existing observable behavior. No exclusion applies: the expected value is the literal factory palette, and no distinction between omitted key and explicit null is required."
+    },
+    "9b9c674b78bdf1bc6e496d85e1531321": {
+      "decision": "apply",
+      "requested": [
+        "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41"
+      ],
+      "condition_indices": [
+        0
+      ],
+      "exclusion_indices": [],
+      "reason": "Client-supplied optional palette can be null and a documented factory default should be restored while preserving observable output (series colors), matching the defaulting-fallback skill. No exclusion applies: omitted-vs-null distinction is not required, the default is a literal factory constant, and no lifecycle/resource coordination is involved."
+    },
+    "07f059f612a8f65b902c10180f7b51e3": {
+      "decision": "skip",
+      "requested": [
+        "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41"
+      ],
+      "condition_indices": [],
+      "exclusion_indices": [],
+      "reason": "The issue concerns error policy for missing-record lookups and empty selections (an exception raised while presenting a key), not restoring a documented default/preset for an omitted or null optional override. No condition for the defaulting-fallback skill is supported."
+    },
+    "253fe4495ee4ba818b79fe70537f3654": {
+      "decision": "skip",
+      "requested": [
+        "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+      ],
+      "condition_indices": [],
+      "exclusion_indices": [],
+      "reason": "The issue concerns exception handling and error policy for missing records in lookups and empty selections, not restoring a documented default/preset for an optional override. None of the applicability conditions (client-supplied optional override, DEFAULT constant, response/plan dict defaulting) are supported by the issue text."
+    },
+    "30e06bbadbc989df6d8aceb2d5e7ad40": {
+      "decision": "skip",
+      "requested": [
+        "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41"
+      ],
+      "condition_indices": [],
+      "exclusion_indices": [],
+      "reason": "The issue asks to preserve a caller-supplied label policy (including for the empty batch caption), not to restore a documented constant default when an optional override is omitted. No DEFAULT-style constant restoration or optional-override defaulting is described, so the skill does not materially apply."
+    },
+    "e9dac79c9758b79f278d37e1bf1ed471": {
+      "decision": "skip",
+      "requested": [
+        "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+      ],
+      "condition_indices": [],
+      "exclusion_indices": [],
+      "reason": "The issue is a wrong-key/missing-catalog lookup bug where a caller-supplied label policy is dropped, not restoring a documented constant default when an optional override is omitted. No default/preset constant, service response dict, or defaulting behavior is described, so the skill does not apply."
+    },
+    "3c087f163a0aed03b8b1f60fdf63b412": {
+      "decision": "skip",
+      "requested": [
+        "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+      ],
+      "condition_indices": [],
+      "exclusion_indices": [],
+      "reason": "The issue is about honoring a client-supplied explicit output sink for single records and batch finalization, preventing allocation of the usual destination when an override is present. The only library skill targets the opposite problem: restoring a documented constant default when an optional override is omitted/null. No condition about default-restoring or DEFAULT constants is established by the task text, so no skill applies."
+    },
+    "2476f02413fcb385f0dd0b9c08574be3": {
+      "decision": "skip",
+      "requested": [
+        "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41"
+      ],
+      "condition_indices": [],
+      "exclusion_indices": [],
+      "reason": "The issue concerns routing/allocating a destination output sink for reports and batch finalization — resource/sink handling, not restoring a documented literal default for an omitted optional override in a small dict-based entry point. No condition clause is materially supported, and no explicit default constant restoration is requested."
+    },
+    "36dd134deadcce889d31cbce3e3da492": {
+      "decision": "apply",
+      "requested": [
+        "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41"
+      ],
+      "condition_indices": [
+        0,
+        1
+      ],
+      "exclusion_indices": [],
+      "reason": "The issue describes an optional value that can be omitted and asks to restore a documented default preset in the view, while keeping existing/saved values compatible. This matches the defaulting-fallback skill: omitted override → restore documented constant preset, no format changes. No exclusion applies: no null-vs-omitted distinction, no lifecycle/resource handle, no falsy-value defaulting required."
+    },
+    "fe23bc5a82a06163995550d0794ddb92": {
+      "decision": "apply",
+      "requested": [
+        "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+      ],
+      "condition_indices": [
+        0,
+        1
+      ],
+      "exclusion_indices": [],
+      "reason": "The issue asks to restore a documented preset when a client-supplied optional value (sampling interval) is omitted, while keeping compatibility with existing saved settings/output — matching the skill's defaulting scenario. No exclusion applies: it's a literal documented preset, no omission-vs-null distinction, no formatting change, and no falsy-value defaulting mentioned."
+    },
+    "92074250133519dea14fbf8cb303d95e": {
+      "decision": "apply",
+      "requested": [
+        "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41"
+      ],
+      "condition_indices": [
+        0
+      ],
+      "exclusion_indices": [],
+      "reason": "The issue describes a small export entry point where an omitted/unset value (column heading) should fall back to a documented literal default (its caption), matching the defaulting-fallback skill. No lifecycle/resource coordination or omitted-vs-null distinction is required."
+    },
+    "e8aa3c254e4f8ccff2bf6219387188a5": {
+      "decision": "apply",
+      "requested": [
+        "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+      ],
+      "condition_indices": [
+        0,
+        1
+      ],
+      "exclusion_indices": [],
+      "reason": "The issue asks to restore a documented default (caption) when a client-supplied optional override (custom column heading) is omitted/unset, while keeping custom values consistent — matching the defaulting fix for unset optional overrides with a documented preset. No exclusion applies: the expected value is a literal documented caption, and no need to distinguish omitted from explicit null is stated."
+    },
+    "22af44696125d1d2fe3a2ace0192af88": {
+      "decision": "apply",
+      "requested": [
+        "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+      ],
+      "condition_indices": [
+        0,
+        1
+      ],
+      "exclusion_indices": [],
+      "reason": "The issue describes a null entry in a client-supplied profile causing a documented site preset (duplex default) to be lost, and requires preserving explicit client choices — matching a defaulting fix for omitted/null overrides with a constant preset. No exclusion applies: the spec does not require distinguishing omission from null beyond restoring the documented preset, the preset is a literal constant, and output format is unchanged."
+    },
+    "333401c5c29b0142f6fea9020e5dc890": {
+      "decision": "apply",
+      "requested": [
+        "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41"
+      ],
+      "condition_indices": [
+        0,
+        1
+      ],
+      "exclusion_indices": [],
+      "reason": "The issue describes a client-supplied optional override (profile entry) that can be null, causing a documented default preset (site duplex preset) to be lost, and asks to restore the preset while preserving explicit client-supplied choices and the existing ticket format. This matches the defaulting-fallback skill; no exclusion applies since no sentinel-vs-null distinction, computed default, or resource lifecycle is involved."
+    },
+    "73867580d842a3194945ba72b019a179": {
+      "decision": "apply",
+      "requested": [
+        "bcab360d6d4868555329349a248ad68a7d99f005152591e11462f49ce850ac41"
+      ],
+      "condition_indices": [
+        0,
+        1,
+        2
+      ],
+      "exclusion_indices": [],
+      "reason": "A null (omitted) inherited value should fall back to a documented factory default in a single entry point while preserving observable output, matching the defaulting-fallback skill. No exclusion applies: the default is a literal factory constant, no null-vs-omitted distinction is required, and no lifecycle/resource handle is involved."
+    },
+    "de539100db60323f308421abce0843b9": {
+      "decision": "apply",
+      "requested": [
+        "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+      ],
+      "condition_indices": [
+        0,
+        1
+      ],
+      "exclusion_indices": [],
+      "reason": "The issue describes an inherited/optional palette value appearing as null, with a request to restore a documented factory/default preset while preserving observable output — matching the default-restoration skill. No exclusion applies: the expected value is a literal factory default, and the task focuses on restoring default behavior without format changes."
+    }
+  },
+  "summary": {
+    "learning": {
+      "parent": {
+        "runs": 6,
+        "passed": 6,
+        "applied": 0,
+        "eligible": 0
+      },
+      "fixed_parent": {
+        "runs": 12,
+        "passed": 11,
+        "applied": 12,
+        "eligible": 1
+      }
+    },
+    "objects": {
+      "bare": {
+        "trials": 6,
+        "passed": 5,
+        "applied": 0,
+        "exhausted": 0,
+        "calls": 54,
+        "actions": 52,
+        "by_repeat": [
+          3,
+          2
+        ]
+      },
+      "parent": {
+        "trials": 6,
+        "passed": 4,
+        "applied": 0,
+        "exhausted": 0,
+        "calls": 56,
+        "actions": 48,
+        "by_repeat": [
+          2,
+          2
+        ]
+      },
+      "child": {
+        "trials": 6,
+        "passed": 5,
+        "applied": 1,
+        "exhausted": 0,
+        "calls": 56,
+        "actions": 47,
+        "by_repeat": [
+          3,
+          2
+        ]
+      },
+      "fixed_parent": {
+        "trials": 6,
+        "passed": 3,
+        "applied": 6,
+        "exhausted": 0,
+        "calls": 47,
+        "actions": 42,
+        "by_repeat": [
+          1,
+          2
+        ]
+      },
+      "fixed_child": {
+        "trials": 6,
+        "passed": 3,
+        "applied": 6,
+        "exhausted": 0,
+        "calls": 65,
+        "actions": 62,
+        "by_repeat": [
+          1,
+          2
+        ]
+      },
+      "manual": {
+        "trials": 6,
+        "passed": 6,
+        "applied": 6,
+        "exhausted": 0,
+        "calls": 57,
+        "actions": 53,
+        "by_repeat": [
+          3,
+          3
+        ]
+      }
+    },
+    "objects_pairs": {
+      "bare_to_child": {
+        "wins": 0,
+        "losses": 0,
+        "same_first_request": 5,
+        "repeated_wins": []
+      },
+      "parent_to_child": {
+        "wins": 1,
+        "losses": 0,
+        "same_first_request": 5,
+        "repeated_wins": []
+      },
+      "fixed_parent_to_fixed_child": {
+        "wins": 1,
+        "losses": 1,
+        "same_first_request": 0,
+        "repeated_wins": []
+      },
+      "manual_to_child": {
+        "wins": 0,
+        "losses": 1,
+        "same_first_request": 0,
+        "repeated_wins": []
+      }
+    },
+    "config": {
+      "bare": {
+        "trials": 8,
+        "passed": 3,
+        "applied": 0,
+        "exhausted": 0,
+        "calls": 69,
+        "actions": 69,
+        "by_repeat": [
+          1,
+          2
+        ]
+      },
+      "parent": {
+        "trials": 8,
+        "passed": 6,
+        "applied": 8,
+        "exhausted": 0,
+        "calls": 70,
+        "actions": 60,
+        "by_repeat": [
+          3,
+          3
+        ]
+      },
+      "child": {
+        "trials": 8,
+        "passed": 8,
+        "applied": 8,
+        "exhausted": 0,
+        "calls": 90,
+        "actions": 81,
+        "by_repeat": [
+          4,
+          4
+        ]
+      }
+    },
+    "config_pairs": {
+      "bare_to_child": {
+        "wins": 5,
+        "losses": 0,
+        "same_first_request": 0,
+        "repeated_wins": [
+          "transfer-column-caption",
+          "transfer-meter-view"
+        ]
+      },
+      "parent_to_child": {
+        "wins": 2,
+        "losses": 0,
+        "same_first_request": 0,
+        "repeated_wins": [
+          "transfer-column-caption"
+        ]
+      }
+    },
+    "normal_near_manual": true
+  }
+}

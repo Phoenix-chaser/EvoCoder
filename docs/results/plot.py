@@ -208,11 +208,45 @@ def transfer_repairs(study, lang, *, objects=False):
     return fig
 
 
+def object_revision_chart(studies, lang):
+    """Show concurrent controls separately for each proposal and which normally routed skills were used."""
+    zh = lang == "zh"
+    cohorts = [(label, data) for label, data in studies if data and "objects" in data["summary"]]
+    if not cohorts:
+        return None
+    fig = canvas(4.25, "对象题上的技能修订" if zh else "Skill revisions on object tasks")
+    fig.text(.055, .80, "每格是独立评分修好的次数。三题各两轮，每列使用同轮对照。"
+             if zh else "Successful repairs across three tasks and two repeats, with concurrent controls.", fontsize=10, color=MUTED)
+    ax = fig.add_axes([.055, .14, .92, .58])
+    ax.set(xlim=(-2.65, 2.45), ylim=(-.5, 6.7))
+    ax.set_axis_off()
+    names = [("bare","无技能","No skill"),("parent","父版，正常路由","Parent, normal routing"),
+             ("child","子版，正常路由","Child, normal routing"),("fixed_parent","强制使用父版","Parent, forced"),
+             ("fixed_child","强制使用子版","Child, forced"),("manual","人工参照","Manual reference")]
+    for k, (label, _) in enumerate(cohorts):
+        headers = {"first": ("执行轨迹","Execution traces"), "witness": ("配对补丁与新断言","Paired patch check")}
+        ax.text(k*1.40, 6.18, headers[label][0 if zh else 1], ha="center", fontsize=10.3, weight="bold", color=INK)
+    for j,(arm,cn,en) in enumerate(names):
+        y=5-j
+        ax.text(-2.65, y, cn if zh else en, va="center", fontsize=10.7, color=INK)
+        for k,(_,d) in enumerate(cohorts):
+            a=d["summary"]["objects"][arm]
+            x=k*1.4
+            ax.barh(y,1.27,left=x-.635,height=.78,color="#D6ECE8" if arm in ("child","fixed_child") else "#E3EBEF")
+            ax.text(x,y,f"{a['passed']}/{a['trials']}",ha="center",va="center",color=INK,fontsize=12,weight="bold")
+    exposure=[f"{d['summary']['objects']['child']['applied']}/6" for _,d in cohorts]
+    fig.text(.055,.055,("正常路由实际注入子版（按列）  " if zh else "Child actually used under normal routing, by column   ")
+             +"   ·   ".join(exposure),fontsize=10,color=TEAL,weight="bold")
+    return fig
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--study", type=Path, default=HERE / "optional-control.json")
     parser.add_argument("--transfer", type=Path, default=HERE / "falsy-transfer.json")
     parser.add_argument("--objects", type=Path, default=HERE / "falsy-objects.json")
+    parser.add_argument("--revision", type=Path, default=HERE / "object-revision.json")
+    parser.add_argument("--witness", type=Path, default=HERE / "object-witness.json")
     parser.add_argument("--output-dir", type=Path, default=IMAGES)
     args = parser.parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
@@ -221,6 +255,8 @@ if __name__ == "__main__":
     optional = json.loads(args.study.read_text(encoding="utf-8"))
     transfer = json.loads(args.transfer.read_text(encoding="utf-8"))
     objects = json.loads(args.objects.read_text(encoding="utf-8")) if args.objects.is_file() else None
+    revisions = [(label,json.loads(path.read_text(encoding="utf-8"))) for label,path in
+                 (("first",args.revision),("witness",args.witness)) if path.is_file()]
     for language, text in TEXT.items():
         with plt.rc_context({"font.family": text["font"]}):
             for name, render, dataset in [("mock-repairs", mock_chart, "mock_demo"),
@@ -236,6 +272,8 @@ if __name__ == "__main__":
             if objects:
                 charts.extend([("falsy-objects",transfer_repairs(objects,language,objects=True)),
                                ("falsy-object-diversity",diversity_chart(objects,language))])
+            charts.append(("object-revision",object_revision_chart(revisions,language)))
+            charts.extend((f"object-{label}-diversity",diversity_chart(data,language)) for label,data in revisions)
             for name, chart in charts:
                 if chart is not None:
                     chart.savefig(args.output_dir / f"{name}-{language}.png", dpi=180, metadata={"Software": "Matplotlib"})

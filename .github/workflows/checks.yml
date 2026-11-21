@@ -23,6 +23,8 @@ jobs:
       - run: uv run --locked python scripts/report_optional_control.py verify
       - run: uv run --locked python scripts/report_falsy_transfer.py verify
       - run: uv run --locked python scripts/report_falsy_objects.py verify
+      - run: uv run --locked python scripts/report_object_revision.py verify
+      - run: uv run --locked python scripts/report_object_revision.py verify --study witness
 
   docker-demo:
     runs-on: ubuntu-latest

@@ -68,17 +68,21 @@
     "holdout_runs": 0
   },
   "test_suite": {
-    "code_revision": "76f1432c1ef56e09e522f17d12f659c22699793e",
+    "code_revision": "a1b3c888a4c6013e3fe79804e029e848fdaf8edb",
     "command": "make test && make integration",
-    "tests": 300,
-    "passed": 300,
-    "non_docker": 267,
-    "docker": 33,
+    "tests": 308,
+    "passed": 308,
+    "non_docker": 274,
+    "docker": 34,
     "failed": 0,
     "skipped": 0
   },
   "falsy_transfer_evidence": {
     "pretest_and_configuration": "docs/results/falsy-transfer.json",
     "caller_owned_objects": "docs/results/falsy-objects.json"
+  },
+  "object_revision_evidence": {
+    "first_child": "docs/results/object-revision.json",
+    "matched_public_check_child": "docs/results/object-witness.json"
   }
 }
