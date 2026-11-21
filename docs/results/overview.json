@@ -1,0 +1,77 @@
+{
+  "demo_and_test_revision": "4a6d8bc0c4cfcc617a849592ac34a7fbafb248bc",
+  "mock_demo": {
+    "command": "make demo",
+    "dataset_sha256": "e62bea014eafa696342e9a59982d7e8c1649ec17c1f03bc1bacdd84dfd97ca6c",
+    "evaluation_receipt": "5513ed6745e7ce949eb0b9a0b8111a34e059757832e5b2fa3ef797b3309f0fc5",
+    "development": [
+      {
+        "task": "dev-01",
+        "parent": false,
+        "revised": true
+      },
+      {
+        "task": "dev-02",
+        "parent": true,
+        "revised": true
+      },
+      {
+        "task": "dev-03",
+        "parent": false,
+        "revised": true
+      },
+      {
+        "task": "dev-04",
+        "parent": true,
+        "revised": true
+      }
+    ],
+    "support_replay": {
+      "total": 1,
+      "parent_passed": 1,
+      "revised_passed": 1
+    },
+    "frozen_holdout": {
+      "total": 4,
+      "revised_passed": 4
+    },
+    "confirmed_improvement_groups": 2,
+    "published": true
+  },
+  "live_study": {
+    "source_report": "docs/reports/click-switch-feedback.html",
+    "protocol_sha256": "4df25f6561503ccf96d5bc155076475ef918f1ccbca4717fab480bdc36808941",
+    "model": "glm-5.3",
+    "max_steps": 16,
+    "learning": {
+      "runs": 4,
+      "skill_skipped": 4,
+      "detected_on_submitted_patch": 4
+    },
+    "development": {
+      "tasks": 2,
+      "repeats_per_task": 2,
+      "paired_trials": 4,
+      "runs_with_skill_applied": 8,
+      "repair_passed": {
+        "parent": 3,
+        "revised": 3
+      },
+      "detected_on_submitted_patch": {
+        "parent": 1,
+        "revised": 2
+      }
+    },
+    "confirmed_improvement_groups": 0,
+    "required_improvement_groups": 2,
+    "released": false,
+    "holdout_runs": 0
+  },
+  "test_suite": {
+    "command": "uv run --locked pytest -q",
+    "tests": 287,
+    "passed": 287,
+    "failed": 0,
+    "skipped": 0
+  }
+}
