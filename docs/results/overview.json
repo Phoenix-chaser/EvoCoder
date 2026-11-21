@@ -1,5 +1,5 @@
 {
-  "demo_and_test_revision": "4a6d8bc0c4cfcc617a849592ac34a7fbafb248bc",
+  "demo_revision": "4a6d8bc0c4cfcc617a849592ac34a7fbafb248bc",
   "mock_demo": {
     "command": "make demo",
     "dataset_sha256": "e62bea014eafa696342e9a59982d7e8c1649ec17c1f03bc1bacdd84dfd97ca6c",
@@ -68,9 +68,10 @@
     "holdout_runs": 0
   },
   "test_suite": {
+    "code_revision": "85286beaca6f2034869da7f2b39cc85fe251b914",
     "command": "uv run --locked pytest -q",
-    "tests": 287,
-    "passed": 287,
+    "tests": 291,
+    "passed": 291,
     "failed": 0,
     "skipped": 0
   }

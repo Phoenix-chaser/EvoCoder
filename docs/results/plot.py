@@ -3,6 +3,7 @@
 # dependencies = ["matplotlib==3.11.2"]
 # ///
 """Run 'uv run --script docs/results/plot.py' to redraw the charts. Chinese labels use Noto Sans CJK SC."""
+import argparse
 import json
 from pathlib import Path
 
@@ -90,12 +91,69 @@ def live_chart(study, labels):
     return fig
 
 
+def uptake_chart(receipt, lang):
+    zh = lang == "zh"
+    fig = canvas(3.08, "同一道题上，工具动作分布改变了多少？" if zh else "How far did the action mix move?")
+    fig.text(.055, .76, "每行是一组父子配对，横轴为总变差距离"
+             if zh else "Each row compares parent and child. The axis is total variation distance.",
+             color=MUTED, fontsize=10)
+    ax = fig.add_axes([.28, .19, .65, .48], facecolor=PAPER)
+    records = {(p["task_id"], p["repeat"], p["policy"]): 100 * p["tv"] for p in receipt["matrix"]["pairs"]}
+    keys = sorted({(task, repeat) for task, repeat, _ in records})
+    labels = []
+    for i, (task, repeat) in enumerate(keys):
+        a, b = (records[task, repeat, policy] for policy in ("fixed_skip", "fixed_apply"))
+        ax.plot([a, b], [i, i], color="#ABBDC3", linewidth=2, zorder=1)
+        ax.scatter(a, i, s=62, marker="s", color=SLATE, zorder=3)
+        ax.scatter(b, i, s=80, marker="o", color=TEAL, zorder=2)
+        name = ("计数选项" if zh else "Count option") if task.endswith("3d029e03eb") else "Click #557"
+        labels.append(f"{name} · {repeat + 1}")
+    ax.set(xlim=(0, 55), ylim=(len(keys) - .5, -.5), yticks=range(len(keys)), yticklabels=labels)
+    ax.set_xticks(range(0, 51, 10), [f"{n}%" for n in range(0, 51, 10)])
+    ax.tick_params(length=0, colors=MUTED, labelsize=10)
+    ax.grid(axis="x", color=TRACK, linewidth=.7)
+    ax.set_axisbelow(True)
+    for spine in ax.spines.values():
+        spine.set_visible(False)
+    fig.text(.06, .045, "■  两边均跳过技能" if zh else "■  Both skills withheld", color=SLATE, fontsize=11)
+    fig.text(.48, .045, "●  两边均注入对应技能" if zh else "●  Both skills applied", color=TEAL, fontsize=11)
+    return fig
+
+
+def diversity_chart(study, lang):
+    if not study["published"]:
+        return None
+    points = study["curve"]
+    if len(points) != 3 or len(study["holdout"]) != 30:
+        raise ValueError("a complete frozen holdout is required for the diversity figure")
+    zh = lang == "zh"
+    fig = canvas(3.2, "修复收益与任务族多样性" if zh else "Repair gain vs. task-family diversity")
+    ax = fig.add_axes([.16, .24, .75, .48], facecolor=PAPER)
+    ax.axhline(0, color=SLATE, linewidth=.8)
+    ax.plot([p["families"] for p in points], [p["paired_gain"] * 100 for p in points], marker="o", color=TEAL)
+    ax.set(xticks=[1, 2, 3], xlabel="等权混合的任务族数" if zh else "Equally weighted families",
+           ylabel="修复率差（百分点）" if zh else "Repair gain (pp)")
+    return fig
+
+
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--study", type=Path, default=HERE / "optional-control.json")
+    parser.add_argument("--output-dir", type=Path, default=IMAGES)
+    args = parser.parse_args()
+    args.output_dir.mkdir(parents=True, exist_ok=True)
     result = json.loads((HERE / "overview.json").read_text(encoding="utf-8"))
+    uptake = json.loads((HERE / "behavior-uptake.json").read_text(encoding="utf-8"))
+    optional = json.loads(args.study.read_text(encoding="utf-8"))
     for language, text in TEXT.items():
         with plt.rc_context({"font.family": text["font"]}):
             for name, render, dataset in [("mock-repairs", mock_chart, "mock_demo"),
                                           ("glm-development", live_chart, "live_study")]:
                 chart = render(result[dataset], text)
-                chart.savefig(IMAGES / f"{name}-{language}.png", dpi=180, metadata={"Software": "Matplotlib"})
+                chart.savefig(args.output_dir / f"{name}-{language}.png", dpi=180, metadata={"Software": "Matplotlib"})
                 plt.close(chart)
+            for name, chart in [("behavior-uptake", uptake_chart(uptake, language)),
+                                ("diversity-gain", diversity_chart(optional, language))]:
+                if chart is not None:
+                    chart.savefig(args.output_dir / f"{name}-{language}.png", dpi=180, metadata={"Software": "Matplotlib"})
+                    plt.close(chart)

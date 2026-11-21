@@ -1,0 +1,1711 @@
+{
+  "schema": 1,
+  "protocol": "3b1971afa199ed0b58cd96bdb6eac95355c6971a3713e5152bc2fba06e9b80b6",
+  "model": "glm-5.3",
+  "outcome": "screen_rejected",
+  "published": false,
+  "calibration": [
+    {
+      "id": "dispatch-01",
+      "hash": "39bb48969988ac4855d903e46d55166e4b980edd2e0d833a2a51bcc6a41db31f",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "dispatch-02",
+      "hash": "c8df008faf138f377797e0a54a11b8f11c6c0a4e5329703e54be1f839b1fdb43",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "dispatch-03",
+      "hash": "573a46b47d2d56b44021723f227fd5ee11b7a17687c397471eac418ec280610e",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "dispatch-04",
+      "hash": "311e25f2ab72c37978b22fd4e9f5d7e96d653f67de9dd6b9950c49dd2b8ac2e9",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "dispatch-05",
+      "hash": "85c43af9354baae27d1fa460180b7f5a2dde22f62fd0e524c1118d1685136c2e",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "export-01",
+      "hash": "e23654e6a5779ceae364dc98935860e61dc8195ecdaa1fb4e8f4fed9ff4cd50f",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "export-02",
+      "hash": "7eb59d76d11c7a8da901f5f3529fd3733efb9e863d586d4677c8380c1eab06e7",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "export-03",
+      "hash": "2646697acd5d7aa246343cb26541fbbe0dec10501ac993e07b8352f93ed25431",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "export-04",
+      "hash": "1760a7ec3df793779763c93b58051ed9e70215e157ef10b25d5da83a6a4ccd6f",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "export-05",
+      "hash": "861d3f355d6aaeba51e7aea4ce5890a56dd09fb0ceebfb2e437a4e3b36fe95e1",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "gateway-01",
+      "hash": "b115b0caecb953cbaf835c639136ac8db52cdb96107db4921a80b2dfe111ab78",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "gateway-02",
+      "hash": "2914357fc7f035278b70406f5a5d4c263896e8ac627f29613caf9dd4b883c817",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "gateway-03",
+      "hash": "0735e03c8a7c81c29d3c21ecba7ad71c7140e8c4adfd25acfc2f19031af67500",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "gateway-04",
+      "hash": "cf9e42963c8c7fca46f3460b5f1896cab18d2077c0b04dacb589f590914fe569",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "gateway-05",
+      "hash": "c123049aad0497c4f5fcb1686fcc2313512463e370df25f1b1b5f3cdbf440cc7",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "audit-01",
+      "hash": "2b6c8c221985d897837b7eb14100a977218db43a3ffbd15387579c0d59b4e0c8",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "audit-02",
+      "hash": "69d4f7ae70c06e6b60ad1f04924cb962b9cab5f6016f8367a068c38c6130cecd",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "audit-03",
+      "hash": "3193e7b056e90281fb9aea15fe26791f021deeb8787f02747cdb10b3d871b452",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "audit-04",
+      "hash": "143ff7f58f2255bc3d0b0e1c2b5bb61688a103adfa718a5d61889e6573fe66f0",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "audit-05",
+      "hash": "77b3a7f02a907fb8b8acb6385488d99197b7d2aecc77aa8b5a7c0c6135db241d",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "cache-01",
+      "hash": "23381441146c78e9be2fe719e4f3e9632de484b766bec004581d33f1bedb9a89",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "cache-02",
+      "hash": "8e6aa3b396c63fd059263aad65a7e8d0a1c6e59312ac9ec8549047a754345bf7",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "cache-03",
+      "hash": "88d319ccca1cb1505c96a7b69b2ff697b85d01b0b0e1fbc727b8366c3e261a3d",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "cache-04",
+      "hash": "11c71625c133e3cdadf2635113c4de00457477a2a52f4a7e87a5c9d71994ae01",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "cache-05",
+      "hash": "e5d51e0650213d69e7dc9a1398ca25e18ed0ac926c4f125abf0fe390bcce0c94",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "report-01",
+      "hash": "34622c114f9c847dc6b7bcf0ebd011d7e7f07b448cba03ce03f114deb5d1fbca",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "report-02",
+      "hash": "45b00c0ed1d58b66f3ca9703a0206cec34df901574762cdc5e2f014c4e9a0686",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "report-03",
+      "hash": "caf08e2619133541576620896d55891c38df16e54d9b88d9266a10307c7fb768",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "report-04",
+      "hash": "657ccb0746a1f7764005c672cc1555fab77c9348d7488b5f5166244c042b4d94",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "report-05",
+      "hash": "5e1a588a85d83809f8d61468d95f3d2504e90418ff2f6a59126bc48fbf53d0e1",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "notify-01",
+      "hash": "0ca77fd2dc31e7f01ba9d14f09113f3a146f1a4f193f6d564aaf4dd07bf9320f",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "notify-02",
+      "hash": "07b7ecace1a366a78670a069527477272334d2afec3ab9e87c0ff29b3b54cbc9",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "notify-03",
+      "hash": "974860146984c2d86b4f474c416cf6ca1b3fa685d7fbdec5307ac675f58f3b1e",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "notify-04",
+      "hash": "a46664ef7dfca521fd7210c2d0a7ec55df596c3ce4598bf877fba159fffc8db7",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "notify-05",
+      "hash": "bc15ebbabdb2fb8eea6b3ff7fc62f92ee297d5ef7b167cbd25f274a10dcb6a21",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "renderer-01",
+      "hash": "8dacf25f8e36f1fd9d35fbc83ba593553c5fd63ee7b21683ff6e459319d6201a",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "renderer-02",
+      "hash": "fe08eed0f19a0169992859344da0699e748c8e3e75820c0451029f0eb3df434c",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "renderer-03",
+      "hash": "4e5b4dcd20591661ca748ff6c3a51e43f4a0752c486be23d9cf1cd8c6b10599a",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "renderer-04",
+      "hash": "241038ae064c5e01d8adb4e7b18a10a908c8cc5a2205e59917fc9c5379f246ec",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "renderer-05",
+      "hash": "270a00f04c44e44092c1ee0e4d162b1d66e281d421a40980dd13e80ef94f0a5c",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "events-01",
+      "hash": "209524380bd4f07b12a50e60209c061768607b1b2d0175ff24fefdae8b613076",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "events-02",
+      "hash": "70aaaf94713741240ab485cd70e6a303661f9df17cae5c5f1c954d18b6459f94",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "events-03",
+      "hash": "0841ca246af42114d729835fc6c045bc19d9bf4775d12df0ed524d49262444bc",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "events-04",
+      "hash": "404896717a942f115623128748dac171c7caf215982d8cb000e00e2d34f17633",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "events-05",
+      "hash": "4b6f61c53f06a21d837ef6b65fa8e432b8f5f65e698c680f1ada545d81f8f50a",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "checkpoint-01",
+      "hash": "453bfb024563e28ae9906fc5dc5063ac4b3254604725576f099d7457c5aaf396",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "checkpoint-02",
+      "hash": "596328363c8430b1662194c479fd2b3bad8114a3602a12527ffa871916bfa68d",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "checkpoint-03",
+      "hash": "26c75c8b659755d2b9ad036e7966f4677a82375da887047fe6a435c08f1a764b",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "checkpoint-04",
+      "hash": "dbb91eae3f41858b38ff8abd0590ffea4101b6dc6da3c6aeda347aedf0e3a729",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "checkpoint-05",
+      "hash": "01c124a2d9b5a16da0d10914b14c382a5230ccc40ea2a6c0f059972e39517771",
+      "exit_codes": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    }
+  ],
+  "learning": [
+    {
+      "task": "dispatch-01",
+      "run": "d3db6566528a39247af26465f0933bdd",
+      "applied": null,
+      "route": "none",
+      "passed": true,
+      "state": "COMPLETE",
+      "patch": "85c0794d875bef6c740b869f09fde8a52c956fbcc2582698e5bc471f34c27da5",
+      "probes": {
+        "missing": true,
+        "valid_falsy": true
+      },
+      "actions": {
+        "edit": 1,
+        "finish": 1,
+        "read": 1,
+        "test": 1
+      },
+      "model_calls": 4
+    },
+    {
+      "task": "export-02",
+      "run": "69dddec2adaeb066a30c0d15dffa0c2a",
+      "applied": null,
+      "route": "none",
+      "passed": true,
+      "state": "COMPLETE",
+      "patch": "e465b19024c8904b0b21c410c0b745103caf3afb8888d612eed4c9ca254230a0",
+      "probes": {
+        "missing": true,
+        "valid_falsy": true
+      },
+      "actions": {
+        "edit": 1,
+        "finish": 1,
+        "read": 1,
+        "test": 1
+      },
+      "model_calls": 4
+    },
+    {
+      "task": "dispatch-03",
+      "run": "27c55838bc73cd8556a35cfdcf378fd0",
+      "applied": null,
+      "route": "none",
+      "passed": true,
+      "state": "COMPLETE",
+      "patch": "002d772f66b57e9cb49dbc876e34e9980096e656a02d29a68c55a9ac86f62530",
+      "probes": {
+        "missing": true,
+        "valid_falsy": true
+      },
+      "actions": {
+        "edit": 3,
+        "finish": 1,
+        "read": 1,
+        "test": 1
+      },
+      "model_calls": 6
+    },
+    {
+      "task": "export-04",
+      "run": "8bc523660ae6989faaac71432e8676d3",
+      "applied": null,
+      "route": "none",
+      "passed": true,
+      "state": "COMPLETE",
+      "patch": "83619a114592c4d73ad62e3e29a47c22133caa57c773af60a6d775fdc78fd4ea",
+      "probes": {
+        "missing": true,
+        "valid_falsy": true
+      },
+      "actions": {
+        "edit": 1,
+        "finish": 1,
+        "read": 2,
+        "search": 1,
+        "test": 1
+      },
+      "model_calls": 6
+    },
+    {
+      "task": "dispatch-02",
+      "run": "19cc8459a10a2014ec72808e4178510c",
+      "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+      "route": "apply",
+      "passed": true,
+      "state": "COMPLETE",
+      "patch": "cc7e61ca568cc765304c5734afa56efadbdf9864d344ede8d22b4704769031a6",
+      "probes": {
+        "missing": true,
+        "valid_falsy": true
+      },
+      "actions": {
+        "edit": 1,
+        "finish": 1,
+        "read": 1,
+        "test": 1
+      },
+      "model_calls": 5
+    },
+    {
+      "task": "dispatch-04",
+      "run": "b367003b272d83beda6c2a6e191dd4c9",
+      "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+      "route": "apply",
+      "passed": true,
+      "state": "COMPLETE",
+      "patch": "64232bba492b60123d5c331506802b9075c189ca1ed88c85d0c23bc71fdf1ede",
+      "probes": {
+        "missing": true,
+        "valid_falsy": true
+      },
+      "actions": {
+        "edit": 1,
+        "finish": 1,
+        "read": 2,
+        "test": 1
+      },
+      "model_calls": 6
+    },
+    {
+      "task": "dispatch-05",
+      "run": "04642ed965a09287903ea82d3f280fc6",
+      "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+      "route": "apply",
+      "passed": true,
+      "state": "COMPLETE",
+      "patch": "760b6496ed5b7ba5b7380bab4723f002275f8becc11c2824aca828e6952778b0",
+      "probes": {
+        "missing": true,
+        "valid_falsy": true
+      },
+      "actions": {
+        "edit": 1,
+        "finish": 1,
+        "read": 3,
+        "test": 2
+      },
+      "model_calls": 9
+    },
+    {
+      "task": "export-01",
+      "run": "5300f25f87033813bd3a23abe8e059fb",
+      "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+      "route": "apply",
+      "passed": true,
+      "state": "COMPLETE",
+      "patch": "67d8f23bb7286ac84a5fca01a9b1807e057f968dbcd37d552ea47613e450b7cd",
+      "probes": {
+        "missing": true,
+        "valid_falsy": true
+      },
+      "actions": {
+        "edit": 2,
+        "finish": 1,
+        "read": 3,
+        "test": 1
+      },
+      "model_calls": 8
+    },
+    {
+      "task": "export-03",
+      "run": "005b9c4c19eedc23c9544baa2d6cca53",
+      "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+      "route": "apply",
+      "passed": true,
+      "state": "COMPLETE",
+      "patch": "35db486e4900736f9146044ca9a2369981872b46ccfedf884ffae5c3127273db",
+      "probes": {
+        "missing": true,
+        "valid_falsy": true
+      },
+      "actions": {
+        "edit": 1,
+        "finish": 1,
+        "read": 1,
+        "search": 1,
+        "test": 1
+      },
+      "model_calls": 6
+    },
+    {
+      "task": "export-05",
+      "run": "911433e72789446f7adc27d6e9fb426c",
+      "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+      "route": "apply",
+      "passed": true,
+      "state": "COMPLETE",
+      "patch": "bb122d62196ae5c66190967ea10f5eaeb5673bc85bebb108f3ed9e3a0c962dba",
+      "probes": {
+        "missing": true,
+        "valid_falsy": true
+      },
+      "actions": {
+        "edit": 1,
+        "finish": 1,
+        "read": 3,
+        "search": 1,
+        "test": 1
+      },
+      "model_calls": 8
+    }
+  ],
+  "skills": [
+    {
+      "stage": "formation",
+      "id": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+      "content": {
+        "applicability": [
+          "Adapter/handler code where a client-supplied optional override can be omitted or null and a documented default/preset should be restored",
+          "Tasks phrased as 'restore documented preset behavior' while keeping client-supplied values and output format compatible",
+          "Small service entry points (e.g., request dict lookups feeding a response dict or plan/manifest) with a DEFAULT-style constant present"
+        ],
+        "change_summary": "Created skill from four runs where handlers passed a None/omitted client override straight through instead of substituting the documented preset. All runs fixed the pattern with a null-check fallback to the named default, kept client-supplied values, and passed public tests. One run shows a redundant double-check diff that still passed, so verification includes a simplification check. Skill captures the reusable diagnosis, verification, and exclusion (don't rewrite format) without copying task-specific values.",
+        "counterexamples": [
+          "Two different-looking fixes both passed public tests in these runs; passing tests alone does not prove one form is better, only that the semantic (null -> default) is satisfied.",
+          "Run 27c55838bc73cd8556a35cfdcf378fd0 shipped a redundant duplicate conditional and still passed; public tests passing does not certify code cleanliness.",
+          "If omitted and explicit null must map to different values, or the preset lives in nested/serialized structures, this simple fallback pattern does not apply."
+        ],
+        "evidence_refs": [
+          "d3db6566528a39247af26465f0933bdd",
+          "69dddec2adaeb066a30c0d15dffa0c2a",
+          "27c55838bc73cd8556a35cfdcf378fd0",
+          "8bc523660ae6989faaac71432e8676d3"
+        ],
+        "exclusions": [
+          "Do not apply when the spec requires distinguishing an omitted key from an explicit null (use sentinel/FIELD-in-request checks instead).",
+          "Do not apply when the expected value is not a literal constant default (e.g., computed per-request or dependent on other fields).",
+          "Do not rewrite output formatting, add fields, or change error handling beyond the defaulting fix.",
+          "Do not default falsy values (0, empty string, False) unless the issue text explicitly says so."
+        ],
+        "name": "restore-default-on-null-override",
+        "parent": null,
+        "steps": [
+          "Locate the handler that reads the client override from the request and note where the value flows into the response.",
+          "Identify the documented default constant or preset already defined in the code or README; do not invent a new literal.",
+          "Check how the issue treats omission vs explicit null; if both should yield the default, an 'is None' check covers both, since a missing key typically surfaces as None via dict.get.",
+          "Insert a minimal null fallback (conditional reassignment or conditional expression) at the point the raw override is used.",
+          "Preserve all client-supplied non-null values exactly and keep the existing output format unchanged.",
+          "Simplify the guard to a single null check; avoid duplicated conditions (one observed fix repeated the same 'is not None' test redundantly, which passed tests but adds needless complexity).",
+          "Run the public test command before submitting."
+        ],
+        "verification": [
+          "Run the public test command and confirm it passes after the edit.",
+          "Trace each case: key omitted, key set to null, key set to a client value — confirm default, default, and client value respectively.",
+          "Confirm no falsy-but-valid client values (0, '', False) are overridden by the default.",
+          "Confirm the response structure and serialization are byte-identical to the pre-patch format for non-null inputs."
+        ]
+      },
+      "evidence_hash": "eb7483c5507a6080cb5c3c63581486a2d7e7accebca36874b564cdbdd9d1e82d",
+      "evidence_runs": [
+        "d3db6566528a39247af26465f0933bdd",
+        "69dddec2adaeb066a30c0d15dffa0c2a",
+        "27c55838bc73cd8556a35cfdcf378fd0",
+        "8bc523660ae6989faaac71432e8676d3"
+      ],
+      "proposal_request_hash": "48b7982e8723e921bfd45ace26604288f78e3b77e6ad7e3d8e599e588437ccfa"
+    }
+  ],
+  "qualifying_failures": [],
+  "screen": [
+    {
+      "task_id": "gateway-01",
+      "source_group": "gateway",
+      "split": "dev",
+      "repeat": 0,
+      "skill_behavior": "candidate_applied",
+      "infrastructure_error": false,
+      "baseline": {
+        "task": "gateway-01",
+        "run": "0e67d791237f4dd9aec2601d7f0bc14c",
+        "applied": null,
+        "route": "none",
+        "passed": true,
+        "state": "COMPLETE",
+        "patch": "735c68515f7886dc31abb5114e3cba84b74f7e1f1dce15d845a52b8d7bab66d9",
+        "probes": {
+          "missing": true,
+          "valid_falsy": true
+        },
+        "actions": {
+          "edit": 2,
+          "finish": 1,
+          "read": 3,
+          "test": 1
+        },
+        "model_calls": 7
+      },
+      "candidate": {
+        "task": "gateway-01",
+        "run": "ef5645a1e3c9adf036948c4cdc34e45d",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "route": "apply",
+        "passed": true,
+        "state": "COMPLETE",
+        "patch": "0bd2f0ca423247eff362756ce757955dc8fda0d9f3eabc81be82fd86f1600ed4",
+        "probes": {
+          "missing": true,
+          "valid_falsy": true
+        },
+        "actions": {
+          "edit": 2,
+          "finish": 1,
+          "read": 1,
+          "search": 1,
+          "test": 1
+        },
+        "model_calls": 7
+      }
+    },
+    {
+      "task_id": "gateway-02",
+      "source_group": "gateway",
+      "split": "dev",
+      "repeat": 0,
+      "skill_behavior": "candidate_applied",
+      "infrastructure_error": false,
+      "baseline": {
+        "task": "gateway-02",
+        "run": "a1ceb2586d7d55beb0bcbfbcdcdbeb59",
+        "applied": null,
+        "route": "none",
+        "passed": true,
+        "state": "COMPLETE",
+        "patch": "0239cdc0cedb960e66e22b68ce91926e598407887c68aa84c11adbeefed35d78",
+        "probes": {
+          "missing": true,
+          "valid_falsy": true
+        },
+        "actions": {
+          "edit": 1,
+          "finish": 1,
+          "read": 2,
+          "search": 1,
+          "test": 1
+        },
+        "model_calls": 6
+      },
+      "candidate": {
+        "task": "gateway-02",
+        "run": "a5724dac014056379306b052cd05b309",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "route": "apply",
+        "passed": true,
+        "state": "COMPLETE",
+        "patch": "75ca5b8295d08ab0e28dcecf04acca0951c46a10686849a1f4440cad5851d416",
+        "probes": {
+          "missing": true,
+          "valid_falsy": true
+        },
+        "actions": {
+          "edit": 2,
+          "finish": 1,
+          "read": 2,
+          "test": 1
+        },
+        "model_calls": 7
+      }
+    },
+    {
+      "task_id": "gateway-03",
+      "source_group": "gateway",
+      "split": "dev",
+      "repeat": 0,
+      "skill_behavior": "candidate_applied",
+      "infrastructure_error": false,
+      "baseline": {
+        "task": "gateway-03",
+        "run": "1d13519c810d553c30128cede99d8fad",
+        "applied": null,
+        "route": "none",
+        "passed": true,
+        "state": "COMPLETE",
+        "patch": "e36d186d407dfbcb7eb849d5b42544fa515ab8754fcb0cdbf1a4940bf93013b7",
+        "probes": {
+          "missing": true,
+          "valid_falsy": true
+        },
+        "actions": {
+          "edit": 3,
+          "finish": 1,
+          "read": 1,
+          "test": 2
+        },
+        "model_calls": 7
+      },
+      "candidate": {
+        "task": "gateway-03",
+        "run": "22d0a9e97c251c73d29448c17b662fc7",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "route": "apply",
+        "passed": true,
+        "state": "COMPLETE",
+        "patch": "39154606697096809db3a9a9216b12381540cf3671d1ee945d784637cf2d5d09",
+        "probes": {
+          "missing": true,
+          "valid_falsy": true
+        },
+        "actions": {
+          "edit": 3,
+          "finish": 1,
+          "read": 2,
+          "search": 1,
+          "test": 1
+        },
+        "model_calls": 9
+      }
+    },
+    {
+      "task_id": "gateway-04",
+      "source_group": "gateway",
+      "split": "dev",
+      "repeat": 0,
+      "skill_behavior": "candidate_applied",
+      "infrastructure_error": false,
+      "baseline": {
+        "task": "gateway-04",
+        "run": "878002d56a1e74a571fa2283a9905ace",
+        "applied": null,
+        "route": "none",
+        "passed": true,
+        "state": "COMPLETE",
+        "patch": "2e02b7831620737fbc1eac6b9cdb3f0c423a65580bb2a2c67c752d4b1be7dc62",
+        "probes": {
+          "missing": true,
+          "valid_falsy": true
+        },
+        "actions": {
+          "edit": 2,
+          "finish": 1,
+          "read": 1,
+          "test": 2,
+          "write": 2
+        },
+        "model_calls": 8
+      },
+      "candidate": {
+        "task": "gateway-04",
+        "run": "566d48522cae9245b96149d49e2edeca",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "route": "apply",
+        "passed": true,
+        "state": "COMPLETE",
+        "patch": "479620c2d3b4ba6fb9c5e8a9a10226ac5dad67b801852be7741f772aa3e8d616",
+        "probes": {
+          "missing": true,
+          "valid_falsy": true
+        },
+        "actions": {
+          "edit": 3,
+          "finish": 1,
+          "read": 2,
+          "test": 1
+        },
+        "model_calls": 9
+      }
+    },
+    {
+      "task_id": "gateway-05",
+      "source_group": "gateway",
+      "split": "dev",
+      "repeat": 0,
+      "skill_behavior": "candidate_applied",
+      "infrastructure_error": false,
+      "baseline": {
+        "task": "gateway-05",
+        "run": "2c60e2f3d0baf5b44d22ca385fdbcbc1",
+        "applied": null,
+        "route": "none",
+        "passed": true,
+        "state": "COMPLETE",
+        "patch": "cc81cea047955fd75028bb0bd77d6a2f9e23110d1eb415913b3ec741505760a0",
+        "probes": {
+          "missing": true,
+          "valid_falsy": true
+        },
+        "actions": {
+          "edit": 1,
+          "finish": 1,
+          "read": 1,
+          "test": 1
+        },
+        "model_calls": 4
+      },
+      "candidate": {
+        "task": "gateway-05",
+        "run": "a1f1a5d17165c8b32fb6ac247bb574ee",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "route": "apply",
+        "passed": true,
+        "state": "COMPLETE",
+        "patch": "e658b46764166016e1840653fc90c3e32c4c8af17543e60c7e7f32dfa4b5d82f",
+        "probes": {
+          "missing": true,
+          "valid_falsy": true
+        },
+        "actions": {
+          "edit": 1,
+          "finish": 1,
+          "read": 1,
+          "search": 1,
+          "test": 1
+        },
+        "model_calls": 6
+      }
+    },
+    {
+      "task_id": "audit-01",
+      "source_group": "audit",
+      "split": "dev",
+      "repeat": 0,
+      "skill_behavior": "candidate_applied",
+      "infrastructure_error": false,
+      "baseline": {
+        "task": "audit-01",
+        "run": "1532af3123aa4581146ace1228422aec",
+        "applied": null,
+        "route": "none",
+        "passed": true,
+        "state": "COMPLETE",
+        "patch": "ca2ac06b69fd7295da4cc990d3b00f03d791e1a180d1f1cf13c5c14fe04641c5",
+        "probes": {
+          "missing": true,
+          "valid_falsy": true
+        },
+        "actions": {
+          "edit": 1,
+          "finish": 1,
+          "read": 1,
+          "test": 1
+        },
+        "model_calls": 4
+      },
+      "candidate": {
+        "task": "audit-01",
+        "run": "c907de5167cbd981f39012d21859ce52",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "route": "apply",
+        "passed": true,
+        "state": "COMPLETE",
+        "patch": "e1bc1cb07cbd9437b7fc3b4e4c387d80dd838af10f8e329f502e703cb56aabc3",
+        "probes": {
+          "missing": true,
+          "valid_falsy": true
+        },
+        "actions": {
+          "edit": 1,
+          "finish": 1,
+          "read": 2,
+          "search": 1,
+          "test": 1
+        },
+        "model_calls": 7
+      }
+    },
+    {
+      "task_id": "audit-02",
+      "source_group": "audit",
+      "split": "dev",
+      "repeat": 0,
+      "skill_behavior": "candidate_applied",
+      "infrastructure_error": false,
+      "baseline": {
+        "task": "audit-02",
+        "run": "fe62a2917d650003d26d9b4e6af83a4d",
+        "applied": null,
+        "route": "none",
+        "passed": true,
+        "state": "COMPLETE",
+        "patch": "30c5fd448c9e27e0580557a0e84f7bf02d6fabbb8656034ce14b40b165a177a6",
+        "probes": {
+          "missing": true,
+          "valid_falsy": true
+        },
+        "actions": {
+          "finish": 1,
+          "read": 1,
+          "test": 1,
+          "write": 1
+        },
+        "model_calls": 4
+      },
+      "candidate": {
+        "task": "audit-02",
+        "run": "d013914d60fcb2475a70a6dc0c81f0a3",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "route": "apply",
+        "passed": true,
+        "state": "COMPLETE",
+        "patch": "30c5fd448c9e27e0580557a0e84f7bf02d6fabbb8656034ce14b40b165a177a6",
+        "probes": {
+          "missing": true,
+          "valid_falsy": true
+        },
+        "actions": {
+          "edit": 1,
+          "finish": 1,
+          "read": 1,
+          "test": 1
+        },
+        "model_calls": 5
+      }
+    },
+    {
+      "task_id": "audit-03",
+      "source_group": "audit",
+      "split": "dev",
+      "repeat": 0,
+      "skill_behavior": "candidate_applied",
+      "infrastructure_error": false,
+      "baseline": {
+        "task": "audit-03",
+        "run": "bd9d6955a1eb175cc88b373e6d925cc8",
+        "applied": null,
+        "route": "none",
+        "passed": true,
+        "state": "COMPLETE",
+        "patch": "971c9729f8bb7854ca88513b7c036f45e50db0e37bdcef98ae204c0bb9523e20",
+        "probes": {
+          "missing": true,
+          "valid_falsy": true
+        },
+        "actions": {
+          "edit": 2,
+          "finish": 1,
+          "read": 2,
+          "test": 1
+        },
+        "model_calls": 6
+      },
+      "candidate": {
+        "task": "audit-03",
+        "run": "6ac7aeffb3cf24719b1289ff30aa5896",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "route": "apply",
+        "passed": true,
+        "state": "COMPLETE",
+        "patch": "53c3d0c0a684905fd8f84488c1e6ba4606f647f5e17028af07f8aeaeb5746ef2",
+        "probes": {
+          "missing": true,
+          "valid_falsy": true
+        },
+        "actions": {
+          "edit": 1,
+          "finish": 1,
+          "read": 2,
+          "test": 3
+        },
+        "model_calls": 8
+      }
+    },
+    {
+      "task_id": "audit-04",
+      "source_group": "audit",
+      "split": "dev",
+      "repeat": 0,
+      "skill_behavior": "candidate_applied",
+      "infrastructure_error": false,
+      "baseline": {
+        "task": "audit-04",
+        "run": "027c3ade3769cf7454a8cf66bc30dcc0",
+        "applied": null,
+        "route": "none",
+        "passed": true,
+        "state": "COMPLETE",
+        "patch": "ecddcafb5d77720aeb2c700662828a01c6da7d5559f9362e34e1901660bb5d70",
+        "probes": {
+          "missing": true,
+          "valid_falsy": true
+        },
+        "actions": {
+          "edit": 1,
+          "finish": 1,
+          "read": 1,
+          "test": 1
+        },
+        "model_calls": 4
+      },
+      "candidate": {
+        "task": "audit-04",
+        "run": "9defee510bd7557e13eefffd2d9bd8d3",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "route": "apply",
+        "passed": true,
+        "state": "COMPLETE",
+        "patch": "671d5351e01a5edf111056a8ff994c7ebea5c58dc162e2ec85d0396cb0959fa4",
+        "probes": {
+          "missing": true,
+          "valid_falsy": true
+        },
+        "actions": {
+          "edit": 2,
+          "finish": 1,
+          "read": 1,
+          "test": 1
+        },
+        "model_calls": 7
+      }
+    },
+    {
+      "task_id": "audit-05",
+      "source_group": "audit",
+      "split": "dev",
+      "repeat": 0,
+      "skill_behavior": "candidate_applied",
+      "infrastructure_error": false,
+      "baseline": {
+        "task": "audit-05",
+        "run": "918450c2b3d7b486ad956d940d591f6b",
+        "applied": null,
+        "route": "none",
+        "passed": true,
+        "state": "COMPLETE",
+        "patch": "cfbd8e711cd25bf829fbbfcf212a4a32ef2e2b81a408569698023fd2a34c53ea",
+        "probes": {
+          "missing": true,
+          "valid_falsy": true
+        },
+        "actions": {
+          "edit": 1,
+          "finish": 1,
+          "read": 1,
+          "test": 1
+        },
+        "model_calls": 5
+      },
+      "candidate": {
+        "task": "audit-05",
+        "run": "fd178eefe1565f800844e087c18cd1d1",
+        "applied": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+        "route": "apply",
+        "passed": true,
+        "state": "COMPLETE",
+        "patch": "cfbd8e711cd25bf829fbbfcf212a4a32ef2e2b81a408569698023fd2a34c53ea",
+        "probes": {
+          "missing": true,
+          "valid_falsy": true
+        },
+        "actions": {
+          "edit": 2,
+          "finish": 1,
+          "read": 2,
+          "test": 1
+        },
+        "model_calls": 8
+      }
+    }
+  ],
+  "parent_child": [],
+  "final_gate": null,
+  "holdout": [],
+  "curve": [],
+  "oracle": [
+    {
+      "task": "gateway-01",
+      "run": "fbd9f5a4900faed3acb9a20e88ccaf6d",
+      "applied": "f43bd195b176f3c5b22b0eb329c2e1256ce9482085fac2649bfbfc8e9ffff349",
+      "route": "forced",
+      "passed": true,
+      "state": "COMPLETE",
+      "patch": "085115bd76bf3c2afc663b309c6f1061f5a578e3d8c77a5df8f42a487a35a4e9",
+      "probes": {
+        "missing": true,
+        "valid_falsy": true
+      },
+      "actions": {
+        "edit": 5,
+        "finish": 1,
+        "read": 2,
+        "test": 1
+      },
+      "model_calls": 9
+    },
+    {
+      "task": "audit-02",
+      "run": "4c9ad28f8d861b7c3bade8b0c70c5196",
+      "applied": "f43bd195b176f3c5b22b0eb329c2e1256ce9482085fac2649bfbfc8e9ffff349",
+      "route": "forced",
+      "passed": true,
+      "state": "COMPLETE",
+      "patch": "757178ffebc1aadd0ec7a4cacd04679bb4e21ec7dee961d5e16c59a4061b29c3",
+      "probes": {
+        "missing": true,
+        "valid_falsy": true
+      },
+      "actions": {
+        "finish": 1,
+        "read": 2,
+        "test": 1,
+        "write": 1
+      },
+      "model_calls": 5
+    }
+  ],
+  "costs": {
+    "cost_credits": 158.11432,
+    "reserved_credits": 0.0,
+    "calls": 205
+  },
+  "holdout_task_exposures": 0
+}

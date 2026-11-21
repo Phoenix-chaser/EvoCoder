@@ -1,18 +1,37 @@
 <h1 align="center">EvoCoder</h1>
 <p align="center"><a href="README.md" lang="zh-CN">简体中文</a> · <strong>English</strong></p>
 <p align="center">
+  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
   <a href="pyproject.toml"><img alt="Python 3.12" src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&amp;logoColor=white"></a>
   <a href="https://github.com/Phoenix-chaser/EvoCoder/actions/workflows/checks.yml"><img alt="View GitHub Actions CI" src="https://img.shields.io/badge/CI-GitHub%20Actions-35495E?logo=githubactions&amp;logoColor=white"></a>
-  <a href="docs/results/overview.json"><img alt="287 tests passed" src="https://img.shields.io/badge/tests-287%20passed-08796E?logo=pytest&amp;logoColor=white"></a>
+  <a href="docs/results/overview.json"><img alt="291 tests passed" src="https://img.shields.io/badge/tests-291%20passed-08796E?logo=pytest&amp;logoColor=white"></a>
   <a href="src/evocoder/sandbox.py"><img alt="Docker sandbox" src="https://img.shields.io/badge/sandbox-Docker-206B9C?logo=docker&amp;logoColor=white"></a>
   <a href="Makefile"><img alt="CPU-only offline demo" src="https://img.shields.io/badge/demo-CPU%20only-586876"></a>
 </p>
 
-EvoCoder tests whether **a coding agent can turn a failed repair into a method that helps on the next task**. The agent edits Python code and runs tests in an isolated repository. The model uses that feedback to revise a skill’s applicability conditions, diagnostic steps and checks. The evaluator runs the parent and revised skills on identical source snapshots before deciding whether to publish the revision. Model weights stay fixed throughout.
+EvoCoder tests whether **a coding agent can learn a method from past repairs that helps on the next task**. The model edits Python code, runs tests in an isolated repository and writes a versioned skill from its execution traces. On later tasks it can use or skip that skill. A failed application gives the model evidence to revise when the skill applies, what to do and how to check the fix. Model weights stay fixed throughout.
 
-[Results](#results) · [Quick start](#quick-start) · [Bring your own tasks](#bring-your-own-tasks)
+[Where does self-evolution show up?](#where-does-self-evolution-show-up) · [Earlier experiments](#earlier-experiments) · [Quick start](#quick-start) · [Bring your own tasks](#bring-your-own-tasks)
 
-## Results
+## Where does self-evolution show up?
+
+**GLM-5.3 wrote a reusable skill and used it on subsequent tasks. It fixed zero additional development cases in this trial.** From four unassisted repair traces, the model learned to use the default for missing or `None` settings and preserve explicit values such as `0`, `False` and the empty string. It selected that skill on all six subsequent learning cases and passed all six. No qualifying failure triggered a child revision. [Model-authored skill and per-task outcomes](docs/results/optional-control.json)
+
+| Live development comparison | No skill | Learned skill |
+| --- | ---: | ---: |
+| Passed independent grading | 10/10 | 10/10 |
+| Submitted patch passed both missing-value and valid-falsy probes | 10/10 | 10/10 |
+| Model calls, including routing | 55 | 73 |
+
+Ten adapter implementations and five configuration types produced **50 executable cases**. Whole implementations were assigned to learning (10 cases), development (10) or holdout (30). The independent grader caught the repair that defaults all falsy values on all 50 cases. An evaluator-written reference skill repaired both prespecified development anchors, as did the unassisted model. With a perfect development baseline, neither group could deliver the repeated wins required for release. The model saw **zero holdout tasks**. The effect of increasing task-family diversity remains unmeasured. [Frozen protocol](benchmarks/optional_control/protocol.json) · [Methods and reproduction commands (中文)](docs/optional-control-study.md)
+
+**Earlier Click trials show a change in how the agent used its tools.** We analyzed 32 archived live-model traces with zero new model calls. The figure uses the two tasks and two repeats with matched controls. Each point measures the distance between the parent and child distributions of actions such as reading, searching, editing and testing. Squares show the variation when both runs skipped the skill. Circles show it when both runs used their assigned version.
+
+![Across two tasks and two repeats, the circle is to the right of the square in three pairs and to the left in one.](docs/images/behavior-uptake-en.png)
+
+The behavior-change measure counts pairs where the distance with skills exceeds the matched skip control. **3/4** pairs met that criterion, with a mean excess distance of **12.4 percentage points**. With both skills applied, each version repaired **2/4**. This small sample shows a shift in the action mix and leaves its effect on individual repairs unresolved. Run `uv run --locked python scripts/report_optional_control.py verify` from the repository root to recompute the results without credentials. [Paired action counts](docs/results/behavior-uptake.json)
+
+## Earlier experiments
 
 ### Can the offline demo revise and reuse a skill?
 

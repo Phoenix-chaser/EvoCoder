@@ -20,6 +20,7 @@ jobs:
       - run: python scripts/verify_revision_example.py
       - run: python -m pip install uv
       - run: make install lint test
+      - run: uv run --locked python scripts/report_optional_control.py verify
 
   docker-demo:
     runs-on: ubuntu-latest

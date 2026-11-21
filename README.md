@@ -1,18 +1,37 @@
 <h1 align="center">EvoCoder</h1>
 <p align="center"><strong>简体中文</strong> · <a href="README.en.md" lang="en">English</a></p>
 <p align="center">
+  <a href="LICENSE"><img alt="MIT 许可证" src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
   <a href="pyproject.toml"><img alt="Python 3.12" src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&amp;logoColor=white"></a>
   <a href="https://github.com/Phoenix-chaser/EvoCoder/actions/workflows/checks.yml"><img alt="查看 GitHub Actions CI" src="https://img.shields.io/badge/CI-GitHub%20Actions-35495E?logo=githubactions&amp;logoColor=white"></a>
-  <a href="docs/results/overview.json"><img alt="287 项测试通过" src="https://img.shields.io/badge/tests-287%20passed-08796E?logo=pytest&amp;logoColor=white"></a>
+  <a href="docs/results/overview.json"><img alt="291 项测试通过" src="https://img.shields.io/badge/tests-291%20passed-08796E?logo=pytest&amp;logoColor=white"></a>
   <a href="src/evocoder/sandbox.py"><img alt="Docker 沙箱" src="https://img.shields.io/badge/sandbox-Docker-206B9C?logo=docker&amp;logoColor=white"></a>
   <a href="Makefile"><img alt="离线演示只需 CPU" src="https://img.shields.io/badge/demo-CPU%20only-586876"></a>
 </p>
 
-EvoCoder 用来检验 **Coding Agent 能否从一次修复失败中学到对下一道题有用的方法**。Agent 在隔离的 Python 仓库里改代码、跑测试。模型根据执行反馈修订技能里的适用条件、排查步骤和验证方法。后续任务在同一份源码上分别试用父版和修订版，只有通过独立评测的候选才能发布。模型权重保持固定。
+EvoCoder 检验 **Coding Agent 能否从过去的修复中学到对下一道题有用的方法**。模型在隔离的 Python 仓库里改代码、跑测试，从执行轨迹中写出带版本的技能。后续任务可以选用或跳过技能。实际使用后出现失败，模型才有证据修订它的适用条件、操作步骤和检查方法。整个过程使用同一模型权重。
 
-[实验结果](#实验结果) · [快速运行](#快速运行) · [接入自己的任务](#接入自己的任务)
+[自进化效果在哪里](#自进化效果在哪里) · [其他实验结果](#其他实验结果) · [快速运行](#快速运行) · [接入自己的任务](#接入自己的任务)
 
-## 实验结果
+## 自进化效果在哪里
+
+**GLM-5.3 自己写出了可复用技能，后续任务实际采用了它。这轮开发对照的新增修复数为 0。** 在配置覆盖场景中，模型从 4 条无技能修复轨迹归纳出缺省处理规则。输入缺失或为 `None` 时才回退到默认值，显式传入的 `0`、`False`、空字符串都要保留。后续 6 道学习题全部选中这条技能并通过，没有触发子版修订。[模型生成的技能与逐题结果](docs/results/optional-control.json)
+
+| 真实模型开发对照 | 无技能 | 学得技能 |
+| --- | ---: | ---: |
+| 独立测试通过 | 10/10 | 10/10 |
+| 提交补丁同时通过缺失值与合法假值复验 | 10/10 | 10/10 |
+| 模型调用（含路由） | 55 | 73 |
+
+我们用 10 个不同业务实现和 5 种配置类型生成了 **50 个可执行实例**，按完整实现分为学习 10、开发 10、留出 30。独立评分在 50 题上都能检出把合法假值误当缺失的补丁。人工编写的参照技能在两个预定开发实例上修好 2/2，无技能也是 2/2。开发基线已经满分，没有一个组出现候选独有的胜例。发布门禁要求两个开发组重复改善，因而 30 道留出题的模型运行数为 **0**，收益随任务族多样性变化的曲线仍待测量。[冻结协议](benchmarks/optional_control/protocol.json) · [实验方法与复现命令](docs/optional-control-study.md)
+
+**历史 Click 实验中，使用不同技能版本时，部分工具的使用占比发生了变化。** 我们用 32 条已有真实轨迹做了零新增调用的诊断。下图取其中有匹配对照的两道题、各两轮，比较父版与子版的读、搜、改、测试等动作占比。方块是两次求解都跳过技能时的自然差异，圆点是它们各自使用对应版本时的差异。
+
+![两道题各做两轮。四个配对中，三个圆点在方块右侧，一个在左侧。](docs/images/behavior-uptake-zh.png)
+
+以“注入技能后的距离超过同题同轮的跳过对照”为行为吸收指标，结果为 **3/4**，平均距离差为 **+12.4 个百分点**。固定注入时，父、子版各修好 **2/4**。动作变化可观察，这个小样本仍不足以判断技能内容导致了哪一次成败。在仓库根目录运行 `uv run --locked python scripts/report_optional_control.py verify`，无需密钥即可从公开记录复算。[逐配对动作计数](docs/results/behavior-uptake.json)
+
+## 其他实验结果
 
 ### 离线演示能跑通技能修订和复用吗？
 
