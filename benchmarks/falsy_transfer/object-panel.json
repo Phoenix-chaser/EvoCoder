@@ -1,0 +1,135 @@
+{
+  "version": 1,
+  "study": "caller-owned-object-transfer",
+  "primary": "1a7c13344454465503a0e2513e5f055013cd140359ba0772a8a5484a5cbb7a12",
+  "codes": {
+    "run_falsy_transfer.py": "feefcda0b89632404350e710b1fe9807bb1b7376753f0770eee08c67f5bd3173",
+    "falsy_transfer_cases.py": "c87dc742189af7460874d2d46e995116d943653bbdab1bb10daee845474cdf99",
+    "falsy_transfer_protocol.py": "762baf604802fb405064b0fbda2c36fb4d938fe55327fa66ba62f886d9b97cb0",
+    "run_optional_control.py": "e043a3b26121e7dfcac8611773d5ae70561156d262aed822e7e6c3d98b326a34",
+    "runtime": "885ad8c3fdee71bcb2410148079da5c5f1474f2a7687f9b6f1a2b42ffbf77913",
+    "falsy_object_cases.py": "2a13048e6fa496abe74660be9a2cf96d19624e1986b73841457222546c0938f1",
+    "run_falsy_objects.py": "86b56eeb0fc11b847390fee9085b415b6347f43a6cb8463d94eeafc9bd0f6d87"
+  },
+  "model": "glm-5.3",
+  "image": "sha256:a7eec604ebe32971d0b509d5157c8e814dc875a0f68aa541b3fd90ab391ef742",
+  "settings_hash": "94273fc55c3e3e3fd18be405728eec795db77bcafc40149fc84a97881a608804",
+  "learned": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+  "manual_hash": "86db5f5de9a7b280a8fd54d32eea2bc2a9435ead9837f9a6827fe9214a8ebca0",
+  "manifest_hash": "8c9250f121196890eaad5177a2992e6b8aa3c4b92a47ffa4110b1d0e761a4bca",
+  "calibration": [
+    {
+      "task": "object-index-error",
+      "snapshot": "35240f4d1c6775b8c1a3a2dbedfd1e269dc339585b5af7ab1b603eea3aeacaae",
+      "reference_patch": "058e2c961caabff1415f7cf983259acaeeb1ab2c8d674761ebd01761958ee338",
+      "broken": {
+        "public": false,
+        "controls": true,
+        "missing_key": false,
+        "empty_selection": false
+      },
+      "fixed": {
+        "public": true,
+        "controls": true,
+        "missing_key": true,
+        "empty_selection": true
+      }
+    },
+    {
+      "task": "object-label-policy",
+      "snapshot": "cc414d44bb1f8b166fc95307eff01dff99a83c5dd0b779aa381f657cfcb6b23a",
+      "reference_patch": "8f8b3752f771018e88deedd532f870a0041e2065d683b717ab139505d077a9ed",
+      "broken": {
+        "public": false,
+        "controls": true,
+        "nonempty_batch": false,
+        "empty_batch": false
+      },
+      "fixed": {
+        "public": true,
+        "controls": true,
+        "nonempty_batch": true,
+        "empty_batch": true
+      }
+    },
+    {
+      "task": "object-result-sink",
+      "snapshot": "defbcd6fe51a586814f6d4dc0c5b77043600301b8fbf2988053bd5df59d151bb",
+      "reference_patch": "6d79c62a83376f1dd75b06fd9d1fec150c4533a5b9411c178f553daea07de437",
+      "broken": {
+        "public": false,
+        "controls": true,
+        "empty_destination": false,
+        "empty_finalization": false
+      },
+      "fixed": {
+        "public": true,
+        "controls": true,
+        "empty_destination": true,
+        "empty_finalization": true
+      }
+    }
+  ],
+  "dev": [
+    "object-index-error",
+    "object-label-policy",
+    "object-result-sink"
+  ],
+  "previous_dev": [
+    "transfer-meter-view",
+    "transfer-column-caption",
+    "transfer-print-ticket",
+    "transfer-palette-book"
+  ],
+  "holdout": {
+    "scalar": [
+      "cache-01",
+      "cache-02",
+      "cache-03",
+      "cache-04",
+      "cache-05",
+      "report-01",
+      "report-02",
+      "report-03",
+      "report-04",
+      "report-05"
+    ],
+    "layers": [
+      "notify-01",
+      "notify-02",
+      "notify-03",
+      "notify-04",
+      "notify-05",
+      "renderer-01",
+      "renderer-02",
+      "renderer-03",
+      "renderer-04",
+      "renderer-05"
+    ],
+    "batch": [
+      "events-01",
+      "events-02",
+      "events-03",
+      "events-04",
+      "events-05",
+      "checkpoint-01",
+      "checkpoint-02",
+      "checkpoint-03",
+      "checkpoint-04",
+      "checkpoint-05"
+    ]
+  },
+  "arms": [
+    "bare",
+    "manual",
+    "learned",
+    "forced_learned"
+  ],
+  "repeats": 2,
+  "solver_slots": 15,
+  "workers": 2,
+  "entry": "Only after the complete first study found repeated manual corrections on a caller-owned-object pretest and did not release. Do not repeat any completed primary development or support trial.",
+  "design": "Same task and snapshot in four counterbalanced arms. Forced application of the identical learned skill diagnoses routing only. Release uses normal routing versus unassisted repairs.",
+  "release": "Standard two-repeat, two-group gate must pass both on the three new groups and on the union of old and new development with original support. Any observed regression remains binding.",
+  "holdout_rule": "Only after activation of the unchanged skill. Use the original thirty cases once. This is the last development panel in this study."
+}
