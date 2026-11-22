@@ -15,7 +15,22 @@ EvoCoder tests whether **a coding agent can learn a method from past repairs tha
 
 ## Where does self-evolution show up?
 
-### When does better routing turn into repeatable repairs?
+### Did the caller-object skill transfer to a new deferred callback?
+
+In 4/5 pilot runs the parent passed the public tests but broke deferred delivery. It solved all five ordering pilots. Development used separate print-queue and event-ordering programs. On each portfolio run GLM could select the configuration parent, the caller-object child previously revised from execution failures, or neither.
+
+| Development task, five rounds | Attributed child wins vs. parent | Attributed child wins vs. no skill |
+| --- | ---: | ---: |
+| Original label callback | 3/5 | 3/5 |
+| New deferred print receipt | 1/5 | 2/5 |
+
+Across 25 object solves per arm, the portfolio passed **24/25**, the parent **19/25**, and no skill **16/25**. Each comparison required two sources with at least 3/5 attributable wins. Only the **original label callback** qualified against either baseline. The evaluator recorded a rejection. Holdout exposure was **0/30**. The seven configuration rounds also identified one new loss after the child was selected for a print-profile issue. The preregistered rule separately accounted for variation after identical first requests. [Preregistration](benchmarks/falsy_transfer/callback-release.json) · [Study report (中文)](docs/callback-release-study.md) · [Paired outcomes and receipt](docs/results/callback-release.json)
+
+![Attributable wins on five caller-object sources](docs/images/callback-release-en.png)
+
+All 159 development solves were graded. Of 72 support solves, 71 had grades. The receipt records the HTTP 500 as a missing result.
+
+### Which repairs improved in the earlier public-test-shape study?
 
 GLM-5.3 could select the configuration parent, the caller-object child previously revised from failed repairs, or neither. We froze both skills and added public test filenames, call arguments and assertion shapes to the router input. **On six new learning tasks, exception-to-child choices rose from 0/4 to 4/4, config-to-parent choices stayed at 4/4, and control misroutes stayed at 0/4.** On six revisited tasks, exception-to-child choices rose from 1/4 to 4/4. Each cell covers two tasks routed twice. All eight structured exception choices cited a truthiness method declared in a public test fixture. None of these fixtures was directly constructed by its public assertions. [Design, task definitions and model quotations (中文)](docs/shape-routing-study.md)
 

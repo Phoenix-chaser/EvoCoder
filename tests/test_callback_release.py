@@ -139,3 +139,88 @@ def test_config_double_protection_and_incomplete_receipt():
     copy[1]["bare"]["run"] = rows[0]["parent"]["run"]
     with pytest.raises(ValueError, match="reused"):
         comparisons(p, decision, copy)
+
+
+def test_six_raw_config_losses_block_even_when_same_request():
+    p, pilots, rows = observations()
+    freeze = pilot_summary(p, pilots)
+    tid = p["config"][0]
+    local = [r for r in rows if r["task"] == tid]
+    for r in local[:5]:
+        r["portfolio"]["passed"] = False
+    d, passed = comparisons(p, freeze, rows)
+    assert passed and d["parent"]["tasks"][tid]["same_loss"] == 5
+    local[5]["portfolio"]["passed"] = False
+    d, passed = comparisons(p, freeze, rows)
+    assert not passed and d["parent"]["regressions"] == [tid] and not d["parent"]["raw_config_panel"]["veto"]
+
+
+def test_pilot_excludes_non_submissions_and_non_green_common_inputs():
+    p, pilots, _ = observations()
+    family, stage = next(iter(p["families"].items()))
+    selected = [r["parent"] for r in pilots if r["task"] == stage["pilot"]["id"]]
+    selected[0]["patch"] = None
+    selected[1]["probes"]["public"] = False
+    selected[2]["probes"]["controls"] = False
+    assert pilot_summary(p, pilots)["sources"][family]["qualifying_failure_rounds"] == [4, 5]
+    with pytest.raises(ValueError, match="missing or reordered"):
+        pilot_summary(p, pilots[1:])
+
+
+def test_same_request_claim_is_checked_against_reencoded_solver_payload():
+    from report_callback_release import wire_audit, workspaces
+
+    p = read(PUBLIC)
+    earlier = read(Path("docs/results/shape-routing.json"))
+    row = deepcopy(next(x for x in earlier["dev"] if x["task"] == "object-label-policy"))
+    trial = {
+        "wire_profile": earlier["wire_profile"],
+        "pilot_trials": [],
+        "dev": [row],
+        "support": [],
+        "holdout_trials": [],
+    }
+    tasks = workspaces(p, False)
+    assert wire_audit(trial, tasks)["distinct_first_solver_requests"] >= 2
+    row["portfolio"]["first_solver_request"] = row["bare"]["first_solver_request"]
+    with pytest.raises(ValueError, match="first solver request"):
+        wire_audit(trial, tasks)
+
+
+def test_rejected_receipt_keeps_test_generation_sealed(monkeypatch):
+    import report_callback_release as report
+
+    d = read(report.RESULT)
+    assert d["gate"]["gate"]["passed"] is False
+    d["holdout_trials"] = [d["dev"][0]]
+
+    def forbidden(*args):
+        pytest.fail("test corpus was generated before checking the release receipt")
+
+    monkeypatch.setattr(report, "workspaces", forbidden)
+    with pytest.raises(ValueError, match="holdout before a passing gate"):
+        report.verify(d, read(PUBLIC))
+
+
+def test_public_accounting_cannot_omit_a_charge():
+    import report_callback_release as report
+
+    p = read(PUBLIC)
+    d = read(report.RESULT)
+    bill = d["charges"][d["pilot_trials"][0]["parent"]["run"]]
+    bill["credit_nanos"] += 1
+    with pytest.raises(ValueError, match="stage charges"):
+        report.schedule_and_billing(d, p, read(report.PREVIOUS_RESULT), report.workspaces(p, False))
+
+
+def test_ungraded_provider_error_cannot_be_counted_as_a_failed_patch():
+    import report_callback_release as report
+
+    d = read(report.RESULT)
+    missing = d["gate"]["ungraded_support"][0]
+    row = next(r for r in d["support"] if r["task"] == missing["task"] and r["repeat"] == missing["repeat"])
+    arm = row[missing["arm"]]
+    assert arm["passed"] is None and arm["patch"] is None
+    arm["passed"] = False
+    with pytest.raises(ValueError):
+        report.verify(d, read(PUBLIC))

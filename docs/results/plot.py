@@ -342,6 +342,39 @@ def shape_routing_chart(study, lang):
     return fig
 
 
+def callback_gate_chart(study, lang):
+    """Plot actually attributed wins on the five prospectively evaluated object programs."""
+    zh = lang == "zh"
+    labels = (
+        ["标签回调", "延迟打印回执", "结果容器", "索引异常", "迟到事件排序 †"]
+        if zh else ["Label callback", "Deferred print receipt", "Result sink", "Index exception", "Late-event ordering †"]
+    )
+    task_ids = ["object-label-policy", "proof-dispatch", "object-result-sink", "object-index-error", "event-collation"]
+    decisions = study["gate"]["decisions"]
+    fig = plt.figure(figsize=(8.0, 4.75), facecolor=PAPER)
+    title = "实际使用子技能后，同轮多修好了几次？" if zh else "How often did a repair improve after applying the child?"
+    fig.text(.055, .91, title, color=INK, fontsize=16, weight="bold")
+    fig.text(.055, .83, "每个来源五轮。虚线为每个来源的发布门槛（3/5）。" if zh
+             else "Five paired rounds per source. The dashed line marks the 3/5 release threshold.",
+             color=MUTED, fontsize=10)
+    ax = fig.add_axes([.29, .23, .61, .53], facecolor=PAPER)
+    ax.axvline(3, color=MUTED, linestyle="--", linewidth=.9, zorder=0)
+    for y in range(5):
+        ax.axhline(y, color=TRACK, linewidth=.8, zorder=0)
+    for arm, dy, marker, color, key in (("parent", -.12, "o", TEAL, "相对仅父版" if zh else "vs. parent only"),
+                                       ("bare", .12, "s", SLATE, "相对无技能" if zh else "vs. no skill")):
+        wins = [decisions[arm]["tasks"][tid]["attributed"] for tid in task_ids]
+        ax.scatter(wins, [i+dy for i in range(len(wins))], marker=marker, s=57, color=color, label=key, zorder=2)
+    ax.set(xlim=(-.25, 5.25), ylim=(4.5, -.55), xticks=range(6), yticks=range(5), yticklabels=labels)
+    ax.spines[:].set_visible(False)
+    ax.tick_params(length=0, colors=INK)
+    ax.legend(loc="upper center", bbox_to_anchor=(.5, -.11), ncol=2, frameon=False, fontsize=10)
+    fig.text(.055, .055, "† 排序预试里父版五次全对，该来源只参与退化检查。" if zh
+             else "† The parent passed all five ordering pilots. This source only contributes to regression checks.",
+             color=MUTED, fontsize=9)
+    return fig
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--study", type=Path, default=HERE / "optional-control.json")
@@ -350,6 +383,7 @@ if __name__ == "__main__":
     parser.add_argument("--revision", type=Path, default=HERE / "object-revision.json")
     parser.add_argument("--witness", type=Path, default=HERE / "object-witness.json")
     parser.add_argument("--shape", type=Path, default=HERE / "shape-routing.json")
+    parser.add_argument("--callback", type=Path, default=HERE / "callback-release.json")
     parser.add_argument("--portfolio", type=Path, default=HERE / "parallel-routing.json")
     parser.add_argument("--output-dir", type=Path, default=IMAGES)
     args = parser.parse_args()
@@ -363,6 +397,7 @@ if __name__ == "__main__":
                  (("first",args.revision),("witness",args.witness)) if path.is_file()]
     portfolio = json.loads(args.portfolio.read_text(encoding="utf-8")) if args.portfolio.is_file() else None
     shape = json.loads(args.shape.read_text(encoding="utf-8")) if args.shape.is_file() else None
+    callback = json.loads(args.callback.read_text(encoding="utf-8")) if args.callback.is_file() else None
     for language, text in TEXT.items():
         with plt.rc_context({"font.family": text["font"]}):
             for name, render, dataset in [("mock-repairs", mock_chart, "mock_demo"),
@@ -386,6 +421,9 @@ if __name__ == "__main__":
             if shape:
                 charts.extend([("shape-routing", shape_routing_chart(shape, language)),
                                ("shape-diversity", diversity_chart(shape, language))])
+            if callback:
+                charts.extend([("callback-release", callback_gate_chart(callback, language)),
+                               ("callback-diversity", diversity_chart(callback, language))])
             for name, chart in charts:
                 if chart is not None:
                     chart.savefig(args.output_dir / f"{name}-{language}.png", dpi=180, metadata={"Software": "Matplotlib"})

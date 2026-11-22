@@ -27,6 +27,7 @@ jobs:
       - run: uv run --locked python scripts/report_object_revision.py verify --study witness
       - run: uv run --locked python scripts/report_parallel_routing.py verify
       - run: uv run --locked python scripts/report_shape_routing.py verify
+      - run: uv run --locked python scripts/report_callback_release.py verify
 
   docker-demo:
     runs-on: ubuntu-latest
