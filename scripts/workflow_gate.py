@@ -18,6 +18,7 @@ from run_falsy_transfer import atomic_trial, require
 from run_optional_control import curve_point
 from workflow_learning import missed
 from workflow_study import ROOT, WORKERS, session
+from workflow_wake_extension import effective_learning
 
 LABEL = "object-label-policy"
 PRINT = "transfer-print-ticket"
@@ -87,7 +88,7 @@ def checked_screen(s):
 
 
 def commit(s):
-    learn = read(ROOT / "learning.json")
+    learn = effective_learning()
     screen = checked_screen(s)
     child = learn["proposal"].get("child")
     support = {}
@@ -140,7 +141,7 @@ def registered(s):
         h == read(ROOT / "panel.json")
         and h["protocol"] == s.protocol
         and h["evaluator"] == digest(Path(__file__).read_text())
-        and h["learning"] == digest(read(ROOT / "learning.json"))
+        and h["learning"] == digest(effective_learning())
         and h["screening"] == digest(checked_screen(s)),
         "panel or frozen decision changed",
     )

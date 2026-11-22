@@ -1,0 +1,20 @@
+{
+  "study": "prospective-default-on-wake-v1",
+  "base": "aacf076a8acc7009c661e87080779875e0c5b11c499d9c9ec78bcc05065aa188",
+  "code": "50bb88d3398d44c0c776a9ef9cf185e1d7109790b81eb33957a46c635cad2445",
+  "condition": "Only if the original calibration finishes without an accepted revision, before any candidate development solve.",
+  "reason": "Exploratory learning repeatedly exposed wrong default selection after moving a ticket to a different worker. The original strict witness specifically required a failed supplied-object resume. Keep the initial outcome and test the independently declared omitted-object contract in four NEW rounds.",
+  "tasks": {
+    "badge-alerts": "c7f624927489fd548f11b1c062925745563959253ef070b9432f4b6179ca53cd",
+    "preview-toolbar": "8d75e20ee304973807cba779e86b0266b609376b6919119986c2f869c60c0cab",
+    "harbor-slots": "8808f46b8f456d99b7333ded7f3960597d8cfd04af498a6930cad4f5f3f3a5ce",
+    "mixer-restart": "edbf0559145c60498369e8706bf0afba88708860a055799b5d21ce6149eac8b8"
+  },
+  "normal_rounds": 4,
+  "fixed_tasks": [
+    "harbor-slots"
+  ],
+  "extra_fixed_rounds": 2,
+  "witnesses": "Fresh learner runs only. Require a pure-boolean misroute under the normal old portfolio, prefer a submitted failure then earliest natural exposure. Require the old object child actually applied, public tests passed, same submitted patch failed the public-contract exercise, and the harbor absent_after_move or a supplied-object resumed probe failed. Prefer natural submitted failures. Include up to two same-task successful contrasts and one observation per other learning task, six maximum. No evaluator artifacts or hidden probes enter the proposal request. The old registration, grades and candidate remain immutable.",
+  "downstream": "If this independently registered learning stage produces a revision, bind it to a new prospective panel receipt before any candidate development solve. Preserve the two-implementation source requirement, five-round efficacy, seven-round configuration protection, ancestry and sealed holdout protocol."
+}
