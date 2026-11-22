@@ -1,0 +1,11 @@
+{
+  "study": "prospective-whole-block-transport-recovery-v1",
+  "protocol": "aacf076a8acc7009c661e87080779875e0c5b11c499d9c9ec78bcc05065aa188",
+  "panel": "76474b5e92cf9a1556f98debc0b1fa89b057ef6e134abb826b78a9b2dc960d3a",
+  "code": "39d33ca5842c520764814f30b2ca1c6c3bbbb99298192b415ffc9d4c311567d7",
+  "cause": "GLM TLS EOF during the original configuration panel.",
+  "trigger": "After the original evaluator has closed, select only original configuration rounds containing at least one ungraded transport-error slot. Preserve every original paid result, hold and SQL receipt.",
+  "design": "Run all four originally assigned config programs on all four arms for every affected round, including originally successful slots. Same frozen task, candidate, settings, order, solver budget and four workers. New protocol and phase in the paid intent. Up to two whole attempts per affected block, a second only if the first has a missing transport grade. Never retry a poor patch. Retain all observations; choose the first completely observed recovery block for the descriptive view.",
+  "decision": "Report originally complete config blocks plus separately collected complete blocks, head to head with the original evidence. This diagnostic cannot activate a library or claim any test task.",
+  "original_rule": "Every missing original terminal score stays unknown; the original formal release receipt is immutable."
+}
