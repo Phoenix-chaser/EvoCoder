@@ -101,6 +101,10 @@ class Model:
                 parameters["properties"]["task_quotes"]["description"] = (
                     "Exact substrings of the issue or individual public excerpt contents supporting the decision."
                 )
+            if "public_test_shape" in data.get("task", {}):
+                parameters["properties"]["task_quotes"]["description"] = (
+                    "Exact substrings of the issue or of an individual public test shape supporting this decision."
+                )
             parameters["properties"]["skill_index"]["enum"] = [-2, -1, *range(len(data["skills"]))]
             wire_data = {
                 **data,

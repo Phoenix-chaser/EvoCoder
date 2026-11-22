@@ -7,6 +7,7 @@ from threading import Event
 from evocoder.contracts import Settings, Skill, Task, canonical, digest
 from evocoder.gate import gate_summary, skill_behavior
 from evocoder.jobs import bounded_map
+from evocoder.repeat_gate import DEV_REPEATS, SUPPORT_REPEATS, repeated_gate
 from evocoder.runtime import Runner
 from evocoder.store import Store
 
@@ -90,7 +91,7 @@ class SkillLibrary:
 
     def compare_pair(
         self, task: Task, repeat: int, baseline: list[str], variants: list[str], candidate: str,
-        *, reverse: bool, stop: Event, fixed_route: str | None = None,
+        *, reverse: bool, stop: Event, fixed_route: str | None = None, match_solver_slots: bool = False,
     ) -> dict:
         pools = {"baseline": baseline, "candidate": variants}
         order = ("candidate", "baseline") if reverse else ("baseline", "candidate")
@@ -99,6 +100,8 @@ class SkillLibrary:
             if stop.is_set():
                 raise RuntimeError("another paired trial failed; stop further model attempts")
             intervention = {"fixed_route": fixed_route} if fixed_route is not None else {}
+            if match_solver_slots and not pools[arm]:
+                intervention["reserve_empty_route"] = True
             if arm == "baseline" and baseline and (active := self.store.active_library()):
                 manifest = self.store.get_artifact(active)
                 context = manifest.get("route_context", "issue")
@@ -135,10 +138,12 @@ class SkillLibrary:
     def evaluate(
         self, candidate: str, dev: list[Task], support: list[Task], *, workers=1,
         diagnostic_parent: str | None = None, regression: list[Task] | None = None, on_pair=None,
-        retain_parent: bool = False,
+        retain_parent: bool = False, repeated: bool = False,
     ) -> dict:
         if not 1 <= workers <= 4:
             raise ValueError("gate workers must be 1..4")
+        if repeated and self.settings.mode != "live":
+            raise ValueError("the repeated evidence gate requires live model wire receipts")
         if len(dev) < 2 or any(t.split != "dev" for t in dev) or len({t.source_group for t in dev}) < 2:
             raise ValueError("library gate requires at least two independent dev groups")
         if any(t.split != "learn" for t in support):
@@ -187,13 +192,21 @@ class SkillLibrary:
                 manifest.update(schema=2, route_context=self.settings.library_route_context)
             target = self.store.artifact("skill_library", manifest)
         stop = Event()
-        dev_repeats = 2 if self.settings.mode == "live" else 1
+        dev_repeats = DEV_REPEATS if repeated else (2 if self.settings.mode == "live" else 1)
 
         def compare(item):
             index, task, repeat = item
             row = self.compare_pair(
                 task, repeat, old, new, candidate, reverse=(index + repeat) % 2 == 1, stop=stop,
+                **({"match_solver_slots": True} if repeated else {}),
             )
+            if repeated:
+                for arm in ("baseline", "candidate"):
+                    first = next((e["payload"] for e in self.store.events(row[arm + "_run"])
+                                  if e["kind"] == "MODEL_RESPONSE" and e["payload"]["expected_function"] == "submit_action"), None)
+                    if first is None:
+                        raise ValueError("missing first solver request for repeated evaluation")
+                    row[arm + "_request"] = first["request_body_hash"]
             if task.id in regression_ids:
                 row["evaluation_role"] = "known_regression"
             if self.store.active_library() != baseline:
@@ -206,9 +219,11 @@ class SkillLibrary:
             (index, task, repeat)
             for repeat in range(dev_repeats) for index, task in enumerate(dev_and_regression)
         ]
-        pairs.extend((index, task, 0) for index, task in enumerate(support, start=len(dev_and_regression)))
+        pairs.extend((index, task, repeat) for repeat in range(SUPPORT_REPEATS if repeated else 1)
+                     for index, task in enumerate(support, start=len(dev_and_regression)))
         rows = bounded_map(compare, pairs, workers, on_result=on_pair)
-        outcome = gate_summary(rows, dev_repeats)
+        outcome = (repeated_gate(rows, {t.id: (t.split, t.source_group, digest(t.model_dump())) for t in tasks})
+                   if repeated else gate_summary(rows, dev_repeats))
         report = {
             "schema": 2,
             "kind": "library_evaluation" if diagnostic_parent is None else "parent_child_diagnostic",

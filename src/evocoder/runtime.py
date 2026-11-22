@@ -5,7 +5,7 @@ import json
 import time
 from contextlib import ExitStack
 
-from evocoder.contracts import MODEL_TASK_VIEW, Action, Settings, Skill, Task, canonical, digest, model_task_view
+from evocoder.contracts import LIBRARY_ROUTE_CONTEXTS, MODEL_TASK_VIEW, Action, Settings, Skill, Task, canonical, digest, model_task_view
 from evocoder.model import Model
 from evocoder.errors import ActionRejected, RoutingRejected
 from evocoder.routing import select_library_skill, select_skill
@@ -139,9 +139,12 @@ class Runner:
     def solve(self, task: Task, skill_id: str | None = None, *, use_active=True,
               purpose="solve", candidate=False, skill_ids: list[str] | None = None,
               library_id: str | None = None, experience_pool_id: str | None = None,
-              run_id: str | None = None, fixed_route: str | None = None, route_context: str | None = None) -> str:
+              run_id: str | None = None, fixed_route: str | None = None, route_context: str | None = None,
+              reserve_empty_route: bool = False) -> str:
         if purpose not in {"solve", "evaluate"}:
             raise ValueError("invalid run purpose")
+        if reserve_empty_route and (purpose != "evaluate" or use_active or skill_ids != [] or fixed_route):
+            raise ValueError("an empty route slot is reserved only for a matched no-skill evaluation")
         learning_application = (
             purpose == "solve" and candidate and task.split == "learn" and not use_active and fixed_route == "apply"
         )
@@ -157,7 +160,7 @@ class Runner:
             from evocoder.memory import retrieve
             memory = retrieve(self.store, experience_pool_id, task, self.settings.mode, self.settings.max_memory_bytes)
         library_skills = None
-        if route_context is not None and (skill_ids is None or route_context not in {"issue", "public_preview"}):
+        if route_context is not None and (skill_ids is None or route_context not in LIBRARY_ROUTE_CONTEXTS):
             raise ValueError("a routing context override requires an explicit evaluation pool")
         route_context = route_context or self.settings.library_route_context
         if skill_ids is not None:
@@ -236,6 +239,7 @@ class Runner:
                                            "requested_skill_ids": sorted(library_skills or {}),
                                            "library_id": library_id,
                                            **({"route_context": route_context} if route_context != "issue" else {}),
+                                           **({"reserve_empty_route": True} if reserve_empty_route else {}),
                                            "experience_pool_id": experience_pool_id,
                                            "solver_prompt_hash": digest(solver_prompt),
                                            **({"fixed_route": fixed_route} if fixed_route is not None else {})})
@@ -244,8 +248,8 @@ class Runner:
         solver_image_id = None
         patch = None
         state, error = "EXHAUSTED", None
-        model_steps, tool_steps, rejected_actions = 0, 0, 0
-        reserved_route_steps = 0
+        reserved_route_steps = int(reserve_empty_route)
+        model_steps, tool_steps, rejected_actions = reserved_route_steps, 0, 0
         timed_out_action = None
         routing = {"decision": "forced" if skill_id else "none", "applied": bool(skill_id)}
         started = time.monotonic()
@@ -435,7 +439,7 @@ class Runner:
                   "image_id": grading.get("image_id") or solver_image_id,
                   "seconds": round(time.monotonic() - started, 4), "steps": tool_steps,
                   "model_steps": model_steps - reserved_route_steps, "rejected_actions": rejected_actions,
-                  **({"budget_steps": model_steps} if fixed_route is not None else {}),
+                  **({"budget_steps": model_steps} if fixed_route is not None or reserve_empty_route else {}),
                   "requested_skill_id": requested_skill, "applied_skill_id": skill_id,
                   "requested_skill_ids": sorted(library_skills or {}), "library_id": library_id,
                   "experience_pool_id": experience_pool_id,

@@ -8,7 +8,7 @@ from contextlib import contextmanager
 from decimal import Decimal, ROUND_CEILING
 from pathlib import Path
 
-from evocoder.contracts import canonical, digest
+from evocoder.contracts import LIBRARY_ROUTE_CONTEXTS, canonical, digest
 
 
 def uid() -> str:
@@ -198,7 +198,7 @@ class Store:
         fields = {"schema", "kind", "mode", "members"}
         legacy = body.get("schema") == 1 and set(body) == fields
         configured = (body.get("schema") == 2 and set(body) == fields | {"route_context"}
-                      and body.get("route_context") in {"issue", "public_preview"})
+                      and body.get("route_context") in LIBRARY_ROUTE_CONTEXTS)
         if not (legacy or configured) or body.get("kind") != "skill_library":
             raise ValueError("invalid library manifest")
         members = body["members"]

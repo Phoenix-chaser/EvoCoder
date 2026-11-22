@@ -5,7 +5,7 @@ import json
 import math
 import re
 from pathlib import Path, PurePosixPath
-from typing import Literal
+from typing import Literal, get_args
 from urllib.parse import urlsplit
 
 from pydantic import BaseModel, ConfigDict, Field, ValidationInfo, field_validator, model_validator
@@ -35,6 +35,8 @@ class Strict(BaseModel):
 
 
 MODEL_TASK_VIEW = "issue_files_and_public_tests_v1"
+LibraryRouteContext = Literal["issue", "public_preview", "public_shape"]
+LIBRARY_ROUTE_CONTEXTS = get_args(LibraryRouteContext)
 
 
 def model_task_view(task: dict) -> dict:
@@ -220,7 +222,7 @@ class Settings(BaseSettings):
     max_steps: int = Field(default=16, ge=4, le=100)
     command_timeout: int = Field(default=20, ge=1, le=120)
     skill_routing: Literal["off", "semantic"] = "semantic"
-    library_route_context: Literal["issue", "public_preview"] = "issue"
+    library_route_context: LibraryRouteContext = "issue"
     recover_actions: bool = True
     public_checkpoints: bool = False
     authored_cli_checks: bool = False
