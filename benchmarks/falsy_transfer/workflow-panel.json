@@ -1,0 +1,177 @@
+{
+  "protocol": "aacf076a8acc7009c661e87080779875e0c5b11c499d9c9ec78bcc05065aa188",
+  "learning": "1d768ea5dd0203810d65233289bcfdafe0c9ec76153c1758ead1365e5188f4ce",
+  "screening": "2465d9bda3e8f04d3cdaee63aa00b5c737c9a3351ff21b3d64019cd536134d52",
+  "selection": "af5c0980986e182cdfaee43544006d890352f6213f6d04abda149c8408cf3030",
+  "evaluator": "29beb0c97561eb9cf3e4a2988b4d7d9c05bfcdcbd094f175569f993099b4a817",
+  "support": {
+    "badge-alerts": "c7f624927489fd548f11b1c062925745563959253ef070b9432f4b6179ca53cd",
+    "mixer-restart": "edbf0559145c60498369e8706bf0afba88708860a055799b5d21ce6149eac8b8",
+    "preview-toolbar": "8d75e20ee304973807cba779e86b0266b609376b6919119986c2f869c60c0cab",
+    "harbor-slots": "8808f46b8f456d99b7333ded7f3960597d8cfd04af498a6930cad4f5f3f3a5ce",
+    "learn-subscription-lease": "3d9a523cdd3dbf44359145414ed39bd7678abe1c3a29a7135a0ce06b2afdba23",
+    "learn-tile-compositor": "350d723d09fdccc897f61a097d0f37a9bb414554d8004c421d8d3a61c8c91902",
+    "learn-scheduler-watch": "7122a63a225bc1c8f02db29785018ec0e806980b84e73b62800fd5324e7d2d3b",
+    "learn-undo-journal": "ad769baaddac63f83d613bf5197d10aac982ca5212b379ac913096a7cc08c53e",
+    "dispatch-01": "39bb48969988ac4855d903e46d55166e4b980edd2e0d833a2a51bcc6a41db31f",
+    "export-02": "7eb59d76d11c7a8da901f5f3529fd3733efb9e863d586d4677c8380c1eab06e7",
+    "dispatch-03": "573a46b47d2d56b44021723f227fd5ee11b7a17687c397471eac418ec280610e",
+    "export-04": "1760a7ec3df793779763c93b58051ed9e70215e157ef10b25d5da83a6a4ccd6f"
+  },
+  "knowledge": "b031cc06253b10499b82f930ce100e9702699a411600df9b06a5dff09e550066",
+  "mode": "gate",
+  "child": "5de43379038432cafd5c8f0d2a1addc0870729299436655f779dc33415775261",
+  "targets": [
+    "object-label-policy",
+    "watermark-bus"
+  ],
+  "counts": {
+    "badge-alerts": 3,
+    "dispatch-01": 3,
+    "dispatch-03": 3,
+    "export-02": 3,
+    "export-04": 3,
+    "harbor-slots": 3,
+    "learn-scheduler-watch": 5,
+    "learn-subscription-lease": 3,
+    "learn-tile-compositor": 3,
+    "learn-undo-journal": 3,
+    "mixer-restart": 3,
+    "preview-toolbar": 3,
+    "object-index-error": 5,
+    "object-label-policy": 5,
+    "object-result-sink": 5,
+    "proof-dispatch": 5,
+    "event-collation": 5,
+    "watermark-bus": 5,
+    "transfer-meter-view": 7,
+    "transfer-column-caption": 7,
+    "transfer-print-ticket": 7,
+    "transfer-palette-book": 7
+  },
+  "config": [
+    "transfer-meter-view",
+    "transfer-column-caption",
+    "transfer-print-ticket",
+    "transfer-palette-book"
+  ],
+  "arms": {
+    "badge-alerts": [
+      "bare",
+      "parent",
+      "revised"
+    ],
+    "dispatch-01": [
+      "bare",
+      "parent",
+      "revised"
+    ],
+    "dispatch-03": [
+      "bare",
+      "parent",
+      "revised"
+    ],
+    "export-02": [
+      "bare",
+      "parent",
+      "revised"
+    ],
+    "export-04": [
+      "bare",
+      "parent",
+      "revised"
+    ],
+    "harbor-slots": [
+      "bare",
+      "parent",
+      "revised"
+    ],
+    "learn-scheduler-watch": [
+      "bare",
+      "parent",
+      "revised",
+      "previous"
+    ],
+    "learn-subscription-lease": [
+      "bare",
+      "parent",
+      "revised"
+    ],
+    "learn-tile-compositor": [
+      "bare",
+      "parent",
+      "revised"
+    ],
+    "learn-undo-journal": [
+      "bare",
+      "parent",
+      "revised"
+    ],
+    "mixer-restart": [
+      "bare",
+      "parent",
+      "revised"
+    ],
+    "preview-toolbar": [
+      "bare",
+      "parent",
+      "revised"
+    ],
+    "object-index-error": [
+      "bare",
+      "parent",
+      "revised"
+    ],
+    "object-label-policy": [
+      "bare",
+      "parent",
+      "revised",
+      "previous"
+    ],
+    "object-result-sink": [
+      "bare",
+      "parent",
+      "revised"
+    ],
+    "proof-dispatch": [
+      "bare",
+      "parent",
+      "revised"
+    ],
+    "event-collation": [
+      "bare",
+      "parent",
+      "revised"
+    ],
+    "watermark-bus": [
+      "bare",
+      "parent",
+      "revised",
+      "previous"
+    ],
+    "transfer-meter-view": [
+      "bare",
+      "parent",
+      "revised",
+      "previous"
+    ],
+    "transfer-column-caption": [
+      "bare",
+      "parent",
+      "revised",
+      "previous"
+    ],
+    "transfer-print-ticket": [
+      "bare",
+      "parent",
+      "revised",
+      "previous"
+    ],
+    "transfer-palette-book": [
+      "bare",
+      "parent",
+      "revised",
+      "previous"
+    ]
+  }
+}
