@@ -97,6 +97,10 @@ class Model:
         if schema is LibraryRoute:
             if not 1 <= len(data["skills"]) <= 8:
                 raise ValueError("routing requires 1..8 skills")
+            if "public_excerpts" in data.get("task", {}):
+                parameters["properties"]["task_quotes"]["description"] = (
+                    "Exact substrings of the issue or individual public excerpt contents supporting the decision."
+                )
             parameters["properties"]["skill_index"]["enum"] = [-2, -1, *range(len(data["skills"]))]
             wire_data = {
                 **data,

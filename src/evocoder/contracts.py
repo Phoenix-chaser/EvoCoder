@@ -220,6 +220,7 @@ class Settings(BaseSettings):
     max_steps: int = Field(default=16, ge=4, le=100)
     command_timeout: int = Field(default=20, ge=1, le=120)
     skill_routing: Literal["off", "semantic"] = "semantic"
+    library_route_context: Literal["issue", "public_preview"] = "issue"
     recover_actions: bool = True
     public_checkpoints: bool = False
     authored_cli_checks: bool = False
@@ -283,6 +284,8 @@ class Settings(BaseSettings):
 
     def public(self):
         excluded = {"api_key"}
+        if self.library_route_context == "issue":
+            excluded.add("library_route_context")
         if not self.live_switch_feedback:
             excluded.add("live_switch_feedback")
         if not self.authored_cli_checks:

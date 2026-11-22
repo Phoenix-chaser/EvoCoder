@@ -195,11 +195,11 @@ class Store:
 
     def library_members(self, library_id: str, *, mode: str, require_published=False) -> list[str]:
         body = self.get_artifact(library_id)
-        if (
-            set(body) != {"schema", "kind", "mode", "members"}
-            or body.get("schema") != 1
-            or body.get("kind") != "skill_library"
-        ):
+        fields = {"schema", "kind", "mode", "members"}
+        legacy = body.get("schema") == 1 and set(body) == fields
+        configured = (body.get("schema") == 2 and set(body) == fields | {"route_context"}
+                      and body.get("route_context") in {"issue", "public_preview"})
+        if not (legacy or configured) or body.get("kind") != "skill_library":
             raise ValueError("invalid library manifest")
         members = body["members"]
         if body["mode"] != mode:

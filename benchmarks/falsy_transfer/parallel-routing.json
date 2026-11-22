@@ -1,0 +1,192 @@
+{
+  "study": "parallel-parent-specialization-v1",
+  "parent": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+  "child": "152c284b2f238348d80c1f9d2ffc2cb43fcec8fe327f4589e66837170ca63c1e",
+  "parent_of_child": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+  "model": "glm-5.3",
+  "settings": "94273fc55c3e3e3fd18be405728eec795db77bcafc40149fc84a97881a608804",
+  "image": "sha256:a7eec604ebe32971d0b509d5157c8e814dc875a0f68aa541b3fd90ab391ef742",
+  "sources": {
+    "runtime": "3cd79ff5be3605bfdf1cbf549c3644151d0d403f70d944f742026aef1d646197",
+    "portfolio_routing.py": "4bbee136d494591c69bc1993af914a309cc33b42dcd6c42a014dfec461707de2",
+    "portfolio_route_cases.py": "ab4e33a2719a3a2cdaae17a15f2e50e1b985a644a27b58b5da0fef6c4157408e",
+    "object_revision_cases.py": "c74eaf24c32862275524b120c56553125ba94e699b817796107ed78a3e3fdbc0",
+    "run_optional_control.py": "e043a3b26121e7dfcac8611773d5ae70561156d262aed822e7e6c3d98b326a34",
+    "run_falsy_transfer.py": "feefcda0b89632404350e710b1fe9807bb1b7376753f0770eee08c67f5bd3173",
+    "falsy_transfer_protocol.py": "762baf604802fb405064b0fbda2c36fb4d938fe55327fa66ba62f886d9b97cb0"
+  },
+  "prior": "1570352f63ad85a899c78165677c5fd6b1991afb578b2431ddda890636507018",
+  "prior_protocol": "82c66eb6fd90bba1e124c896ad435a99e20c138fb63e7b13f67b3e962acb8c87",
+  "manifest": "edc52f79335565e3bab3a6f1f18e7bdeb14e882397fa41e0c92546d3c333e1ff",
+  "learn": [
+    {
+      "id": "learn-kiln-program",
+      "group": "python-workflows/kiln-program",
+      "expected": "parent",
+      "snapshot": "8f4604e0e6e96300ca5eb53f002d2145945d16c05b7230db6ed7520572df09cd",
+      "reference": "59567b87fef76c048bb0159af8ece0ffe8f87c60c9bf5896bd131890000d602a",
+      "broken": {
+        "public": false,
+        "controls": true,
+        "zero": false
+      },
+      "fixed": {
+        "public": true,
+        "controls": true,
+        "zero": true
+      }
+    },
+    {
+      "id": "learn-transcript-margin",
+      "group": "python-workflows/transcript-margin",
+      "expected": "parent",
+      "snapshot": "c4caa25112cfb46fdedb189cf4adb705ed1acedc976bdd8fcfded25a4bcfad72",
+      "reference": "163761631f0f536c17964996f8df306f2d8f3b310147226bb9206fafa5b005ca",
+      "broken": {
+        "public": false,
+        "controls": true,
+        "zero": false
+      },
+      "fixed": {
+        "public": true,
+        "controls": true,
+        "zero": true
+      }
+    },
+    {
+      "id": "learn-batch-delivery-fault",
+      "group": "python-workflows/batch-delivery-fault",
+      "expected": "child",
+      "snapshot": "523d7274d9d551b9122f33a686e6b69754dc1f597017843684ab07b3f36deea3",
+      "reference": "98617bdbb60a39dc68931d6c1ffcaf15b8f8c98138c9af5eb831236982f7b5ac",
+      "broken": {
+        "public": false,
+        "controls": true,
+        "identity": false
+      },
+      "fixed": {
+        "public": true,
+        "controls": true,
+        "identity": true
+      }
+    },
+    {
+      "id": "learn-reservation-shortfall",
+      "group": "python-workflows/reservation-shortfall",
+      "expected": "child",
+      "snapshot": "fc1c0243458f6a8133048d2d81ab1f1ee5e8c7907b7eec8c825b037c2a58d4ae",
+      "reference": "e40237f41dd870710f67330956ba7998ef6ca80066b586f75b17addfadf73b62",
+      "broken": {
+        "public": false,
+        "controls": true,
+        "identity": false
+      },
+      "fixed": {
+        "public": true,
+        "controls": true,
+        "identity": true
+      }
+    },
+    {
+      "id": "learn-segment-numbering",
+      "group": "python-workflows/segment-numbering",
+      "expected": "skip",
+      "snapshot": "482454ca4157ab433a9520ba8381a5991460991ac00d5c3f18e0f087e659d97a",
+      "reference": "f76a438e267051f5c45d0ed1cd4bb0b6d58867d1aff34433ef289916db74ff98",
+      "broken": {
+        "public": false,
+        "controls": true,
+        "third": false
+      },
+      "fixed": {
+        "public": true,
+        "controls": true,
+        "third": true
+      }
+    },
+    {
+      "id": "learn-blank-display-name",
+      "group": "python-workflows/blank-display-name",
+      "expected": "skip",
+      "snapshot": "8ba84499301954993e2e2814e0f63994829359d80bcaccc5786a574e5098e9a4",
+      "reference": "9b208c2b9e1efad535130c803378f65617d090c8ccbd36f7cd15a14e8c53fef8",
+      "broken": {
+        "public": false,
+        "controls": true,
+        "whitespace": false
+      },
+      "fixed": {
+        "public": true,
+        "controls": true,
+        "whitespace": true
+      }
+    }
+  ],
+  "objects": [
+    "object-index-error",
+    "object-label-policy",
+    "object-result-sink"
+  ],
+  "config": [
+    "transfer-meter-view",
+    "transfer-column-caption",
+    "transfer-print-ticket",
+    "transfer-palette-book"
+  ],
+  "support": {
+    "learn-subscription-lease": "3d9a523cdd3dbf44359145414ed39bd7678abe1c3a29a7135a0ce06b2afdba23",
+    "learn-tile-compositor": "350d723d09fdccc897f61a097d0f37a9bb414554d8004c421d8d3a61c8c91902",
+    "learn-scheduler-watch": "7122a63a225bc1c8f02db29785018ec0e806980b84e73b62800fd5324e7d2d3b",
+    "learn-undo-journal": "ad769baaddac63f83d613bf5197d10aac982ca5212b379ac913096a7cc08c53e",
+    "dispatch-01": "39bb48969988ac4855d903e46d55166e4b980edd2e0d833a2a51bcc6a41db31f",
+    "export-02": "7eb59d76d11c7a8da901f5f3529fd3733efb9e863d586d4677c8380c1eab06e7",
+    "dispatch-03": "573a46b47d2d56b44021723f227fd5ee11b7a17687c397471eac418ec280610e",
+    "export-04": "1760a7ec3df793779763c93b58051ed9e70215e157ef10b25d5da83a6a4ccd6f"
+  },
+  "holdout": {
+    "scalar": [
+      "cache-01",
+      "cache-02",
+      "cache-03",
+      "cache-04",
+      "cache-05",
+      "report-01",
+      "report-02",
+      "report-03",
+      "report-04",
+      "report-05"
+    ],
+    "layers": [
+      "notify-01",
+      "notify-02",
+      "notify-03",
+      "notify-04",
+      "notify-05",
+      "renderer-01",
+      "renderer-02",
+      "renderer-03",
+      "renderer-04",
+      "renderer-05"
+    ],
+    "batch": [
+      "events-01",
+      "events-02",
+      "events-03",
+      "events-04",
+      "events-05",
+      "checkpoint-01",
+      "checkpoint-02",
+      "checkpoint-03",
+      "checkpoint-04",
+      "checkpoint-05"
+    ]
+  },
+  "workers": 3,
+  "repeats": 2,
+  "solver_slots": 15,
+  "diagnostic": "Six new learn tasks: two constant configuration defaults, two caller-owned exceptions, two unrelated or explicitly blank-as-missing controls. Each crosses parent only, child only and both, issue vs bounded public README/editable source excerpts, two identical-input repeats with reversed job order. Only the issue, optional public excerpts and immutable applicability/exclusions enter the router. All inputs are frozen; targets and task groups are evaluator-only. A malformed response is not a semantic skip.",
+  "choose": "Using only the 24 portfolio diagnostic decisions, select public_preview if both target families' correct counts do not decrease, their sum strictly increases, control false applications do not increase and the number of invalid calls does not increase. Otherwise select issue. Freeze before any panel calls.",
+  "dev": "Original three object and four configuration dev tasks, two counterbalanced repeats. Fresh baseline (bare), original parent/issue and portfolio/frozen view. If preview is selected, add parent-only/identical preview as a diagnostic arm. Preserve target hashes and one normal routing call (none for bare), fifteen solver actions per arm. Stable production index order by artifact hash; dispatch is entirely model-selected.",
+  "gate": "Compare portfolio to original parent normally routed: at least two independent object sources with parent fail/portfolio pass and actual child use in both repeats, zero object or config paired losses. Require the ordinary full-library gate against deployment (empty) on all seven dev tasks and all eight ancestral learn supports, and no loss on those supports vs original parent. No retuning on development.",
+  "test": "Only after all gates and actual publication of the two-member library. Once per original thirty unseen tasks, no skill vs frozen normal portfolio, no learning. Three equal-sized configuration families, scalar then layers then batch; per-family and cumulative paired gains. No empirical curve on rejection."
+}

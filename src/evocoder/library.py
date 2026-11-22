@@ -51,10 +51,34 @@ class SkillLibrary:
     def members(self, library_id: str | None) -> list[str]:
         return self.store.library_members(library_id, mode=self.settings.mode) if library_id else []
 
-    def replace(self, members: list[str], candidate: str) -> list[str]:
+    def validate_family_pool(self, members: list[str]) -> None:
+        """A routed pool can retain one direct parent with its specialization per family."""
+        families = {}
+        for key in members:
+            families.setdefault(self.provenance(key)["root"], []).append(key)
+        for versions in families.values():
+            if len(versions) == 1:
+                continue
+            if len(versions) == 2 and any(self.store.get_artifact(v)["parent"] in versions for v in versions):
+                continue
+            raise ValueError("same-family alternatives must be a direct parent and child")
+
+    def retain_parent(self, members: list[str], candidate: str) -> list[str]:
+        parent = self.store.get_artifact(candidate)["parent"]
+        if not parent:
+            raise ValueError("parallel specialization requires a direct parent")
+        updated = sorted({*members, parent, candidate})
+        if len(updated) > 8:
+            raise ValueError("library capacity reached; no automatic skill eviction")
+        self.validate_family_pool(updated)
+        return updated
+
+    def replace(self, members: list[str], candidate: str, *, allow_retained=False) -> list[str]:
         roots = {key: self.provenance(key)["root"] for key in members}
         if len(set(roots.values())) != len(roots):
-            raise ValueError("pool contains multiple versions of one family")
+            if not allow_retained:
+                raise ValueError("pool contains multiple versions of one family")
+            self.validate_family_pool(members)
         provenance = self.provenance(candidate)
         new_root = provenance["root"]
         if any(roots[k] == new_root and k not in provenance["members"] for k in members):
@@ -75,6 +99,11 @@ class SkillLibrary:
             if stop.is_set():
                 raise RuntimeError("another paired trial failed; stop further model attempts")
             intervention = {"fixed_route": fixed_route} if fixed_route is not None else {}
+            if arm == "baseline" and baseline and (active := self.store.active_library()):
+                manifest = self.store.get_artifact(active)
+                context = manifest.get("route_context", "issue")
+                if sorted(baseline) == manifest["members"] and context != self.settings.library_route_context:
+                    intervention["route_context"] = context
             run_id = self.runner.solve(task, use_active=False, purpose="evaluate", skill_ids=pools[arm],
                                        **intervention)
             run = self.store.run(run_id)
@@ -106,6 +135,7 @@ class SkillLibrary:
     def evaluate(
         self, candidate: str, dev: list[Task], support: list[Task], *, workers=1,
         diagnostic_parent: str | None = None, regression: list[Task] | None = None, on_pair=None,
+        retain_parent: bool = False,
     ) -> dict:
         if not 1 <= workers <= 4:
             raise ValueError("gate workers must be 1..4")
@@ -129,7 +159,9 @@ class SkillLibrary:
             if skill.parent != diagnostic_parent:
                 raise ValueError("diagnostic requires the candidate's direct parent")
             old = [diagnostic_parent]
-        new = self.replace(old, candidate)
+        parallel_baseline = bool(baseline and self.store.get_artifact(baseline)["schema"] == 2)
+        new = (self.retain_parent(old, candidate) if retain_parent
+               else self.replace(old, candidate, allow_retained=parallel_baseline))
         if old == new:
             raise ValueError("library candidate makes no change")
         # Replay every family's frozen learning evidence, including the replaced version.
@@ -151,6 +183,8 @@ class SkillLibrary:
         target = None
         if diagnostic_parent is None:
             manifest = {"schema": 1, "kind": "skill_library", "mode": self.settings.mode, "members": new}
+            if retain_parent or self.settings.library_route_context != "issue":
+                manifest.update(schema=2, route_context=self.settings.library_route_context)
             target = self.store.artifact("skill_library", manifest)
         stop = Event()
         dev_repeats = 2 if self.settings.mode == "live" else 1

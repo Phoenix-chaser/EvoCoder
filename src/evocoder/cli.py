@@ -106,6 +106,8 @@ def parser():
     commands.add_parser("library")
     bank_eval = commands.add_parser("library-evaluate")
     bank_eval.add_argument("candidate")
+    bank_eval.add_argument("--retain-parent", action="store_true",
+                           help="Evaluate a portfolio containing both the candidate and its direct parent")
     bank_eval.add_argument("--manifest", type=Path, required=True)
     bank_activate = commands.add_parser("library-activate")
     bank_activate.add_argument("library_id")
@@ -261,7 +263,8 @@ def main():
         elif command == "library-evaluate":
             tasks = load_catalog(args.manifest)
             result = SkillLibrary(settings, store).evaluate(args.candidate, [t for t in tasks if t.split == "dev"],
-                                                           [t for t in tasks if t.split == "learn"])
+                                                           [t for t in tasks if t.split == "learn"],
+                                                           retain_parent=args.retain_parent)
             code = int(not result["gate"]["passed"])
         elif command in {"library-activate", "library-rollback"}:
             target = args.library_id if command == "library-activate" else args.to

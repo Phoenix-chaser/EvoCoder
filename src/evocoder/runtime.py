@@ -139,7 +139,7 @@ class Runner:
     def solve(self, task: Task, skill_id: str | None = None, *, use_active=True,
               purpose="solve", candidate=False, skill_ids: list[str] | None = None,
               library_id: str | None = None, experience_pool_id: str | None = None,
-              run_id: str | None = None, fixed_route: str | None = None) -> str:
+              run_id: str | None = None, fixed_route: str | None = None, route_context: str | None = None) -> str:
         if purpose not in {"solve", "evaluate"}:
             raise ValueError("invalid run purpose")
         learning_application = (
@@ -157,6 +157,9 @@ class Runner:
             from evocoder.memory import retrieve
             memory = retrieve(self.store, experience_pool_id, task, self.settings.mode, self.settings.max_memory_bytes)
         library_skills = None
+        if route_context is not None and (skill_ids is None or route_context not in {"issue", "public_preview"}):
+            raise ValueError("a routing context override requires an explicit evaluation pool")
+        route_context = route_context or self.settings.library_route_context
         if skill_ids is not None:
             if use_active or skill_id or library_id:
                 raise ValueError("explicit skill pool cannot be combined with active, skill or library")
@@ -168,9 +171,7 @@ class Runner:
                 raise ValueError("explicit candidate pools are restricted to learn trials or evaluator")
             from evocoder.library import SkillLibrary
             library = SkillLibrary(self.settings, self.store, self)
-            roots = [library.provenance(key)["root"] for key in skill_ids]
-            if len(set(roots)) != len(roots):
-                raise ValueError("skill pool contains multiple versions of one family")
+            library.validate_family_pool(skill_ids)
             library_skills = {key: Skill.model_validate(self.store.get_artifact(key)) for key in skill_ids}
             if fixed_route == "apply":
                 payload = {"skills": [library_skills[skill_ids[0]].model_dump()]}
@@ -185,6 +186,7 @@ class Runner:
             if self.settings.skill_routing != "semantic":
                 raise ValueError("skill libraries require semantic routing")
             members = self.store.library_members(library_id, mode=self.settings.mode, require_published=True)
+            route_context = self.store.get_artifact(library_id).get("route_context", "issue")
             library_skills = {key: Skill.model_validate(self.store.get_artifact(key)) for key in members}
         elif use_active:
             skill_id = self.store.active()
@@ -233,6 +235,7 @@ class Runner:
                                            "requested_skill_id": requested_skill,
                                            "requested_skill_ids": sorted(library_skills or {}),
                                            "library_id": library_id,
+                                           **({"route_context": route_context} if route_context != "issue" else {}),
                                            "experience_pool_id": experience_pool_id,
                                            "solver_prompt_hash": digest(solver_prompt),
                                            **({"fixed_route": fixed_route} if fixed_route is not None else {})})
@@ -265,7 +268,7 @@ class Runner:
                                    "skill_id": key if fixed_route == "apply" else None}
                     else:
                         try:
-                            routing = (select_library_skill(self.model, task, library_skills, run_id)
+                            routing = (select_library_skill(self.model, task, library_skills, run_id, context=route_context)
                                        if library_skills else select_skill(self.model, task, skill, run_id))
                         except RoutingRejected as exc:
                             routing = {"decision": "skip_invalid", "applied": False, "reason": str(exc)[:500]}
