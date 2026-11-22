@@ -1,0 +1,348 @@
+{
+  "study": "prospective-callback-release-v1",
+  "parent": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+  "child": "152c284b2f238348d80c1f9d2ffc2cb43fcec8fe327f4589e66837170ca63c1e",
+  "model": "glm-5.3",
+  "image": "sha256:a7eec604ebe32971d0b509d5157c8e814dc875a0f68aa541b3fd90ab391ef742",
+  "settings": "94273fc55c3e3e3fd18be405728eec795db77bcafc40149fc84a97881a608804",
+  "ancestral_knowledge": "92e3bcbc7229d07f9155e800a3b3d2f738f9d1a55b39ff4cc3e993df71185659",
+  "historical_gate": "778f63a90c72b0978603a3f7cee05d255426bf9b4c6bb88dcc1e538a99403462",
+  "previous_result": "c24bcc2ccb9de011af24b6209873d3e526ca6b9dd6d74b22864f01e22afd1b1d",
+  "previous_protocol": "42f3a3d7a5886f847d15b2b98d694299777c2fd61afff0171b5f62e7cdc5d823",
+  "code": {
+    "runtime": "101aba43815742a2b71e82af157bc3cb59135c1b90c25034820f2d1b2244ba2b",
+    "callback_sources.py": "42b5b21a3ed315acb9ab0c46a3564b43a6acee0a35f735af62a09af1d8f75126",
+    "callback_policy.py": "66747c1282cd601046489f137d7057eccb737a06e4b04b6a45424b0cdf18f6d7",
+    "callback_protocol.py": "1fdd3f5c4dfc61a3292d15304947b7e774055d20853ba56d59f8477325b68721",
+    "run_callback_release.py": "133168f30bba4fdb7e531646a55dd3a71685eab0244d9477bdaa64f49122c364",
+    "run_shape_routing.py": "368b493d1bcd0ed03400ff6bdcc1815488455c5379735c926caddd296a68c194",
+    "run_optional_control.py": "e043a3b26121e7dfcac8611773d5ae70561156d262aed822e7e6c3d98b326a34",
+    "run_parallel_routing.py": "341aee3a797356d114b64b5e96485110a4ef06b981a73c1e6572037ad9768ea0",
+    "falsy_transfer_protocol.py": "762baf604802fb405064b0fbda2c36fb4d938fe55327fa66ba62f886d9b97cb0",
+    "object_revision_cases.py": "c74eaf24c32862275524b120c56553125ba94e699b817796107ed78a3e3fdbc0",
+    "portfolio_routing.py": "4bbee136d494591c69bc1993af914a309cc33b42dcd6c42a014dfec461707de2"
+  },
+  "families": {
+    "deferred-callback": {
+      "pilot": {
+        "id": "depot-receipts",
+        "group": "callback-workspaces/depot-receipts",
+        "split": "learn",
+        "snapshot": "b652a79136b99e7bd232a076761670f312f52ca31389ac2d6eb603213fe37343",
+        "reference": "4d159b131219296283aaa94e9222d47c10b1893683bb4ee8c62b4b588d62f6ea",
+        "first_file_only": "270e2941675808dd7d3d3a020acde0430c3bfa4b07a1c98c9d70d9054f486bd9",
+        "test_shapes": "e4f62d350d8fc00c4fbee9d2b97c23c90dac53feb2c58aadb21374c3a0c7123d",
+        "calibration": {
+          "broken": {
+            "public": false,
+            "controls": true,
+            "direct": false,
+            "queued": false
+          },
+          "first_file_only": {
+            "public": true,
+            "controls": true,
+            "direct": true,
+            "queued": false
+          },
+          "reference": {
+            "public": true,
+            "controls": true,
+            "direct": true,
+            "queued": true
+          }
+        }
+      },
+      "confirmation": {
+        "id": "proof-dispatch",
+        "group": "callback-workspaces/proof-dispatch",
+        "split": "dev",
+        "snapshot": "1844b739e9ea24d2669dbf146ae9ac9ed72287ab54009c5acbe79da0703358b4",
+        "reference": "f69eee9273c513474e1be8c381f5c2f487d1303653570a3db07d8f23be24fff0",
+        "first_file_only": "fbdbb6640b90d7df3265fe7706d8d192cc04562d5f61adf4db4e97c0ac78ea80",
+        "test_shapes": "147136505718bcffa84b6fb150e8b95ee859130cdb8a99255570fefe137cc753",
+        "calibration": {
+          "broken": {
+            "public": false,
+            "controls": true,
+            "immediate": false,
+            "after_resume": false
+          },
+          "first_file_only": {
+            "public": true,
+            "controls": true,
+            "immediate": true,
+            "after_resume": false
+          },
+          "reference": {
+            "public": true,
+            "controls": true,
+            "immediate": true,
+            "after_resume": true
+          }
+        }
+      }
+    },
+    "caller-collation": {
+      "pilot": {
+        "id": "cabinet-order",
+        "group": "callback-workspaces/cabinet-order",
+        "split": "learn",
+        "snapshot": "d2671e1bbd3376f82d489af6d363509a1f8b0b4104206be6c7df02bc981c2c25",
+        "reference": "3a33c51da0e4d118dd80d54df0ce8070ad4132437177def4089d393d6f4f3d07",
+        "first_file_only": "783b9cd8032c20ea173b31cd31aa75ba5467fefed3f8da87019fc72149b43f60",
+        "test_shapes": "157aead98765360d5784fb0f43c7684cd5e142f9d3738e8403a0df916d3bbae5",
+        "calibration": {
+          "broken": {
+            "public": false,
+            "controls": true,
+            "new_entries": false,
+            "merged_drawers": false
+          },
+          "first_file_only": {
+            "public": true,
+            "controls": true,
+            "new_entries": true,
+            "merged_drawers": false
+          },
+          "reference": {
+            "public": true,
+            "controls": true,
+            "new_entries": true,
+            "merged_drawers": true
+          }
+        }
+      },
+      "confirmation": {
+        "id": "event-collation",
+        "group": "callback-workspaces/event-collation",
+        "split": "dev",
+        "snapshot": "b9e98424b2e7f5f7d7fc576e8d2da524770da2600b46e9e9ed5f1bc0d0e3ded0",
+        "reference": "289bb44daa1db0ef2ebd22097d9b77f22e8e33ea937cfa28acfbfc2b82940ce6",
+        "first_file_only": "c08635e47dcb700f1801402b4b43ecb859e0d56633d1ff648977a613e6519796",
+        "test_shapes": "6d108946e3a38d0ba64733366e178feb4845fc496c336b5c4c8abc6a00b61c20",
+        "calibration": {
+          "broken": {
+            "public": false,
+            "controls": true,
+            "bulk": false,
+            "late_insert": false
+          },
+          "first_file_only": {
+            "public": true,
+            "controls": true,
+            "bulk": true,
+            "late_insert": false
+          },
+          "reference": {
+            "public": true,
+            "controls": true,
+            "bulk": true,
+            "late_insert": true
+          }
+        }
+      }
+    }
+  },
+  "objects": [
+    "object-index-error",
+    "object-label-policy",
+    "object-result-sink"
+  ],
+  "config": [
+    "transfer-meter-view",
+    "transfer-column-caption",
+    "transfer-print-ticket",
+    "transfer-palette-book"
+  ],
+  "support": [
+    "dispatch-01",
+    "dispatch-03",
+    "export-02",
+    "export-04",
+    "learn-scheduler-watch",
+    "learn-subscription-lease",
+    "learn-tile-compositor",
+    "learn-undo-journal"
+  ],
+  "protected": {
+    "object-index-error": {
+      "id": "object-index-error",
+      "group": "object-contracts/index-error",
+      "split": "dev",
+      "snapshot": "35240f4d1c6775b8c1a3a2dbedfd1e269dc339585b5af7ab1b603eea3aeacaae"
+    },
+    "object-label-policy": {
+      "id": "object-label-policy",
+      "group": "object-contracts/label-policy",
+      "split": "dev",
+      "snapshot": "cc414d44bb1f8b166fc95307eff01dff99a83c5dd0b779aa381f657cfcb6b23a"
+    },
+    "object-result-sink": {
+      "id": "object-result-sink",
+      "group": "object-contracts/result-sink",
+      "split": "dev",
+      "snapshot": "defbcd6fe51a586814f6d4dc0c5b77043600301b8fbf2988053bd5df59d151bb"
+    },
+    "transfer-meter-view": {
+      "id": "transfer-meter-view",
+      "group": "profile-tools/meter-view",
+      "split": "dev",
+      "snapshot": "3f8bbc20ea70d43e8cb5be2a3aa06567c087ca26ab6068af33cb8474c80882e5"
+    },
+    "transfer-column-caption": {
+      "id": "transfer-column-caption",
+      "group": "profile-tools/column-caption",
+      "split": "dev",
+      "snapshot": "f4ecca08502a18298a58bd87eedea3100446322e87f9264f38e89a63ec262f0d"
+    },
+    "transfer-print-ticket": {
+      "id": "transfer-print-ticket",
+      "group": "profile-tools/print-ticket",
+      "split": "dev",
+      "snapshot": "d64bc8475cebc14aac7163cc11c4805e87f65831281eaf700ec62c874f4f633e"
+    },
+    "transfer-palette-book": {
+      "id": "transfer-palette-book",
+      "group": "profile-tools/palette-book",
+      "split": "dev",
+      "snapshot": "6fda1b9499899eaca8d7857c267d707311a7236fd4471905c5f688e33b490ece"
+    },
+    "dispatch-01": {
+      "id": "dispatch-01",
+      "group": "dispatch",
+      "split": "learn",
+      "snapshot": "39bb48969988ac4855d903e46d55166e4b980edd2e0d833a2a51bcc6a41db31f"
+    },
+    "dispatch-03": {
+      "id": "dispatch-03",
+      "group": "dispatch",
+      "split": "learn",
+      "snapshot": "573a46b47d2d56b44021723f227fd5ee11b7a17687c397471eac418ec280610e"
+    },
+    "export-02": {
+      "id": "export-02",
+      "group": "export",
+      "split": "learn",
+      "snapshot": "7eb59d76d11c7a8da901f5f3529fd3733efb9e863d586d4677c8380c1eab06e7"
+    },
+    "export-04": {
+      "id": "export-04",
+      "group": "export",
+      "split": "learn",
+      "snapshot": "1760a7ec3df793779763c93b58051ed9e70215e157ef10b25d5da83a6a4ccd6f"
+    },
+    "learn-scheduler-watch": {
+      "id": "learn-scheduler-watch",
+      "group": "python-workflows/scheduler-watch",
+      "split": "learn",
+      "snapshot": "7122a63a225bc1c8f02db29785018ec0e806980b84e73b62800fd5324e7d2d3b"
+    },
+    "learn-subscription-lease": {
+      "id": "learn-subscription-lease",
+      "group": "python-workflows/subscription-lease",
+      "split": "learn",
+      "snapshot": "3d9a523cdd3dbf44359145414ed39bd7678abe1c3a29a7135a0ce06b2afdba23"
+    },
+    "learn-tile-compositor": {
+      "id": "learn-tile-compositor",
+      "group": "python-workflows/tile-compositor",
+      "split": "learn",
+      "snapshot": "350d723d09fdccc897f61a097d0f37a9bb414554d8004c421d8d3a61c8c91902"
+    },
+    "learn-undo-journal": {
+      "id": "learn-undo-journal",
+      "group": "python-workflows/undo-journal",
+      "split": "learn",
+      "snapshot": "ad769baaddac63f83d613bf5197d10aac982ca5212b379ac913096a7cc08c53e"
+    }
+  },
+  "holdout": {
+    "scalar": [
+      "cache-01",
+      "cache-02",
+      "cache-03",
+      "cache-04",
+      "cache-05",
+      "report-01",
+      "report-02",
+      "report-03",
+      "report-04",
+      "report-05"
+    ],
+    "layers": [
+      "notify-01",
+      "notify-02",
+      "notify-03",
+      "notify-04",
+      "notify-05",
+      "renderer-01",
+      "renderer-02",
+      "renderer-03",
+      "renderer-04",
+      "renderer-05"
+    ],
+    "batch": [
+      "events-01",
+      "events-02",
+      "events-03",
+      "events-04",
+      "events-05",
+      "checkpoint-01",
+      "checkpoint-02",
+      "checkpoint-03",
+      "checkpoint-04",
+      "checkpoint-05"
+    ]
+  },
+  "holdout_hashes": {
+    "cache-01": "23381441146c78e9be2fe719e4f3e9632de484b766bec004581d33f1bedb9a89",
+    "cache-02": "8e6aa3b396c63fd059263aad65a7e8d0a1c6e59312ac9ec8549047a754345bf7",
+    "cache-03": "88d319ccca1cb1505c96a7b69b2ff697b85d01b0b0e1fbc727b8366c3e261a3d",
+    "cache-04": "11c71625c133e3cdadf2635113c4de00457477a2a52f4a7e87a5c9d71994ae01",
+    "cache-05": "e5d51e0650213d69e7dc9a1398ca25e18ed0ac926c4f125abf0fe390bcce0c94",
+    "report-01": "34622c114f9c847dc6b7bcf0ebd011d7e7f07b448cba03ce03f114deb5d1fbca",
+    "report-02": "45b00c0ed1d58b66f3ca9703a0206cec34df901574762cdc5e2f014c4e9a0686",
+    "report-03": "caf08e2619133541576620896d55891c38df16e54d9b88d9266a10307c7fb768",
+    "report-04": "657ccb0746a1f7764005c672cc1555fab77c9348d7488b5f5166244c042b4d94",
+    "report-05": "5e1a588a85d83809f8d61468d95f3d2504e90418ff2f6a59126bc48fbf53d0e1",
+    "notify-01": "0ca77fd2dc31e7f01ba9d14f09113f3a146f1a4f193f6d564aaf4dd07bf9320f",
+    "notify-02": "07b7ecace1a366a78670a069527477272334d2afec3ab9e87c0ff29b3b54cbc9",
+    "notify-03": "974860146984c2d86b4f474c416cf6ca1b3fa685d7fbdec5307ac675f58f3b1e",
+    "notify-04": "a46664ef7dfca521fd7210c2d0a7ec55df596c3ce4598bf877fba159fffc8db7",
+    "notify-05": "bc15ebbabdb2fb8eea6b3ff7fc62f92ee297d5ef7b167cbd25f274a10dcb6a21",
+    "renderer-01": "8dacf25f8e36f1fd9d35fbc83ba593553c5fd63ee7b21683ff6e459319d6201a",
+    "renderer-02": "fe08eed0f19a0169992859344da0699e748c8e3e75820c0451029f0eb3df434c",
+    "renderer-03": "4e5b4dcd20591661ca748ff6c3a51e43f4a0752c486be23d9cf1cd8c6b10599a",
+    "renderer-04": "241038ae064c5e01d8adb4e7b18a10a908c8cc5a2205e59917fc9c5379f246ec",
+    "renderer-05": "270a00f04c44e44092c1ee0e4d162b1d66e281d421a40980dd13e80ef94f0a5c",
+    "events-01": "209524380bd4f07b12a50e60209c061768607b1b2d0175ff24fefdae8b613076",
+    "events-02": "70aaaf94713741240ab485cd70e6a303661f9df17cae5c5f1c954d18b6459f94",
+    "events-03": "0841ca246af42114d729835fc6c045bc19d9bf4775d12df0ed524d49262444bc",
+    "events-04": "404896717a942f115623128748dac171c7caf215982d8cb000e00e2d34f17633",
+    "events-05": "4b6f61c53f06a21d837ef6b65fa8e432b8f5f65e698c680f1ada545d81f8f50a",
+    "checkpoint-01": "453bfb024563e28ae9906fc5dc5063ac4b3254604725576f099d7457c5aaf396",
+    "checkpoint-02": "596328363c8430b1662194c479fd2b3bad8114a3602a12527ffa871916bfa68d",
+    "checkpoint-03": "26c75c8b659755d2b9ad036e7966f4677a82375da887047fe6a435c08f1a764b",
+    "checkpoint-04": "dbb91eae3f41858b38ff8abd0590ffea4101b6dc6da3c6aeda347aedf0e3a729",
+    "checkpoint-05": "01c124a2d9b5a16da0d10914b14c382a5230ccc40ea2a6c0f059972e39517771"
+  },
+  "noise": {
+    "null_pairs": 20,
+    "discordant": 7,
+    "observations": "0b8b23ab7ffa7db4607afcccb65584b29c2854dad5f33ffdba73377bb76b7dd6",
+    "discordance_upper_95": 0.558034511,
+    "loss_probability_bound": 0.279017256,
+    "raw_loss_veto": 6,
+    "per_comparison_tail_limit": 0.003125,
+    "tail_at_veto": 0.002512923,
+    "panel_signflip_alpha": 0.0125
+  },
+  "schedule_seed": "callback-release-v1-balanced-six",
+  "workers": 4,
+  "pilot_rule": "Two independent pilot implementations, parent only, five fresh attempts each. Eligibility requires >=3/5 submitted public- and control-green patches failing a named caller-object boundary. Publish all attempts. Both distinct confirmation implementations are still run; an ineligible new family cannot count toward release.",
+  "release_rule": "Freeze the learned library and structured router. All three existing object tasks and two new confirmation tasks run five times. Each original configuration task runs seven times and each of eight ancestry supports three times. Each cell runs three independent controls: bare, original parent/issue, original parent+child/public_shape. All receive 15 solver actions. For EACH comparator require two distinct object sources with >=3/5 actual child wins and different first-solver request, including one eligible new family. Changed-wire paired net on every task must be nonnegative. Raw loss majority veto remains for objects/support. For config apply registered calibrated raw loss count and the adverse seven-block sign-flip test. Ties count in denominators. No imputation, no score-based reruns, no evidence borrowing. Missing, unsettled or infrastructure-invalid current attempts cannot authorize activation.",
+  "noise_rule": "Use exclusively the 20 historical config pairs comparing original parent with issue-only portfolio, all with the same first-solver request. Exact one-sided 95% upper bound on discordance, half under exchangeability. Choose the smallest k>=4 with Binomial(7,q_upper/2) upper tail <=.025/8. Also veto a one-sided adverse sum of configuration differences at <=.025/2 using all 128 signs over seven round blocks. These bounds depend on stationarity, symmetry and repeat independence; they are engineering thresholds, not a guarantee against stochastic errors.",
+  "test_rule": "Only after evaluator-issued live CAS publication. Claim the original 30 frozen configuration tasks once, one bare and one solve via the actual published library per task. Ten scalar, ten layered, ten batch; three equal-weight cumulative gains plus stratum gains. Zero learning or adaptive repeats; report any curve shape. No test inference on rejection.",
+  "interruptions": "Persistent unique intents. Reuse identical terminal slots; never relabel an interrupted or unsettled attempt. Short batches release the worker between rounds. Historical reservations stay in the original shared ledger and are not billed to this protocol."
+}
