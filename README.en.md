@@ -4,7 +4,7 @@
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
   <a href="pyproject.toml"><img alt="Python 3.12" src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&amp;logoColor=white"></a>
   <a href="https://github.com/Phoenix-chaser/EvoCoder/actions/workflows/checks.yml"><img alt="View GitHub Actions CI" src="https://img.shields.io/badge/CI-GitHub%20Actions-35495E?logo=githubactions&amp;logoColor=white"></a>
-  <a href="docs/results/overview.json"><img alt="323 tests passed" src="https://img.shields.io/badge/tests-323%20passed-08796E?logo=pytest&amp;logoColor=white"></a>
+  <a href="docs/results/overview.json"><img alt="334 tests passed" src="https://img.shields.io/badge/tests-334%20passed-08796E?logo=pytest&amp;logoColor=white"></a>
   <a href="src/evocoder/sandbox.py"><img alt="Docker sandbox" src="https://img.shields.io/badge/sandbox-Docker-206B9C?logo=docker&amp;logoColor=white"></a>
   <a href="Makefile"><img alt="CPU-only offline demo" src="https://img.shields.io/badge/demo-CPU%20only-586876"></a>
 </p>
