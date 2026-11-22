@@ -554,6 +554,53 @@ def review(data, p, h):
     )
 
 
+def audit_live_row(study, row):
+    rid = row["run"]
+    intent = row["intent"]
+    run = study.store.run(rid)
+    events = study.store.events(rid)
+    result = run["result"]
+    start = next(x["payload"] for x in events if x["kind"] == "START")
+    route = next((x["payload"] for x in events if x["kind"] == "SKILL_ROUTE"), {})
+    replies = [x["payload"] for x in events if x["kind"] == "MODEL_RESPONSE"]
+    solver = [r for r in replies if r["expected_function"] == "submit_action"]
+    router = [r for r in replies if r["expected_function"] == "select_library_skill"]
+    require(
+        rid == digest(intent)[:32]
+        and run["mode"] == "live"
+        and run["state"] == row["state"]
+        and run["task_id"] == intent["task"]
+        and run["task_hash"] == intent["snapshot"]
+        and run["purpose"] == intent["purpose"]
+        and digest(run["config"]) == intent["options"]
+        and row["cost"] == study.store.costs([rid])
+        and start["requested_skill_ids"] == intent["pool"]
+        and start["library_id"] == intent["library"]
+        and start.get("fixed_route") == ("apply" if intent["fixed"] else None)
+        and start.get("route_context", "issue") == intent["view"]
+        and run["skill_id"] == row["selected"] == route.get("applied_skill_id")
+        and route.get("decision") == row["route"]
+        and route.get("reason") == row["reason"]
+        and row["solver_calls"] == len(solver)
+        and row["first_solver_request"] == (solver[0]["request_body_hash"] if solver else None)
+        and row["router_request"] == (router[0]["request_body_hash"] if router else None)
+        and row["patch"] == result.get("patch"),
+        "SQL execution and exported arm differ",
+    )
+    if row["passed"] is not None:
+        require(
+            row["passed"] == result["passed"] and result["image_id"] == study.p["image"],
+            "different frozen submission grade",
+        )
+    if row["patch"]:
+        finals = [e["kind"] for e in events if e["kind"] in ("PATCH", "PUBLIC_VERIFY", "GRADE")]
+        require(
+            finals == ["PATCH", "PUBLIC_VERIFY", "GRADE"]
+            and next(e["payload"]["artifact"] for e in events if e["kind"] == "PATCH") == row["patch"],
+            "missing original same-run patch/test/grade evidence",
+        )
+
+
 def export(s):
     h = registered(s)
     stages = [read(ROOT / "learning.json")]
@@ -561,6 +608,8 @@ def export(s):
         stages.append(read(FOLLOWUP))
     screen = read(ROOT / "screen.json")
     rows = sorted((read(x) for x in (ROOT / "rows").glob("*.json")), key=lambda r: r["run"])
+    for row in rows:
+        audit_live_row(s, row)
     proposals = [rid for stage in stages for rid in stage["proposal"]["attempts"]]
     choice = read(CHOICE) if CHOICE.exists() else None
     revisions = [s["proposal"] for s in stages]
