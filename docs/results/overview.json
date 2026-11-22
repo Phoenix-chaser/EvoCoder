@@ -68,11 +68,11 @@
     "holdout_runs": 0
   },
   "test_suite": {
-    "code_revision": "cd3af824792c7c6d8986b408cd95ee28ea3a89a7",
-    "command": "uv run --locked pytest -m 'not docker' -q && uv run --locked pytest -m docker -q",
-    "tests": 334,
-    "passed": 334,
-    "non_docker": 298,
+    "code_revision": "846f7d66f2c0e985e5f5d0d5363d1cef8ff083c6",
+    "command": "uv run --locked pytest -q",
+    "tests": 343,
+    "passed": 343,
+    "non_docker": 307,
     "docker": 36,
     "failed": 0,
     "skipped": 0

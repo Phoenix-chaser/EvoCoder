@@ -86,4 +86,6 @@ uv run --locked python scripts/report_workflow_revision.py replay-examples
 uv run --locked python scripts/replay_workflow_difference.py --execute
 ```
 
-公开记录保存运行标识、请求与补丁哈希、路由、分项评分、费用和少量可重放的合成学习补丁。完整模型对话、账户账本和原始 SQLite 文件保存在本机。
+可用 `python3 scripts/plot_workflow_revision.py` 从这两份公开的评测结果重画中英文图表。绘图环境需要 Matplotlib，中文版使用 Noto Sans CJK SC 字体。[绘图脚本](../scripts/plot_workflow_revision.py)
+
+公开记录保存运行标识、请求与补丁哈希、路由、分项评分、费用和文中举例的合成任务补丁。完整模型对话、账户账本和原始 SQLite 文件保存在本机。
