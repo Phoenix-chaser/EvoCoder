@@ -68,6 +68,27 @@ def add_cost(costs):
     }
 
 
+def revision_comparison(panels, child):
+    results = {}
+    for tid in sorted({r["task"] for r in panels if "previous" in r}):
+        local = [r for r in panels if r["task"] == tid]
+        paired = [r for r in local if all(r[a]["passed"] is not None for a in ("previous", "revised"))]
+        results[tid] = dict(
+            planned=len(local),
+            graded_pairs=len(paired),
+            previous_pass=sum(r["previous"]["passed"] for r in paired),
+            revised_pass=sum(r["revised"]["passed"] for r in paired),
+            revised_only=sum(r["revised"]["passed"] and not r["previous"]["passed"] for r in paired),
+            previous_only=sum(r["previous"]["passed"] and not r["revised"]["passed"] for r in paired),
+            selected_old=sum(r["previous"]["selected"] == CHILD for r in local),
+            selected_revision=sum(r["revised"]["selected"] == child for r in local),
+            identical_first_requests=sum(
+                r["previous"]["first_solver_request"] == r["revised"]["first_solver_request"] for r in paired
+            ),
+        )
+    return results
+
+
 def submitted(rows):
     inventory = {}
     for r in rows:
@@ -153,6 +174,52 @@ def example_runs(learn, choice, index):
                 keys.append(key)
                 seen.add(t)
     return keys
+
+
+def paid_stages(data, p):
+    groups = {}
+    for n, learn in enumerate(data["learning"], 1):
+        groups[f"learning_{n}"] = learn["runs"]
+        groups[f"proposal_{n}"] = learn["proposal"]["attempts"]
+    groups["parent_screen"] = [rid for family in data["screen"]["families"] for rid in family["runs"]]
+    choice = data.get("selection")
+    if choice:
+        groups["scope_audit"] = choice["audit"]
+        if choice.get("proposal"):
+            groups["role_aware_proposal"] = choice["proposal"]["attempts"]
+        groups["matched_learning"] = choice["matched"]
+    for n in range(7):
+        groups[f"panel_round_{n + 1}"] = [
+            r["run"]
+            for r in data["rows"]
+            if r["intent"]["phase"] in ("gate", "protection") and r["intent"]["repeat"] == n
+        ]
+    for fam, ids in p["holdout"].items():
+        groups["holdout_" + fam] = [
+            r["run"] for r in data["rows"] if r["intent"]["phase"] == "holdout" and r["intent"]["task"] in ids
+        ]
+    return {k: v for k, v in groups.items() if v}
+
+
+def check_call_order(data, p):
+    groups = paid_stages(data, p)
+    by_run = {r["run"]: r["cost"]["calls"] for r in data["rows"]} | {
+        r: c["calls"] for r, c in data["proposal_billing"].items()
+    }
+    expected = []
+    last = 0
+    assigned = []
+    for stage, ids in groups.items():
+        assigned.extend(ids)
+        count = sum(by_run[k] for k in ids)
+        expected.append(dict(stage=stage, first=last + 1, last=last + count, calls=count))
+        last += count
+    require(
+        len(assigned) == len(set(assigned))
+        and set(assigned) == set(by_run)
+        and data["call_order"] == expected,
+        "call order diverges from registered stages or contains reused runs",
+    )
 
 
 def check_examples(data, execute=False):
@@ -385,6 +452,10 @@ def review(data, p, h):
     assignments = plan(p, candidate, winning, h["support"])
     require(all(h[k] == v for k, v in assignments.items()), "wrong formal assignment")
     panels = panel_rows(rows, h)
+    require(
+        data["revision_comparison"] == revision_comparison(panels, h["child"]),
+        "changed direct old/new comparison",
+    )
     selected.update(r[a]["run"] for r in panels for a in h["arms"][r["task"]])
     if h["mode"] == "gate":
         decision = evaluate(p, h, panels)
@@ -465,6 +536,7 @@ def review(data, p, h):
         and add_cost(calls) == data["billing"],
         "incorrect accounting",
     )
+    check_call_order(data, p)
     summary = {}
     for phase in ("learn", "screen", "protection", "gate", "holdout"):
         counts = Counter(r["passed"] for r in rows if r["intent"]["phase"] == phase)
@@ -561,6 +633,7 @@ def export(s):
         screen=screen,
         selection=choice,
         patch_replay=replay_submissions(s, rows),
+        revision_comparison=revision_comparison(panel_rows(rows, h), h["child"]),
         revision_receipts=receipts,
         gate=gate,
         protection=direct,
@@ -574,6 +647,16 @@ def export(s):
     d["learning_patches"] = {
         k: s.store.get_artifact(index[k]["patch"]) for k in example_runs(stages[-1], choice, index)
     }
+    membership = {rid: stage for stage, items in paid_stages(d, s.p).items() for rid in items}
+    chronology = []
+    own = [r for r in recent if r["run_id"] in ids]
+    for seq, r in enumerate(own, 1):
+        label = membership[r["run_id"]]
+        if not chronology or chronology[-1]["stage"] != label:
+            chronology.append(dict(stage=label, first=seq, last=seq, calls=0))
+        chronology[-1]["last"] = seq
+        chronology[-1]["calls"] += 1
+    d["call_order"] = chronology
     d["summary"] = review(d, s.p, h)
     dump(RESULT, d)
     return d["summary"]
