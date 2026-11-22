@@ -1,0 +1,919 @@
+{
+  "schema": 1,
+  "registration": "b8f7acc56894156506bc9727ef933442821ac3495296e03305563d0ed841ecb3",
+  "original": "c9a1360f948442d15fa3764eab7e50cdc845c5985ce4ad33b4b7d74b08e19ee7",
+  "receipt": "47d314fa3f7d7cdd3ff13b489d41fa4f94b18102a64925399ae656ce9b569829",
+  "blocks": {
+    "6": [
+      [
+        {
+          "intent": {
+            "protocol": "cce2fb58be466cf0efcc7fa42487d95d4e109cd6cf0d99bad48011fe0237ea1c",
+            "phase": "config_recovery",
+            "task": "transfer-palette-book",
+            "repeat": 5,
+            "arm": "bare",
+            "pool": [],
+            "view": "issue",
+            "options": "f75b4e16ebc9dd9b1967dd0684f2f7cde031b4d4cb8060f6240988c29f8f33ff",
+            "snapshot": "6fda1b9499899eaca8d7857c267d707311a7236fd4471905c5f688e33b490ece",
+            "library": null,
+            "fixed": false,
+            "purpose": "evaluate"
+          },
+          "run": "cab92313f5b878ac66d53ea379c66fc7",
+          "state": "FAILED",
+          "passed": false,
+          "selected": null,
+          "route": "none",
+          "reason": null,
+          "first_solver_request": "875b87f1e97bd3447e3a34f36aa250ceb5e18b55e3e4bbe45b6f3bc4f3e63872",
+          "router_request": null,
+          "solver_calls": 4,
+          "patch": "00a5c46fc71d8637e0cab88e23d244f619e5c7c55855a0ca1cdd33794e482a36",
+          "probes": {
+            "public": true,
+            "book_empty": false,
+            "controls": true,
+            "single_empty": false
+          },
+          "public_feedback": null,
+          "cost": {
+            "cost_credits": 2.00812,
+            "reserved_credits": 0.0,
+            "calls": 4
+          }
+        },
+        {
+          "intent": {
+            "protocol": "cce2fb58be466cf0efcc7fa42487d95d4e109cd6cf0d99bad48011fe0237ea1c",
+            "phase": "config_recovery",
+            "task": "transfer-palette-book",
+            "repeat": 5,
+            "arm": "revised",
+            "pool": [
+              "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+              "5de43379038432cafd5c8f0d2a1addc0870729299436655f779dc33415775261"
+            ],
+            "view": "public_shape",
+            "options": "dc8cb8007927f3778dcc0a1d89119f43de2f5cd077f6724de4b95588fa96a396",
+            "snapshot": "6fda1b9499899eaca8d7857c267d707311a7236fd4471905c5f688e33b490ece",
+            "library": null,
+            "fixed": false,
+            "purpose": "evaluate"
+          },
+          "run": "a4ed3822f7be628e20b9a1c3083b1f71",
+          "state": "FAILED",
+          "passed": false,
+          "selected": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+          "route": "apply",
+          "reason": "The issue asks to restore a documented factory default (palette) when an inherited value arrives as null while keeping output format and observable colors compatible on save/reopen, matching the defaulting/preset skill. No exclusion applies: it is a literal constant default, and falsy non-null handling is not implicated.",
+          "first_solver_request": "2a49908593c034b6efdf28c2970cc80ad3b614dbf4626b6b300d70f3d2ca1043",
+          "router_request": "da4914eccd0dec85ff4df9039c5882f93b655c3c5472c8451a9e1734369e6e18",
+          "solver_calls": 6,
+          "patch": "d81c8c6c050621ca062455d3ef30e2810dc3a3f4ac3b6817346fcb79ba73b914",
+          "probes": {
+            "public": true,
+            "book_empty": false,
+            "controls": true,
+            "single_empty": true
+          },
+          "public_feedback": null,
+          "cost": {
+            "cost_credits": 6.7885,
+            "reserved_credits": 0.0,
+            "calls": 7
+          }
+        },
+        {
+          "intent": {
+            "protocol": "cce2fb58be466cf0efcc7fa42487d95d4e109cd6cf0d99bad48011fe0237ea1c",
+            "phase": "config_recovery",
+            "task": "transfer-palette-book",
+            "repeat": 5,
+            "arm": "parent",
+            "pool": [
+              "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+            ],
+            "view": "issue",
+            "options": "94273fc55c3e3e3fd18be405728eec795db77bcafc40149fc84a97881a608804",
+            "snapshot": "6fda1b9499899eaca8d7857c267d707311a7236fd4471905c5f688e33b490ece",
+            "library": null,
+            "fixed": false,
+            "purpose": "evaluate"
+          },
+          "run": "9dd3f0946ada307a3eba68f7ee4cbbe5",
+          "state": "COMPLETE",
+          "passed": true,
+          "selected": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+          "route": "apply",
+          "reason": "The issue describes an inherited/optional palette override that may be null and asks to restore the factory (documented default) palette while preserving observable output (series colors) — exactly the skill's defaulting scenario. No exclusion applies: the default is a factory constant, and no need to distinguish null from omission.",
+          "first_solver_request": "2a49908593c034b6efdf28c2970cc80ad3b614dbf4626b6b300d70f3d2ca1043",
+          "router_request": "2b213d2570a788e48ea81905db4c090de030f633cf6b43da0a79d41192ed0df3",
+          "solver_calls": 8,
+          "patch": "25748fe0543c25697783b3085878804390c8c179bfaa7dc7eff6aa2591e491b8",
+          "probes": {
+            "public": true,
+            "book_empty": true,
+            "controls": true,
+            "single_empty": true
+          },
+          "public_feedback": null,
+          "cost": {
+            "cost_credits": 9.08363,
+            "reserved_credits": 0.0,
+            "calls": 9
+          }
+        },
+        {
+          "intent": {
+            "protocol": "cce2fb58be466cf0efcc7fa42487d95d4e109cd6cf0d99bad48011fe0237ea1c",
+            "phase": "config_recovery",
+            "task": "transfer-palette-book",
+            "repeat": 5,
+            "arm": "previous",
+            "pool": [
+              "152c284b2f238348d80c1f9d2ffc2cb43fcec8fe327f4589e66837170ca63c1e",
+              "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+            ],
+            "view": "public_shape",
+            "options": "dc8cb8007927f3778dcc0a1d89119f43de2f5cd077f6724de4b95588fa96a396",
+            "snapshot": "6fda1b9499899eaca8d7857c267d707311a7236fd4471905c5f688e33b490ece",
+            "library": null,
+            "fixed": false,
+            "purpose": "evaluate"
+          },
+          "run": "cfad78930dba50d20d1cde3436dd1f31",
+          "state": "COMPLETE",
+          "passed": true,
+          "selected": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+          "route": "apply",
+          "reason": "Issue asks to restore a documented factory preset (palette) when the inherited value can be null, and tests check colors(dict[null]) returning preset colors plus round-trip preservation via dump_book/load_book. This matches the default-restore adapter skill; no falsy-override semantics are involved.",
+          "first_solver_request": "2a49908593c034b6efdf28c2970cc80ad3b614dbf4626b6b300d70f3d2ca1043",
+          "router_request": "e75cbb44b3d8210d317cf2fcb663fd49c3051308d2a925f23905ee5119592fe9",
+          "solver_calls": 7,
+          "patch": "d501b4388dcb24f08323bb72c541e75288774f59fae5636567d1b29c63ff7647",
+          "probes": {
+            "public": true,
+            "book_empty": true,
+            "controls": true,
+            "single_empty": true
+          },
+          "public_feedback": null,
+          "cost": {
+            "cost_credits": 8.06434,
+            "reserved_credits": 0.0,
+            "calls": 8
+          }
+        },
+        {
+          "intent": {
+            "protocol": "cce2fb58be466cf0efcc7fa42487d95d4e109cd6cf0d99bad48011fe0237ea1c",
+            "phase": "config_recovery",
+            "task": "transfer-meter-view",
+            "repeat": 5,
+            "arm": "bare",
+            "pool": [],
+            "view": "issue",
+            "options": "f75b4e16ebc9dd9b1967dd0684f2f7cde031b4d4cb8060f6240988c29f8f33ff",
+            "snapshot": "3f8bbc20ea70d43e8cb5be2a3aa06567c087ca26ab6068af33cb8474c80882e5",
+            "library": null,
+            "fixed": false,
+            "purpose": "evaluate"
+          },
+          "run": "85fda2a8b8c0b74740787d54270909b7",
+          "state": "COMPLETE",
+          "passed": true,
+          "selected": null,
+          "route": "none",
+          "reason": null,
+          "first_solver_request": "4d68948caaec9ec3b19919e8512a37052d903df69d7b7531e03e4e067f48cf0f",
+          "router_request": null,
+          "solver_calls": 9,
+          "patch": "338476e5bf22a272e6b1647361fb949e0c931683a24601c8b53c082145c4fdcf",
+          "probes": {
+            "public": true,
+            "bookmark_zero": true,
+            "controls": true,
+            "direct_zero": true
+          },
+          "public_feedback": null,
+          "cost": {
+            "cost_credits": 5.72795,
+            "reserved_credits": 0.0,
+            "calls": 9
+          }
+        },
+        {
+          "intent": {
+            "protocol": "cce2fb58be466cf0efcc7fa42487d95d4e109cd6cf0d99bad48011fe0237ea1c",
+            "phase": "config_recovery",
+            "task": "transfer-meter-view",
+            "repeat": 5,
+            "arm": "previous",
+            "pool": [
+              "152c284b2f238348d80c1f9d2ffc2cb43fcec8fe327f4589e66837170ca63c1e",
+              "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+            ],
+            "view": "public_shape",
+            "options": "dc8cb8007927f3778dcc0a1d89119f43de2f5cd077f6724de4b95588fa96a396",
+            "snapshot": "3f8bbc20ea70d43e8cb5be2a3aa06567c087ca26ab6068af33cb8474c80882e5",
+            "library": null,
+            "fixed": false,
+            "purpose": "evaluate"
+          },
+          "run": "43c04c6e5944fd48024a4f2149973151",
+          "state": "COMPLETE",
+          "passed": true,
+          "selected": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+          "route": "apply",
+          "reason": "The issue asks to restore a documented preset default when the sampling interval is omitted (\"opened without a sampling interval\"), and the tests pass a null in a request dict expecting a default int attribute — a missing/null optional restore, not a falsy-but-valid override case. Skill 1 covers restoring a literal default constant at service entry points while keeping outputs compatible; the sibling bookmarks.py/service.py files match restoring the preset \"everywhere the view is used\".",
+          "first_solver_request": "ef7218364cf674d103649dc638f75bc7be6e955a05aac93bb617ebd583815e88",
+          "router_request": "3a04e72379531532d431f0c7de86aa700013fed03eea181841ec4ccfa438989d",
+          "solver_calls": 9,
+          "patch": "100f68fb27f6216c76df8c2d01b66a951ad99bb36168112b6a6b259734e283b0",
+          "probes": {
+            "public": true,
+            "bookmark_zero": true,
+            "controls": true,
+            "direct_zero": true
+          },
+          "public_feedback": null,
+          "cost": {
+            "cost_credits": 11.41937,
+            "reserved_credits": 0.0,
+            "calls": 10
+          }
+        },
+        {
+          "intent": {
+            "protocol": "cce2fb58be466cf0efcc7fa42487d95d4e109cd6cf0d99bad48011fe0237ea1c",
+            "phase": "config_recovery",
+            "task": "transfer-meter-view",
+            "repeat": 5,
+            "arm": "parent",
+            "pool": [
+              "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+            ],
+            "view": "issue",
+            "options": "94273fc55c3e3e3fd18be405728eec795db77bcafc40149fc84a97881a608804",
+            "snapshot": "3f8bbc20ea70d43e8cb5be2a3aa06567c087ca26ab6068af33cb8474c80882e5",
+            "library": null,
+            "fixed": false,
+            "purpose": "evaluate"
+          },
+          "run": "7b9c89c102fb24df9dd06d2aca8cf1c6",
+          "state": "COMPLETE",
+          "passed": true,
+          "selected": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+          "route": "apply",
+          "reason": "The issue asks to restore a documented default (preset sampling interval) when the client-supplied value is omitted, while keeping compatibility with existing saved dashboards—matching the defaulting/preset-restoration skill. No exclusion applies: no need to distinguish null from omitted, the preset is a constant, and no output format or falsy-value defaulting is involved.",
+          "first_solver_request": "ef7218364cf674d103649dc638f75bc7be6e955a05aac93bb617ebd583815e88",
+          "router_request": "1c67de4fab014cec08449b820a9c8130770e30263dfef4c32a73c2e1027d4b86",
+          "solver_calls": 8,
+          "patch": "33846b1c6e33da36c0847abc34a50ca45a7141e4f2924f7d40b8bccd1e85c479",
+          "probes": {
+            "public": true,
+            "bookmark_zero": true,
+            "controls": true,
+            "direct_zero": true
+          },
+          "public_feedback": null,
+          "cost": {
+            "cost_credits": 9.60515,
+            "reserved_credits": 0.0,
+            "calls": 9
+          }
+        },
+        {
+          "intent": {
+            "protocol": "cce2fb58be466cf0efcc7fa42487d95d4e109cd6cf0d99bad48011fe0237ea1c",
+            "phase": "config_recovery",
+            "task": "transfer-meter-view",
+            "repeat": 5,
+            "arm": "revised",
+            "pool": [
+              "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+              "5de43379038432cafd5c8f0d2a1addc0870729299436655f779dc33415775261"
+            ],
+            "view": "public_shape",
+            "options": "dc8cb8007927f3778dcc0a1d89119f43de2f5cd077f6724de4b95588fa96a396",
+            "snapshot": "3f8bbc20ea70d43e8cb5be2a3aa06567c087ca26ab6068af33cb8474c80882e5",
+            "library": null,
+            "fixed": false,
+            "purpose": "evaluate"
+          },
+          "run": "a6a71a6726d97a6ef9ceac3c32f9ee24",
+          "state": "COMPLETE",
+          "passed": true,
+          "selected": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+          "route": "apply",
+          "reason": "Dashboard without an interval should get a documented default preset (null → default int in open_meter), while keeping client values and saved dashboards compatible. Matches skill 0: optional override omitted/null, documented constant default restored, small dict-based service entry point. Test shows open_meter(dict[null]) and open_meter(dict[int]) with an int attribute equality check — a literal default restoration, not an instance-identity override case.",
+          "first_solver_request": "ef7218364cf674d103649dc638f75bc7be6e955a05aac93bb617ebd583815e88",
+          "router_request": "6d37a69ac2c8589d547d671a42a3dd02e19985926358a353a17e2c5d723a00a1",
+          "solver_calls": 13,
+          "patch": "338476e5bf22a272e6b1647361fb949e0c931683a24601c8b53c082145c4fdcf",
+          "probes": {
+            "public": true,
+            "bookmark_zero": true,
+            "controls": true,
+            "direct_zero": true
+          },
+          "public_feedback": null,
+          "cost": {
+            "cost_credits": 16.06983,
+            "reserved_credits": 0.0,
+            "calls": 14
+          }
+        },
+        {
+          "intent": {
+            "protocol": "cce2fb58be466cf0efcc7fa42487d95d4e109cd6cf0d99bad48011fe0237ea1c",
+            "phase": "config_recovery",
+            "task": "transfer-column-caption",
+            "repeat": 5,
+            "arm": "revised",
+            "pool": [
+              "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+              "5de43379038432cafd5c8f0d2a1addc0870729299436655f779dc33415775261"
+            ],
+            "view": "public_shape",
+            "options": "dc8cb8007927f3778dcc0a1d89119f43de2f5cd077f6724de4b95588fa96a396",
+            "snapshot": "f4ecca08502a18298a58bd87eedea3100446322e87f9264f38e89a63ec262f0d",
+            "library": null,
+            "fixed": false,
+            "purpose": "evaluate"
+          },
+          "run": "a6602f3aa9d71146ebc4487a704c43e1",
+          "state": "FAILED",
+          "passed": false,
+          "selected": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+          "route": "apply",
+          "reason": "The issue is an unset column heading (omitted/null override) being rendered as an empty cell, and the fix is to restore the documented caption default while keeping custom captions consistent — precisely skill 0's restore-documented-preset scenario. The saved-spec path only needs default-consistency, not identity-preserving falsy override handling, and the documented caption is a literal constant default so no exclusions block.",
+          "first_solver_request": "5a49b11dd2040b48d7822937298753026794b36d69247f441fa96e9ce228e553",
+          "router_request": "4e0c5737c23b02a34cf45205dff88243da48a9a0bb1fdc6b0ecc98d3814eda0e",
+          "solver_calls": 9,
+          "patch": "dc104ff63d6025fe91f846b9895f59554f7304923404db3c6556a15c4da9dc39",
+          "probes": {
+            "public": true,
+            "controls": true,
+            "inline_blank": true,
+            "restored_blank": false
+          },
+          "public_feedback": null,
+          "cost": {
+            "cost_credits": 11.15258,
+            "reserved_credits": 0.0,
+            "calls": 10
+          }
+        },
+        {
+          "intent": {
+            "protocol": "cce2fb58be466cf0efcc7fa42487d95d4e109cd6cf0d99bad48011fe0237ea1c",
+            "phase": "config_recovery",
+            "task": "transfer-column-caption",
+            "repeat": 5,
+            "arm": "previous",
+            "pool": [
+              "152c284b2f238348d80c1f9d2ffc2cb43fcec8fe327f4589e66837170ca63c1e",
+              "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+            ],
+            "view": "public_shape",
+            "options": "dc8cb8007927f3778dcc0a1d89119f43de2f5cd077f6724de4b95588fa96a396",
+            "snapshot": "f4ecca08502a18298a58bd87eedea3100446322e87f9264f38e89a63ec262f0d",
+            "library": null,
+            "fixed": false,
+            "purpose": "evaluate"
+          },
+          "run": "1aa0e5e40542ac4814ff3ceed22e3612",
+          "state": "FAILED",
+          "passed": false,
+          "selected": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+          "route": "apply",
+          "reason": "The issue asks to restore a documented default caption when a column heading is unset, while preserving client-supplied custom captions and keeping the same rendering between live export and saved spec. This matches the default/preset-restoration skill: entry points (render/spec/load/reader in service.py/catalog.py) feeding an exported header, with a literal documented caption default. It is not a falsy-override-identity problem; the distinction is unset vs custom, and the fix is defaulting only the omitted heading.",
+          "first_solver_request": "5a49b11dd2040b48d7822937298753026794b36d69247f441fa96e9ce228e553",
+          "router_request": "eef97a316ee0dce4ce9d824955ccca4da711c245d96584aef7e1732243198fee",
+          "solver_calls": 7,
+          "patch": "deae0d7a391bb69e79b498f21ded2633db099fb3ab1eb78a24be1877cb782ca7",
+          "probes": {
+            "public": true,
+            "controls": true,
+            "inline_blank": false,
+            "restored_blank": false
+          },
+          "public_feedback": null,
+          "cost": {
+            "cost_credits": 9.34738,
+            "reserved_credits": 0.0,
+            "calls": 8
+          }
+        },
+        {
+          "intent": {
+            "protocol": "cce2fb58be466cf0efcc7fa42487d95d4e109cd6cf0d99bad48011fe0237ea1c",
+            "phase": "config_recovery",
+            "task": "transfer-column-caption",
+            "repeat": 5,
+            "arm": "parent",
+            "pool": [
+              "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+            ],
+            "view": "issue",
+            "options": "94273fc55c3e3e3fd18be405728eec795db77bcafc40149fc84a97881a608804",
+            "snapshot": "f4ecca08502a18298a58bd87eedea3100446322e87f9264f38e89a63ec262f0d",
+            "library": null,
+            "fixed": false,
+            "purpose": "evaluate"
+          },
+          "run": "a48697fe00c4d24376b0a258fd95d245",
+          "state": "FAILED",
+          "passed": false,
+          "selected": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+          "route": "apply",
+          "reason": "The issue describes an omitted optional value (unset column heading) that should fall back to a documented constant default (its caption) while preserving client-supplied custom values, matching the defaulting/preset-restoration skill. No exclusion applies: the default is a literal documented caption, and consistency with custom captions is preserved rather than rewritten.",
+          "first_solver_request": "5a49b11dd2040b48d7822937298753026794b36d69247f441fa96e9ce228e553",
+          "router_request": "518c790c3f98c78139eda64ac900518c6660d867d05eb289523e77ec2d194216",
+          "solver_calls": 9,
+          "patch": "df177a9350b653a3a8deb5bacfcfb16ba3f76e5e1552af812bb2e1981d4cbd34",
+          "probes": {
+            "public": true,
+            "controls": true,
+            "inline_blank": false,
+            "restored_blank": false
+          },
+          "public_feedback": null,
+          "cost": {
+            "cost_credits": 11.17923,
+            "reserved_credits": 0.0,
+            "calls": 10
+          }
+        },
+        {
+          "intent": {
+            "protocol": "cce2fb58be466cf0efcc7fa42487d95d4e109cd6cf0d99bad48011fe0237ea1c",
+            "phase": "config_recovery",
+            "task": "transfer-column-caption",
+            "repeat": 5,
+            "arm": "bare",
+            "pool": [],
+            "view": "issue",
+            "options": "f75b4e16ebc9dd9b1967dd0684f2f7cde031b4d4cb8060f6240988c29f8f33ff",
+            "snapshot": "f4ecca08502a18298a58bd87eedea3100446322e87f9264f38e89a63ec262f0d",
+            "library": null,
+            "fixed": false,
+            "purpose": "evaluate"
+          },
+          "run": "2a4ccc79268b287a8f9662615a5657d2",
+          "state": "FAILED",
+          "passed": false,
+          "selected": null,
+          "route": "none",
+          "reason": null,
+          "first_solver_request": "ae2adb9da07e37d97701d44dd0071fbab5f50bfc951880153b0b9654ef52e266",
+          "router_request": null,
+          "solver_calls": 8,
+          "patch": "9f6753a9009680d03266d0460a0b36a50b3a6bea5a25a5d8afb11091b5dc9fda",
+          "probes": {
+            "public": true,
+            "controls": true,
+            "inline_blank": false,
+            "restored_blank": false
+          },
+          "public_feedback": null,
+          "cost": {
+            "cost_credits": 5.08898,
+            "reserved_credits": 0.0,
+            "calls": 8
+          }
+        },
+        {
+          "intent": {
+            "protocol": "cce2fb58be466cf0efcc7fa42487d95d4e109cd6cf0d99bad48011fe0237ea1c",
+            "phase": "config_recovery",
+            "task": "transfer-print-ticket",
+            "repeat": 5,
+            "arm": "revised",
+            "pool": [
+              "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+              "5de43379038432cafd5c8f0d2a1addc0870729299436655f779dc33415775261"
+            ],
+            "view": "public_shape",
+            "options": "dc8cb8007927f3778dcc0a1d89119f43de2f5cd077f6724de4b95588fa96a396",
+            "snapshot": "d64bc8475cebc14aac7163cc11c4805e87f65831281eaf700ec62c874f4f633e",
+            "library": null,
+            "fixed": false,
+            "purpose": "evaluate"
+          },
+          "run": "7c2281a8813af532c953ac2d366d2408",
+          "state": "COMPLETE",
+          "passed": true,
+          "selected": "5de43379038432cafd5c8f0d2a1addc0870729299436655f779dc33415775261",
+          "route": "apply",
+          "reason": "The issue describes an explicit falsy/null override in a profile/ticket being discarded so a default duplex preset is used instead, and tests check identity of results for sides with a null-valued dict and read_ticket of a supplied ticket. Skill 1 (honor falsy-but-valid overrides via identity tests, make serialization/ticket preserve the selection) matches directly; skill 0 would default the null and lose the explicit choice.",
+          "first_solver_request": "7716678a87f4807144e995d3cccab59f36fee238ddb065f0cac4aa66f3aec27b",
+          "router_request": "4992e3244a104b3fb3d2fce003bd8b0a0fbfd726d0e71848976acaddd8e1490f",
+          "solver_calls": 13,
+          "patch": "3a5a40c4995d1ca5c1ee3dab4423f31730f350e7eba2b0d09f441cfe73adae99",
+          "probes": {
+            "public": true,
+            "controls": true,
+            "local_simplex": true,
+            "queued_simplex": true
+          },
+          "public_feedback": null,
+          "cost": {
+            "cost_credits": 26.90556,
+            "reserved_credits": 0.0,
+            "calls": 14
+          }
+        },
+        {
+          "intent": {
+            "protocol": "cce2fb58be466cf0efcc7fa42487d95d4e109cd6cf0d99bad48011fe0237ea1c",
+            "phase": "config_recovery",
+            "task": "transfer-print-ticket",
+            "repeat": 5,
+            "arm": "parent",
+            "pool": [
+              "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+            ],
+            "view": "issue",
+            "options": "94273fc55c3e3e3fd18be405728eec795db77bcafc40149fc84a97881a608804",
+            "snapshot": "d64bc8475cebc14aac7163cc11c4805e87f65831281eaf700ec62c874f4f633e",
+            "library": null,
+            "fixed": false,
+            "purpose": "evaluate"
+          },
+          "run": "9fe8997313bbbbcb0c42e8a1ba617b6a",
+          "state": "COMPLETE",
+          "passed": true,
+          "selected": "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f",
+          "route": "apply",
+          "reason": "The issue describes an optional profile entry that can be null, where the documented site duplex preset (a literal default) should be restored while keeping explicit client choices. This matches the defaulting-preset skill; no exclusion applies since only null is treated, not falsy or computed values.",
+          "first_solver_request": "87828a380a63cf727a0d148c2d7894da3a0e4934a6b3c58922226305082fe1da",
+          "router_request": "174c48aed93aa32966d8966996f7861c01505debf6cc174ea28ab6325ae68bca",
+          "solver_calls": 8,
+          "patch": "62ef2eff7fe95cca7171eb38bd26b66f1e627ca9e0ca9273c01d7097ecc25e65",
+          "probes": {
+            "public": true,
+            "controls": true,
+            "local_simplex": true,
+            "queued_simplex": true
+          },
+          "public_feedback": null,
+          "cost": {
+            "cost_credits": 9.3514,
+            "reserved_credits": 0.0,
+            "calls": 9
+          }
+        },
+        {
+          "intent": {
+            "protocol": "cce2fb58be466cf0efcc7fa42487d95d4e109cd6cf0d99bad48011fe0237ea1c",
+            "phase": "config_recovery",
+            "task": "transfer-print-ticket",
+            "repeat": 5,
+            "arm": "bare",
+            "pool": [],
+            "view": "issue",
+            "options": "f75b4e16ebc9dd9b1967dd0684f2f7cde031b4d4cb8060f6240988c29f8f33ff",
+            "snapshot": "d64bc8475cebc14aac7163cc11c4805e87f65831281eaf700ec62c874f4f633e",
+            "library": null,
+            "fixed": false,
+            "purpose": "evaluate"
+          },
+          "run": "6c52fcd646c697d1a44a3a5fc419ca03",
+          "state": "COMPLETE",
+          "passed": true,
+          "selected": null,
+          "route": "none",
+          "reason": null,
+          "first_solver_request": "b8fcba174224db6302f901b6f84b7723645269c42fbbbb578c49714561efd20f",
+          "router_request": null,
+          "solver_calls": 14,
+          "patch": "7a0b0994912e01f6e0b3ab307f8edf216a6021feabc1870167060356b2bfaf80",
+          "probes": {
+            "public": true,
+            "controls": true,
+            "local_simplex": true,
+            "queued_simplex": true
+          },
+          "public_feedback": null,
+          "cost": {
+            "cost_credits": 9.87138,
+            "reserved_credits": 0.0,
+            "calls": 14
+          }
+        },
+        {
+          "intent": {
+            "protocol": "cce2fb58be466cf0efcc7fa42487d95d4e109cd6cf0d99bad48011fe0237ea1c",
+            "phase": "config_recovery",
+            "task": "transfer-print-ticket",
+            "repeat": 5,
+            "arm": "previous",
+            "pool": [
+              "152c284b2f238348d80c1f9d2ffc2cb43fcec8fe327f4589e66837170ca63c1e",
+              "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+            ],
+            "view": "public_shape",
+            "options": "dc8cb8007927f3778dcc0a1d89119f43de2f5cd077f6724de4b95588fa96a396",
+            "snapshot": "d64bc8475cebc14aac7163cc11c4805e87f65831281eaf700ec62c874f4f633e",
+            "library": null,
+            "fixed": false,
+            "purpose": "evaluate"
+          },
+          "run": "7cbb175369a0e256525090fe861bbd30",
+          "state": "COMPLETE",
+          "passed": true,
+          "selected": "152c284b2f238348d80c1f9d2ffc2cb43fcec8fe327f4589e66837170ca63c1e",
+          "route": "apply",
+          "reason": "A null entry in the caller-supplied profile is discarded by a truthiness check, causing a default duplex acquisition instead of honoring the explicit (falsy-but-valid) override. The public test checks sides with a dict containing null and identity-compares the resulting bool, and read_ticket re-checks the same override in the queued ticket path, matching conditions 0 and 3. The spec wants the falsy override honored, not a fallback, so skill 0 applies and its exclusions are not triggered.",
+          "first_solver_request": "114cf36e30778341a25bab5ce2cd1205befe320a8bb50720a00a6096378730e0",
+          "router_request": "138c956e7c78479667af6bb4ab58c5903691baeef694fe6604db60388e4ad146",
+          "solver_calls": 11,
+          "patch": "645ca3ee89982e5917500e7941ea98c42dc34790c12caf2f2f80e05324b6a0b0",
+          "probes": {
+            "public": true,
+            "controls": true,
+            "local_simplex": true,
+            "queued_simplex": true
+          },
+          "public_feedback": null,
+          "cost": {
+            "cost_credits": 21.84604,
+            "reserved_credits": 0.0,
+            "calls": 12
+          }
+        }
+      ]
+    ]
+  },
+  "holdout_exposures": 0,
+  "release_transactions": [],
+  "comparison": {
+    "affected_rounds": [
+      6
+    ],
+    "complete_seven": true,
+    "selected_attempts": {
+      "6": 1
+    },
+    "direct": {
+      "transfer-print-ticket": {
+        "arms": {
+          "previous": {
+            "total": 7,
+            "graded": 7,
+            "passed": 7,
+            "selected_specialization": 6,
+            "probes": {
+              "controls": 7
+            }
+          },
+          "revised": {
+            "total": 7,
+            "graded": 7,
+            "passed": 7,
+            "selected_specialization": 4,
+            "probes": {
+              "controls": 7
+            }
+          }
+        },
+        "passed": true,
+        "complete": true
+      },
+      "learn-scheduler-watch": {
+        "arms": {
+          "previous": {
+            "total": 5,
+            "graded": 5,
+            "passed": 5,
+            "selected_specialization": 5,
+            "probes": {
+              "controls": 5,
+              "wake_replay": 5
+            }
+          },
+          "revised": {
+            "total": 5,
+            "graded": 5,
+            "passed": 5,
+            "selected_specialization": 5,
+            "probes": {
+              "controls": 5,
+              "wake_replay": 5
+            }
+          }
+        },
+        "passed": true,
+        "complete": true
+      }
+    },
+    "configuration": {
+      "parent": {
+        "tasks": {
+          "transfer-meter-view": {
+            "rounds": 7,
+            "raw_loss_veto": 6,
+            "regressed": false,
+            "win": 4,
+            "loss": 0,
+            "tie": 3,
+            "changed_win": 1,
+            "changed_loss": 0,
+            "same_win": 3,
+            "same_loss": 0,
+            "attributed": 0,
+            "ungraded": 0
+          },
+          "transfer-column-caption": {
+            "rounds": 7,
+            "raw_loss_veto": 6,
+            "regressed": false,
+            "win": 2,
+            "loss": 1,
+            "tie": 4,
+            "changed_win": 0,
+            "changed_loss": 0,
+            "same_win": 2,
+            "same_loss": 1,
+            "attributed": 0,
+            "ungraded": 0
+          },
+          "transfer-print-ticket": {
+            "rounds": 7,
+            "raw_loss_veto": 6,
+            "regressed": false,
+            "win": 1,
+            "loss": 0,
+            "tie": 6,
+            "changed_win": 0,
+            "changed_loss": 0,
+            "same_win": 1,
+            "same_loss": 0,
+            "attributed": 0,
+            "ungraded": 0
+          },
+          "transfer-palette-book": {
+            "rounds": 7,
+            "raw_loss_veto": 6,
+            "regressed": false,
+            "win": 0,
+            "loss": 2,
+            "tie": 5,
+            "changed_win": 0,
+            "changed_loss": 0,
+            "same_win": 0,
+            "same_loss": 2,
+            "attributed": 0,
+            "ungraded": 0
+          }
+        },
+        "block": {
+          "baseline_minus_candidate_by_round": [
+            -1,
+            -2,
+            -1,
+            -1,
+            -1,
+            1,
+            1
+          ],
+          "one_sided_signflip_p": 0.9453125,
+          "veto": false
+        }
+      },
+      "bare": {
+        "tasks": {
+          "transfer-meter-view": {
+            "rounds": 7,
+            "raw_loss_veto": 6,
+            "regressed": false,
+            "win": 3,
+            "loss": 0,
+            "tie": 4,
+            "changed_win": 3,
+            "changed_loss": 0,
+            "same_win": 0,
+            "same_loss": 0,
+            "attributed": 0,
+            "ungraded": 0
+          },
+          "transfer-column-caption": {
+            "rounds": 7,
+            "raw_loss_veto": 6,
+            "regressed": false,
+            "win": 3,
+            "loss": 1,
+            "tie": 3,
+            "changed_win": 3,
+            "changed_loss": 1,
+            "same_win": 0,
+            "same_loss": 0,
+            "attributed": 0,
+            "ungraded": 0
+          },
+          "transfer-print-ticket": {
+            "rounds": 7,
+            "raw_loss_veto": 6,
+            "regressed": false,
+            "win": 0,
+            "loss": 0,
+            "tie": 7,
+            "changed_win": 0,
+            "changed_loss": 0,
+            "same_win": 0,
+            "same_loss": 0,
+            "attributed": 0,
+            "ungraded": 0
+          },
+          "transfer-palette-book": {
+            "rounds": 7,
+            "raw_loss_veto": 6,
+            "regressed": false,
+            "win": 4,
+            "loss": 1,
+            "tie": 2,
+            "changed_win": 4,
+            "changed_loss": 1,
+            "same_win": 0,
+            "same_loss": 0,
+            "attributed": 0,
+            "ungraded": 0
+          }
+        },
+        "block": {
+          "baseline_minus_candidate_by_round": [
+            -1,
+            -2,
+            -3,
+            0,
+            -2,
+            0,
+            0
+          ],
+          "one_sided_signflip_p": 1.0,
+          "veto": false
+        }
+      }
+    },
+    "previous_vs_revised": {
+      "transfer-column-caption": {
+        "planned": 7,
+        "graded_pairs": 7,
+        "previous_pass": 2,
+        "revised_pass": 3,
+        "revised_only": 3,
+        "previous_only": 2,
+        "selected_old": 0,
+        "selected_revision": 0,
+        "identical_first_requests": 7
+      },
+      "transfer-meter-view": {
+        "planned": 7,
+        "graded_pairs": 7,
+        "previous_pass": 5,
+        "revised_pass": 7,
+        "revised_only": 2,
+        "previous_only": 0,
+        "selected_old": 0,
+        "selected_revision": 0,
+        "identical_first_requests": 7
+      },
+      "transfer-palette-book": {
+        "planned": 7,
+        "graded_pairs": 7,
+        "previous_pass": 7,
+        "revised_pass": 5,
+        "revised_only": 0,
+        "previous_only": 2,
+        "selected_old": 0,
+        "selected_revision": 0,
+        "identical_first_requests": 7
+      },
+      "transfer-print-ticket": {
+        "planned": 7,
+        "graded_pairs": 7,
+        "previous_pass": 7,
+        "revised_pass": 7,
+        "revised_only": 0,
+        "previous_only": 0,
+        "selected_old": 6,
+        "selected_revision": 4,
+        "identical_first_requests": 0
+      }
+    }
+  },
+  "billing": {
+    "cost_credits": 173.50944,
+    "reserved_credits": 0.0,
+    "calls": 155
+  },
+  "patch_replay": {
+    "unique": 15,
+    "named": 15,
+    "inventory": "0bc8d4f5e16a3cd6db6d7fbda447d0a8376ded26939a683de262eb02630b50c2"
+  }
+}
