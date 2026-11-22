@@ -121,3 +121,25 @@ def test_gate_uses_actual_new_child_two_sources_and_seven_round_protection():
     affected["previous"]["passed"] = None
     assert not evaluate(p, h, rows)["passed"]
     assert plan(p, "revision", None, {})["mode"] == "protection" and plan(p, None, None, {})["counts"] == {}
+
+
+def test_learning_selector_requires_strict_scope_gain_and_complete_nonregression():
+    from workflow_candidate_selection import choose
+
+    initial = dict(boolean_misroutes=4, wake_pass=3, total_pass=7, complete=True)
+    better = dict(boolean_misroutes=0, wake_pass=3, total_pass=7, complete=True)
+    assert choose(initial, better)
+    assert not choose(initial, initial)
+    assert not choose(initial, dict(better, wake_pass=2))
+    assert not choose(initial, dict(better, total_pass=6))
+    assert not choose(initial, dict(better, complete=False))
+    assert not choose(dict(initial, complete=False), better)
+
+
+def test_gate_collection_keeps_screening_slots_out_of_the_formal_panel():
+    from report_workflow_revision import panel_rows
+
+    p = read(PUBLIC)
+    h = plan(p, "revision", "watermark-bus", {})
+    with pytest.raises(ValueError, match="partial panel"):
+        panel_rows([dict(intent=dict(phase="screen", task="watermark-bus", repeat=0, arm="parent"))], h)
