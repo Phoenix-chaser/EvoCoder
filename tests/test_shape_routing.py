@@ -129,3 +129,182 @@ def test_protected_regressions_and_missing_or_duplicate_rounds_fail_closed():
     for bad in [rows[:-1], rows[:-1] + [deepcopy(rows[-2])], rows[5:]]:
         with pytest.raises(ValueError):
             repeated_gate(bad, expected)
+
+
+def test_repeat_evaluation_binds_real_entrypoint_to_all_rounds_and_equal_action_slots(settings, store):
+    from test_budget_model import live_settings
+    from test_library import GradeRunner, seed
+    from evocoder.contracts import canonical
+    from evocoder.library import SkillLibrary
+
+    live = live_settings(settings).model_copy(update={"library_route_context": "public_shape"})
+    ancestor = fixture_task("route-seed", "learn", False)
+    skill = seed(live, store, ancestor)
+    dev = [fixture_task("da-one", "dev", False), fixture_task("da-two", "dev", False)]
+
+    class WireRunner(GradeRunner):
+        def solve(self, task, *, use_active, purpose, skill_ids, reserve_empty_route=False):
+            assert reserve_empty_route == (skill_ids == [])
+            key = super().solve(task, use_active=use_active, purpose=purpose, skill_ids=skill_ids)
+            result = self.store.run(key)["result"]
+            result["routing"] = {"decision": "apply" if skill_ids else "none"}
+            with self.store.connect(write=True) as db:
+                db.execute("UPDATE runs SET result=?,mode='live' WHERE id=?", (canonical(result), key))
+            self.store.event(
+                key,
+                "MODEL_RESPONSE",
+                {"expected_function": "submit_action", "request_body_hash": digest([task.id, skill_ids])},
+            )
+            return key
+
+    runner = WireRunner(store, skill)
+    report = SkillLibrary(live, store, runner).evaluate(skill, dev, [ancestor], repeated=True)
+    assert report["gate"]["passed"] and report["mode"] == "live"
+    assert len(report["rows"]) == 2 * 5 + 3
+    assert len(runner.calls) == 2 * len(report["rows"])
+    store.activate_library(report["library_id"], report["receipt"], None, mode="live")
+    assert store.get_artifact(store.active_library())["route_context"] == "public_shape"
+
+
+def test_repeat_evaluation_requires_live_traces_and_matching_skill_identity(settings, store):
+    from evocoder.library import SkillLibrary
+
+    with pytest.raises(ValueError, match="wire receipts"):
+        SkillLibrary(settings, store).evaluate("unused", [], [], repeated=True)
+    rows, expected = panel()
+    rows[0]["candidate_request"] = rows[0]["baseline_request"]
+    with pytest.raises(ValueError, match="different skills"):
+        repeated_gate(rows, expected)
+    rows, expected = panel()
+    rows[0]["infrastructure_error"] = True
+    receipt = repeated_gate(rows, expected)
+    assert not receipt["gate"]["passed"] and receipt["infrastructure_errors"] == ["a"]
+
+
+@pytest.mark.docker
+def test_bare_matched_slot_consumes_one_action_without_a_router_call(settings, store):
+    from evocoder.contracts import Action
+    from evocoder.runtime import Runner
+
+    cfg = settings.model_copy(update={"max_steps": 3})
+    task = fixture_task("slots", "dev", False)
+
+    class Inspector:
+        def request(self, schema, prompt, data, rid):
+            assert schema is Action
+            return Action(tool="read", path=task.editable[0], reason="Inspect public behavior")
+
+    key = Runner(cfg, store, Inspector()).solve(
+        task, use_active=False, purpose="evaluate", skill_ids=[], reserve_empty_route=True
+    )
+    result = store.run(key)
+    assert result["state"] == "EXHAUSTED" and result["result"]["budget_steps"] == 3
+    events = store.events(key)
+    assert sum(e["kind"] == "ACTION" for e in events) == 2
+    assert [e["payload"]["decision"] for e in events if e["kind"] == "SKILL_ROUTE"] == ["none"]
+
+
+def test_release_needs_two_object_sources_and_also_protects_current_deployment(monkeypatch):
+    monkeypatch.syspath_prepend(str(Path(__file__).resolve().parents[1] / "scripts"))
+    from run_shape_routing import CHILD, decisions
+
+    p = {
+        "objects": ["object-a", "object-b"],
+        "config": ["config-a", "config-b"],
+        "support": {"old": digest("old")},
+    }
+    rows, expected = [], {}
+    for task in [*p["objects"], *p["config"], *p["support"]]:
+        split = "learn" if task == "old" else "dev"
+        expected[task] = (split, task, digest(task))
+        for n in range(3 if split == "learn" else 5):
+            r = dict(task=task, repeat=n, split=split, group=task, snapshot=digest(task))
+            for name in ("bare", "parent", "issue_portfolio", "portfolio"):
+                chosen = CHILD if name == "portfolio" and split == "dev" else None
+                r[name] = dict(
+                    run=f"{task}-{n}-{name}",
+                    image="same-image",
+                    passed=bool(chosen or n >= 3 or split == "learn"),
+                    selected=chosen,
+                    route="apply" if chosen else "none",
+                    first_solver_request=digest([task, chosen]),
+                )
+            rows.append(r)
+    outcomes, passed = decisions(p, rows, expected)
+    assert passed and len(outcomes["objects_vs_parent"]["repeat_confirmed_improved_groups"]) == 2
+    lost_objects = deepcopy(rows)
+    for r in lost_objects:
+        if r["task"] in p["objects"]:
+            r["parent"]["passed"] = True
+    outcomes, passed = decisions(p, lost_objects, expected)
+    assert outcomes["whole_vs_parent"]["gate"]["passed"] and not passed
+    for r in rows:
+        if r["task"] == "old" and r["repeat"] < 2:
+            r["parent"]["passed"] = r["portfolio"]["passed"] = False
+    outcomes, passed = decisions(p, rows, expected)
+    assert outcomes["whole_vs_parent"]["gate"]["passed"] and not passed
+    assert outcomes["whole_vs_bare"]["tasks"]["old"]["raw_majority_loss"]
+
+
+def test_public_study_recomputes_attribution_chronology_and_holdout_access(monkeypatch):
+    monkeypatch.syspath_prepend(str(Path(__file__).resolve().parents[1] / "scripts"))
+    from report_shape_routing import PUBLIC, RESULT, read, verify
+
+    p, original = read(PUBLIC), read(RESULT)
+    assert verify(original, p)["holdout"] == original["holdout_exposures"]
+
+    def fabricated_repeat(d):
+        d["dev"][-1] = deepcopy(d["dev"][0])
+
+    def fabricated_child_win(d):
+        task = p["objects"][0]
+        d["gate"]["decisions"]["objects_vs_parent"]["tasks"][task]["attributed_wins"] += 1
+
+    def altered_wire(d):
+        r = next(
+            r
+            for r in d["dev"]
+            if r["portfolio"]["first_solver_request"] != r["parent"]["first_solver_request"]
+        )
+        r["portfolio"]["first_solver_request"] = r["parent"]["first_solver_request"]
+
+    def crossed_phases(d):
+        learning = d["billing"][d["routes"][0]["run"]]["study_calls"]
+        development = d["billing"][d["dev"][0]["bare"]["run"]]["study_calls"]
+        learning[0], development[0] = development[0], learning[0]
+
+    def switched_exposure(d):
+        d["holdout_exposures"] += 1
+
+    def fabricated_release(d):
+        d["published"] = not d["published"]
+
+    def altered_router_request(d):
+        d["wire_profile"]["temperature"] = 0.0
+
+    def imputed_original(d):
+        next(iter(d["partial_runs"].values()))["repair_grade"] = True
+
+    def removed_reservation(d):
+        key = next(iter(d["partial_runs"]))
+        d["billing"][key]["reserved_nanos"] = 0
+
+    def changed_intent(d):
+        d["slot_options"]["portfolio"] = digest("another-model-configuration")
+
+    for change in (
+        fabricated_repeat,
+        fabricated_child_win,
+        altered_wire,
+        crossed_phases,
+        switched_exposure,
+        fabricated_release,
+        altered_router_request,
+        imputed_original,
+        removed_reservation,
+        changed_intent,
+    ):
+        bad = deepcopy(original)
+        change(bad)
+        with pytest.raises(ValueError):
+            verify(bad, p)
