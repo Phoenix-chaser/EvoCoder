@@ -1,0 +1,6 @@
+{
+  "protocol": "1ec246da6a813d0b1386f966d86d7e4bf96f43db9359e6231151da0894925c28",
+  "first_missing": "e011f7b165adb49b2fb054b9996f90a9",
+  "collector": "fa652f724d1fe49e36a71d7cc4ff95195279f002cc6457f4a512c33beee3a645",
+  "rule": "Finish all originally scheduled support arms with their original run IDs, order and configuration. Preserve each provider 5xx attempt without a submitted patch as ungraded with its original reservation. Do not replay or replace it. Collection after this incident can only close with a rejecting receipt. Report effects from the complete development and configuration panels, and descriptive available support outcomes with their actual denominators. The original release policy, test seal and no-rerun rule still apply."
+}
