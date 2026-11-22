@@ -1,0 +1,59 @@
+{
+  "study": "one-shot-independent-configuration-release-confirmation-v1",
+  "base": "aacf076a8acc7009c661e87080779875e0c5b11c499d9c9ec78bcc05065aa188",
+  "panel": "76474b5e92cf9a1556f98debc0b1fa89b057ef6e134abb826b78a9b2dc960d3a",
+  "original_receipt": "47d314fa3f7d7cdd3ff13b489d41fa4f94b18102a64925399ae656ce9b569829",
+  "candidate": "5de43379038432cafd5c8f0d2a1addc0870729299436655f779dc33415775261",
+  "model": "glm-5.3",
+  "config": [
+    "transfer-meter-view",
+    "transfer-column-caption",
+    "transfer-print-ticket",
+    "transfer-palette-book"
+  ],
+  "holdout": {
+    "scalar": [
+      "cache-01",
+      "cache-02",
+      "cache-03",
+      "cache-04",
+      "cache-05",
+      "report-01",
+      "report-02",
+      "report-03",
+      "report-04",
+      "report-05"
+    ],
+    "layers": [
+      "notify-01",
+      "notify-02",
+      "notify-03",
+      "notify-04",
+      "notify-05",
+      "renderer-01",
+      "renderer-02",
+      "renderer-03",
+      "renderer-04",
+      "renderer-05"
+    ],
+    "batch": [
+      "events-01",
+      "events-02",
+      "events-03",
+      "events-04",
+      "events-05",
+      "checkpoint-01",
+      "checkpoint-02",
+      "checkpoint-03",
+      "checkpoint-04",
+      "checkpoint-05"
+    ]
+  },
+  "trigger": "Original fixed object and support panels completed; TLS failures left the formal seven-block configuration comparison incomplete. The original rejecting SQL receipt, its ledger and missing values remain immutable.",
+  "nonconfig": "Carry forward every original, complete non-configuration gate slot, with its exact run/patch/request, including the full source efficacy panels and ancestry regressions. No new possibility of replacing a measured harm.",
+  "config_rule": "All FOUR original configurations, all FOUR original arms, all SEVEN rounds fresh. No original config pass or loss, nor any diagnostic recovery run, is used to fill the new matrix. Same counterbalanced order, models, views and 15 solver actions. At most two whole attempts at a round only when a provider transport error has produced no terminal grade. Retain all attempts. Use the first complete block. Stop release on any remaining unknown grade. No retries for numeric results. Confirm just once, regardless of the descriptive addendum results.",
+  "release": "Run the exact previously frozen five-round attributed-win, changed-request/raw/round-block protections and targeted print/scheduler checks. Additionally veto any observed harm that already crossed a per-task protection using mutually graded original config pairs. A fresh passing SQL evaluator receipt and live CAS in the confirmation deployment are required. Broadcast both formal decisions. Keep the original's snapshot dated at closure and disclose that the object and ancestral trials were reused; only configuration is replicated.",
+  "holdout_rule": "Only after evaluator-issued live CAS publication. Claim the original 30 frozen configuration tasks once, one bare and one solve via the actual published library per task. Ten scalar, ten layered, ten batch; three equal-weight cumulative gains plus stratum gains. Zero learning or adaptive repeats; report any curve shape. No test inference on rejection.",
+  "unit": "GLM plan credits",
+  "workers": 4
+}
