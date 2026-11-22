@@ -5,7 +5,7 @@
 ## 学习与发布
 
 - 学习流默认用同一分支的新版本替换旧版。评测时可用 `--retain-parent` 保留直接父版并加入子版。库最多容纳八个技能，每个同源组合最多包含一个直接父子对。
-- 一次语义选择最多注入一个技能。GLM 看到候选的适用条件、禁用条件和从零开始的索引。默认只给题面。可选的 `public_preview` 还会给出公开说明和可编辑源码的有限摘录，供 GLM 引用。执行器校验引用和条件索引，再绑定实际技能 ID。发布清单固定路由使用的输入范围。[并列技能路由实验](parallel-routing-study.md)
+- 一次语义选择最多注入一个技能。GLM 看到候选的适用条件、禁用条件和从零开始的索引。默认只给题面。设置 `public_shape` 可附加公开测试的文件名、调用和断言形状，路由与求解仍各用原来的动作预算。可选的 `public_preview` 还会给出公开说明和可编辑源码的有限摘录，供 GLM 引用。执行器校验引用和条件索引，再绑定实际技能 ID。发布清单固定路由使用的输入范围。[并列技能路由实验](parallel-routing-study.md)
 - 选择也占用原有模型步骤。跳过、条件非法和不确定均不注入技能；只有明确 skip 或空池才能创建新分支。不确定/非法响应不能成为“发现新技能”的依据。
 - 修订的父版本必须等于该任务实际应用的版本，并有符合策略的公开执行失败。新分支只冻结当前学习轨迹，避免把不相关分支的失败归到父技能。子版本沿用本分支证据，最多十二个运行；完整祖先证据继续保存在本地。
 - 待验证或被拒绝版本只在 learn 沙箱试用；普通任务只能显式使用已发布技能库。单技能发布与技能库发布使用不同的收据和状态，避免隐式互相替换。
@@ -48,11 +48,15 @@ uv run --locked evocoder run TASK.json --library active
 uv run --locked evocoder library-evaluate CANDIDATE_ID --manifest PATH/manifest.json
 # 让模型在父版、子版和跳过之间选择
 uv run --locked evocoder library-evaluate CANDIDATE_ID --retain-parent --manifest PATH/manifest.json
+# 真实模式下五轮开发、三轮学习支持，按相同求解请求区分方差
+EVOCODER_LIBRARY_ROUTE_CONTEXT=public_shape uv run --locked evocoder --mode live library-evaluate CANDIDATE_ID --retain-parent --repeat-gate --manifest PATH/manifest.json
 uv run --locked evocoder library-activate LIBRARY_ID --receipt RECEIPT_ID --expected none
 uv run --locked evocoder library-rollback --to PREVIOUS_LIBRARY_ID --expected CURRENT_LIBRARY_ID
 ```
 
 `--initial-skills ID...` 可显式导入历史提案到学习池；清单必须包含它们的完整学习支持快照。不能只传一个技能 ID 而缺少它的证据。原来的单技能 `run`、`stream`、`activate` 行为保留；新库必须用 `--library` 显式选择，不会悄悄改变已有运行入口。
+
+通用 `--repeat-gate` 对当前部署和候选库配对，开发题五次、学习支持三次。独立来源至少要有三次由实际选用子版带来的修复胜例。每个任务都检查净退化和原始多数退化。本文的四组研究另外复测父版和只给题面的相同双技能库，并将两个对象来源的改善设成必需条件。[五轮研究的门禁与证据](shape-routing-study.md)
 
 ## 输出与尚未解决的问题
 

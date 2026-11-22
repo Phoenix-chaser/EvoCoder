@@ -280,6 +280,68 @@ def parallel_routing_chart(study, lang):
     return fig
 
 
+def shape_routing_chart(study, lang):
+    zh = lang == "zh"
+    fig = plt.figure(figsize=(9.4, 5.0), facecolor=PAPER)
+    fig.text(.055, .90, "公开测试形状能帮助选对技能，修复能复现几次？" if zh else
+             "Do better routing choices lead to repeatable repairs?", fontsize=17, weight="bold", color=INK)
+    fig.text(.055, .82, "GLM-5.3  ·  父子技能文本冻结  ·  模型可选择任一版本或跳过" if zh else
+             "GLM-5.3  ·  Frozen parent and child skills  ·  The router could choose either skill or skip",
+             fontsize=10.5, color=MUTED)
+
+    left = fig.add_axes([.055, .23, .42, .49])
+    left.set_axis_off()
+    left.set(xlim=(0, 1), ylim=(-.15, 5.65))
+    left.text(0, 5.35, "学习题上的路由判断" if zh else "Choices on learning tasks",
+              fontsize=12, weight="bold", color=INK)
+    for x, name in zip((.66, .90), ("题面", "加形状") if zh else ("Issue", "+ shapes")):
+        left.text(x, 4.62, name, ha="center", color=MUTED, fontsize=9)
+    labels = (("新题 · 异常选子", "New · exception → child", "fresh", "child"),
+              ("新题 · 配置选父", "New · config → parent", "fresh", "parent"),
+              ("新题 · 对照误选", "New · false selections", "fresh", "control_applied"),
+              ("复测 · 异常选子", "Revisited · exception → child", "revisited", "child"),
+              ("复测 · 配置选父", "Revisited · config → parent", "revisited", "parent"),
+              ("复测 · 对照误选", "Revisited · false selections", "revisited", "control_applied"))
+    for i, (cn, en, cohort, metric) in enumerate(labels):
+        y = 3.98 - .72*i
+        left.text(0, y, cn if zh else en, va="center", color=INK, fontsize=9.4)
+        for x, v, color in ((.66, "issue", "#E2EBEF"), (.90, "public_shape", "#D4EBE7")):
+            left.barh(y, .202, left=x-.101, height=.59, color=color)
+            left.text(x, y, str(study["freeze"]["scores"][cohort][v][metric])+"/4", ha="center",
+                      va="center", color=INK, fontsize=10.2, weight="bold")
+
+    ax = fig.add_axes([.64, .342, .30, .29], facecolor=PAPER)
+    fig.text(.526, .684, "父版失手，子技能救回几轮？" if zh else "When the parent failed",
+             fontsize=12, weight="bold", color=INK)
+    gate = study["gate"]["decisions"]["objects_vs_parent"]["tasks"]
+    items = (("object-index-error","异常对象","Exception"), ("object-label-policy","标签回调","Callback"),
+             ("object-result-sink","结果容器","Result sink"))
+    for j, (tid, _, _) in enumerate(items):
+        y = 2-j
+        rows = [r for r in study["dev"] if r["task"] == tid]
+        headroom = sum(not r["parent"]["passed"] for r in rows)
+        actual = gate[tid]["attributed_wins"]
+        ax.barh(y, 5, height=.56, color="#E7EDEF")
+        ax.barh(y, headroom, height=.56, color="#A6B8C4")
+        ax.barh(y, actual, height=.56, color=TEAL)
+        ax.text(5.11, y, f"{actual}/5", va="center", fontsize=9.7, color=INK, weight="bold")
+    ax.set(xlim=(0, 5.8), ylim=(-.52, 2.58), xticks=range(6), yticks=[2,1,0],
+           yticklabels=[cn if zh else en for _,cn,en in items])
+    ax.tick_params(axis="both", length=0, labelsize=9, colors=MUTED)
+    for spine in ax.spines.values():
+        spine.set_visible(False)
+    ax.axvline(3, linestyle="--", linewidth=1.2, color=INK)
+    fig.text(.526,.245,"灰蓝 = 未计为子技能胜例   绿 = 实际选中子版并修好" if zh else
+             "Blue-grey = no credited child win   Green = child used and passed", fontsize=9.1, color=MUTED)
+    fig.text(.526,.181,"虚线表示每个来源需达到 3/5，发布至少需两个来源" if zh else
+             "Dashed line = 3/5 required per source. Release needs two.", fontsize=9.1, color=MUTED)
+    n = len(study["gate"]["decisions"]["objects_vs_parent"]["repeat_confirmed_improved_groups"])
+    fig.text(.055,.071,(f"对象来源达到重复改善门槛  {n}/3     ·     留出题实际接触  {study['holdout_exposures']}/30" if zh else
+             f"Object sources with repeatable gains   {n}/3      ·      Holdout tasks exposed   {study['holdout_exposures']}/30"),
+             fontsize=10.8, weight="bold", color=TEAL)
+    return fig
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--study", type=Path, default=HERE / "optional-control.json")
@@ -287,6 +349,7 @@ if __name__ == "__main__":
     parser.add_argument("--objects", type=Path, default=HERE / "falsy-objects.json")
     parser.add_argument("--revision", type=Path, default=HERE / "object-revision.json")
     parser.add_argument("--witness", type=Path, default=HERE / "object-witness.json")
+    parser.add_argument("--shape", type=Path, default=HERE / "shape-routing.json")
     parser.add_argument("--portfolio", type=Path, default=HERE / "parallel-routing.json")
     parser.add_argument("--output-dir", type=Path, default=IMAGES)
     args = parser.parse_args()
@@ -299,6 +362,7 @@ if __name__ == "__main__":
     revisions = [(label,json.loads(path.read_text(encoding="utf-8"))) for label,path in
                  (("first",args.revision),("witness",args.witness)) if path.is_file()]
     portfolio = json.loads(args.portfolio.read_text(encoding="utf-8")) if args.portfolio.is_file() else None
+    shape = json.loads(args.shape.read_text(encoding="utf-8")) if args.shape.is_file() else None
     for language, text in TEXT.items():
         with plt.rc_context({"font.family": text["font"]}):
             for name, render, dataset in [("mock-repairs", mock_chart, "mock_demo"),
@@ -319,6 +383,9 @@ if __name__ == "__main__":
             if portfolio:
                 charts.extend([("parallel-routing", parallel_routing_chart(portfolio, language)),
                                ("parallel-diversity", diversity_chart(portfolio, language))])
+            if shape:
+                charts.extend([("shape-routing", shape_routing_chart(shape, language)),
+                               ("shape-diversity", diversity_chart(shape, language))])
             for name, chart in charts:
                 if chart is not None:
                     chart.savefig(args.output_dir / f"{name}-{language}.png", dpi=180, metadata={"Software": "Matplotlib"})

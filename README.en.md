@@ -4,7 +4,7 @@
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
   <a href="pyproject.toml"><img alt="Python 3.12" src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&amp;logoColor=white"></a>
   <a href="https://github.com/Phoenix-chaser/EvoCoder/actions/workflows/checks.yml"><img alt="View GitHub Actions CI" src="https://img.shields.io/badge/CI-GitHub%20Actions-35495E?logo=githubactions&amp;logoColor=white"></a>
-  <a href="docs/results/overview.json"><img alt="314 tests passed" src="https://img.shields.io/badge/tests-314%20passed-08796E?logo=pytest&amp;logoColor=white"></a>
+  <a href="docs/results/overview.json"><img alt="323 tests passed" src="https://img.shields.io/badge/tests-323%20passed-08796E?logo=pytest&amp;logoColor=white"></a>
   <a href="src/evocoder/sandbox.py"><img alt="Docker sandbox" src="https://img.shields.io/badge/sandbox-Docker-206B9C?logo=docker&amp;logoColor=white"></a>
   <a href="Makefile"><img alt="CPU-only offline demo" src="https://img.shields.io/badge/demo-CPU%20only-586876"></a>
 </p>
@@ -15,7 +15,22 @@ EvoCoder tests whether **a coding agent can learn a method from past repairs tha
 
 ## Where does self-evolution show up?
 
-### Can the agent keep its earlier skill after learning a specialization?
+### When does better routing turn into repeatable repairs?
+
+GLM-5.3 could select the configuration parent, the caller-object child previously revised from failed repairs, or neither. We froze both skills and added public test filenames, call arguments and assertion shapes to the router input. **On six new learning tasks, exception-to-child choices rose from 0/4 to 4/4, config-to-parent choices stayed at 4/4, and control misroutes stayed at 0/4.** On six revisited tasks, exception-to-child choices rose from 1/4 to 4/4. Each cell covers two tasks routed twice. All eight structured exception choices cited a truthiness method declared in a public test fixture. None of these fixtures was directly constructed by its public assertions. [Design, task definitions and model quotations (中文)](docs/shape-routing-study.md)
+
+| Development repairs over five repeats | No skill | Parent only | Both skills, issue only | Both skills, with shapes |
+| --- | ---: | ---: | ---: | ---: |
+| Caller objects, 3 tasks | 8/15 | 7/15 | 8/15 | 12/15 |
+| Configuration, 4 tasks | 9/20 | 18/20 | 15/20 | 11/20 |
+
+![Choices on learning tasks and the number of parent failures recovered using the child across five repeats on each object task.](docs/images/shape-routing-en.png)
+
+**The child recovered a parent failure in 5/5 callback pairs, 1/5 result-sink pairs and 0/5 exception pairs.** **1/3** object sources cleared the preregistered 3/5 threshold. Release requires two. Holding the skill library fixed, object repairs rose from 8/15 to 12/15. Only one of those four extra passes involved a different skill choice. The structured portfolio selected the parent on 17/20 configuration runs. Even among configuration pairs with identical first solver requests, it recorded 0 wins and 7 losses against the parent arm. The release gate rejected the library. Holdout exposure was **0/30**. [Paired runs, independent patch grades and release receipt](docs/results/shape-routing.json)
+
+All 140 preregistered development solves completed. Of 72 original support solves, 69 could be graded. Three additional runs are reported separately, with the original outcomes marked missing. [Support replay and accounting (中文)](docs/shape-routing-study.md#支持回放发布与账目)
+
+### How did the portfolio perform in the earlier two-repeat study?
 
 GLM could select the original configuration skill, the learned caller-object skill, or neither. **With both available, it selected the parent on all eight configuration trials and the child on all four label-callback and result-sink trials.** It skipped both skills on both exception trials. The left panel shows routing on six independent learn tasks. The right panel shows independently graded development repairs. [Preregistered experiment and full report (中文)](docs/parallel-routing-study.md)
 

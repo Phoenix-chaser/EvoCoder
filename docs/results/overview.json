@@ -68,12 +68,12 @@
     "holdout_runs": 0
   },
   "test_suite": {
-    "code_revision": "33fae33172e41a43a965bd787f571e2bb1a0bb4c",
-    "command": "make test && make integration",
-    "tests": 314,
-    "passed": 314,
-    "non_docker": 279,
-    "docker": 35,
+    "code_revision": "d36f1ee182027d1ca624f8f6954add0e80ad04d0",
+    "command": "uv run --locked pytest -m 'not docker' -q && uv run --locked pytest -m docker -q",
+    "tests": 323,
+    "passed": 323,
+    "non_docker": 287,
+    "docker": 36,
     "failed": 0,
     "skipped": 0
   },
@@ -89,5 +89,11 @@
     "protocol": "benchmarks/falsy_transfer/parallel-routing.json",
     "source_report": "docs/results/parallel-routing.json",
     "report": "docs/parallel-routing-study.md"
+  },
+  "shape_routing_evidence": {
+    "protocol": "benchmarks/falsy_transfer/shape-routing.json",
+    "interruption": "benchmarks/falsy_transfer/shape-routing-interruption.json",
+    "source_report": "docs/results/shape-routing.json",
+    "report": "docs/shape-routing-study.md"
   }
 }

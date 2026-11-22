@@ -4,7 +4,7 @@
   <a href="LICENSE"><img alt="MIT 许可证" src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
   <a href="pyproject.toml"><img alt="Python 3.12" src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&amp;logoColor=white"></a>
   <a href="https://github.com/Phoenix-chaser/EvoCoder/actions/workflows/checks.yml"><img alt="查看 GitHub Actions CI" src="https://img.shields.io/badge/CI-GitHub%20Actions-35495E?logo=githubactions&amp;logoColor=white"></a>
-  <a href="docs/results/overview.json"><img alt="314 项测试通过" src="https://img.shields.io/badge/tests-314%20passed-08796E?logo=pytest&amp;logoColor=white"></a>
+  <a href="docs/results/overview.json"><img alt="323 项测试通过" src="https://img.shields.io/badge/tests-323%20passed-08796E?logo=pytest&amp;logoColor=white"></a>
   <a href="src/evocoder/sandbox.py"><img alt="Docker 沙箱" src="https://img.shields.io/badge/sandbox-Docker-206B9C?logo=docker&amp;logoColor=white"></a>
   <a href="Makefile"><img alt="离线演示只需 CPU" src="https://img.shields.io/badge/demo-CPU%20only-586876"></a>
 </p>
@@ -15,7 +15,22 @@ EvoCoder 检验 **Coding Agent 能否从过去的修复中学到对下一道题�
 
 ## 自进化效果在哪里
 
-### 学出专门技能后，还能保住原来的能力吗？
+### 选对技能后，能多次修好父版漏掉的缺陷吗？
+
+GLM-5.3 可以选配置父技能、从真实失败中修订出的对象子技能，或跳过。本轮冻结两份技能，路由额外读取公开测试的文件名、调用参数和断言形状。**在六道新学习题上，异常对象选中子版由 0/4 提升到 4/4，配置选中父版保持 4/4，无关题误选保持 0/4。** 六道旧学习题的异常对象选择由 1/4 升到 4/4。每格来自两道题各两次路由。八次结构化异常选择都引用了公开测试文件中声明的真假值方法。这些替身在公开断言里均未直接构造。[任务、逐次引用与实验设计](docs/shape-routing-study.md)
+
+| 五轮真实开发修复 | 无技能 | 仅父版 | 父子库，仅题面 | 同一父子库，加形状 |
+| --- | ---: | ---: | ---: | ---: |
+| 调用方对象，3 题 | 8/15 | 7/15 | 8/15 | 12/15 |
+| 原配置，4 题 | 9/20 | 18/20 | 15/20 | 11/20 |
+
+![学习题路由，以及五轮对象修复中父版失败的轮数与实际选用子版后挽回的轮数。](docs/images/shape-routing-zh.png)
+
+**标签回调有 5/5 轮由父版失败变为实际选用子版后整题通过，结果容器为 1/5，异常对象为 0/5。** 达到事前登记的 3/5 门槛的对象来源为 **1/3**，发布要求至少两个。固定同一父子库，对象总分从 8/15 提升到 12/15，四个新增成功中只有一个同时改变了技能选择。结构化并列组在配置题上 17/20 次选用父技能。和仅父版相比，相同首次求解请求的配置配对仍出现 0 胜、7 负。候选库未发布，留出题模型接触数为 **0/30**。[五轮配对、独立补丁评分与发布收据](docs/results/shape-routing.json)
+
+五轮开发共 140 次求解，全部按原登记完成。72 次原始学习支持求解有 69 次可评分，三个中断缺口另做了三次补测，正式收据保留原始缺失。[支持回放与账目](docs/shape-routing-study.md#支持回放发布与账目)
+
+### 前次两轮对照中，父子并列能保住配置能力吗？
 
 我们把原配置父版和学得的对象子版放在同一个候选库，让 GLM 自己选一个版本或跳过。**并列组在配置题上 8/8 次选回父版，在标签回调和结果容器上 4/4 次选用子版。** 异常对象两次都跳过。图左比较六道独立学习题上的路由选择，图右是原开发面板上通过独立评分的修复数。[预登记、任务和实验报告](docs/parallel-routing-study.md)
 
