@@ -1,0 +1,16 @@
+{
+  "policy": "cc0a46e4e82056f5ae1eb317f6188a905fd8974f882418a4a56df255cc3a6025",
+  "code": {
+    "workflow_confirmation.py": "17cea57bc108b2f78559c910984bc2479479fd1db2c5a2600e88561f9a5938b5",
+    "workflow_config_recovery.py": "39d33ca5842c520764814f30b2ca1c6c3bbbb99298192b415ffc9d4c311567d7",
+    "workflow_gate.py": "29beb0c97561eb9cf3e4a2988b4d7d9c05bfcdcbd094f175569f993099b4a817",
+    "workflow_study.py": "85d36092dc99f45b7f23fc681cdf252ab6a41842a792d978cc539aeb768e1bce"
+  },
+  "original_archive": "c9a1360f948442d15fa3764eab7e50cdc845c5985ce4ad33b4b7d74b08e19ee7",
+  "original_receipt": "47d314fa3f7d7cdd3ff13b489d41fa4f94b18102a64925399ae656ce9b569829",
+  "unchanged_nonconfig": "0e2545e7e6bdd8c4d135f4e60f38e888aa0d0cfa0f4201bf9088f823bf3d879e",
+  "candidate": "5de43379038432cafd5c8f0d2a1addc0870729299436655f779dc33415775261",
+  "expected_config_solves": 112,
+  "order": "Identical original counterbalanced config order. Fresh protocol and call identities per block.",
+  "held_snapshots": "193360f988701c276dabe506a20d0b496837397f42ca9bbb253efec6b7f2767c"
+}

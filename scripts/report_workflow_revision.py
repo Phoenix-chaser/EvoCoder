@@ -485,7 +485,11 @@ def review(data, p, h):
             require(data["protection"] == direct_protection(panels, h["child"]), "protection differs")
         allow = False
     exposures = data["holdout_exposures"]
-    require(bool(data["activation"]) == allow, "activation mismatch")
+    require(
+        bool(data["activation"]) == allow
+        and data["release_transactions"] == ([data["activation"]["transaction"]] if allow else []),
+        "activation history mismatch",
+    )
     if allow:
         a = data["activation"]
         formal = data["gate"]
@@ -607,11 +611,21 @@ def export(s):
     if FOLLOWUP.exists():
         stages.append(read(FOLLOWUP))
     screen = read(ROOT / "screen.json")
-    rows = sorted((read(x) for x in (ROOT / "rows").glob("*.json")), key=lambda r: r["run"])
+    choice = read(CHOICE) if CHOICE.exists() else None
+    owned = {rid for stage in stages for rid in stage["runs"]}
+    owned.update(rid for family in screen["families"] for rid in family["runs"])
+    if choice:
+        owned.update(choice["audit"] + choice["matched"])
+    if h["counts"]:
+        for n in range(7):
+            owned.update(read(ROOT / f"panel-{n}.json")["runs"])
+    if (ROOT / "holdout.json").exists():
+        for pair in read(ROOT / "holdout.json")["pairs"]:
+            owned.update([pair["baseline_run"], pair["candidate_run"]])
+    rows = [read(ROOT / "rows" / (rid + ".json")) for rid in sorted(owned)]
     for row in rows:
         audit_live_row(s, row)
     proposals = [rid for stage in stages for rid in stage["proposal"]["attempts"]]
-    choice = read(CHOICE) if CHOICE.exists() else None
     revisions = [s["proposal"] for s in stages]
     if choice and choice["proposal"]:
         revisions.append(choice["proposal"])
@@ -640,9 +654,9 @@ def export(s):
         recent = list(
             db.execute("SELECT rowid,id,run_id,state FROM calls WHERE rowid>? ORDER BY rowid", (cursor,))
         )
-        exposures = {r[0] for r in db.execute("SELECT task_id FROM test_exposures")} & set(
-            s.p["holdout_hashes"]
-        )
+        exposures = {
+            r[0] for r in db.execute("SELECT task_id FROM test_exposures WHERE experiment=?", (s.protocol,))
+        } & set(s.p["holdout_hashes"])
     records = defaultdict(list)
     for r in recent:
         if r["run_id"] in ids:
@@ -671,6 +685,16 @@ def export(s):
             )
             receipts[prop["child"]] = receipt
     activation = s.activation() if (ROOT / "activation.json").exists() else None
+    with s.store.connect() as db:
+        transactions = [
+            dict(r)
+            for r in db.execute(
+                "SELECT seq,before_id,after_id,evaluation_id "
+                "FROM library_releases WHERE evaluation_id=? ORDER BY seq",
+                (gate["receipt"] if gate else "",),
+            )
+        ]
+
     require((s.store.active_library() is None) == (activation is None), "unexpected activation")
     d = dict(
         schema=1,
@@ -687,6 +711,7 @@ def export(s):
         gate=gate,
         protection=direct,
         activation=activation,
+        release_transactions=transactions,
         holdout=read(ROOT / "holdout.json") if (ROOT / "holdout.json").exists() else None,
         holdout_exposures=len(exposures),
         proposal_billing={rid: s.store.costs([rid]) for rid in proposals},
