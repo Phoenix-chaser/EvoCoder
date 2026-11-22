@@ -1,0 +1,114 @@
+{
+  "protocol": "42f3a3d7a5886f847d15b2b98d694299777c2fd61afff0171b5f62e7cdc5d823",
+  "event": "host_process_terminated_during_third_support_round",
+  "last_call_ordinal": 1819,
+  "existing_slots": 195,
+  "affected": [
+    {
+      "run": "837a2f4af7dd28117d3dd2896b40d14a",
+      "intent": {
+        "protocol": "42f3a3d7a5886f847d15b2b98d694299777c2fd61afff0171b5f62e7cdc5d823",
+        "phase": "gate",
+        "task": "export-02",
+        "task_hash": "7eb59d76d11c7a8da901f5f3529fd3733efb9e863d586d4677c8380c1eab06e7",
+        "repeat": 2,
+        "pool": [
+          "152c284b2f238348d80c1f9d2ffc2cb43fcec8fe327f4589e66837170ca63c1e",
+          "4075c246d85f033248397fd90d1d3e2a68c1d0ed16bd69acc9df79c604b50c9f"
+        ],
+        "oracle": false,
+        "options": "dc8cb8007927f3778dcc0a1d89119f43de2f5cd077f6724de4b95588fa96a396"
+      },
+      "events_hash": "304467739e5592cc1bce890260d98a850e4232faeba2478a6db293027e9f9704",
+      "event_count": 17,
+      "last_event": "OBSERVATION",
+      "patch": null,
+      "original_grade_available": false,
+      "cost": {
+        "cost_credits": 3.93083,
+        "reserved_credits": 27.57786,
+        "calls": 6
+      },
+      "open_call_ordinals": [
+        1817
+      ]
+    },
+    {
+      "run": "a3f16d58ff704b1fa4c780dd974672cb",
+      "intent": {
+        "protocol": "42f3a3d7a5886f847d15b2b98d694299777c2fd61afff0171b5f62e7cdc5d823",
+        "phase": "gate",
+        "task": "dispatch-03",
+        "task_hash": "573a46b47d2d56b44021723f227fd5ee11b7a17687c397471eac418ec280610e",
+        "repeat": 2,
+        "pool": [],
+        "oracle": false,
+        "options": "f75b4e16ebc9dd9b1967dd0684f2f7cde031b4d4cb8060f6240988c29f8f33ff"
+      },
+      "events_hash": "08d607ca1dc1890b0f53a523f9f605c03416b29fad8f0b94c88d1c9174b0ab0a",
+      "event_count": 40,
+      "last_event": "PUBLIC_VERIFY",
+      "patch": "2e96b1cd1b6f7322fdb4d3f62358396c8f975c939b1a1096e9bf1a5d96b31c69",
+      "original_grade_available": true,
+      "cost": {
+        "cost_credits": 6.85845,
+        "reserved_credits": 0.0,
+        "calls": 12
+      },
+      "open_call_ordinals": []
+    },
+    {
+      "run": "aba2ec557dc41cb21da5e20d79399f1e",
+      "intent": {
+        "protocol": "42f3a3d7a5886f847d15b2b98d694299777c2fd61afff0171b5f62e7cdc5d823",
+        "phase": "gate",
+        "task": "dispatch-01",
+        "task_hash": "39bb48969988ac4855d903e46d55166e4b980edd2e0d833a2a51bcc6a41db31f",
+        "repeat": 2,
+        "pool": [],
+        "oracle": false,
+        "options": "f75b4e16ebc9dd9b1967dd0684f2f7cde031b4d4cb8060f6240988c29f8f33ff"
+      },
+      "events_hash": "0339e4a7edf1f3aa2870ecdef2d05115fc59d0032389e7f67faad77624f054b9",
+      "event_count": 15,
+      "last_event": "OBSERVATION",
+      "patch": null,
+      "original_grade_available": false,
+      "cost": {
+        "cost_credits": 1.86992,
+        "reserved_credits": 25.75074,
+        "calls": 5
+      },
+      "open_call_ordinals": [
+        1818
+      ]
+    },
+    {
+      "run": "f1eb2eeaab6bbdfb29649b9cf88e8c84",
+      "intent": {
+        "protocol": "42f3a3d7a5886f847d15b2b98d694299777c2fd61afff0171b5f62e7cdc5d823",
+        "phase": "gate",
+        "task": "export-04",
+        "task_hash": "1760a7ec3df793779763c93b58051ed9e70215e157ef10b25d5da83a6a4ccd6f",
+        "repeat": 2,
+        "pool": [],
+        "oracle": false,
+        "options": "f75b4e16ebc9dd9b1967dd0684f2f7cde031b4d4cb8060f6240988c29f8f33ff"
+      },
+      "events_hash": "9b55059dfd66f74f628eb8bc99eded94bae1b19077bf6e69adaf7c93546656e4",
+      "event_count": 15,
+      "last_event": "OBSERVATION",
+      "patch": null,
+      "original_grade_available": false,
+      "cost": {
+        "cost_credits": 1.98992,
+        "reserved_credits": 25.8156,
+        "calls": 5
+      },
+      "open_call_ordinals": [
+        1819
+      ]
+    }
+  ],
+  "treatment": "Complete the archived finish without a model call. Keep the three missing original grades and outstanding charges explicit. For descriptive support results only, collect one separately identified fresh solve for each unreturned arm, with the same task, model, routing, solver allowance and order. Reuse all completed original slots and run all unstarted original slots. No supplemental outcome authorizes a release. The original gate is blocked on infrastructure and accounting as well as independent complete dev evidence. Never open the holdout."
+}
