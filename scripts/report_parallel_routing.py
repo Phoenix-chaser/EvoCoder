@@ -321,6 +321,23 @@ def verify(d, p):
     require(d["curve"] == points and d["summary"] == summarise(d, p), "changed metrics")
     known = seen | {x["failed_run"] for x in d["transport"]}
     bill = d["billing"]
+    ordinals = sorted(i for receipt in bill.values() for i in receipt["study_calls"])
+    diagnostics = sorted(i for r in d["routes"] for i in bill[r["run"]]["study_calls"])
+    require(
+        ordinals == list(range(1, d["costs"]["calls"] + 1))
+        and diagnostics == list(range(1, len(d["routes"]) + 1))
+        and all(len(v["study_calls"]) == v["calls"] for v in bill.values()),
+        "missing calls or development preceded the diagnostic freeze",
+    )
+    if d["holdout"]:
+        final_calls = sorted(
+            i
+            for r in d["holdout"]
+            for a in ("baseline_run", "candidate_run")
+            for i in bill[r[a]]["study_calls"]
+        )
+        if not d["transport"]:
+            require(final_calls == ordinals[-len(final_calls) :], "holdout preceded development or support")
     require(
         set(bill) == known
         and sum(x["calls"] for x in bill.values()) == d["costs"]["calls"]
@@ -469,6 +486,7 @@ def export(root, seed, ledger_path, p):
             require(calls and calls[0]["rowid"] > cursor, "stale billing record")
             bill[rid] = {
                 "calls": len(calls),
+                "study_calls": [x["rowid"] - cursor for x in calls],
                 "actual_nanos": sum(x["actual"] or 0 for x in calls),
                 "reserved_nanos": sum(x["reserved"] for x in calls if x["state"] == "reserved"),
                 "last_row": calls[-1]["rowid"],

@@ -155,3 +155,37 @@ def test_published_parallel_library_routes_one_skill_or_skips(settings, store):
         run = store.run(rid)
         assert run["state"] in {"COMPLETE", "FAILED"} and run["skill_id"] == key
         assert run["result"]["routing"]["decision"] == ("apply" if key else "skip")
+
+
+def test_public_portfolio_audit_rejects_changed_routing_release_and_exposure(protocol):
+    from copy import deepcopy
+    from report_parallel_routing import OUTPUT, read, verify
+
+    record = read(OUTPUT)
+    p = read(protocol.PUBLIC)
+    assert verify(record, p)["release"] == record["published"]
+
+    def wrong_selection(d):
+        decision = next(r for r in d["routes"] if r["selected"])
+        decision["selected"] = None
+
+    def false_publication(d):
+        d["published"] = not d["published"]
+
+    def different_exposure(d):
+        d["holdout_exposures"] += 1
+
+    def crossed_phases(d):
+        a = d["billing"][d["routes"][0]["run"]]["study_calls"]
+        b = d["billing"][d["dev"][0]["portfolio"]["run"]]["study_calls"]
+        a[0], b[0] = b[0], a[0]
+
+    def false_patch_score(d):
+        arm = d["dev"][0]["portfolio"]
+        arm["passed"] = not arm["passed"]
+
+    for mutate in (wrong_selection, false_publication, different_exposure, crossed_phases, false_patch_score):
+        copy = deepcopy(record)
+        mutate(copy)
+        with pytest.raises(ValueError):
+            verify(copy, p)
