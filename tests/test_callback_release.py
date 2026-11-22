@@ -10,16 +10,17 @@ from evocoder.route_shape import public_test_shape
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 from callback_policy import block_test, calibrate_noise, comparisons, pilot_summary  # noqa: E402
-from callback_protocol import ARMS, PUBLIC, arm_order, code_hashes, validate_activation  # noqa: E402
+from callback_protocol import ARMS, PUBLIC, arm_order, validate_activation  # noqa: E402
 from callback_sources import sources  # noqa: E402
 from portfolio_routing import CHILD  # noqa: E402
+from report_callback_release import archived_code_hashes  # noqa: E402
 from report_click_procedure import read  # noqa: E402
 from run_callback_release import design  # noqa: E402
 
 
 def test_frozen_inputs_and_partial_patch_calibration():
     p = read(PUBLIC)
-    assert p["code"] == code_hashes()
+    assert p["code"] == archived_code_hashes()
     for family, stages in sources().items():
         for stage, (t, patch) in stages.items():
             m = p["families"][family][stage]

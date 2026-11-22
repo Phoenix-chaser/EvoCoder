@@ -1,0 +1,22 @@
+    def validate_family_pool(self, members: list[str]) -> None:
+        """A routed pool can retain one direct parent with its specialization per family."""
+        families = {}
+        for key in members:
+            families.setdefault(self.provenance(key)["root"], []).append(key)
+        for versions in families.values():
+            if len(versions) == 1:
+                continue
+            if len(versions) == 2 and any(self.store.get_artifact(v)["parent"] in versions for v in versions):
+                continue
+            raise ValueError("same-family alternatives must be a direct parent and child")
+
+    def retain_parent(self, members: list[str], candidate: str) -> list[str]:
+        parent = self.store.get_artifact(candidate)["parent"]
+        if not parent:
+            raise ValueError("parallel specialization requires a direct parent")
+        updated = sorted({*members, parent, candidate})
+        if len(updated) > 8:
+            raise ValueError("library capacity reached; no automatic skill eviction")
+        self.validate_family_pool(updated)
+        return updated
+

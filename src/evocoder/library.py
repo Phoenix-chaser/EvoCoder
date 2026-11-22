@@ -53,26 +53,34 @@ class SkillLibrary:
         return self.store.library_members(library_id, mode=self.settings.mode) if library_id else []
 
     def validate_family_pool(self, members: list[str]) -> None:
-        """A routed pool can retain one direct parent with its specialization per family."""
+        """Keep a general skill beside one specialization, including its later revisions."""
         families = {}
         for key in members:
-            families.setdefault(self.provenance(key)["root"], []).append(key)
-        for versions in families.values():
+            root = self.provenance(key)["root"]
+            families.setdefault(root, []).append(key)
+        for root, versions in families.items():
             if len(versions) == 1:
                 continue
-            if len(versions) == 2 and any(self.store.get_artifact(v)["parent"] in versions for v in versions):
-                continue
-            raise ValueError("same-family alternatives must be a direct parent and child")
+            if len(versions) == 2 and len(set(versions)) == 2:
+                if root in versions or any(self.store.get_artifact(v)["parent"] in versions for v in versions):
+                    continue
+            raise ValueError("same-family alternatives require a root or direct parent and one descendant")
 
     def retain_parent(self, members: list[str], candidate: str) -> list[str]:
         parent = self.store.get_artifact(candidate)["parent"]
         if not parent:
             raise ValueError("parallel specialization requires a direct parent")
-        updated = sorted({*members, parent, candidate})
+        root = self.provenance(candidate)["root"]
+        updated = set(members)
+        if root in updated and root != parent:
+            updated.discard(parent)
+        else:
+            updated.add(parent)
+        updated.add(candidate)
         if len(updated) > 8:
             raise ValueError("library capacity reached; no automatic skill eviction")
-        self.validate_family_pool(updated)
-        return updated
+        self.validate_family_pool(sorted(updated))
+        return sorted(updated)
 
     def replace(self, members: list[str], candidate: str, *, allow_retained=False) -> list[str]:
         roots = {key: self.provenance(key)["root"] for key in members}

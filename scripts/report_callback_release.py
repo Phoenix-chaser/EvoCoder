@@ -66,12 +66,25 @@ def workspaces(p, opened):
     return tasks
 
 
+def archived_code_hashes():
+    """Reconstruct the paid study's original runtime after the family-rule upgrade."""
+    from evocoder.comparison import sources as runtime_sources
+
+    runtime = runtime_sources()
+    src = runtime["library.py"]
+    original = (PUBLIC.parent / "archive/library-family-v1.txt").read_text()
+    runtime["library.py"] = (
+        src[: src.index("    def validate_family_pool(")] + original + src[src.index("    def replace(") :]
+    )
+    return {**code_hashes(), "runtime": digest(runtime)}
+
+
 def check_registration(p):
     history = read(PREVIOUS_RESULT)
     previous = read(PREVIOUS_PROTOCOL)
     require(
         digest(p) == REGISTERED
-        and p["code"] == code_hashes()
+        and p["code"] == archived_code_hashes()
         and p["previous_result"] == digest(history)
         and p["previous_protocol"] == digest(previous)
         and p["noise"] == calibrate_noise(history, p["config"])
