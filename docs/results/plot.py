@@ -240,6 +240,46 @@ def object_revision_chart(studies, lang):
     return fig
 
 
+def parallel_routing_chart(study, lang):
+    zh = lang == "zh"
+    fig = plt.figure(figsize=(8.8, 4.3), facecolor=PAPER)
+    fig.text(.055, .90, "保留父技能后，GLM 如何选择和修复？" if zh else
+             "What changes when both skill versions are available?", fontsize=17, weight="bold", color=INK)
+    fig.text(.055, .815, "GLM-5.3   ·   正常路由   ·   同题两轮" if zh else
+             "GLM-5.3   ·   Normal routing   ·   Two repeats per task", color=MUTED, fontsize=10.5)
+    scores = study["freeze"]["scores"]
+    panels = study["summary"]["panels"]
+    sections = [
+        (.055, .47, "独立学习题上的路由" if zh else "Routing on independent learn tasks",
+         ["配置选父版", "异常选子版", "无关题误选"] if zh else ["Config → parent", "Exception → child", "Control misroutes"],
+         ["只给题面", "加公开摘录"] if zh else ["Issue only", "+ excerpts"],
+         [[f"{scores[v][k]}/4" for v in ("issue", "public_preview")] for k in ("parent", "child", "control_applied")]),
+        (.56, .40, "开发题的独立修复评分" if zh else "Graded development repairs",
+         ["对象", "配置"] if zh else ["Objects", "Configuration"],
+         ["仅父版", "两版并列"] if zh else ["Parent only", "Both skills"],
+         [[f"{panels[k][a]['passed']}/{panels[k][a]['trials']}" for a in ("parent","portfolio")] for k in ("objects","config")]),
+    ]
+    for left, width, title, labels, headers, values in sections:
+        ax = fig.add_axes([left, .22, width, .51])
+        ax.set_axis_off()
+        ax.set(xlim=(0,1), ylim=(-.15,4.15))
+        ax.text(0, 3.8, title, fontsize=12, weight="bold", color=INK)
+        for j, header in enumerate(headers):
+            x = .59 + j * .27
+            ax.text(x, 3.08, header, ha="center", color=MUTED, fontsize=9.5)
+        for i,(label, cells) in enumerate(zip(labels, values, strict=True)):
+            y = 2.23 - i*.9
+            ax.text(0,y,label,va="center",color=INK,fontsize=10.4)
+            for j,value in enumerate(cells):
+                x = .59 + j * .27
+                ax.barh(y,.235,height=.73,left=x-.1175,color="#E2EBEF" if j==0 else "#D4EBE7")
+                ax.text(x,y,value,ha="center",va="center",color=INK,fontsize=12,weight="bold")
+    chosen = {"issue": ("只给题面","issue only"), "public_preview": ("加公开摘录","public excerpts")}[study["view"]]
+    fig.text(.055,.11,("开发前冻结的路由输入　"+chosen[0] if zh else "Routing input frozen before development   ·   "+chosen[1]),
+             fontsize=10,weight="bold",color=TEAL)
+    return fig
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--study", type=Path, default=HERE / "optional-control.json")
@@ -247,6 +287,7 @@ if __name__ == "__main__":
     parser.add_argument("--objects", type=Path, default=HERE / "falsy-objects.json")
     parser.add_argument("--revision", type=Path, default=HERE / "object-revision.json")
     parser.add_argument("--witness", type=Path, default=HERE / "object-witness.json")
+    parser.add_argument("--portfolio", type=Path, default=HERE / "parallel-routing.json")
     parser.add_argument("--output-dir", type=Path, default=IMAGES)
     args = parser.parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
@@ -257,6 +298,7 @@ if __name__ == "__main__":
     objects = json.loads(args.objects.read_text(encoding="utf-8")) if args.objects.is_file() else None
     revisions = [(label,json.loads(path.read_text(encoding="utf-8"))) for label,path in
                  (("first",args.revision),("witness",args.witness)) if path.is_file()]
+    portfolio = json.loads(args.portfolio.read_text(encoding="utf-8")) if args.portfolio.is_file() else None
     for language, text in TEXT.items():
         with plt.rc_context({"font.family": text["font"]}):
             for name, render, dataset in [("mock-repairs", mock_chart, "mock_demo"),
@@ -274,6 +316,9 @@ if __name__ == "__main__":
                                ("falsy-object-diversity",diversity_chart(objects,language))])
             charts.append(("object-revision",object_revision_chart(revisions,language)))
             charts.extend((f"object-{label}-diversity",diversity_chart(data,language)) for label,data in revisions)
+            if portfolio:
+                charts.extend([("parallel-routing", parallel_routing_chart(portfolio, language)),
+                               ("parallel-diversity", diversity_chart(portfolio, language))])
             for name, chart in charts:
                 if chart is not None:
                     chart.savefig(args.output_dir / f"{name}-{language}.png", dpi=180, metadata={"Software": "Matplotlib"})

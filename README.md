@@ -4,7 +4,7 @@
   <a href="LICENSE"><img alt="MIT 许可证" src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
   <a href="pyproject.toml"><img alt="Python 3.12" src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&amp;logoColor=white"></a>
   <a href="https://github.com/Phoenix-chaser/EvoCoder/actions/workflows/checks.yml"><img alt="查看 GitHub Actions CI" src="https://img.shields.io/badge/CI-GitHub%20Actions-35495E?logo=githubactions&amp;logoColor=white"></a>
-  <a href="docs/results/overview.json"><img alt="308 项测试通过" src="https://img.shields.io/badge/tests-308%20passed-08796E?logo=pytest&amp;logoColor=white"></a>
+  <a href="docs/results/overview.json"><img alt="314 项测试通过" src="https://img.shields.io/badge/tests-314%20passed-08796E?logo=pytest&amp;logoColor=white"></a>
   <a href="src/evocoder/sandbox.py"><img alt="Docker 沙箱" src="https://img.shields.io/badge/sandbox-Docker-206B9C?logo=docker&amp;logoColor=white"></a>
   <a href="Makefile"><img alt="离线演示只需 CPU" src="https://img.shields.io/badge/demo-CPU%20only-586876"></a>
 </p>
@@ -14,6 +14,14 @@ EvoCoder 检验 **Coding Agent 能否从过去的修复中学到对下一道题�
 [自进化效果在哪里](#自进化效果在哪里) · [其他实验结果](#其他实验结果) · [快速运行](#快速运行) · [接入自己的任务](#接入自己的任务)
 
 ## 自进化效果在哪里
+
+### 学出专门技能后，还能保住原来的能力吗？
+
+我们把原配置父版和学得的对象子版放在同一个候选库，让 GLM 自己选一个版本或跳过。**并列组在配置题上 8/8 次选回父版，在标签回调和结果容器上 4/4 次选用子版。** 异常对象两次都跳过。图左比较六道独立学习题上的路由选择，图右是原开发面板上通过独立评分的修复数。[预登记、任务和实验报告](docs/parallel-routing-study.md)
+
+![独立学习题上，加入公开源码与文档将异常对象正确路由从 0/4 提升到 4/4，也增加了配置错选和无关题误选。开发题并列组修好对象 6/6、配置 5/8。](docs/images/parallel-routing-zh.png)
+
+对象题的同轮父版为 **5/6**，并列组为 **6/6**。标签回调首轮多修好一题，第二轮两组都通过。配置题为 **4/8 → 5/8**，其中两次改善、一次退化，三个配对都注入了同一父技能且首次求解请求相同。观察到的对象来源中，连续两轮改善的为 **0 个**，门禁要求至少 **2 个**。30 道留出题保持封存。[逐次路由、补丁边界检查与发布判定](docs/results/parallel-routing.json)
 
 ### 一次真实漏修如何改变了技能的适用范围？
 

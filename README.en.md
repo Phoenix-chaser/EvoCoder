@@ -4,7 +4,7 @@
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
   <a href="pyproject.toml"><img alt="Python 3.12" src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&amp;logoColor=white"></a>
   <a href="https://github.com/Phoenix-chaser/EvoCoder/actions/workflows/checks.yml"><img alt="View GitHub Actions CI" src="https://img.shields.io/badge/CI-GitHub%20Actions-35495E?logo=githubactions&amp;logoColor=white"></a>
-  <a href="docs/results/overview.json"><img alt="308 tests passed" src="https://img.shields.io/badge/tests-308%20passed-08796E?logo=pytest&amp;logoColor=white"></a>
+  <a href="docs/results/overview.json"><img alt="314 tests passed" src="https://img.shields.io/badge/tests-314%20passed-08796E?logo=pytest&amp;logoColor=white"></a>
   <a href="src/evocoder/sandbox.py"><img alt="Docker sandbox" src="https://img.shields.io/badge/sandbox-Docker-206B9C?logo=docker&amp;logoColor=white"></a>
   <a href="Makefile"><img alt="CPU-only offline demo" src="https://img.shields.io/badge/demo-CPU%20only-586876"></a>
 </p>
@@ -14,6 +14,14 @@ EvoCoder tests whether **a coding agent can learn a method from past repairs tha
 [Where does self-evolution show up?](#where-does-self-evolution-show-up) · [Earlier experiments](#earlier-experiments) · [Quick start](#quick-start) · [Bring your own tasks](#bring-your-own-tasks)
 
 ## Where does self-evolution show up?
+
+### Can the agent keep its earlier skill after learning a specialization?
+
+GLM could select the original configuration skill, the learned caller-object skill, or neither. **With both available, it selected the parent on all eight configuration trials and the child on all four label-callback and result-sink trials.** It skipped both skills on both exception trials. The left panel shows routing on six independent learn tasks. The right panel shows independently graded development repairs. [Preregistered experiment and full report (中文)](docs/parallel-routing-study.md)
+
+![Adding public excerpts raised correct exception routing from 0/4 to 4/4, while increasing wrong configuration and control selections. The paired portfolio repaired 6/6 object trials and 5/8 configuration trials.](docs/images/parallel-routing-en.png)
+
+On the object panel the concurrent parent-only arm repaired **5/6** and the portfolio **6/6**. The portfolio gained one label-callback repair on the first repeat. Both arms passed on the second. Configuration repairs went from **4/8 to 5/8**, with two paired gains and one loss. In all three pairs the solver received the same parent skill and an identical first request. **Zero** independent object sources improved on both repeats. Release requires **two**. The 30 holdout tasks remain sealed. [Per-trial routes, patch checks and release decision](docs/results/parallel-routing.json)
 
 ### How did a real failed repair change the skill's scope?
 

@@ -68,12 +68,12 @@
     "holdout_runs": 0
   },
   "test_suite": {
-    "code_revision": "a1b3c888a4c6013e3fe79804e029e848fdaf8edb",
+    "code_revision": "33fae33172e41a43a965bd787f571e2bb1a0bb4c",
     "command": "make test && make integration",
-    "tests": 308,
-    "passed": 308,
-    "non_docker": 274,
-    "docker": 34,
+    "tests": 314,
+    "passed": 314,
+    "non_docker": 279,
+    "docker": 35,
     "failed": 0,
     "skipped": 0
   },
@@ -84,5 +84,10 @@
   "object_revision_evidence": {
     "first_child": "docs/results/object-revision.json",
     "matched_public_check_child": "docs/results/object-witness.json"
+  },
+  "parallel_routing_evidence": {
+    "protocol": "benchmarks/falsy_transfer/parallel-routing.json",
+    "source_report": "docs/results/parallel-routing.json",
+    "report": "docs/parallel-routing-study.md"
   }
 }
