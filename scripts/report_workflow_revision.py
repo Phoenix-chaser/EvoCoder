@@ -10,8 +10,11 @@ from report_callback_release import workspaces as prior_workspaces
 from workflow_cases import cases
 
 from evocoder.comparison import dump
-from evocoder.contracts import digest
+from evocoder.contracts import Settings, digest
 from evocoder.grounding import validate_summary
+from evocoder.jobs import bounded_map
+from evocoder.runtime import grade, verify_public
+from falsy_transfer_protocol import probe_patch
 from portfolio_routing import CHILD, PARENT
 from report_click_procedure import read
 from run_falsy_transfer import require
@@ -19,7 +22,18 @@ from run_optional_control import curve_point
 from workflow_candidate_selection import CHOICE, RULE, choose as choose_candidate, score
 from workflow_gate import FREEZE, direct_protection, evaluate, observations, plan, registered
 from workflow_learning import missed, witnesses
-from workflow_study import FAMILIES, FLAGS, PUBLIC, RESULT, ROOT, WAKES, session, sources_hash
+from workflow_study import (
+    FAMILIES,
+    FLAGS,
+    PUBLIC,
+    RESULT,
+    ROOT,
+    WAKES,
+    WORKERS,
+    public_check,
+    session,
+    sources_hash,
+)
 from workflow_wake_extension import ADDENDUM, FOLLOWUP, choose
 
 
@@ -54,6 +68,117 @@ def add_cost(costs):
     }
 
 
+def submitted(rows):
+    inventory = {}
+    for r in rows:
+        if not r["patch"]:
+            continue
+        tid = r["intent"]["task"]
+        item = dict(
+            task=tid,
+            snapshot=r["intent"]["snapshot"],
+            patch=r["patch"],
+            passed=r["passed"],
+            probes=r["probes"],
+        )
+        key = (tid, r["patch"])
+        require(inventory.setdefault(key, item) == item, "one patch has incompatible grades")
+    return [inventory[k] for k in sorted(inventory)]
+
+
+def replay_manifest(rows):
+    items = submitted(rows)
+    return dict(unique=len(items), named=sum(x["probes"] is not None for x in items), inventory=digest(items))
+
+
+def replay_submissions(s, rows):
+    checks = {(r["intent"]["task"], r["patch"]): r["public_feedback"] for r in rows if r["public_feedback"]}
+
+    def one(item):
+        task = s.task(item["task"])
+        patch = s.store.get_artifact(item["patch"])
+        require(
+            set(patch) == set(task.editable) and digest(patch) == item["patch"], "changed submitted files"
+        )
+        if item["probes"] is not None:
+            checks_now = probe_patch(task, patch, s.cfg)
+            require(
+                checks_now == item["probes"] and all(checks_now.values()) == item["passed"],
+                "independent probe mismatch",
+            )
+        else:
+            public = verify_public(task, patch, s.cfg, "replay-" + item["patch"][:12])
+            graded = grade(task, patch, s.cfg, "replay-" + item["patch"][:12])
+            require(
+                not public["timeout"]
+                and not graded["timeout"]
+                and public["image_id"] == graded["image_id"] == s.p["image"]
+                and (public["exit_code"] == 0 and graded["passed"]) == item["passed"],
+                "independent grader mismatch",
+            )
+        check = checks.get((task.id, item["patch"]))
+        if check:
+            require(
+                public_check(task, patch, s.new[task.id][2], s.cfg) == check,
+                "learning feedback replay differs",
+            )
+
+    bounded_map(one, submitted(rows), WORKERS)
+    return replay_manifest(rows)
+
+
+def example_runs(learn, choice, index):
+    # Small learn-only illustration. These excerpts have no role in the gate or retention decision.
+    keys = []
+    flag = next(
+        (key for key in learn["flag_misroutes"] if index[key]["passed"] is False and index[key]["patch"]),
+        None,
+    )
+    if flag:
+        keys.append(flag)
+    keys.extend(learn["wake_failures"][:1])
+    if choice and choice.get("proposal") and choice["proposal"]["child"]:
+        alternate = choice["proposal"]["child"]
+        seen = set()
+        for key in choice["matched"]:
+            r = index[key]
+            t = r["intent"]["task"]
+            if (
+                alternate in r["intent"]["pool"]
+                and t in WAKES
+                and t not in seen
+                and r["patch"]
+                and r["passed"] is False
+            ):
+                keys.append(key)
+                seen.add(t)
+    return keys
+
+
+def check_examples(data, execute=False):
+    rows = {r["run"]: r for r in data["rows"]}
+    learning = data["learning"][-1]
+    expected = example_runs(learning, data.get("selection"), rows)
+    programs = cases()
+    require(list(data["learning_patches"]) == expected, "different illustrative learning examples")
+    for key, patch in data["learning_patches"].items():
+        r = rows[key]
+        tid = r["intent"]["task"]
+        t, _, program = programs[tid]
+        require(
+            r["intent"]["phase"] == "learn" and digest(patch) == r["patch"] and set(patch) == set(t.editable),
+            "example does not match the submitted learning patch",
+        )
+        if execute:
+            settings = Settings(image=read(PUBLIC)["image"])
+            require(
+                probe_patch(t, patch, settings) == r["probes"]
+                and public_check(t, patch, program, settings) == r["public_feedback"],
+                "example's executable results differ",
+            )
+    return len(expected)
+
+
 def review(data, p, h):
     require(
         data["protocol"] == digest(p) == h["protocol"]
@@ -79,7 +204,10 @@ def review(data, p, h):
     hashes = {tid: digest(t.model_dump()) for tid, t in known.items()}
     rows = data["rows"]
     index = {r["run"]: r for r in rows}
-    require(len(index) == len(rows), "reused run")
+    require(
+        len(index) == len(rows) and data["patch_replay"] == replay_manifest(rows),
+        "reused run or mismatched patch inventory",
+    )
     for r in rows:
         i = r["intent"]
         require(
@@ -344,7 +472,14 @@ def review(data, p, h):
             summary[phase] = dict(
                 solves=sum(counts.values()), passed=counts[True], failed=counts[False], ungraded=counts[None]
             )
-    return dict(phases=summary, mode=h["mode"], published=allow, exposures=exposures, billing=data["billing"])
+    return dict(
+        phases=summary,
+        mode=h["mode"],
+        published=allow,
+        exposures=exposures,
+        billing=data["billing"],
+        replayable_learning_examples=check_examples(data),
+    )
 
 
 def export(s):
@@ -425,6 +560,7 @@ def export(s):
         learning=stages,
         screen=screen,
         selection=choice,
+        patch_replay=replay_submissions(s, rows),
         revision_receipts=receipts,
         gate=gate,
         protection=direct,
@@ -434,6 +570,10 @@ def export(s):
         proposal_billing={rid: s.store.costs([rid]) for rid in proposals},
         billing=s.store.costs(sorted(ids)),
     )
+    index = {r["run"]: r for r in rows}
+    d["learning_patches"] = {
+        k: s.store.get_artifact(index[k]["patch"]) for k in example_runs(stages[-1], choice, index)
+    }
     d["summary"] = review(d, s.p, h)
     dump(RESULT, d)
     return d["summary"]
@@ -441,7 +581,7 @@ def export(s):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["export", "verify"])
+    parser.add_argument("command", choices=["export", "verify", "replay-examples"])
     args = parser.parse_args()
     if args.command == "export":
         with session() as study:
@@ -450,4 +590,6 @@ if __name__ == "__main__":
         data = read(RESULT)
         actual = review(data, read(PUBLIC), read(FREEZE))
         require(actual == data["summary"], "different summary")
+        if args.command == "replay-examples":
+            print("Docker-verified learning patches", check_examples(data, execute=True))
         print(actual)
