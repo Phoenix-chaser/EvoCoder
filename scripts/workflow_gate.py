@@ -16,6 +16,7 @@ from portfolio_routing import CHILD, PARENT
 from report_click_procedure import read
 from run_falsy_transfer import atomic_trial, require
 from run_optional_control import curve_point
+from workflow_candidate_selection import CHOICE, RULE
 from workflow_learning import missed
 from workflow_study import ROOT, WORKERS, session
 from workflow_wake_extension import effective_learning
@@ -90,7 +91,15 @@ def checked_screen(s):
 def commit(s):
     learn = effective_learning()
     screen = checked_screen(s)
-    child = learn["proposal"].get("child")
+    choice = read(CHOICE) if RULE.exists() else None
+    if choice:
+        require(
+            choice["protocol"] == s.protocol
+            and choice["learning"] == digest(learn)
+            and choice["rule"] == digest(read(RULE)),
+            "learning candidate selection mismatch",
+        )
+    child = choice["selected"] if choice else learn["proposal"].get("child")
     support = {}
     if child:
         lib = SkillLibrary(s.cfg, s.store, runner=object())
@@ -116,6 +125,7 @@ def commit(s):
         protocol=s.protocol,
         learning=digest(learn),
         screening=digest(screen),
+        selection=digest(choice) if choice else None,
         evaluator=digest(Path(__file__).read_text()),
         support=support,
         knowledge=frozen_knowledge(s.store),
@@ -142,6 +152,7 @@ def registered(s):
         and h["protocol"] == s.protocol
         and h["evaluator"] == digest(Path(__file__).read_text())
         and h["learning"] == digest(effective_learning())
+        and h["selection"] == (digest(read(CHOICE)) if RULE.exists() else None)
         and h["screening"] == digest(checked_screen(s)),
         "panel or frozen decision changed",
     )
