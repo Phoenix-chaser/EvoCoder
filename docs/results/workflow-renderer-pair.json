@@ -1,0 +1,8 @@
+{
+  "a9f52785ce1f454c427261899770d145": {
+    "service.py": "FIELD = 'paginate'\nDEFAULT = True\n\ndef _clean(layer):\n    patch = {k: v for k, v in layer.items() if k == FIELD and layer.get(FIELD) is not None}\n    return patch\n\ndef handle(request):\n    output = {FIELD: DEFAULT}\n    for layer in (request[\"tenant\"], request[\"request\"]):\n        output.update(_clean(layer))\n    return {\"renderer\": output}\n"
+  },
+  "0568268a46de881bde1b6ba73797d2db": {
+    "service.py": "FIELD = 'paginate'\nDEFAULT = True\n\ndef handle(request):\n    output = {FIELD: DEFAULT}\n    for layer in (request[\"tenant\"], request[\"request\"]):\n        patch = {k: v for k, v in layer.items() if k == FIELD}\n        output.update(patch)\n    if output[FIELD] is None:\n        output[FIELD] = DEFAULT\n    return {\"renderer\": output}\n"
+  }
+}

@@ -30,6 +30,8 @@ jobs:
       - run: uv run --locked python scripts/report_callback_release.py verify
       - run: uv run --locked python scripts/report_workflow_revision.py verify
       - run: uv run --locked python scripts/workflow_config_recovery.py verify
+      - run: uv run --locked python scripts/workflow_confirmation.py verify
+      - run: uv run --locked python scripts/replay_workflow_difference.py
 
   docker-demo:
     runs-on: ubuntu-latest

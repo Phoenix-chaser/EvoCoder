@@ -15,6 +15,29 @@ EvoCoder tests whether **a coding agent can learn a method from past repairs tha
 
 ## Where does self-evolution show up?
 
+### Which repairs improved after revising the object skill?
+
+Using live GLM-5.3 on four purpose-built Python learning programs, the old library selected its object skill on all eight scalar-flag trials. A mixer patch passed the public test but eagerly acquired the default device on wake. GLM revised scope and recovery steps from execution records. An alternative given explicit role labels reduced flag misroutes from 4/4 to 1/4 in matched learning trials, while wake repairs fell from 3/4 to 2/4. The first revision therefore entered the release panel alongside the original configuration skill.
+
+| Callback source, five fresh rounds | No skill | Configuration parent only | Previous portfolio | Revised portfolio | Attributable wins over parent / no skill |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Original label callback | 2/5 | 0/5 | 5/5 | 5/5 | **5/5 · 3/5** |
+| Replication watermark and deferred acknowledgement | 0/5 | 1/5 | 4/5 | 5/5 | **4/5 · 5/5** |
+
+On each of two independently implemented checkpoint callbacks, 3/5 parent pilot submissions passed public tests and ordinary controls while still missing a callback boundary. All comparisons in the table used fresh runs. Relative to the previous portfolio, the revision added one watermark repair and tied on the label callback. [Study and learning patch examples (中文)](docs/workflow-revision-study.md) · [Original trials and first rejecting receipt](docs/results/workflow-revision.json)
+
+**This GLM experiment recorded its first live library activation.** A TLS outage left nine configuration grades missing in the first evaluation. An independent release confirmation retained the completed object and ancestry evidence and collected all seven configuration rounds again with 112 fresh solves. The previous and revised portfolios passed 6/7 and 7/7 print-configuration trials, respectively. Both selected the object skill incorrectly on 4/7 and passed the scheduler wake check on 5/5. The evaluator issued a passing receipt and SQLite recorded release transaction 1. [Confirmation protocol](benchmarks/falsy_transfer/workflow-confirmation.json) · [Passing receipt, activation and holdout outcomes](docs/results/workflow-confirmation.json)
+
+![Attributable callback wins, flag misroutes and wake checks after the revision](docs/images/workflow-revision-en.png)
+
+### Did the released library help on 30 unseen tasks?
+
+Unassisted GLM passed **30/30** and the released library passed **29/30**. The frozen sequence started with 10 scalar configuration tasks, then added 10 layered tasks and 10 batch tasks. The cumulative pass-rate differences were **0, −5.0 and −3.3 percentage points**. Each arm ran once per task, with all 60 solves graded. The library selected the configuration parent on all 30. This holdout measures configuration transfer. The paired comparison between the two portfolios above measures the incremental change on callbacks. [Task pairs, observed routes and curve data](docs/results/workflow-confirmation.json)
+
+The only disagreement concerned layered renderer settings. The tenant disabled pagination with `False`, and a request-level `None` should inherit that value. The unassisted patch returned `False`. The patch produced with the parent skill returned the global default, `True`. The unassisted arm left no failed holdout tasks for the library to recover. [Failure analysis and scope (中文)](docs/workflow-revision-study.md#发布后的-30-道留出题)
+
+![Cumulative gain relative to no skill at one, two and three configuration strata, respectively 0, minus 5.0 and minus 3.3 percentage points](docs/images/workflow-diversity-en.png)
+
 ### Did the caller-object skill transfer to a new deferred callback?
 
 In 4/5 pilot runs the parent passed the public tests but broke deferred delivery. It solved all five ordering pilots. Development used separate print-queue and event-ordering programs. On each portfolio run GLM could select the configuration parent, the caller-object child previously revised from execution failures, or neither.
@@ -51,7 +74,7 @@ GLM could select the original configuration skill, the learned caller-object ski
 
 ![Adding public excerpts raised correct exception routing from 0/4 to 4/4, while increasing wrong configuration and control selections. The paired portfolio repaired 6/6 object trials and 5/8 configuration trials.](docs/images/parallel-routing-en.png)
 
-On the object panel the concurrent parent-only arm repaired **5/6** and the portfolio **6/6**. The portfolio gained one label-callback repair on the first repeat. Both arms passed on the second. Configuration repairs went from **4/8 to 5/8**, with two paired gains and one loss. In all three pairs the solver received the same parent skill and an identical first request. **Zero** independent object sources improved on both repeats. Release requires **two**. The 30 holdout tasks remain sealed. [Per-trial routes, patch checks and release decision](docs/results/parallel-routing.json)
+On the object panel the concurrent parent-only arm repaired **5/6** and the portfolio **6/6**. The portfolio gained one label-callback repair on the first repeat. Both arms passed on the second. Configuration repairs went from **4/8 to 5/8**, with two paired gains and one loss. In all three pairs the solver received the same parent skill and an identical first request. **Zero** independent object sources improved on both repeats. Release requires **two**. The 30 holdout tasks stayed sealed during that study. [Per-trial routes, patch checks and release decision](docs/results/parallel-routing.json)
 
 ### How did a real failed repair change the skill's scope?
 
@@ -63,7 +86,7 @@ With execution traces and test receipts, GLM produced a child that added a check
 
 ![Concurrent repair counts across three object tasks and two repeats. With forced application the first child and parent repaired 3/6 each. In the second study the child repaired 6/6 and the parent 3/6.](docs/images/object-revision-en.png)
 
-On the original configuration tasks, the concurrent parent was used in 8/8 trials and repaired 6/8. The second child was used in 0/8 and repaired 3/8. The release decision retained both the callback gains and the configuration regressions. Both children stayed unpublished and all 30 holdout tasks remained sealed. Repair gain versus task-family diversity remains unmeasured. [Release and holdout records (中文)](docs/object-revision-study.md)
+On the original configuration tasks, the concurrent parent was used in 8/8 trials and repaired 6/8. The second child was used in 0/8 and repaired 3/8. The release decision retained both the callback gains and the configuration regressions. Both children stayed unpublished and all 30 holdout tasks remained sealed. That study did not measure gain versus diversity. [Release and holdout records (中文)](docs/object-revision-study.md)
 
 ### What did the learned skill fix on new configuration tasks?
 
@@ -73,7 +96,7 @@ On the original configuration tasks, the concurrent parent was used in 8/8 trial
 
 An independent pretest first established that the manual procedure could correct a repeatable error. On a historical more-itertools defect, all three unassisted patches passed the public test and discarded the caller's falsy exception object on empty input. The reference skill preserved the object and passed the full task twice. All three additional configuration repairs shown above came in the second repeat. **Zero** development groups delivered the repeated wins required for release in this first panel. [Pretest, release rules and reproduction (中文)](docs/falsy-transfer-study.md)
 
-Transfer to **caller-owned objects** produced different results. Across three fresh tasks and two repeats, the unassisted model repaired **5/6**, the manual reference **6/6**, normal routing with the learned skill available **3/6**, and forced injection of that same skill **2/6**. Normal routing injected the skill **0/6** times. All six first solver requests matched the unassisted inputs. The combined release gate rejected the candidate. The model saw **zero of the 30 holdout tasks**, so repair gain as task-family diversity increases remains unmeasured. [Object-task routes, patch checks and combined gate](docs/results/falsy-objects.json)
+Transfer to **caller-owned objects** produced different results. Across three fresh tasks and two repeats, the unassisted model repaired **5/6**, the manual reference **6/6**, normal routing with the learned skill available **3/6**, and forced injection of that same skill **2/6**. Normal routing injected the skill **0/6** times. All six first solver requests matched the unassisted inputs. The combined release gate rejected the candidate. In that study the model saw **zero of the 30 holdout tasks**. [Object-task routes, patch checks and combined gate](docs/results/falsy-objects.json)
 
 ### How did the model form the skill?
 
@@ -85,7 +108,7 @@ In the original 50-case study, GLM-5.3 learned from four unassisted repair trace
 | Submitted patch passed both missing-value and valid-falsy probes | 10/10 | 10/10 |
 | Model calls, including routing | 55 | 73 |
 
-Ten adapter implementations and five configuration types produced **50 executable cases**. Whole implementations were assigned to learning (10 cases), development (10) or holdout (30). The independent grader caught the repair that defaults all falsy values on all 50 cases. An evaluator-written reference skill repaired both prespecified development anchors, as did the unassisted model. With a perfect development baseline, neither group could deliver the repeated wins required for release. The model saw **zero holdout tasks**. The effect of increasing task-family diversity remains unmeasured. [Frozen protocol](benchmarks/optional_control/protocol.json) · [Methods and reproduction commands (中文)](docs/optional-control-study.md)
+Ten adapter implementations and five configuration types produced **50 executable cases**. Whole implementations were assigned to learning (10 cases), development (10) or holdout (30). The independent grader caught the repair that defaults all falsy values on all 50 cases. An evaluator-written reference skill repaired both prespecified development anchors, as did the unassisted model. With a perfect development baseline, neither group could deliver the repeated wins required for release. The model saw **zero holdout tasks** during that study. [Frozen protocol](benchmarks/optional_control/protocol.json) · [Methods and reproduction commands (中文)](docs/optional-control-study.md)
 
 **Earlier Click trials show a change in how the agent used its tools.** We analyzed 32 archived live-model traces with zero new model calls. The figure uses the two tasks and two repeats with matched controls. Each point measures the distance between the parent and child distributions of actions such as reading, searching, editing and testing. Squares show the variation when both runs skipped the skill. Circles show it when both runs used their assigned version.
 

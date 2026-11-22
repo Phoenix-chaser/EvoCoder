@@ -15,7 +15,15 @@ BLUE = "#496B9C"
 
 
 def load_report():
-    return json.loads((ROOT / "docs/results/workflow-revision.json").read_text())
+    original = json.loads((ROOT / "docs/results/workflow-revision.json").read_text())
+    confirmation = json.loads((ROOT / "docs/results/workflow-confirmation.json").read_text())
+    return dict(
+        gate=confirmation["gate"],
+        screen=original["screen"],
+        activation=confirmation["activation"],
+        holdout_exposures=confirmation["exposures"],
+        holdout={"pairs": confirmation["holdout"], "curve": confirmation["curve"]},
+    )
 
 
 def style(ax):
@@ -42,7 +50,7 @@ def figure(data, zh):
     if data["gate"]:
         report = data["gate"]["report"]["gate"]
         fig, (left, right) = plt.subplots(1, 2, figsize=(11, 4.6), gridspec_kw={"width_ratios": [1, 1.1]})
-        fig.subplots_adjust(left=0.09, right=0.975, top=0.72, bottom=0.21, wspace=0.36)
+        fig.subplots_adjust(left=0.07, right=0.975, top=0.70, bottom=0.26, wspace=0.32)
         fig.text(
             0.06,
             0.91,
@@ -71,7 +79,7 @@ def figure(data, zh):
             left.bar_label(b, padding=3, fmt="%.0f", fontsize=11)
         left.axhline(3, color="#985A30", linestyle="--", linewidth=1)
         left.set(
-            ylim=(0, 5.5),
+            ylim=(0, 5.8),
             yticks=range(6),
             xticks=positions,
             xticklabels=[tr("标签回调", "Label callback"), tr("延迟确认回调", "Deferred ack")],
@@ -83,7 +91,7 @@ def figure(data, zh):
             fontsize=13,
             pad=14,
         )
-        left.legend(loc="upper left", ncol=2, frameon=False, fontsize=9)
+        left.legend(loc="upper center", bbox_to_anchor=(0.5, -0.18), ncol=2, frameon=False, fontsize=9)
         d = report["direct"]
         values = []
         for base in ("previous", "revised"):
@@ -96,14 +104,14 @@ def figure(data, zh):
             zip(
                 values,
                 [BLUE, TEAL],
-                [tr("旧对象技能", "Previous object skill"), tr("新对象技能", "Revised object skill")],
+                [tr("旧父子库", "Previous portfolio"), tr("修订父子库", "Revised portfolio")],
                 strict=True,
             )
         ):
             b = right.bar([p + (j - 0.5) * 0.30 for p in range(3)], vals, 0.27, label=name, color=color)
             right.bar_label(b, padding=3, fmt="%.0f", fontsize=11)
         right.set(
-            ylim=(0, 8.8),
+            ylim=(0, 8),
             yticks=[0, 2, 4, 6, 7],
             xticks=range(3),
             xticklabels=[
@@ -119,7 +127,7 @@ def figure(data, zh):
             fontsize=13,
             pad=14,
         )
-        right.legend(loc="upper left", ncol=2, frameon=False, fontsize=9)
+        right.legend(loc="upper center", bbox_to_anchor=(0.5, -0.18), ncol=2, frameon=False, fontsize=9)
         for ax in (left, right):
             ax.grid(axis="y", color="#E1E8EB", linewidth=0.7)
             style(ax)
@@ -127,8 +135,8 @@ def figure(data, zh):
             0.06,
             0.045,
             tr(
-                "虚线为单个来源的发布阈值。布尔误选次数越少越好。",
-                "The dashed line marks the per-source release threshold. Fewer flag misroutes is better.",
+                "回调和调度器使用原五轮。打印配置使用独立复核的七轮。虚线标出单个来源的胜轮阈值。",
+                "Callbacks and wake checks use the original five rounds. Print uses seven fresh rounds. The dashed line marks the release threshold.",
             ),
             fontsize=9,
             color="#506973",
@@ -145,7 +153,7 @@ def figure(data, zh):
         and len(hold["curve"]) == 3
     )
     fig, ax = plt.subplots(figsize=(8, 4.8))
-    fig.subplots_adjust(left=0.15, right=0.95, top=0.80, bottom=0.2)
+    fig.subplots_adjust(left=0.13, right=0.96, top=0.75, bottom=0.19)
     pts = hold["curve"]
     xs = [1, 2, 3]
     fig.suptitle(
@@ -153,17 +161,22 @@ def figure(data, zh):
         weight="bold",
         fontsize=17,
     )
-    for key, color, legend, offset in [
-        ("paired_gain", TEAL, tr("累计混合", "Cumulative mix"), 6),
-        ("family_gain", BLUE, tr("新增任务族", "Added stratum"), -15),
+    for key, color, legend, offset, marker, line in [
+        ("paired_gain", TEAL, tr("累计混合", "Cumulative mix"), 8, "o", "-"),
+        ("family_gain", BLUE, tr("新增任务族", "Added stratum"), -17, "s", "--"),
     ]:
         ys = [100 * p[key] for p in pts]
-        ax.plot(xs, ys, "o-", color=color, label=legend)
+        ax.plot(
+            xs, ys, color=color, label=legend, marker=marker, linestyle=line, linewidth=2,
+            markersize=7 if key == "paired_gain" else 10,
+            markerfacecolor=color if key == "paired_gain" else "none",
+        )
         for x, y in zip(xs, ys):
             ax.annotate(
-                f"{y:+.1f}", (x, y), xytext=(0, offset), textcoords="offset points", ha="center", fontsize=9
+                f"{y:+.1f}", (x, y), xytext=(0, offset), textcoords="offset points",
+                ha="center", fontsize=10, color=color,
             )
-    ax.axhline(0, color="#9AA7A9", lw=0.9)
+    ax.axhline(0, color="#9AA7A9", lw=0.9, zorder=0)
     ax.set_xticks(
         xs,
         [
@@ -175,7 +188,7 @@ def figure(data, zh):
     ax.set_xlim(0.8, 3.2)
     ax.margins(y=0.25)
     ax.set_ylabel(tr("成对通过率差（百分点）", "Paired pass-rate difference (pp)"))
-    ax.legend(frameon=False)
+    ax.legend(loc="lower center", bbox_to_anchor=(0.5, 1.02), ncol=2, frameon=False)
     style(ax)
     fig.savefig(ROOT / f"docs/images/workflow-diversity-{label}.png", dpi=145, facecolor="white")
     plt.close(fig)

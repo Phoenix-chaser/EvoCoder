@@ -95,5 +95,51 @@
     "interruption": "benchmarks/falsy_transfer/shape-routing-interruption.json",
     "source_report": "docs/results/shape-routing.json",
     "report": "docs/shape-routing-study.md"
+  },
+  "workflow_revision_evidence": {
+    "report": "docs/workflow-revision-study.md",
+    "original_evaluation": "docs/results/workflow-revision.json",
+    "diagnostic_recovery": "docs/results/workflow-config-recovery.json",
+    "release_protocol": "benchmarks/falsy_transfer/workflow-confirmation.json",
+    "release_evaluation": "docs/results/workflow-confirmation.json",
+    "discordant_holdout_submissions": "docs/results/workflow-renderer-pair.json",
+    "activation": {
+      "library": "42a17027f2ededa9bebbdcd21172be38d8255eaf8eed9725d3b6203b365e132e",
+      "receipt": "08848c0472807707d565f07fa15d761d6d8c15bc6854f8af907dc17758a0edd2",
+      "transaction": 1
+    },
+    "holdout": {
+      "task_pairs": 30,
+      "bare_pass": 30,
+      "published_pass": 29,
+      "published_routes": {
+        "configuration_parent": 30,
+        "object_revision": 0,
+        "skip": 0
+      },
+      "curve": [
+        {
+          "families": 1,
+          "added_family": "scalar",
+          "pairs": 10,
+          "family_gain": 0.0,
+          "paired_gain": 0.0
+        },
+        {
+          "families": 2,
+          "added_family": "layers",
+          "pairs": 20,
+          "family_gain": -0.1,
+          "paired_gain": -0.05
+        },
+        {
+          "families": 3,
+          "added_family": "batch",
+          "pairs": 30,
+          "family_gain": 0.0,
+          "paired_gain": -0.03333333333333333
+        }
+      ]
+    }
   }
 }
